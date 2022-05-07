@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
 
     private CapsuleCollider2D col;
     private SpriteRenderer rend;
-    public Animator animator;
+    private Animator animator;
 
     private Vector2 starterPos;
     private float patrollTimer = 0.02f;

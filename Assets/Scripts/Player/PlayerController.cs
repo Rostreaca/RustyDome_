@@ -155,7 +155,11 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f);
         bool grounded = hit.collider != null && hit.collider.CompareTag("Ground");
         grounded = grounded || isClimb;
-
+        if(hit.collider!=null && hit.collider.CompareTag("NPC"))
+        {
+            isGround = true;
+            return;
+        }
         isGround = grounded;
     }
 
