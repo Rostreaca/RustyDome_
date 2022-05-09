@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCController : NPCManager
+public class WorkBenchController : NPCManager
 {
-
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +20,4 @@ public class NPCController : NPCManager
     {
         Gizmos.DrawWireSphere(transform.position, seeRange);
     }
-
 }

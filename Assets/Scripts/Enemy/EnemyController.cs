@@ -2,18 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : EnemyManager
 {
-    public int hpMax;
-    public int hpNow;
 
-    public float moveSpeed;
     public float patrollRadius;
     public float patrollSin;
     public float returnRadius;
     public float attackRadius;
     public Transform followTarget;
     public GameObject Coin;
+    public GameObject Actor;
 
     private CapsuleCollider2D col;
     private SpriteRenderer rend;
@@ -62,10 +60,7 @@ public class EnemyController : MonoBehaviour
 
             Rotation();
             Animation();
-            if (hpNow <= 0)
-            {
-                die();
-            }
+            Die();
         }
     }
 
@@ -84,7 +79,7 @@ public class EnemyController : MonoBehaviour
 
     private void Patroll()
     {
-        patrollSin += patrollTimer * moveSpeed;
+        patrollSin += patrollTimer * Speed;
 
         if(patrollSin >= 1)
         {
@@ -97,7 +92,7 @@ public class EnemyController : MonoBehaviour
 
         float x = patrollRadius * patrollSin + starterPos.x;
 
-        transform.position = Vector2.MoveTowards(transform.position,  new Vector2(x, transform.position.y), moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position,  new Vector2(x, transform.position.y), Speed * Time.deltaTime);
     }
 
     public void Follow(Transform target)
@@ -156,13 +151,21 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    public void die()
+    public void Die()
     {
-        animator.SetTrigger("Death");
-        if (EnemyDie.instance.isDead == true)
+        if (hpNow <= 0)
         {
-            Destroy(gameObject);
-            Instantiate(Coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+            isDead = true;
+        }
+        if (isDead ==true)
+        {
+            animator.SetTrigger("Death");
+            if (EnemyDie.instance.isDead == true)
+            {
+                Destroy(gameObject);
+                Instantiate(Coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity,Actor.transform);
+            }
+
         }
     }
 
@@ -213,7 +216,7 @@ public class EnemyController : MonoBehaviour
             else
             {
                 if (Vector2.Distance(transform.position, followTarget.position) > attackRadius && !isAttack)
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), moveSpeed / 2 * Time.deltaTime); //follow target
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), Speed / 2 * Time.deltaTime); //follow target
                 else //if target in attack radius
                     Attack(); //attack
 
@@ -229,7 +232,7 @@ public class EnemyController : MonoBehaviour
     {
         while (transform.position.x != starterPos.x)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(starterPos.x, transform.position.y), moveSpeed / 2 * Time.deltaTime); //move to start pos
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(starterPos.x, transform.position.y), Speed / 2 * Time.deltaTime); //move to start pos
 
             if (hpNow < hpMax)
             {

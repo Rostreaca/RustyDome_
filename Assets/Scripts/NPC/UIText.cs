@@ -7,13 +7,16 @@ public class UIText : MonoBehaviour
 {
 
     private IEnumerator init_Type;
-    private int sayCount=0;
 
     public GameObject dialog;
     public GameObject npc;
     public GameObject nextTextBtn;
+
     public Text text;
-    private string npc_Text="'F'";
+
+    public string npc_Text="'F'";
+
+    public int sayCount = 0;
     public int textEnd=0;
     public bool sayEnd;
 
@@ -36,17 +39,16 @@ public class UIText : MonoBehaviour
     void Update()
     {
         CheckSayEnd();
+        TextPosition(transform,dialog,npc);
         Say();
     }
 
-    void Say()
+    public void Say()
     {
         if (sayCount == 0)
         {
             npc_Text = "'F'";
         }
-        transform.position = Camera.main.WorldToScreenPoint(npc.transform.position + new Vector3(0, 0.2f, 0));
-        dialog.transform.position = transform.position;
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
             npc_Text = "저는 이곳의 주민인 Rivad 입니다.";
@@ -70,7 +72,13 @@ public class UIText : MonoBehaviour
             dialog.SetActive(false);
         }
     }
-    void Type_init()//Typing() 코루틴 초기화
+
+    public void TextPosition(Transform transform, GameObject dialog, GameObject npc)//대화창 위치를 캐릭터 머리 위로 조정
+    {
+        transform.position = Camera.main.WorldToScreenPoint(npc.transform.position + new Vector3(0, 0.2f, 0));
+        dialog.transform.position = transform.position;
+    }
+    public void Type_init()//Typing() 코루틴 초기화
     {
         textEnd = 0;
         sayEnd = false;
@@ -78,7 +86,7 @@ public class UIText : MonoBehaviour
         StartCoroutine(init_Type);
     }
 
-    void CheckSayEnd()//대화가 끝나면 버튼 생성
+    public void CheckSayEnd()//대화가 끝나면 버튼 생성
     {
         if (sayEnd == true)
         {
@@ -90,7 +98,7 @@ public class UIText : MonoBehaviour
         }
     }
 
-    IEnumerator Typing()//글자가 한글자 씩 타이핑 되는 효과
+    public IEnumerator Typing()//글자가 한글자 씩 타이핑 되는 효과
     {
         for (int i = 0; i <= npc_Text.Length; i++)
         {

@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
     [Header("Parameters")]
     public bool isGame;
     public bool isPause;
-
+    [Header("Checkpoint")]
+    public Transform checkPoint;
     private void Awake()
     {
         SingletonInit();

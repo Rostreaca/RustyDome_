@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     public int hpMax;
     public int hpNow;
     public int powerMax;
@@ -44,8 +46,20 @@ public class PlayerController : MonoBehaviour
         Dashing,
         Cooldown,
     }
-
+    void SIngleton_Init()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        instance = this;
+    }
+    void Awake()
+    {
+        SIngleton_Init();
+    }
     // Start is called before the first frame update
+
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
