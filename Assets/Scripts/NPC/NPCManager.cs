@@ -11,12 +11,11 @@ public class NPCManager : MonoBehaviour
     public bool isSay;
 
     public float seeRange = 0.5f;
-    // Start is called before the first frame updat
-    void Awake()
+    private void Awake()
     {
-        
+        playerPos = GameObject.Find("Player").transform;
     }
-
+    // Start is called before the first frame update
     public void Check()
     {
 

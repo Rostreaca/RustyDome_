@@ -1326,7 +1326,7 @@ GameObject:
   - component: {fileID: 392468891}
   - component: {fileID: 392468895}
   - component: {fileID: 392468894}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -6247,6 +6247,13 @@ MonoBehaviour:
   sayCount: 0
   textEnd: 0
   sayEnd: 0
+  originPos: {x: 0, y: 0}
+  Actor: {fileID: 1788282252}
+  Item: {fileID: 3570157381209698220, guid: 23ea70a8a03f44549a093a2cd3e646c1, type: 3}
+  Box: {fileID: 838865013}
+  player: {fileID: 1330899364}
+  seta: 80
+  isBoxOpen: 0
 --- !u!114 &409203591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13619,6 +13626,7 @@ MonoBehaviour:
   sayCount: 0
   textEnd: 0
   sayEnd: 0
+  originPos: {x: 0, y: 0}
   workBenchPos: {fileID: 1686818923}
 --- !u!114 &1089087266
 MonoBehaviour:
@@ -19840,6 +19848,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327910779}
   m_CullTransparentMesh: 1
+--- !u!1 &1330899364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5022922352837849916, guid: 19542202eb5128c408ac484f15fa4196,
+    type: 3}
+  m_PrefabInstance: {fileID: 5022565887900218274}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1333654681
 GameObject:
   m_ObjectHideFlags: 0
@@ -20832,6 +20846,7 @@ MonoBehaviour:
   sayCount: 0
   textEnd: 0
   sayEnd: 0
+  originPos: {x: 0, y: 0}
 --- !u!114 &1679150019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22260,6 +22275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGame: 0
   isPause: 0
+  coinCount: 0
   checkPoint: {fileID: 1176523242}
 --- !u!114 &2144576057
 MonoBehaviour:
@@ -22616,7 +22632,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Coin
       value: 
-      objectReference: {fileID: 1489792657725218289, guid: 79b4d7cc9541abb48909cc4db8abadc4,
+      objectReference: {fileID: 3570157381209698220, guid: 23ea70a8a03f44549a093a2cd3e646c1,
         type: 3}
     - target: {fileID: 5400341597445625660, guid: 411fa4d440a74e442ac5e5abb86c2470,
         type: 3}
@@ -22806,6 +22822,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694477766032478671, guid: 3f805f4b42dda9447972d8fa8dad4122,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694477766032478671, guid: 3f805f4b42dda9447972d8fa8dad4122,
+        type: 3}
+      propertyPath: m_TagString
+      value: NPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f805f4b42dda9447972d8fa8dad4122, type: 3}
