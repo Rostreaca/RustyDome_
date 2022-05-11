@@ -10,6 +10,14 @@ public class PlayerCombat : MonoBehaviour
 
     private bool canCombo;
 
+    public Weapon Weapon
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     private void Start()
     {
         rigid = GetComponentInParent<Rigidbody2D>();

@@ -157,8 +157,13 @@ public class PlayerController : MonoBehaviour
         {
             if (isGround && !isAttack)
             {
+                //S를 누르고 있을경우엔 하단점프(점프안함)
+                if (!Input.GetKey(KeyCode.S))
+                {
+                    rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+                }
+
                 animator.SetTrigger("Jump");
-                rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
                 isClimb = false;
             }
         }

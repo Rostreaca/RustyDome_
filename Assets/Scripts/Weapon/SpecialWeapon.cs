@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SpecialWeapon", menuName = "ScriptableObjects/SpeicalWeapon", order = 1)]
-public class SpecialWeapon : ScriptableObject
+public class SpecialWeapon : Weapon
 {
-    public void Use()
+    public override void Use()
     {
 
     }
