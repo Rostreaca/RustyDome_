@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 415712383323e8045bc4eceb9a87bb30, type: 3}
-  m_Name: MeleeWeapon
+  m_Script: {fileID: 11500000, guid: aca6aff06b1525b43b878aac49028a43, type: 3}
+  m_Name: Saw
   m_EditorClassIdentifier: 
-  dmg: 5
-  size: {x: 1.5, y: 1.5}
+  dmg: 100
+  animName: SawAttack
+  powerCon: 0
+  skillDmg: 0
+  skillPowerCon: 0
+  skillCoolTime: 0
+  skillCoolTimer: 0

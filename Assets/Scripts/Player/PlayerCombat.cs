@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat : Combat
 {
     private Rigidbody2D rigid;
     private Animator animator;
@@ -10,16 +10,10 @@ public class PlayerCombat : MonoBehaviour
 
     private bool canCombo;
 
-    public Weapon Weapon
+    public override void Start()
     {
-        get => default;
-        set
-        {
-        }
-    }
+        base.Start();
 
-    private void Start()
-    {
         rigid = GetComponentInParent<Rigidbody2D>();
         playerController = GetComponentInParent<PlayerController>();
         animator = GetComponent<Animator>();
@@ -36,7 +30,7 @@ public class PlayerCombat : MonoBehaviour
 
         //Animator update
         animator.ResetTrigger("AttackCombo");
-        animator.SetBool("MeleeAttack", false);
+        animator.SetBool(playerController.meleeWeapon.animName, false);
 
         canCombo = false; //block combo
         playerController.isAttack = false;
@@ -58,5 +52,21 @@ public class PlayerCombat : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    public override void HitDetected()
+    {
+        if (colliderDetected.gameObject.tag == "Enemy")
+        {
+            EnemyController enemy = colliderDetected.GetComponent<EnemyController>();
+
+            int damage = playerController.meleeWeapon.dmg;
+
+            MeleeAttack(enemy, damage);
+        }
+    }
+    public void MeleeAttack(EnemyController enemy, int damage)
+    {
+        enemy.GetDamage(damage);
     }
 }

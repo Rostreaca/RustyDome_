@@ -212,13 +212,18 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAttack && !isClimb)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
             {
                 isAttack = true;
 
                 if (Input.GetMouseButton(0))
                 {
-                    animator.SetBool("MeleeAttack", isAttack);
+                    animator.SetBool(meleeWeapon.animName, isAttack);
+                }
+
+                if (Input.GetMouseButton(1))
+                {
+                    animator.SetBool("RangeAttack", isAttack);
                 }
             }
         }
@@ -237,6 +242,22 @@ public class PlayerController : MonoBehaviour
         }
 
         animator.SetBool("isGround", isGround);
+    }
+
+    public void GetDamage(int damage)
+    {
+        hpNow -= damage;
+
+        if (hpNow <= 0)
+        {
+            Death();
+        }
+    }
+
+    public void Death()
+    {
+        animator.SetTrigger("Death");
+        GameManager.Instance.GameOver(); //set game state to game over
     }
 
 }

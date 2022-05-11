@@ -259,12 +259,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpMax: 100
   hpNow: 100
-  moveSpeed: 1
+  Speed: 0
+  StunMeterMax: 0
+  StunMeterNow: 0
+  StunMeterRegen: 0
+  MeleeDmg: 0
+  RangeDmg: 0
+  MeleeSkillCoolTimeNow: 0
+  MeleeSkillCoolTimeMax: 0
   patrollRadius: 0.5
   patrollSin: 0
   returnRadius: 1.25
   attackRadius: 0.2
   followTarget: {fileID: 0}
+  Coin: {fileID: 0}
+  Actor: {fileID: 0}
 --- !u!1 &5400873706129322213
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +284,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5396498457316222969}
   - component: {fileID: 5345728369384871703}
-  - component: {fileID: 5431565286370431763}
   m_Layer: 2
   m_Name: MeleeAttackTrigger
   m_TagString: Untagged
@@ -323,16 +331,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.15}
   m_EdgeRadius: 0
---- !u!114 &5431565286370431763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5400873706129322213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c55645d8d98524d8fb0874012e40bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combat: {fileID: 0}

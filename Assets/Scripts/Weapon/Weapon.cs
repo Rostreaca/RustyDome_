@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Weapon : ScriptableObject
 {
+    public int dmg;
     public abstract void Use();
 
 }
