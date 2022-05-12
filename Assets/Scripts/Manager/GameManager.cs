@@ -38,6 +38,6 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGame = false; //disable game
-        UIManager.Instance.ChangeScreen(UIManager.ScreenState.GameOver); //change screen to lose
+        UIManager.instance.ChangeScreen(UIManager.ScreenState.GameOver); //change screen to lose
     }
 }

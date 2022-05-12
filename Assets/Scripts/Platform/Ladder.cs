@@ -6,24 +6,20 @@ public class Ladder : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             PlayerController playerController = collision.GetComponent<PlayerController>();
-            LadderEnterStatus(playerController, true); //can move up
+            playerController.onLadder = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             PlayerController playerController = collision.GetComponent<PlayerController>();
-            LadderEnterStatus(playerController, false); //block move up
+            playerController.onLadder = false;
+            playerController.isClimb = false;
         }
-    }
-
-    void LadderEnterStatus(PlayerController playerController, bool status)
-    {
-        playerController.onLadder = status; //Set status to player
     }
 }

@@ -19,15 +19,16 @@ public class PlayerController : MonoBehaviour
     public MeleeWeapon meleeWeapon;
     public RangeWeapon rangeWeapon;
 
-    public int moveSpeed;
+    public float moveSpeed;
     public float dashCoolTime;
     public float dashTimer;
     public float dashTime;
-    public float jumpPower;
     public float dashSpeed;
+    public float jumpPower;
 
     public bool isAttack = false;
     public bool onLadder = false;
+    public bool isClimb = false;
 
     private Rigidbody2D rigid;
     private CapsuleCollider2D col;
@@ -35,7 +36,6 @@ public class PlayerController : MonoBehaviour
     private bool isDash = false;
     private bool isGround = false;
     [SerializeField]
-    private bool isClimb = false;
     private bool canAirJump;
 
 
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
     private void Rotation()
     {
-        if (!isDash)
+        if (!isDash && !isAttack)
         {
             if (Input.GetAxis("Horizontal") != 0)
             {
@@ -156,11 +156,11 @@ public class PlayerController : MonoBehaviour
             {
                 if (isGround)
                 {
-                    //S를 누르고 있을경우엔 하단점프(점프안함)
-                    if (!Input.GetKey(KeyCode.S))
-                    {
-                        rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-                    }
+                    rigid.velocity = new Vector2(rigid.velocity.x, 0);
+                    rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+
+                    animator.SetTrigger("Jump");
+                    isClimb = false;
                 }
                 
                 else if (canAirJump)
@@ -168,18 +168,20 @@ public class PlayerController : MonoBehaviour
                     rigid.velocity = new Vector2(rigid.velocity.x, 0);
                     rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
                     canAirJump = false;
-                }
 
-                animator.SetTrigger("Jump");
-                isClimb = false;
+                    animator.SetTrigger("Jump");
+                    isClimb = false;
+                }
             }
         }
     }
 
     private void GroundCheck()
     {
-        RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f);
-        bool grounded = hit.collider != null && hit.collider.CompareTag("Ground");
+        LayerMask layerMask = 1 << LayerMask.NameToLayer("Ground");
+        RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f, layerMask);
+        bool grounded = hit.collider != null;
+
         grounded = grounded || isClimb;
         if(hit.collider!=null && hit.collider.CompareTag("NPC"))
         {
@@ -197,22 +199,37 @@ public class PlayerController : MonoBehaviour
     {
         if (onLadder)
         {
-            if (isClimb)
+            if (Input.GetKey(KeyCode.W))
             {
-                transform.Translate(Vector2.up * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime);
+                isClimb = true;
             }
 
-            else if (Input.GetAxis("Vertical") != 0)
+            else if (Input.GetKey(KeyCode.S))
             {
-                rigid.gravityScale = 0;
-                isClimb = true;
+                LayerMask layerMask = 1 << LayerMask.NameToLayer("Ground");
+                RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f, layerMask);
+
+                if (hit.collider != null)
+                {
+                    isClimb = false;
+                }
+
+                else
+                {
+                    isClimb = true;
+                }
             }
         }
 
-        else if (isClimb)
+        if (isClimb)
+        {
+            rigid.gravityScale = 0;
+            rigid.velocity = Vector2.up * Input.GetAxis("Vertical") * moveSpeed;
+        }
+
+        else 
         {
             rigid.gravityScale = 1;
-            isClimb = false;
         }
     }
 
@@ -220,16 +237,16 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAttack && !isClimb)
         {
-            if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
             {
                 isAttack = true;
 
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButtonDown(0))
                 {
                     animator.SetBool(meleeWeapon.animName, isAttack);
                 }
 
-                if (Input.GetMouseButton(1))
+                if (Input.GetMouseButtonDown(1))
                 {
                     animator.SetBool("RangeAttack", isAttack);
                 }

@@ -14,9 +14,9 @@ public class Platform : MonoBehaviour
 
     void Update()
     {
-        if (playerCheck && Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.Space))
+        if (playerCheck && Input.GetKey(KeyCode.S))
             effector.rotationalOffset = 180f;
-        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.W))
             effector.rotationalOffset = 0f;
     }
 

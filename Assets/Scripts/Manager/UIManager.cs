@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance;
+    public static UIManager instance;
 
     public enum ScreenState { Game, Pause, Inform, Map, Inventory, Customize, GameOver}
 
@@ -15,10 +15,10 @@ public class UIManager : MonoBehaviour
 
     void SingletonInit()
     {
-        if (Instance != null)
+        if (instance != null)
             Destroy(gameObject);
         else
-            Instance = this;
+            instance = this;
     }
 
     private void Awake()

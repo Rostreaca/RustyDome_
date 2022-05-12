@@ -22,6 +22,16 @@ public class PlayerCombat : Combat
     public void OnMeleeAttackBegin(float timeToCombo)
     {
         StartCoroutine(ICombo(timeToCombo)); //Start combo system 
+
+
+        //Rotation
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            if (Input.GetAxis("Horizontal") < 0)
+                playerController.transform.localScale = new Vector3(-1, 1, 1);
+            else
+                playerController.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     public void OnMeleeAttackEnd()

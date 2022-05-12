@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c0b275ccb46782346b012f068282a599
+guid: 4d026ce69b72f9c4aa3e0c4ad787744d
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -14,9 +14,6 @@ TextureImporter:
   - first:
       213: -4214560704313396357
     second: tilemap2_3
-  - first:
-      213: 292129735331028476
-    second: tilemap2_4
   - first:
       213: -5733781401960278071
     second: tilemap2_5
@@ -42,14 +39,17 @@ TextureImporter:
       213: 8136202232313926208
     second: tilemap2_12
   - first:
-      213: 6264076915455979546
-    second: tilemap2_13
-  - first:
       213: 8299154671552537513
     second: tilemap2_14
   - first:
       213: 1027356099460988588
     second: tilemap2_15
+  - first:
+      213: -8640899314681605927
+    second: tilemap2_16
+  - first:
+      213: 307060926540696777
+    second: tilemap2_17
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -81,7 +81,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -117,7 +117,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -129,7 +129,19 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -224,31 +236,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilemap2_4
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 240
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cfd1cbe427add0400800000000000000
-      internalID: 292129735331028476
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: tilemap2_5
       rect:
         serializedVersion: 2
-        x: 96
+        x: 16
         y: 240
         width: 64
         height: 64
@@ -269,7 +260,7 @@ TextureImporter:
       name: tilemap2_6
       rect:
         serializedVersion: 2
-        x: 176
+        x: 96
         y: 240
         width: 64
         height: 64
@@ -290,7 +281,7 @@ TextureImporter:
       name: tilemap2_7
       rect:
         serializedVersion: 2
-        x: 256
+        x: 176
         y: 240
         width: 64
         height: 64
@@ -311,8 +302,8 @@ TextureImporter:
       name: tilemap2_8
       rect:
         serializedVersion: 2
-        x: 16
-        y: 160
+        x: 256
+        y: 240
         width: 64
         height: 64
       alignment: 0
@@ -332,7 +323,7 @@ TextureImporter:
       name: tilemap2_9
       rect:
         serializedVersion: 2
-        x: 96
+        x: 16
         y: 160
         width: 64
         height: 64
@@ -353,7 +344,7 @@ TextureImporter:
       name: tilemap2_10
       rect:
         serializedVersion: 2
-        x: 176
+        x: 96
         y: 160
         width: 64
         height: 64
@@ -374,7 +365,7 @@ TextureImporter:
       name: tilemap2_11
       rect:
         serializedVersion: 2
-        x: 256
+        x: 176
         y: 160
         width: 64
         height: 64
@@ -395,8 +386,8 @@ TextureImporter:
       name: tilemap2_12
       rect:
         serializedVersion: 2
-        x: 16
-        y: 80
+        x: 256
+        y: 160
         width: 64
         height: 64
       alignment: 0
@@ -413,31 +404,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilemap2_13
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 80
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a107a7f14c87ee650800000000000000
-      internalID: 6264076915455979546
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: tilemap2_14
       rect:
         serializedVersion: 2
-        x: 176
+        x: 16
         y: 80
         width: 64
         height: 64
@@ -458,7 +428,7 @@ TextureImporter:
       name: tilemap2_15
       rect:
         serializedVersion: 2
-        x: 256
+        x: 96
         y: 80
         width: 64
         height: 64
@@ -475,6 +445,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: tilemap2_16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 80
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d09c70dadb551880800000000000000
+      internalID: -8640899314681605927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilemap2_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 80
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cc4cda2946e24400800000000000000
+      internalID: 307060926540696777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -486,8 +498,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      tilemap2_16: -8640899314681605927
       tilemap2_9: 7470530167482166176
-      tilemap2_13: 6264076915455979546
       tilemap2_15: 1027356099460988588
       tilemap2_2: 1000440457728356744
       tilemap2_6: -1440980221036405784
@@ -498,9 +510,9 @@ TextureImporter:
       tilemap2_8: -8882659825511198783
       tilemap2_10: 2229195209944581240
       tilemap2_14: 8299154671552537513
-      tilemap2_4: 292129735331028476
       tilemap2_1: 4374776976774177105
       tilemap2_11: 5514785145594037387
+      tilemap2_17: 307060926540696777
       tilemap2_3: -4214560704313396357
   spritePackingTag: 
   pSDRemoveMatte: 0
