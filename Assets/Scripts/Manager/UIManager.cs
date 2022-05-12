@@ -6,10 +6,10 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    public enum ScreenState { Game, Pause, Inform, Map, Inventory, Customize}
+    public enum ScreenState { Game, Pause, Inform, Map, Inventory, Customize, GameOver}
 
     [Header("Components")]
-    public GameObject gameScreen, pauseScreen, mapScreen, inventoryScreen, customizeScreen;
+    public GameObject gameScreen, pauseScreen, mapScreen, inventoryScreen, customizeScreen, gameoverScreen;
     [HideInInspector]
     public ScreenState screenState;
 
@@ -66,6 +66,12 @@ public class UIManager : MonoBehaviour
 
             case ScreenState.Customize:
                 customizeScreen.SetActive(true);
+                GameManager.Instance.isPause = true;
+                Time.timeScale = 0;
+                break;
+
+            case ScreenState.GameOver:
+                gameoverScreen.SetActive(true);
                 GameManager.Instance.isPause = true;
                 Time.timeScale = 0;
                 break;

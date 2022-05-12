@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hammer : MeleeWeapon
+[CreateAssetMenu(fileName = "Hammer", menuName = "ScriptableObjects/MeleeWeapon/Hammer", order = 1)]
+public class Hammer:MeleeWeapon
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

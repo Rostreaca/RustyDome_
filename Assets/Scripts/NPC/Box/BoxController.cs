@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoxController : NPCManager
 {
     // Update is called once per frame
+
     void Update()
     {
         Check();

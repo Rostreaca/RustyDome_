@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyController : EnemyManager
 {
-
     public float patrollRadius;
     public float patrollSin;
     public float returnRadius;
@@ -27,7 +26,6 @@ public class EnemyController : EnemyManager
     private bool isPatrolling;
     private bool isFollowing;
     private bool isReturning;
-    private bool isDead;
 
     private void Start()
     {
@@ -60,7 +58,6 @@ public class EnemyController : EnemyManager
 
             Rotation();
             Animation();
-            Die();
         }
     }
 
@@ -148,25 +145,26 @@ public class EnemyController : EnemyManager
     private void Attack()
     {
         isAttack = true;
+
+        animator.SetTrigger("MeleeAttack");
     }
 
-
-    public void Die()
+    public void GetDamage(int damage)
     {
+        hpNow -= damage;
+
         if (hpNow <= 0)
         {
-            isDead = true;
+            Death();
         }
-        if (isDead ==true)
-        {
-            animator.SetTrigger("Death");
-            if (EnemyDie.instance.isDead == true)
-            {
-                Destroy(gameObject);
-                Instantiate(Coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity,Actor.transform);
-            }
+    }
 
-        }
+    public void Death()
+    {
+        animator.SetTrigger("Death");
+
+        Destroy(gameObject);
+        Instantiate(Coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
     }
 
     public void Animation()

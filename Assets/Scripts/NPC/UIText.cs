@@ -20,10 +20,13 @@ public class UIText : MonoBehaviour
     public int textEnd=0;
     public bool sayEnd;
 
+    public Vector2 originPos;
+
     // Start is called before the first frame update
 
     void Awake()
     {
+        originPos = dialog.transform.position;
         init_Type = Typing();
     }
     
@@ -34,6 +37,7 @@ public class UIText : MonoBehaviour
     void OnDisable()
     {
         sayCount = 0;
+        dialog.transform.position = originPos;
     }
     // Update is called once per frame
     void Update()

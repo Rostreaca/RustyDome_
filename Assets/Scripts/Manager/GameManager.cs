@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [Header("Parameters")]
     public bool isGame;
     public bool isPause;
+    public int coinCount;
     [Header("Checkpoint")]
     public Transform checkPoint;
     private void Awake()
@@ -32,5 +33,11 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isGame = true;
+    }
+
+    public void GameOver()
+    {
+        isGame = false; //disable game
+        UIManager.Instance.ChangeScreen(UIManager.ScreenState.GameOver); //change screen to lose
     }
 }

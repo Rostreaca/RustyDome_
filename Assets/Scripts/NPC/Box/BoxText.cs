@@ -4,18 +4,40 @@ using UnityEngine;
 
 public class BoxText : UIText
 {
+    public static BoxText instance;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("BoxText에서 필요한 값")]
+    public GameObject Actor;
+    public GameObject Item;
+    public GameObject Box;
+    public GameObject player;
 
+    public float seta = 80f;
+    public bool isBoxOpen = false;
+    void Awake()
+    {
+        originPos = dialog.transform.position;
+        Singleton_Init();
+    }
+    void Singleton_Init()
+    {
+        if(instance !=null)
+        {
+            Destroy(gameObject);
+        }
+        instance = this;
+    }
     // Update is called once per frame
     void Update()
     {
-        CheckSayEnd();
-        TextPosition(transform, dialog, npc);
-        BoxInteract();
+        if (isBoxOpen == false)
+        {
+            CheckSayEnd();
+            TextPosition(transform, dialog, npc);
+            BoxInteract();
+        }
+        else
+            dialog.SetActive(false);
     }
 
     void BoxInteract()
@@ -26,9 +48,13 @@ public class BoxText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
-            npc_Text = "이 부분을 아이템 뱉어내는것으로 대체";
             Type_init();
+            if (Box.transform.position.x > player.transform.position.x && seta < 90) { seta += 20; }
+            else if (Box.transform.position.x < player.transform.position.x && seta > 90) { seta -= 20; }
+            Instantiate(Item, new Vector2(Box.transform.position.x, Box.transform.position.y+0.01f), Quaternion.identity, Actor.transform);
             sayCount = 1;
+            isBoxOpen = true;
+            dialog.SetActive(false);
         }
     }
 }
