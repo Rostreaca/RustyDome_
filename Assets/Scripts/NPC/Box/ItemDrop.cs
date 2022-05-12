@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    public ItemMagnetic iteminfo;
+    private void Start()
     {
-        if (collision.gameObject != null && collision.gameObject.CompareTag("Player"))
+        if (ItemMagnetic.instance != null)
         {
-            Destroy(gameObject);
-            GameManager.Instance.coinCount++; //아이템 획득시 이벤트(현재는 코인 개수 증가)
+            iteminfo = ItemMagnetic.instance;
         }
     }
+    private void Update()
+    {
+
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject != null && collision.gameObject.CompareTag("Player")&& iteminfo.isGrounded == true)
+                {
+                    Destroy(gameObject);
+                    GameManager.Instance.coinCount++; //아이템 획득시 이벤트(현재는 코인 개수 증가)
+                }
+    }
+    
 }

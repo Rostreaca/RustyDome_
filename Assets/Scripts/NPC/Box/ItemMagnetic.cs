@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class ItemMagnetic : MonoBehaviour
 {
+    public static ItemMagnetic instance;
+
     public Transform itemPos;
     public Transform playerPos;
 
     public bool isGrounded = false;
     private static float followRange = 0.3f;
 
+    void Singleton_Init()
+    {
+        if(instance != null)
+        {
+            Destroy(gameObject);
+        }
+        instance = this;
+    }
+    private void OnDisable()
+    {
+        isGrounded = false;
+    }
     private void Awake()
     {
+        Singleton_Init();
         playerPos = GameObject.Find("Player").transform;
     }
     void Update()
@@ -29,7 +44,6 @@ public class ItemMagnetic : MonoBehaviour
             }
         }    
     }
-
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position,followRange);

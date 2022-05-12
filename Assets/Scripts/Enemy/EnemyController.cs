@@ -192,6 +192,10 @@ public class EnemyController : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f);
 
+        if(hit.collider !=null&&hit.collider.tag ==("NPC"))
+        {
+            return;
+        }
         bool grounded = hit.collider != null && hit.collider.CompareTag("Ground");
         isGround = grounded;
 
