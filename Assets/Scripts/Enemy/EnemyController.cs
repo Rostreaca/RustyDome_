@@ -2,8 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : EnemyManager
+public class EnemyController : MonoBehaviour
 {
+    public int hpMax;
+    public int hpNow;
+
+    public float speed;
+
+    public float stunMeterMax;
+    public float stunMeterNow;
+    public float stunMeterRegen;
+
+    public int meleeDmg;
+    public float rangeDmg;
+
+    public float meleeSkillCoolTimeNow;
+    public float meleeSkillCoolTimeMax;
+
     public float patrollRadius;
     public float patrollSin;
     public float returnRadius;
@@ -11,6 +26,8 @@ public class EnemyController : EnemyManager
     public Transform followTarget;
     public GameObject Coin;
     public GameObject Actor;
+
+    public bool isAttack;
 
     private CapsuleCollider2D col;
     private SpriteRenderer rend;
@@ -21,7 +38,6 @@ public class EnemyController : EnemyManager
     private float returnTimer = 3;
     private bool canMove;
     private bool isMove;
-    private bool isAttack;
     private bool isGround;
     private bool isPatrolling;
     private bool isFollowing;
@@ -76,7 +92,7 @@ public class EnemyController : EnemyManager
 
     private void Patroll()
     {
-        patrollSin += patrollTimer * Speed;
+        patrollSin += patrollTimer * speed;
 
         if(patrollSin >= 1)
         {
@@ -89,7 +105,7 @@ public class EnemyController : EnemyManager
 
         float x = patrollRadius * patrollSin + starterPos.x;
 
-        transform.position = Vector2.MoveTowards(transform.position,  new Vector2(x, transform.position.y), Speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position,  new Vector2(x, transform.position.y), speed * Time.deltaTime);
     }
 
     public void Follow(Transform target)
@@ -163,7 +179,7 @@ public class EnemyController : EnemyManager
     {
         animator.SetTrigger("Death");
 
-        Destroy(gameObject);
+        Destroy(gameObject, 1f);
         Instantiate(Coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
     }
 
@@ -214,7 +230,7 @@ public class EnemyController : EnemyManager
             else
             {
                 if (Vector2.Distance(transform.position, followTarget.position) > attackRadius && !isAttack)
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), Speed / 2 * Time.deltaTime); //follow target
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed / 2 * Time.deltaTime); //follow target
                 else //if target in attack radius
                     Attack(); //attack
 
@@ -230,7 +246,7 @@ public class EnemyController : EnemyManager
     {
         while (transform.position.x != starterPos.x)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(starterPos.x, transform.position.y), Speed / 2 * Time.deltaTime); //move to start pos
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(starterPos.x, transform.position.y), speed / 2 * Time.deltaTime); //move to start pos
 
             if (hpNow < hpMax)
             {

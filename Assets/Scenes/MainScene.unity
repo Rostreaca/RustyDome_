@@ -13568,6 +13568,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077429146}
   m_CullTransparentMesh: 0
+--- !u!1 &1081409636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5400143258037527965, guid: 411fa4d440a74e442ac5e5abb86c2470,
+    type: 3}
+  m_PrefabInstance: {fileID: 5401302924840911979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1081409639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081409636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2afab8847cde54898a1e6f2176defa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderDetected: {fileID: 0}
 --- !u!1 &1089087263
 GameObject:
   m_ObjectHideFlags: 0
@@ -22294,7 +22313,7 @@ MonoBehaviour:
   mapScreen: {fileID: 1735837185}
   inventoryScreen: {fileID: 2085256098}
   customizeScreen: {fileID: 315135487}
-  gameoverScreen: {fileID: 0}
+  gameoverScreen: {fileID: 1472875537}
   screenState: 0
 --- !u!4 &4256634464618936 stripped
 Transform:
@@ -22459,6 +22478,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5022922352837849859, guid: 19542202eb5128c408ac484f15fa4196,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5022922352837849916, guid: 19542202eb5128c408ac484f15fa4196,
         type: 3}
       propertyPath: m_Name
@@ -22512,7 +22536,7 @@ PrefabInstance:
     - target: {fileID: 5022922352837849917, guid: 19542202eb5128c408ac484f15fa4196,
         type: 3}
       propertyPath: dashSpeed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5022922352837849917, guid: 19542202eb5128c408ac484f15fa4196,
         type: 3}
@@ -22656,8 +22680,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5400341597445625660, guid: 411fa4d440a74e442ac5e5abb86c2470,
         type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400341597445625660, guid: 411fa4d440a74e442ac5e5abb86c2470,
+        type: 3}
       propertyPath: MeleeDmg
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400341597445625660, guid: 411fa4d440a74e442ac5e5abb86c2470,
+        type: 3}
+      propertyPath: meleeDmg
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5400341597445625660, guid: 411fa4d440a74e442ac5e5abb86c2470,
         type: 3}

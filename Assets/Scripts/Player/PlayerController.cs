@@ -20,32 +20,25 @@ public class PlayerController : MonoBehaviour
     public RangeWeapon rangeWeapon;
 
     public int moveSpeed;
-    //대시쿨타임
     public float dashCoolTime;
-    //대시하는시간
-    public float dashTime;
-    //대시용타이머
     public float dashTimer;
+    public float dashTime;
     public float jumpPower;
     public float dashSpeed;
+
+    public bool isAttack = false;
+    public bool onLadder = false;
 
     private Rigidbody2D rigid;
     private CapsuleCollider2D col;
     private Animator animator;
-    private DashState dashState = DashState.Ready;
     private bool isDash = false;
     private bool isGround = false;
-    public bool onLadder = false;
     [SerializeField]
     private bool isClimb = false;
-    public bool isAttack = false;
+    private bool canAirJump;
 
-    private enum DashState
-    {
-        Ready,
-        Dashing,
-        Cooldown,
-    }
+
     void SIngleton_Init()
     {
         if (instance != null)
@@ -100,67 +93,81 @@ public class PlayerController : MonoBehaviour
 
     private void Rotation()
     {
-        if (Input.GetAxis("Horizontal") != 0)
+        if (!isDash)
         {
-            if (Input.GetAxis("Horizontal") < 0)
-                transform.localScale = new Vector3(-1, 1, 1);
-            else
-                transform.localScale = new Vector3(1, 1, 1);
+            if (Input.GetAxis("Horizontal") != 0)
+            {
+                if (Input.GetAxis("Horizontal") < 0)
+                    transform.localScale = new Vector3(-1, 1, 1);
+                else
+                    transform.localScale = new Vector3(1, 1, 1);
+            }
         }
     }
 
     private void Dash()
     {
-        switch (dashState)
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            case DashState.Ready:
-                if (Input.GetKeyDown(KeyCode.LeftShift))
+            int dir = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
+            if (dashTimer == 0 && dir != 0)
+            {
+                animator.SetTrigger("Dash");
+                rigid.gravityScale = 0;
+                isDash = true;
+
+                StartCoroutine(IDash(dir));
+            }
+        }
+    }
+
+    IEnumerator IDash(int dir)
+    {
+        while (dashTimer < dashCoolTime)
+        {
+            if (isDash)
+            {
+                if (dashTimer < dashTime) //dashing
                 {
-                    if (Mathf.Round(Input.GetAxis("Horizontal")) != 0)
-                    {
-                        animator.SetTrigger("Dash");
-                        rigid.velocity = Vector2.right * Input.GetAxis("Horizontal") * dashSpeed;
-                        rigid.gravityScale = 0;
-                        dashTimer = dashCoolTime;
-                        dashState = DashState.Dashing;
-                        isDash = true;
-                    }
+                    rigid.velocity = new Vector2(dir * dashSpeed, 0);
                 }
 
-                break;
-
-            case DashState.Dashing:
-                dashTimer -= Time.deltaTime;
-                if (dashTimer <= dashCoolTime - dashTime)
+                else
                 {
                     rigid.velocity = Vector2.zero;
                     rigid.gravityScale = 1;
-                    dashState = DashState.Cooldown;
                     isDash = false;
                 }
-                break;
+            }
 
-            case DashState.Cooldown:
-                dashTimer -= Time.deltaTime;
-                if (dashTimer < 0)
-                {
-                    dashTimer = 0;
-                    dashState = DashState.Ready;
-                }
-                break;
+            dashTimer += Time.deltaTime;
+            yield return null;
         }
+
+        dashTimer = 0;
+        yield return null;
     }
 
     private void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (isGround && !isAttack)
+            if (!isAttack)
             {
-                //S를 누르고 있을경우엔 하단점프(점프안함)
-                if (!Input.GetKey(KeyCode.S))
+                if (isGround)
                 {
+                    //S를 누르고 있을경우엔 하단점프(점프안함)
+                    if (!Input.GetKey(KeyCode.S))
+                    {
+                        rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+                    }
+                }
+                
+                else if (canAirJump)
+                {
+                    rigid.velocity = new Vector2(rigid.velocity.x, 0);
                     rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+                    canAirJump = false;
                 }
 
                 animator.SetTrigger("Jump");
@@ -179,6 +186,10 @@ public class PlayerController : MonoBehaviour
             isGround = true;
             return;
         }
+
+        if (grounded)
+            canAirJump = true;
+
         isGround = grounded;
     }
 
@@ -186,26 +197,23 @@ public class PlayerController : MonoBehaviour
     {
         if (onLadder)
         {
-            if (Input.GetAxis("Vertical") != 0)
+            if (isClimb)
             {
-                isClimb = true;
-                rigid.velocity = Vector2.up * Input.GetAxis("Vertical") * moveSpeed;
+                transform.Translate(Vector2.up * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime);
             }
-            else
+
+            else if (Input.GetAxis("Vertical") != 0)
             {
-                rigid.velocity = Vector2.zero;
+                rigid.gravityScale = 0;
+                isClimb = true;
             }
         }
 
-        else
+        else if (isClimb)
         {
+            rigid.gravityScale = 1;
             isClimb = false;
         }
-
-        if (isClimb)
-            rigid.gravityScale = 0;
-        else
-            rigid.gravityScale = 1;
     }
 
     private void Attack()

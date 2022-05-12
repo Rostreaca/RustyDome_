@@ -6,6 +6,7 @@ public class Combat : MonoBehaviour
 {
     public Collider2D colliderDetected;
     private MeleeAttackTrigger meleeAttackTrigger;
+
     public virtual void Start()
     {
         meleeAttackTrigger = GetComponentInChildren<MeleeAttackTrigger>();

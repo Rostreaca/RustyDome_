@@ -56,7 +56,7 @@ public class PlayerCombat : Combat
 
     public override void HitDetected()
     {
-        if (colliderDetected.gameObject.tag == "Enemy")
+        if (colliderDetected.gameObject.CompareTag("Enemy"))
         {
             EnemyController enemy = colliderDetected.GetComponent<EnemyController>();
 
