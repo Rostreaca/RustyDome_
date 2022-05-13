@@ -14,6 +14,7 @@ namespace Platformer
         public Vector2 offset; //Camera offset by player position
         public float cameraYPosMin, cameraYPosMax; //Camera position clamp
         public float smoothSpeed;
+        public float z;
 
         void SingletonInit()
         {
@@ -40,7 +41,7 @@ namespace Platformer
 
         public void FixedUpdate()
         {
-            Vector3 newPos = new Vector3(player.position.x + offset.x, player.position.y + offset.y, -1); //Local vector get player position
+            Vector3 newPos = new Vector3(player.position.x + offset.x, player.position.y + offset.y, -z); //Local vector get player position
 
             transform.position = Vector3.Lerp(transform.position, newPos, smoothSpeed * Time.deltaTime); //Set camera position smooth
 
