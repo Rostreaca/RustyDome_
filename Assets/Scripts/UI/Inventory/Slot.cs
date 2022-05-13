@@ -59,7 +59,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
                 countText.color = Color.black;
             }
 
-            icon.sprite = item.Icon;
+            icon.sprite = item.icon;
             icon.color = Color.white;
         }
 
