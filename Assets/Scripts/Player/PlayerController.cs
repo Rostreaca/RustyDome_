@@ -81,6 +81,11 @@ public class PlayerController : MonoBehaviour
             Jump();
             Animation();
         }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Inventory.instance.Additem(Inventory.instance.testItem);
+        }
     }
 
     private void Move()

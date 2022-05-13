@@ -6,81 +6,37 @@ using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour, IPointerClickHandler
 {
-    private ObservableStack<Item> items = new ObservableStack<Item>();
-    //아이템의 아이콘
-    public Image icon;
-    public Text stackText;
+    public Item item;
+    public string slotItemName;
+    public int count;
 
+    public Image icon;
+    public Text countText;
 
     private void Start()
     {
         icon = transform.GetChild(0).GetComponent<Image>();
-        stackText = GetComponentInChildren<Text>();
+        countText = GetComponentInChildren<Text>();
+
+        if (item != null)
+            slotItemName = item.itemName;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //클릭시
+        if (item != null)
+            Inventory.instance.DisplayInform(item.itemInfo);
     }
 
-    public Item Item
+    public bool AddItem(Item newitem)
     {
-        get
+        if (slotItemName == newitem.itemName)
         {
-            return items.Peek();
-        }
-    }
-
-
-    public int Count
-    {
-        get
-        {
-            return items.Count;
-        }
-    }
-
-    // 빈 슬롯 여부
-    public bool IsEmpty
-    {
-        get { return items.Count == 0; }
-    }
-
-
-    public bool AddItems(ObservableStack<Item> newItems)
-    {
-        if (IsEmpty || newItems.Peek().GetType() == Item.GetType())
-        {
-            int count = newItems.Count;
-            for (int i = 0; i < count; i++)
+            if (count < item.stackSize)
             {
-                // 아이템을 추가하고 newItems의 리스트에서 삭제합니다.
-                AddItem(newItems.Pop());
-            }
-            return true;
-        }
-        return false;
-    }
-
-    // 슬롯에 아이템 추가.
-    public bool AddItem(Item item)
-    {
-        items.Push(item);
-        icon.sprite = item.Icon;
-        icon.color = Color.white;
-        item.Slot = this;
-        return true;
-    }
-
-    public bool StackItem(Item item)
-    {
-        if (!IsEmpty && (item.name == Item.name))
-        {
-            if (items.Count < Item.StackSize)
-            {
-                // 아이템을 중첩시킵니다.
-                items.Push(item);
-                item.Slot = this;
+                // 아이템을 중첩
+                count++;
+                UpdateSlot();
                 return true;
             }
         }
@@ -89,9 +45,28 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     public void RemoveItem()
     {
-        if (!IsEmpty)
+        count--;
+        UpdateSlot();
+    }
+
+    public void UpdateSlot()
+    {
+        if (count > 0)
         {
-            items.Pop();
+            if (count > 1)
+            {
+                countText.text = count.ToString();
+                countText.color = Color.black;
+            }
+
+            icon.sprite = item.Icon;
+            icon.color = Color.white;
+        }
+
+        else
+        {
+            countText.color = new Color(0, 0, 0, 0);
+            icon.color = new Color(0, 0, 0, 0);
         }
     }
 }

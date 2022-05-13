@@ -1,87 +1,70 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    private static Inventory instance;
+    public static Inventory instance;
+
+    public Text informText;
+
+    [SerializeField]
     private List<Slot> slots = new List<Slot>();
-    private Slot fromSlot;
 
-    public static Inventory Instance
+    public Item testItem;
+
+    /*
+     * 인벤토리 UI내 슬롯 총 44개
+     * 0~2 코어슬롯
+     * 3~6 근접무기슬롯
+     * 7~10 원거리무기슬롯
+     * 11~14 특수무기슬롯
+     * 15~18 모빌슬롯
+     * 19~28 아이템슬롯
+     * 29~43 특수아이템슬롯
+     * 씬내에서 순서바꾸면 이것도 바뀜
+     */
+
+    void SIngleton_Init()
     {
-        get
+        if (instance != null)
         {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<Inventory>();
-            }
-            return instance;
+            Destroy(gameObject);
         }
+        instance = this;
+    }
 
-        set
-        {
-            instance = value;
-        }
+    void Awake()
+    {
+        SIngleton_Init();
     }
 
     private void Start()
     {
-        for(int i=0; i<40; i++)
-        {
-            slots.Add(GameObject.Find("InventorySlot (" + (i+1) + ")").GetComponent<Slot>());
-        }
-    }
+        slots = GetComponentsInChildren<Slot>().ToList();
 
-    public Slot FromSlot
-    {
-        get
+        foreach(Slot slot in slots)
         {
-            return fromSlot;
-        }
-
-        set
-        {
-            fromSlot = value;
+            slot.UpdateSlot();
         }
     }
 
     public void Additem(Item item)
     {
-        if(item.StackSize > 0)
+        foreach (Slot slot in slots)
         {
-            if (PlaceInStack(item))
+            if (slot.AddItem(item))
             {
                 return;
             }
         }
-        PlaceInEmpty(item);
     }
 
-    public bool PlaceInEmpty(Item item)
+    public void DisplayInform(string text)
     {
-        foreach (Slot slot in slots)
-        {
-            // 빈 슬롯이 있으면
-            if (slot.IsEmpty)
-            {
-                // 해당 슬롯에 아이템을 추가한다.
-                slot.AddItem(item);
-                return true;
-            }
-        }
-        return false;
+        informText.text = text;
     }
 
-    public bool PlaceInStack(Item item)
-    {
-        foreach (Slot slot in slots)
-        {
-            if (slot.StackItem(item))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 }
