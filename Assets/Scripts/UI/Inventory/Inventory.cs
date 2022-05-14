@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour
 
     /*
      * 인벤토리 UI내 슬롯 총 44개
+     * 장비슬롯중 첫 슬롯은 Equip슬롯
      * 0~2 코어슬롯
      * 3~6 근접무기슬롯
      * 7~10 원거리무기슬롯
@@ -24,7 +25,7 @@ public class Inventory : MonoBehaviour
      * 15~18 모빌슬롯
      * 19~28 아이템슬롯
      * 29~43 특수아이템슬롯
-     * 씬내에서 순서바꾸면 이것도 바뀜
+     * 하이라키내에서 순서바꾸면 이것도 바뀜
      */
 
     void SIngleton_Init()

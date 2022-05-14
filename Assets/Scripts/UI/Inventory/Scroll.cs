@@ -6,29 +6,32 @@ using UnityEngine.EventSystems;
 public class Scroll : MonoBehaviour
 {
     public Transform content;
-    public int scrollLimit;
-    public int scrollTrigger;
-    public float scrollDist;
     public float scrollSpeed;
 
+    [SerializeField]
+    private bool isPointerOver;
     private bool isScrolling;
+    private float scrollDist;
+    private int scrollLimit;
+    private int scrollTrigger;
 
     private void Start()
     {
         content = transform.GetChild(0);
+        scrollDist = content.GetComponent<RectTransform>().rect.height / content.childCount;
         scrollLimit = content.childCount - 1;
         scrollTrigger = 0;
     }
 
-    private void Update()
+    public void OnMouseOver()
     {
-        if (!isScrolling && EventSystem.current.IsPointerOverGameObject())
+        if (!isScrolling)
         {
             //ÈÙ ´Ù¿î
             if (Input.GetAxis("Mouse ScrollWheel") < 0 && scrollTrigger < scrollLimit)
             {
                 //À§·Î°¡¾ß´ï
-                StartCoroutine(SmoothScroll(new Vector3(content.position.x, content.position.y + scrollDist)));
+                StartCoroutine(SmoothScroll(new Vector3(content.localPosition.x, content.localPosition.y + scrollDist)));
                 scrollTrigger++;
                 isScrolling = true;
             }
@@ -37,7 +40,7 @@ public class Scroll : MonoBehaviour
             else if (Input.GetAxis("Mouse ScrollWheel") > 0 && scrollTrigger > 0)
             {
                 //¾Æ·¡·Î°¡¾ß´ï
-                StartCoroutine(SmoothScroll(new Vector3(content.position.x, content.position.y - scrollDist)));
+                StartCoroutine(SmoothScroll(new Vector3(content.localPosition.x, content.localPosition.y - scrollDist)));
                 scrollTrigger--;
                 isScrolling = true;
             }
@@ -46,9 +49,9 @@ public class Scroll : MonoBehaviour
 
     IEnumerator SmoothScroll(Vector3 target)
     {
-        while (Mathf.Abs(target.y - content.position.y) > 0.1f)
+        while (Mathf.Abs(target.y - content.localPosition.y) > 0.01f)
         {
-            content.position = Vector3.Lerp(content.position, target, 0.05f);
+            content.localPosition = Vector3.Lerp(content.localPosition, target, 0.05f);
             yield return null;
         }
 

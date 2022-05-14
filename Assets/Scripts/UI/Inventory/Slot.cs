@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class Slot : MonoBehaviour, IPointerClickHandler
 {
     public Item item;
+    public Slot equipSlot;
     public string slotItemName;
     public int count;
 
@@ -24,8 +25,21 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (item != null)
-            Inventory.instance.DisplayInform(item.itemInfo);
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (item != null)
+                Inventory.instance.DisplayInform(item.itemInfo);
+        }
+
+        else if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            if (equipSlot != null)
+            {
+                equipSlot.item = item;
+                equipSlot.count++;
+                equipSlot.UpdateSlot();
+            }
+        }
     }
 
     public bool AddItem(Item newitem)
