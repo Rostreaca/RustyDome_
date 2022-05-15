@@ -46,6 +46,13 @@ public class PlayerCombat : Combat
         playerController.isAttack = false;
     }
 
+    public void OnRangeAttackEnd()
+    {
+        animator.SetBool("RangeAttack", false);
+
+        playerController.isAttack = false;
+    }
+
     IEnumerator ICombo(float comboTimer)
     {
         canCombo = false;

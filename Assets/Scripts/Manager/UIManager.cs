@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     public enum ScreenState { Game, Pause, Inform, Map, Inventory, Customize, GameOver}
 
     [Header("Components")]
-    public GameObject gameScreen, pauseScreen, mapScreen, inventoryScreen, customizeScreen, gameoverScreen;
+    public CanvasGroup gameScreen, pauseScreen, mapScreen, inventoryScreen, customizeScreen, gameoverScreen;
     [HideInInspector]
     public ScreenState screenState;
 
@@ -26,19 +26,56 @@ public class UIManager : MonoBehaviour
         SingletonInit();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameManager.Instance.isPause)
+                ChangeScreen(ScreenState.Game);
+            else
+                ChangeScreen(ScreenState.Pause);
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (mapScreen.alpha > 0)
+                ChangeScreen(ScreenState.Game);
+            else
+                ChangeScreen(ScreenState.Map);
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (inventoryScreen.alpha > 0)
+                ChangeScreen(ScreenState.Game);
+            else
+                ChangeScreen(ScreenState.Inventory);
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (customizeScreen.alpha > 0)
+                ChangeScreen(ScreenState.Game);
+            else
+                ChangeScreen(ScreenState.Customize);
+        }
+
+    }
+
     public void ChangeScreen(ScreenState screenState)
     {
-        gameScreen.SetActive(false);
-        pauseScreen.SetActive(false);
-        mapScreen.SetActive(false);
-        inventoryScreen.SetActive(false);
-        customizeScreen.SetActive(false);
+        //일단 다끄고 해당되는걸 킨다.
+        ScreenActive(gameScreen, false);
+        ScreenActive(pauseScreen, false);
+        ScreenActive(mapScreen, false);
+        ScreenActive(inventoryScreen, false);
+        ScreenActive(customizeScreen, false);
 
         switch (screenState)
         {
             case ScreenState.Game: //if game
                                    //turn off other and turn on game
-                gameScreen.SetActive(true);
+                ScreenActive(gameScreen, true);
 
                 //Disable pause
                 GameManager.Instance.isPause = false;
@@ -47,31 +84,31 @@ public class UIManager : MonoBehaviour
                 break;
 
             case ScreenState.Pause:
-                pauseScreen.SetActive(true);
+                ScreenActive(pauseScreen, true);
                 GameManager.Instance.isPause = true;
                 Time.timeScale = 0;
                 break;
 
             case ScreenState.Map:
-                mapScreen.SetActive(true);
+                ScreenActive(mapScreen, false);
                 GameManager.Instance.isPause = true;
                 Time.timeScale = 0;
                 break;
 
             case ScreenState.Inventory:
-                inventoryScreen.SetActive(true);
+                ScreenActive(inventoryScreen, true);
                 GameManager.Instance.isPause = true;
                 Time.timeScale = 0;
                 break;
 
             case ScreenState.Customize:
-                customizeScreen.SetActive(true);
+                ScreenActive(customizeScreen, true);
                 GameManager.Instance.isPause = true;
                 Time.timeScale = 0;
                 break;
 
             case ScreenState.GameOver:
-                gameoverScreen.SetActive(true);
+                ScreenActive(gameoverScreen, true);
                 GameManager.Instance.isPause = true;
                 Time.timeScale = 0;
                 break;
@@ -93,39 +130,18 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
-    void Update()
+    public void ScreenActive(CanvasGroup canvasGroup, bool value)
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (value)
         {
-            if (GameManager.Instance.isPause)
-                ChangeScreen(ScreenState.Game);
-            else
-                ChangeScreen(ScreenState.Pause);
+            canvasGroup.alpha = 1;
+            canvasGroup.blocksRaycasts = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        else
         {
-            if (mapScreen.activeInHierarchy)
-                ChangeScreen(ScreenState.Game);
-            else
-                ChangeScreen(ScreenState.Map);
+            canvasGroup.alpha = 0;
+            canvasGroup.blocksRaycasts = false;
         }
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            if (inventoryScreen.activeInHierarchy)
-                ChangeScreen(ScreenState.Game);
-            else
-                ChangeScreen(ScreenState.Inventory);
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            if (customizeScreen.activeInHierarchy)
-                ChangeScreen(ScreenState.Game);
-            else
-                ChangeScreen(ScreenState.Customize);
-        }
-
     }
 }

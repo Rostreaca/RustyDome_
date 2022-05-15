@@ -27,7 +27,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (item != null)
+            if (item != null && count > 0)
                 Inventory.instance.DisplayInform(item.itemInfo);
         }
 
@@ -36,8 +36,11 @@ public class Slot : MonoBehaviour, IPointerClickHandler
             if (equipSlot != null)
             {
                 equipSlot.item = item;
-                equipSlot.count++;
+                equipSlot.count = 1;
                 equipSlot.UpdateSlot();
+
+                if (equipSlot.gameObject.name == "MeleeWeaponEquipSlot")
+                    PlayerController.instance.meleeWeapon = equipSlot.item as MeleeWeapon;
             }
         }
     }
