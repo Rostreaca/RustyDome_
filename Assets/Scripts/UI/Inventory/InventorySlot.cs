@@ -4,26 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour, IPointerClickHandler
+public class InventorySlot : Slot
 {
-    public Item item;
-    public Slot equipSlot;
-    public string slotItemName;
-    public int count;
-
-    public Image icon;
+    public InventorySlot equipSlot;
     public Text countText;
 
-    private void Start()
+    public override void Start()
     {
-        icon = transform.GetChild(0).GetComponent<Image>();
-        countText = GetComponentInChildren<Text>();
+        base.Start();
 
-        if (item != null)
-            slotItemName = item.itemName;
+        countText = GetComponentInChildren<Text>();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
@@ -45,28 +38,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public bool AddItem(Item newitem)
-    {
-        if (slotItemName == newitem.itemName)
-        {
-            if (count < item.stackSize)
-            {
-                // 아이템을 중첩
-                count++;
-                UpdateSlot();
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void RemoveItem()
-    {
-        count--;
-        UpdateSlot();
-    }
-
-    public void UpdateSlot()
+    public override void UpdateSlot()
     {
         if (count > 0)
         {

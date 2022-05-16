@@ -144,4 +144,9 @@ public class UIManager : MonoBehaviour
             canvasGroup.blocksRaycasts = false;
         }
     }
+
+    public bool IsScreenOn(CanvasGroup canvasGroup)
+    {
+        return canvasGroup.blocksRaycasts;
+    }
 }

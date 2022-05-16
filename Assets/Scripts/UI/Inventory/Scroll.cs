@@ -8,8 +8,6 @@ public class Scroll : MonoBehaviour
     public Transform content;
     public float scrollSpeed;
 
-    [SerializeField]
-    private bool isPointerOver;
     private bool isScrolling;
     private float scrollDist;
     private int scrollLimit;
@@ -25,7 +23,7 @@ public class Scroll : MonoBehaviour
 
     public void OnMouseOver()
     {
-        if (!isScrolling)
+        if (!isScrolling && UIManager.instance.IsScreenOn(UIManager.instance.inventoryScreen))
         {
             //ÈÙ ´Ù¿î
             if (Input.GetAxis("Mouse ScrollWheel") < 0 && scrollTrigger < scrollLimit)
