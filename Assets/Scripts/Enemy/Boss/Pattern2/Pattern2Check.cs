@@ -11,6 +11,7 @@ public class Pattern2Check : MonoBehaviour
             if (BossTest.instance.isattack != true)
             {
                 BossTest.instance.anim.SetBool("Pattern2start", true);
+                if(BossTest.instance.anim.GetBool("Pattern2isCool") != true)
                 BossTest.instance.anim.SetBool("Pattern1start", false);
                 
             }

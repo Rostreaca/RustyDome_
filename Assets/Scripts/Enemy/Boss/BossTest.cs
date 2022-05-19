@@ -16,8 +16,8 @@ public class BossTest : MonoBehaviour
     public float p1cooltimer;
     public bool ismemory = true;
     public bool p1coolstart;
+    public Vector2 saveTargetPos;
     private float init_p1cool;
-    private Vector2 saveTargetPos;
     [Header("Pattern2 Parameters")]
     public Rigidbody2D rigid;
     public bool isRush;
@@ -64,7 +64,6 @@ public class BossTest : MonoBehaviour
         {
             flip();
         }
-        p1cooltimeevent();
         pattern1cooldown();
         pattern2cooldown();
     }
@@ -87,8 +86,6 @@ public class BossTest : MonoBehaviour
         if(ismemory == true)
         {
             saveTargetPos.x = TargetPos.position.x;
-            saveTargetPos.y = 0.22f; //y축을 플레이어가 밟고있는 플랫폼의 y값+@로 주면 될듯
-
         }
     }
 
@@ -109,12 +106,12 @@ public class BossTest : MonoBehaviour
     {
         if (isRush == true) // isRush가 트루면 실행
         {
-            if (transform.position.x > TargetPos.position.x && rightmove == false)// 왼쪽에 플레이어가 있으면 추격.
+            if (transform.position.x > saveTargetPos.x && rightmove == false)// 왼쪽에 플레이어가 있으면 추격.
             {
                 rigid.velocity = new Vector2(-2, 0);
                 leftmove = true;
             }
-            else if(transform.position.x < TargetPos.position.x&&leftmove == false)
+            else if(transform.position.x < saveTargetPos.x&&leftmove == false)
             {
                 rigid.velocity = new Vector2(2, 0);
                 rightmove = true;
@@ -145,7 +142,11 @@ public class BossTest : MonoBehaviour
 
     public void pattern1cooldown()
     {
-        if(p1cooltimer > 0 && anim.GetBool("Pattern1isCool")==true)
+        if (p1coolstart == true)
+        {
+            anim.SetBool("Pattern1isCool", true);
+        }
+        if (p1cooltimer > 0 && anim.GetBool("Pattern1isCool")==true)
         {
             p1cooltimer -= Time.deltaTime;
         }
@@ -157,13 +158,6 @@ public class BossTest : MonoBehaviour
             {
                 p1cooltimer = init_p1cool;
             }
-        }
-    }
-    public void p1cooltimeevent()
-    {
-        if(p1coolstart == true)
-        {
-            anim.SetBool("Pattern1isCool", true);
         }
     }
     public void pattern2cooldown()

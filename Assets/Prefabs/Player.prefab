@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 3229565157266729045}
   - component: {fileID: 5022565887167316747}
   - component: {fileID: 5022565887167316746}
+  - component: {fileID: 503514971163702328}
   m_Layer: 2
   m_Name: Sprite
   m_TagString: Untagged
@@ -178,6 +179,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &503514971163702328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3688120410419767064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d8d5b5dffc35a54caef5e5fb5117de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderDetected: {fileID: 0}
 --- !u!1 &5022922352837849916
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,8 +276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f673fde25c9c1246bbb7984ad123b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpMax: 100
-  hpNow: 100
+  hpMax: 999
+  hpNow: 999
   powerMax: 100
   powerNow: 100
   powerRegen: 10
@@ -278,7 +292,7 @@ MonoBehaviour:
   dashTimer: 0
   dashTime: 0.4
   dashSpeed: 2
-  jumpPower: 4
+  jumpPower: 3.5
   isAttack: 0
   onLadder: 0
   isClimb: 0
