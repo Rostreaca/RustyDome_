@@ -83,7 +83,8 @@ public class EnemyController : MonoBehaviour
 
         if (!isAttack)
             isMove = true;
-
+        else
+            isMove = false;
         if (isPatrolling && !isFollowing && !isReturning)
         {
             Patroll();
@@ -92,22 +93,47 @@ public class EnemyController : MonoBehaviour
 
     private void Patroll()
     {
+
+
         patrollSin += patrollTimer * speed;
 
-        if(patrollSin >= 1)
+
+        if (patrollSin >= 2)
         {
             patrollTimer = -0.02f;
         }
-        else if (patrollSin <= -1)
+        else if (patrollSin <= -2)
         {
             patrollTimer = 0.02f;
         }
+
+        Cliffcheck();
 
         float x = patrollRadius * patrollSin + starterPos.x;
 
         transform.position = Vector2.MoveTowards(transform.position,  new Vector2(x, transform.position.y), speed * Time.deltaTime);
     }
+    public void Cliffcheck()
+    {
+        Vector2 frontcheck = new Vector2(transform.position.x + 0.5f, transform.position.y);
+        if (transform.localScale == new Vector3(-1, 1, 1))
+        {
+            frontcheck.x = transform.position.x - 0.5f;
+        }
+        else
+        {
+            frontcheck.x = transform.position.x + 0.5f;
+        }
 
+        Debug.DrawRay(frontcheck, Vector3.down);
+        RaycastHit2D cliffray = Physics2D.Raycast(frontcheck, Vector3.down, 1);
+
+        if (cliffray.collider == null)
+        {
+            patrollTimer *= -1;
+        }
+
+    }
     public void Follow(Transform target)
     {
         followTarget = target;

@@ -18,6 +18,6 @@ public class WorkBenchController : NPCManager
 
     public void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, seeRange);
+        Gizmos.DrawWireSphere(new Vector2(transform.position.x,transform.position.y -0.5f), seeRange);
     }
 }
