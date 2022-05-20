@@ -10,10 +10,10 @@ public class BossPlatformcheck : MonoBehaviour
         {
             if(BossTest.instance.anim.GetBool("Pattern1LeftAtk")!=true)
             {
-                BossTest.instance.saveTargetPos.y = collision.gameObject.transform.position.y + 2.5f;
+                BossTest.instance.saveTargetPos.y = collision.gameObject.transform.position.y;
             }
             else
-                BossTest.instance.saveTargetPos.y = collision.gameObject.transform.position.y + 2.0f;
+                BossTest.instance.saveTargetPos.y = collision.gameObject.transform.position.y-0.5f;
         }
     }
 }
