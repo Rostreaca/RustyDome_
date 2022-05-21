@@ -14,10 +14,6 @@ public class ItemMagnetic : MonoBehaviour
 
     void Singleton_Init()
     {
-        if(instance != null)
-        {
-            Destroy(gameObject);
-        }
         instance = this;
     }
     private void OnDisable()

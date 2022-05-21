@@ -144,7 +144,7 @@ MonoBehaviour:
   v: 7
   t: 0
   g: 9.8
-  theta: 0
+  theta: 80
 --- !u!114 &-8743780616637057742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iteminfo: {fileID: 826750758}
-  test: 0
 --- !u!1 &6217957253504745267
 GameObject:
   m_ObjectHideFlags: 0

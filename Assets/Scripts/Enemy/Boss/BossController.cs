@@ -9,10 +9,11 @@ public class BossController : MonoBehaviour
     public int hpMax;
     public int hpNow;
 
-    public GameObject Item;
-    GameObject Actor;
+    public bool isdead;
 
-    Animator anim;
+    public GameObject Item;
+    public GameObject Actor;
+    public Animator anim;
 
     private void singleton()
     {
@@ -40,7 +41,7 @@ public class BossController : MonoBehaviour
 
     public void Death()
     {
-
-        Destroy(gameObject, 1f);
+        isdead = true;
+        anim.SetTrigger("Death");
     }
 }

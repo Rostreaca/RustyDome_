@@ -49,23 +49,30 @@ public class BossTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rollbackPos();
-        memory();
-        followcondition();
-        if(isattack == true)
+        if(BossController.instance.isdead != true) // 보스가 살아있을 경우에만 작동
         {
-            Attack1();//타겟포지션을 저장해놓고 이동하게 해서 계속 추적하지 않게 함.
+            rollbackPos();
+            memory();
+            followcondition();
+            if (isattack == true)
+            {
+                Attack1();//타겟포지션을 저장해놓고 이동하게 해서 계속 추적하지 않게 함.
+            }
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("BossPattern2AtkPrePare") == true && isattack2 == true)
+            {
+                Attack2();
+            }
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("BossIdle") == true) //애니메이터에서 boss_idle이 실행될때만 플립하게 설정.
+            {
+                flip();
+            }
+            pattern1cooldown();
+            pattern2cooldown();
         }
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("BossPattern2AtkPrePare") == true && isattack2 == true)
+        if(BossController.instance.isdead == true)
         {
-            Attack2();
+            rigid.velocity = saveBossVelocity;
         }
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("BossIdle") == true) //애니메이터에서 boss_idle이 실행될때만 플립하게 설정.
-        {
-            flip();
-        }
-        pattern1cooldown();
-        pattern2cooldown();
     }
     public void Attack1()
     {
