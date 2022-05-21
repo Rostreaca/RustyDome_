@@ -25,10 +25,14 @@ public class PlayerController : MonoBehaviour
     public float dashTime;
     public float dashSpeed;
     public float jumpPower;
+    public float noHitTime;
+    public float forcePower;
+    public float upperForcePower;
 
-    public bool isAttack = false;
     public bool onLadder = false;
     public bool isClimb = false;
+    public bool isAttack = false;
+    public bool ishit = false;
 
     private Rigidbody2D rigid;
     private CapsuleCollider2D col;
@@ -103,9 +107,9 @@ public class PlayerController : MonoBehaviour
             if (Input.GetAxis("Horizontal") != 0)
             {
                 if (Input.GetAxis("Horizontal") < 0)
-                    transform.localScale = new Vector3(-1, 1, 1);
+                    animator.SetBool("Flip", false);
                 else
-                    transform.localScale = new Vector3(1, 1, 1);
+                    animator.SetBool("Flip", true);
             }
         }
     }
@@ -207,6 +211,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 isClimb = true;
+                animator.SetBool("Climb", true);
             }
 
             else if (Input.GetKey(KeyCode.S))
@@ -217,11 +222,13 @@ public class PlayerController : MonoBehaviour
                 if (hit.collider != null)
                 {
                     isClimb = false;
+                    animator.SetBool("Climb", false);
                 }
 
                 else
                 {
                     isClimb = true;
+                    animator.SetBool("Climb", true);
                 }
             }
         }
@@ -274,14 +281,29 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isGround", isGround);
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(int damage, Transform enemy)
     {
         hpNow -= damage;
+
+        Vector2 dir = enemy.position.x < transform.position.x ? Vector2.right : Vector2.left;
+        rigid.AddForce(dir * forcePower + Vector2.up * upperForcePower);
+        StartCoroutine(IHit());
 
         if (hpNow <= 0)
         {
             Death();
         }
+    }
+
+    private IEnumerator IHit()
+    {
+        ishit = true;
+        col.enabled = false;
+
+        yield return new WaitForSeconds(noHitTime);
+
+        ishit = false;
+        col.enabled = true;
     }
 
     public void Death()

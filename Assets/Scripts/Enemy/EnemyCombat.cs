@@ -36,6 +36,6 @@ public class EnemyCombat : Combat
 
     public void MeleeAttack(PlayerController player, int damage)
     {
-        player.GetDamage(damage);
+        player.GetDamage(damage, enemyController.transform);
     }
 }

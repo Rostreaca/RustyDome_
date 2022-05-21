@@ -22,7 +22,7 @@ public class BossPattern2Combat : MonoBehaviour
 
     public void MeleeAttack(PlayerController player, int damage)
     {
-        player.GetDamage(damage);
+        player.GetDamage(damage, transform);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
