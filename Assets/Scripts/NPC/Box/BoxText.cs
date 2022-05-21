@@ -33,7 +33,7 @@ public class BoxText : UIText
         if (isBoxOpen == false)
         {
             CheckSayEnd();
-            TextPosition(transform, dialog, npc);
+            TextPosition(transform, dialog, npc,0.2f);
             BoxInteract();
         }
         else

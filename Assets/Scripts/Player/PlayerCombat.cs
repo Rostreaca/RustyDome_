@@ -81,9 +81,22 @@ public class PlayerCombat : Combat
 
             MeleeAttack(enemy, damage);
         }
+        else if (colliderDetected.gameObject.CompareTag("Boss"))
+        {
+            BossGetDamage boss = colliderDetected.GetComponent<BossGetDamage>();
+
+            int damage = playerController.meleeWeapon.dmg;
+
+            MeleeAttacktoBoss(boss, damage);
+        }
     }
     public void MeleeAttack(EnemyController enemy, int damage)
     {
         enemy.GetDamage(damage);
+    }
+
+    public void MeleeAttacktoBoss(BossGetDamage boss, int damage)
+    {
+        boss.GetDamage(damage);
     }
 }

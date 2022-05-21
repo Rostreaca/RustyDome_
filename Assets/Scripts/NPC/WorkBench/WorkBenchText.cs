@@ -18,7 +18,7 @@ public class WorkBenchText : UIText
     void Update()
     {
         CheckSayEnd();
-        TextPosition(transform, dialog, npc);
+        TextPosition(transform, dialog, npc,0.2f);
         WorkBenchInteract();
     }
 
@@ -37,4 +37,5 @@ public class WorkBenchText : UIText
             sayCount = 1;
         }
     }
+
 }

@@ -37,13 +37,14 @@ public class UIText : MonoBehaviour
     void OnDisable()
     {
         sayCount = 0;
+        NPCController.instance.anim.SetBool("isTalking", false);
         dialog.transform.position = originPos;
     }
     // Update is called once per frame
     void Update()
     {
         CheckSayEnd();
-        TextPosition(transform,dialog,npc);
+        TextPosition(transform,dialog,npc,0.5f);
         Say();
     }
 
@@ -55,6 +56,8 @@ public class UIText : MonoBehaviour
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
+            NPCController.instance.anim.SetTrigger("Talk");
+            NPCController.instance.anim.SetBool("isTalking", true);
             npc_Text = "저는 이곳의 주민인 Rivad 입니다.";
             Type_init();
             sayCount = 1;
@@ -73,13 +76,14 @@ public class UIText : MonoBehaviour
         }
         if(Input.GetKey("f") && sayCount == 3 && sayEnd == true)
         {
+            NPCController.instance.anim.SetBool("isTalking",false);
             dialog.SetActive(false);
         }
     }
 
-    public void TextPosition(Transform transform, GameObject dialog, GameObject npc)//대화창 위치를 캐릭터 머리 위로 조정
+    public void TextPosition(Transform transform, GameObject dialog, GameObject npc, float height)//대화창 위치를 캐릭터 머리 위로 조정
     {
-        transform.position = Camera.main.WorldToScreenPoint(npc.transform.position + new Vector3(0, 0.2f, 0));
+        transform.position = Camera.main.WorldToScreenPoint(npc.transform.position + new Vector3(0, height, 0));
         dialog.transform.position = transform.position;
     }
     public void Type_init()//Typing() 코루틴 초기화

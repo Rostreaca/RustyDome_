@@ -52,6 +52,7 @@ public class EnemyController : MonoBehaviour
         canMove = true;
         isPatrolling = true;
         starterPos = transform.position;
+        Actor = GameObject.Find("Actor");
     }
 
     private void FixedUpdate()
@@ -83,8 +84,7 @@ public class EnemyController : MonoBehaviour
 
         if (!isAttack)
             isMove = true;
-        else
-            isMove = false;
+
         if (isPatrolling && !isFollowing && !isReturning)
         {
             Patroll();
