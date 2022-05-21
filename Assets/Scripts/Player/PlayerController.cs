@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Inventory.instance.Additem(Inventory.instance.testItem);
+            Inventory.instance.AddItem(Inventory.instance.testItem);
         }
     }
 

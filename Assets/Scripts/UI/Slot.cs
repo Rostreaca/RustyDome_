@@ -22,7 +22,7 @@ public abstract class Slot : MonoBehaviour, IPointerClickHandler
 
     public abstract void OnPointerClick(PointerEventData eventData);
 
-    public bool AddItem(Item newitem)
+    public bool Add(Item newitem)
     {
         if (slotItemName == newitem.itemName)
         {
@@ -37,7 +37,7 @@ public abstract class Slot : MonoBehaviour, IPointerClickHandler
         return false;
     }
 
-    public void RemoveItem()
+    public void Remove()
     {
         count--;
         UpdateSlot();

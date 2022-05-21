@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
     public Text informText;
 
     [SerializeField]
-    private List<Slot> slots = new List<Slot>();
+    private List<InventorySlot> slots = new List<InventorySlot>();
 
     public Item testItem;
 
@@ -44,19 +44,19 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        slots = GetComponentsInChildren<Slot>().ToList();
+        slots = GetComponentsInChildren<InventorySlot>().ToList();
 
-        foreach(Slot slot in slots)
+        foreach(InventorySlot slot in slots)
         {
             slot.UpdateSlot();
         }
     }
 
-    public void Additem(Item item)
+    public void AddItem(Item item)
     {
         foreach (Slot slot in slots)
         {
-            if (slot.AddItem(item))
+            if (slot.Add(item))
             {
                 return;
             }
@@ -67,5 +67,4 @@ public class Inventory : MonoBehaviour
     {
         informText.text = text;
     }
-
 }

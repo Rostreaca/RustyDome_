@@ -4,20 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
+    public enum SlotType
+    {
+        ModuleEquipSlot,
+        ModuleSlot
+    }
+
+    public SlotType type;
+
     public override void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             if (item != null && count > 0)
-                Inventory.instance.DisplayInform(item.itemInfo);
+                Customize.instance.DisplayInform(item.itemInfo);
         }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (this.item == null)
+            return;
 
+        icon.color = Color.gray;
+        HandManager.instance.TakeItem(item);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -27,7 +39,19 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        HandManager.instance.Drop();
+    }
 
+    public void OnDrop(PointerEventData eventData)
+    {
+        //¿Â¬¯ΩΩ∑‘ ø‹ π›¿¿X
+        if (type != SlotType.ModuleEquipSlot)
+            return;
+
+        if (HandManager.instance.item != null)
+        {
+            Add(HandManager.instance.item);
+        }
     }
 
     public override void UpdateSlot()
