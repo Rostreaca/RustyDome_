@@ -10,7 +10,7 @@ public class ItemMagnetic : MonoBehaviour
     public Transform playerPos;
 
     public bool isGrounded = false;
-    private static float followRange = 0.3f;
+    public float followRange = 0.3f;
 
     void Singleton_Init()
     {

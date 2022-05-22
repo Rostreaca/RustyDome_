@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
     public GameObject Actor;
 
     public bool isAttack;
+    public float MeleeAttackdelay = 0f;
 
     private CapsuleCollider2D col;
     private SpriteRenderer rend;
@@ -75,6 +76,7 @@ public class EnemyController : MonoBehaviour
 
             Rotation();
             Animation();
+            Attack_Stop();
         }
     }
 
@@ -82,8 +84,9 @@ public class EnemyController : MonoBehaviour
     {
         GroundCheck();
 
-        if (!isAttack)
-            isMove = true;
+        //if (!isAttack)
+        //    isMove = true;
+        
 
         if (isPatrolling && !isFollowing && !isReturning)
         {
@@ -93,6 +96,7 @@ public class EnemyController : MonoBehaviour
 
     private void Patroll()
     {
+        isMove = true;
 
 
         patrollSin += patrollTimer * speed;
@@ -186,9 +190,35 @@ public class EnemyController : MonoBehaviour
 
     private void Attack()
     {
-        isAttack = true;
 
-        animator.SetTrigger("MeleeAttack");
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Ilde_Right_Animation"))
+        {
+               isMove = false;
+        }
+        if (MeleeAttackdelay <= 0)
+        {
+            isMove = false;
+            isAttack = true;
+            animator.SetTrigger("MeleeAttack");
+        }
+    }
+
+    public void Attack_Stop()
+    {
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation"))
+        {
+            isAttack = false;
+        }
+
+        if(isAttack == false)
+        {
+            MeleeAttackdelay += Time.deltaTime;
+        }
+        if(MeleeAttackdelay >= 2.0f || isMove == true )
+        {
+            MeleeAttackdelay = 0f;
+        }
+
     }
 
     public void GetDamage(int damage)
@@ -197,15 +227,16 @@ public class EnemyController : MonoBehaviour
 
         if (hpNow <= 0)
         {
+            animator.SetTrigger("Death");
             Death();
         }
+        else
+            animator.SetTrigger("Hit");
     }
 
     public void Death()
     {
-        animator.SetTrigger("Death");
 
-        Destroy(gameObject, 1f);
         Instantiate(Coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
     }
 
@@ -259,10 +290,16 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                if (Vector2.Distance(transform.position, followTarget.position) > attackRadius && !isAttack)
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed / 2 * Time.deltaTime); //follow target
-                else //if target in attack radius
+                if (Vector2.Distance(transform.position, followTarget.position) > attackRadius && !isAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation"))
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
+
+                }
+                else if (isAttack == false)
+                {
+                    isMove = false;
                     Attack(); //attack
+                }
 
                 timer -= Time.deltaTime;
             }
@@ -274,6 +311,7 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator IReturnToStartPos()
     {
+        isMove = true;
         while (transform.position.x != starterPos.x)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(starterPos.x, transform.position.y), speed / 2 * Time.deltaTime); //move to start pos

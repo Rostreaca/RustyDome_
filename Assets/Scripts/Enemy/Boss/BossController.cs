@@ -10,6 +10,7 @@ public class BossController : MonoBehaviour
     public int hpNow;
 
     public bool isdead;
+    public bool isItemdrop;
 
     public GameObject Item;
     public GameObject Actor;
@@ -36,7 +37,11 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("BossDeath") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f && isItemdrop == false)
+        {
+            Instantiate(Item, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
+            isItemdrop = true;
+        }
     }
 
     public void Death()
