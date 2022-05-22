@@ -12,8 +12,10 @@ public class BossPlatformcheck : MonoBehaviour
             {
                 BossTest.instance.saveTargetPos.y = collision.gameObject.transform.position.y;
             }
-            else
-                BossTest.instance.saveTargetPos.y = collision.gameObject.transform.position.y-0.5f;
+            else if(BossTest.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("BossAtkLeftRange"))
+            {
+                BossTest.instance.saveTargetPos.y = collision.gameObject.transform.position.y - 0.2f;
+            }
         }
     }
 }

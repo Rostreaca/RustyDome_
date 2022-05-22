@@ -77,7 +77,7 @@ public class BossTest : MonoBehaviour
     public void Attack1()
     {
         if (HandPos.position != TargetPos.position)
-            HandPos.position = Vector2.MoveTowards(HandPos.position, saveTargetPos, 5f * Time.deltaTime);
+            HandPos.position = Vector2.MoveTowards(HandPos.position, saveTargetPos, 6f * Time.deltaTime);
 
     }
 
@@ -85,7 +85,7 @@ public class BossTest : MonoBehaviour
     {
         if(isrollback == true)
         {
-            HandPos.position = Vector2.MoveTowards(HandPos.position, handmovecontrol.position, 2f * Time.deltaTime);
+            HandPos.position = Vector2.MoveTowards(HandPos.position, handmovecontrol.position, 10f * Time.deltaTime);
         }
     }
     public void memory()
@@ -200,7 +200,7 @@ public class BossTest : MonoBehaviour
     public void followcondition()
     {
 
-        if (anim.GetBool("Pattern1isCool") == true && anim.GetBool("Pattern2isCool") == true || anim.GetBool("Pattern1isCool") == true && anim.GetBool("Pattern1start") == true || anim.GetBool("Pattern2isCool") == true && anim.GetBool("Pattern2start") == true)//스킬 두개가 모두 쿨타임인 경우 && 스킬 1이 쿨타임인데 스킬1 범위에 들어온 경우 && 스킬 2가 쿨타임인데 스킬2 범위에 들어온 경우
+        if (anim.GetBool("Pattern1isCool") == true && anim.GetBool("Pattern2isCool") == true || anim.GetBool("Pattern1isCool") == true && anim.GetBool("Pattern1start") == true || anim.GetBool("Pattern2isCool") == true && anim.GetBool("Pattern2start") == true )//스킬 두개가 모두 쿨타임인 경우 && 스킬 1이 쿨타임인데 스킬1 범위에 들어온 경우 && 스킬 2가 쿨타임인데 스킬2 범위에 들어온 경우
         {
             follow();
         }
