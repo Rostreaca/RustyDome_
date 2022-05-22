@@ -99,7 +99,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945926485441066686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.052, y: 0.152, z: 0}
+  m_LocalPosition: {x: 0.03, y: 0.746, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -149,7 +149,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -526979019, guid: 2f226c47d0100734d9fb38d0928a3f40, type: 3}
+  m_Sprite: {fileID: -1436179765, guid: 2f226c47d0100734d9fb38d0928a3f40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -170,7 +170,7 @@ Animator:
   m_GameObject: {fileID: 1945926485441066686}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6b916544e46352f40b05f24388a7d4cb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1ffda49ff6c709d4c831f1eccd1b0345, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -267,7 +267,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7897771584495674010}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 34.14, y: -0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -310,8 +310,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07490349, y: 0.20117593}
-  m_Size: {x: 0.7088127, y: 1.0253644}
+  m_Offset: {x: 0.07490349, y: 0.22954878}
+  m_Size: {x: 0.7088127, y: 0.9686187}
   m_Direction: 0
 --- !u!114 &7897771584495674011
 MonoBehaviour:
@@ -336,7 +336,7 @@ MonoBehaviour:
   money: 0
   meleeWeapon: {fileID: 11400000, guid: 0e02c0a8bb5aba844901683f720ce246, type: 2}
   rangeWeapon: {fileID: 0}
-  moveSpeed: 1.3
+  moveSpeed: 1.6
   dashCoolTime: 1
   dashTimer: 0
   dashTime: 0.4

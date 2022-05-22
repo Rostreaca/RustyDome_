@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetAxis("Horizontal") != 0)
             {
-                if (Input.GetAxis("Horizontal") < 0)
+                if (Input.GetAxis("Horizontal") > 0)
                     animator.SetBool("Flip", false);
                 else
                     animator.SetBool("Flip", true);
