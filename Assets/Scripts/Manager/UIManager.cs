@@ -8,6 +8,10 @@ public class UIManager : MonoBehaviour
 
     public enum ScreenState { Game, Pause, Inform, Map, Inventory, Customize, GameOver}
 
+    public RectTransform healthBar, powerBar;
+    public int healthBarMinRight, healthBarMaxRight;
+    public int powerBarminRight, powerBarmaxRight;
+
     [Header("Components")]
     public CanvasGroup gameScreen, pauseScreen, mapScreen, inventoryScreen, customizeScreen, gameoverScreen;
     [HideInInspector]
@@ -60,6 +64,8 @@ public class UIManager : MonoBehaviour
                 ChangeScreen(ScreenState.Customize);
         }
 
+        if (!GameManager.Instance.isPause)
+            GameScreenUpdate();
     }
 
     public void ChangeScreen(ScreenState screenState)
@@ -148,5 +154,23 @@ public class UIManager : MonoBehaviour
     public bool IsScreenOn(CanvasGroup canvasGroup)
     {
         return canvasGroup.blocksRaycasts;
+    }
+
+    public void GameScreenUpdate()
+    {
+        HealthbarUpdate();
+        PowerBarUpdate();
+    }
+
+    public void HealthbarUpdate()
+    {
+        float percent = PlayerController.instance.hpNow / PlayerController.instance.hpMax;
+        healthBar.SetRight(healthBarMinRight + (healthBarMaxRight - healthBarMinRight) * percent);
+    }
+
+    public void PowerBarUpdate()
+    {
+        float percent = PlayerController.instance.powerNow / PlayerController.instance.powerMax;
+        powerBar.SetRight(powerBarminRight + (powerBarmaxRight - powerBarminRight) * percent);
     }
 }
