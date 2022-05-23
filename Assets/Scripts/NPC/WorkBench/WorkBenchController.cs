@@ -5,17 +5,18 @@ using UnityEngine;
 public class WorkBenchController : NPCManager
 {
     public static WorkBenchController instance;
+
     public Animator anim;
     public void SIngleton_Init()
     {
         instance = this;
     }
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        SIngleton_Init();
         anim = GetComponent<Animator>();
+        SIngleton_Init();
     }
+    // Start is called before the first frame update
 
     // Update is called once per frame
     void Update()
