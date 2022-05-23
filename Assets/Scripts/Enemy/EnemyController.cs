@@ -34,6 +34,8 @@ public class EnemyController : MonoBehaviour
 
     public bool isAttack;
     public bool isRangeAttack;
+    public bool cooltimecheck;
+    public bool rangecoolcheck;
 
     private CapsuleCollider2D col;
     private SpriteRenderer rend;
@@ -198,6 +200,7 @@ public class EnemyController : MonoBehaviour
     {
         if (meleeSkillCoolTimeNow <= 0)
         {
+            cooltimecheck = false;
             isMove = false;
             isAttack = true;
             animator.SetTrigger("MeleeAttack");
@@ -208,6 +211,7 @@ public class EnemyController : MonoBehaviour
 
         if (RangeSkillCoolTimeNow <= 0)
         {
+            rangecoolcheck = false;
             isMove = false;
             isRangeAttack = true;
             animator.SetTrigger("RangeAttack");
@@ -221,22 +225,24 @@ public class EnemyController : MonoBehaviour
             isAttack = false;
         }
 
-        if (isAttack == false)
+        if (cooltimecheck == false)
         {
             meleeSkillCoolTimeNow += Time.deltaTime;
         }
         if(meleeSkillCoolTimeNow >= meleeSkillCoolTimeMax || isMove == true )
         {
             meleeSkillCoolTimeNow = 0f;
+            cooltimecheck = true;
         }
 
-        if (isRangeAttack == false)
+        if (rangecoolcheck == false)
         {
             RangeSkillCoolTimeNow += Time.deltaTime;
         }
         if (RangeSkillCoolTimeNow >= RangeSkillCoolTimeMax)
         {
             RangeSkillCoolTimeNow = 0f;
+            rangecoolcheck = true;
         }
 
     }
