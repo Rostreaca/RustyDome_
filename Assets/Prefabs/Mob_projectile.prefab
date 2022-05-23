@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderDetected: {fileID: 0}
-  projectiledmg: 60
-  speed: 1
+  projectiledmg: 20
+  speed: 2
 --- !u!50 &908175845914545700
 Rigidbody2D:
   serializedVersion: 4

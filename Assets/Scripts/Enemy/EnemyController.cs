@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public static EnemyController instance;
+
     public int hpMax;
     public int hpNow;
 
@@ -46,13 +48,18 @@ public class EnemyController : MonoBehaviour
     private float returnTimer = 3;
     private bool canMove;
     private bool isMove;
-    private bool isGround;
-    private bool isPatrolling;
-    private bool isFollowing;
-    private bool isReturning;
+    public bool isGround;
+    public bool isPatrolling;
+    public bool isFollowing;
+    public bool isReturning;
 
+    public void Singleton()
+    {
+        instance = this;
+    }
     private void Start()
     {
+        Singleton();
         col = GetComponent<CapsuleCollider2D>();
         rend = GetComponent<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
@@ -70,6 +77,7 @@ public class EnemyController : MonoBehaviour
             if (!canMove)
                 return;
 
+                
             Move();
         }
     }
@@ -80,9 +88,14 @@ public class EnemyController : MonoBehaviour
         {
             if (!canMove)
                 return;
-            if(!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation")|| !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani"))
-                Rotation();
 
+
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation")&& !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani"))
+            {
+                Rotation();
+            }
+
+            Condition();
             Animation();
             Attack_Stop();
         }
@@ -123,7 +136,7 @@ public class EnemyController : MonoBehaviour
 
         float x = patrollRadius * patrollSin + starterPos.x;
 
-        transform.position = Vector2.MoveTowards(transform.position,  new Vector2(x, transform.position.y), speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position,  new Vector2(x, transform.position.y), speed * Time.deltaTime); //radius¿¡ ¹þ¾î³µ´Ù°¡ °©ÀÚ±â ÁøÀÔÇÏ¸é Á¸³ª »¡¶óÁü+ ¹ö±×³²
     }
     public void Cliffcheck()
     {
@@ -150,10 +163,31 @@ public class EnemyController : MonoBehaviour
     {
         followTarget = target;
 
-        if (!isFollowing)
+        if (!isFollowing && !isReturning)
         {
             isFollowing = true;
             StartCoroutine(IFollow());
+        }
+
+    }
+    public void Condition()
+    {
+
+        if (isFollowing)
+        {
+            isPatrolling = false;
+        }
+        else
+            isPatrolling = true;
+
+        if (isReturning)
+            isPatrolling = false;
+        else
+            isPatrolling = true;
+
+        if (!isFollowing && !isReturning && !isPatrolling)
+        {
+            isPatrolling = true;
         }
     }
 
@@ -225,6 +259,16 @@ public class EnemyController : MonoBehaviour
             isAttack = false;
         }
 
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation"))
+        {
+            isMove = false;
+        }
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani"))
+        {
+            isMove = false;
+        }
+
         if (cooltimecheck == false)
         {
             meleeSkillCoolTimeNow += Time.deltaTime;
@@ -292,6 +336,7 @@ public class EnemyController : MonoBehaviour
 
         while (isFollowing)
         {
+            isPatrolling = false;
             if (Vector2.Distance(transform.position, followTarget.position) > returnRadius && timer <= 0) //if target leave
             {
                 isFollowing = false;
@@ -330,7 +375,8 @@ public class EnemyController : MonoBehaviour
                 {
                     Attack(); //attack
                 }
-                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation") && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani") && RangeSkillCoolTimeNow != 0f && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
+
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation") && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani") && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
                 {
                     isMove = true;
                     transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
@@ -347,10 +393,10 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator IReturnToStartPos()
     {
-        isMove = true;
         while (transform.position.x != starterPos.x)
         {
-            
+            isMove = true;
+
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(starterPos.x, transform.position.y), speed * Time.deltaTime); //move to start pos
 
             if (hpNow < hpMax)

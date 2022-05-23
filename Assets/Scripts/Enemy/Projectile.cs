@@ -8,23 +8,23 @@ public class Projectile : MonoBehaviour
 
     public Collider2D colliderDetected;
     public int projectiledmg = 60;
-    public float speed = 1f;
+    public float speed = 2f;
     // Start is called before the first frame update
     void Start()
     {
         
         rigid = GetComponent<Rigidbody2D>();
 
-        if (transform.position.x > PlayerController.instance.transform.position.x) //플레이어가 왼쪽에 있을때
+        if (EnemyController.instance.transform.localScale==new Vector3(-1,1,1)) //플레이어가 왼쪽에 있을때
         {
             rigid.velocity = new Vector2(-speed, 0);
         }
 
-        if (transform.position.x < PlayerController.instance.transform.position.x) //플레이어가 오른쪽에 있을때
+        if (EnemyController.instance.transform.localScale == new Vector3(1, 1, 1)) //플레이어가 오른쪽에 있을때
         {
             rigid.velocity = new Vector2(speed, 0);
         }
-        Destroy(gameObject, 4f);
+        Destroy(gameObject, 3f);
     }
 
     // Update is called once per frame

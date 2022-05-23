@@ -11,7 +11,7 @@ public class EnemyEyesTrigger : MonoBehaviour
         enemyController = GetComponentInParent<EnemyController>(); //Get component from object
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) //if some object entrer in trigger area
+    private void OnTriggerStay2D(Collider2D collision) //if some object entrer in trigger area
     {
         if (collision.gameObject.tag == "Player") //if that object tap is equal to Player
         {
