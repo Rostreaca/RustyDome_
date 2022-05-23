@@ -6,10 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
-    public int hpMax;
-    public int hpNow;
-    public int powerMax;
-    public int powerNow;
+    public float hpMax;
+    public float hpNow;
+    public float powerMax;
+    public float powerNow;
     public int powerRegen;
     public int ammoMax;
     public int ammoNow;
