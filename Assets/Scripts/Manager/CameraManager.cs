@@ -35,7 +35,7 @@ public class CameraManager : MonoBehaviour
 
     public void FixedUpdate()
     {
-        Vector3 newPos = new Vector3(player.position.x + offset.x, player.position.y + offset.y, -1); //Local vector get player position
+        Vector3 newPos = new Vector3(player.position.x + offset.x, player.position.y + offset.y, -5); //Local vector get player position
 
         transform.position = Vector3.Lerp(transform.position, newPos, smoothSpeed * Time.deltaTime); //Set camera position smooth
 
