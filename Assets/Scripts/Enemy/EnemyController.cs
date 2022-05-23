@@ -16,19 +16,24 @@ public class EnemyController : MonoBehaviour
     public int meleeDmg;
     public float rangeDmg;
 
-    public float meleeSkillCoolTimeNow;
-    public float meleeSkillCoolTimeMax;
+    public float meleeSkillCoolTimeNow = 0f;
+    public float meleeSkillCoolTimeMax = 2.0f;
+
+    public float RangeSkillCoolTimeNow = 0f;
+    public float RangeSkillCoolTimeMax = 3.0f;
 
     public float patrollRadius;
     public float patrollSin;
     public float returnRadius;
     public float attackRadius;
+    public float rangeRadius;
     public Transform followTarget;
     public GameObject Coin;
+    public GameObject Projectile;
     public GameObject Actor;
 
     public bool isAttack;
-    public float MeleeAttackdelay = 0f;
+    public bool isRangeAttack;
 
     private CapsuleCollider2D col;
     private SpriteRenderer rend;
@@ -73,8 +78,9 @@ public class EnemyController : MonoBehaviour
         {
             if (!canMove)
                 return;
+            if(!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation")|| !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani"))
+                Rotation();
 
-            Rotation();
             Animation();
             Attack_Stop();
         }
@@ -190,33 +196,47 @@ public class EnemyController : MonoBehaviour
 
     private void Attack()
     {
-
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Ilde_Right_Animation"))
-        {
-               isMove = false;
-        }
-        if (MeleeAttackdelay <= 0)
+        if (meleeSkillCoolTimeNow <= 0)
         {
             isMove = false;
             isAttack = true;
             animator.SetTrigger("MeleeAttack");
         }
     }
+    private void RangeAttack()
+    {
 
+        if (RangeSkillCoolTimeNow <= 0)
+        {
+            isMove = false;
+            isRangeAttack = true;
+            animator.SetTrigger("RangeAttack");
+        }
+    }
     public void Attack_Stop()
     {
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation"))
         {
+            isRangeAttack = false;
             isAttack = false;
         }
 
-        if(isAttack == false)
+        if (isAttack == false)
         {
-            MeleeAttackdelay += Time.deltaTime;
+            meleeSkillCoolTimeNow += Time.deltaTime;
         }
-        if(MeleeAttackdelay >= 2.0f || isMove == true )
+        if(meleeSkillCoolTimeNow >= meleeSkillCoolTimeMax || isMove == true )
         {
-            MeleeAttackdelay = 0f;
+            meleeSkillCoolTimeNow = 0f;
+        }
+
+        if (isRangeAttack == false)
+        {
+            RangeSkillCoolTimeNow += Time.deltaTime;
+        }
+        if (RangeSkillCoolTimeNow >= RangeSkillCoolTimeMax)
+        {
+            RangeSkillCoolTimeNow = 0f;
         }
 
     }
@@ -249,7 +269,7 @@ public class EnemyController : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f);
 
-        if(hit.collider !=null&&hit.collider.tag ==("NPC"))
+        if(hit.collider !=null&&hit.collider.tag ==("NPC")|| hit.collider != null && hit.collider.tag == ("Projectile"))
         {
             return;
         }
@@ -290,16 +310,26 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                if (Vector2.Distance(transform.position, followTarget.position) > attackRadius && !isAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation"))
+                if (Vector2.Distance(transform.position, followTarget.position) > rangeRadius && !isAttack && !isRangeAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation")&& !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani"))
                 {
+                    isMove = true;
                     transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
 
                 }
-                else if (isAttack == false)
+                else if (isRangeAttack == false && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
                 {
-                    isMove = false;
+                    RangeAttack(); //attack
+                }
+                else if (isAttack == false && Vector2.Distance(transform.position, followTarget.position) < attackRadius)
+                {
                     Attack(); //attack
                 }
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation") && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani") && RangeSkillCoolTimeNow != 0f && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
+                {
+                    isMove = true;
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
+                }
+
 
                 timer -= Time.deltaTime;
             }
@@ -314,7 +344,8 @@ public class EnemyController : MonoBehaviour
         isMove = true;
         while (transform.position.x != starterPos.x)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(starterPos.x, transform.position.y), speed / 2 * Time.deltaTime); //move to start pos
+            
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(starterPos.x, transform.position.y), speed * Time.deltaTime); //move to start pos
 
             if (hpNow < hpMax)
             {
@@ -332,5 +363,6 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, attackRadius);
         Gizmos.DrawWireSphere(transform.position, returnRadius);
+        Gizmos.DrawWireSphere(transform.position, rangeRadius);
     }
 }

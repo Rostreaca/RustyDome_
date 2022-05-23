@@ -30,7 +30,6 @@ public class WorkBenchText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
-            npc_Text = "이 부분을 워크벤치 인터페이스로 대체";
             player.hpNow = player.hpMax; //체력 회복
             gm.checkPoint.position = workBenchPos.transform.position; //체크포인트 저장
             Type_init();

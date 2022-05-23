@@ -40,7 +40,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4980295649611365396}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.5664819, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.55, y: 0.3}
+  m_Size: {x: 1.6829637, y: 0.3}
   m_EdgeRadius: 0
 --- !u!114 &4980528505677962537
 MonoBehaviour:
@@ -291,7 +291,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4980854292804328396}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.089, y: 6.803, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -358,15 +358,21 @@ MonoBehaviour:
   meleeDmg: 20
   rangeDmg: 20
   meleeSkillCoolTimeNow: 0
-  meleeSkillCoolTimeMax: 0.4
+  meleeSkillCoolTimeMax: 2
+  RangeSkillCoolTimeNow: 0
+  RangeSkillCoolTimeMax: 3
   patrollRadius: 1
   patrollSin: 0
-  returnRadius: 1.3
+  returnRadius: 1.5
   attackRadius: 0.8
+  rangeRadius: 1.5
   followTarget: {fileID: 0}
-  Coin: {fileID: 0}
+  Coin: {fileID: 3570157381209698220, guid: 23ea70a8a03f44549a093a2cd3e646c1, type: 3}
+  Projectile: {fileID: 6150922933576637939, guid: 9fc1df973df32b24b9115f57c6ad4baf,
+    type: 3}
   Actor: {fileID: 0}
   isAttack: 0
+  isRangeAttack: 0
 --- !u!1 &5562042767702957010
 GameObject:
   m_ObjectHideFlags: 0
