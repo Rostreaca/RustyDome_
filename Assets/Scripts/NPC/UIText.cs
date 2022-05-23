@@ -44,7 +44,7 @@ public class UIText : MonoBehaviour
     void Update()
     {
         CheckSayEnd();
-        TextPosition(transform,dialog,npc,0.5f);
+        TextPosition(transform,dialog,npc,1f);
         Say();
     }
 
@@ -111,7 +111,7 @@ public class UIText : MonoBehaviour
         for (int i = 0; i <= npc_Text.Length; i++)
         {
             text.text = npc_Text.Substring(0, i);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             textEnd ++;
         }
         if(textEnd == npc_Text.Length+1)
