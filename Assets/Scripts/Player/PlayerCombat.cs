@@ -23,15 +23,11 @@ public class PlayerCombat : Combat
     {
         StartCoroutine(ICombo(timeToCombo)); //Start combo system 
 
-
         //Rotation
-        if (Input.GetAxis("Horizontal") != 0)
-        {
-            if (Input.GetAxis("Horizontal") < 0)
-                playerController.transform.localScale = new Vector3(-1, 1, 1);
-            else
-                playerController.transform.localScale = new Vector3(1, 1, 1);
-        }
+        if (Input.GetAxis("Horizontal") > 0)
+            animator.SetBool("Flip", false);
+        else
+            animator.SetBool("Flip", true);
     }
 
     public void OnMeleeAttackEnd()

@@ -20,6 +20,7 @@ public class Ladder : MonoBehaviour
             PlayerController playerController = collision.GetComponent<PlayerController>();
             playerController.onLadder = false;
             playerController.isClimb = false;
+            playerController.animator.SetBool("Climb", false);
         }
     }
 }

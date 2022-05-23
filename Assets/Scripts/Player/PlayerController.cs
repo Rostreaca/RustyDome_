@@ -34,9 +34,10 @@ public class PlayerController : MonoBehaviour
     public bool isAttack = false;
     public bool ishit = false;
 
+    public Animator animator;
+
     private Rigidbody2D rigid;
     private CapsuleCollider2D col;
-    private Animator animator;
     private bool isDash = false;
     private bool isGround = false;
     [SerializeField]
@@ -104,13 +105,10 @@ public class PlayerController : MonoBehaviour
     {
         if (!isDash && !isAttack)
         {
-            if (Input.GetAxis("Horizontal") != 0)
-            {
-                if (Input.GetAxis("Horizontal") > 0)
-                    animator.SetBool("Flip", false);
-                else
-                    animator.SetBool("Flip", true);
-            }
+            if (Input.GetAxis("Horizontal") > 0)
+                animator.SetBool("Flip", false);
+            else
+                animator.SetBool("Flip", true);
         }
     }
 
@@ -168,8 +166,13 @@ public class PlayerController : MonoBehaviour
                     rigid.velocity = new Vector2(rigid.velocity.x, 0);
                     rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
 
+                    if (isClimb)
+                    {
+                        isClimb = false;
+                        animator.SetBool("Climb", false);
+                    }
+
                     animator.SetTrigger("Jump");
-                    isClimb = false;
                 }
                 
                 else if (canAirJump)
@@ -178,8 +181,13 @@ public class PlayerController : MonoBehaviour
                     rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
                     canAirJump = false;
 
+                    if (isClimb)
+                    {
+                        isClimb = false;
+                        animator.SetBool("Climb", false);
+                    }
+
                     animator.SetTrigger("Jump");
-                    isClimb = false;
                 }
             }
         }
@@ -268,11 +276,16 @@ public class PlayerController : MonoBehaviour
 
     public void Animation()
     {
-        if (!isClimb) //Lader check
+        //Lader check
+        if (!isClimb)
+        {
             if (Input.GetAxis("Horizontal") != 0)
                 animator.SetBool("Move", true);
+
             else
                 animator.SetBool("Move", false);
+        }
+
         else
         {
             animator.SetBool("Move", false);

@@ -13,7 +13,7 @@ public class NPCManager : MonoBehaviour
     public float seeRange = 0.5f;
     private void Awake()
     {
-        playerPos = GameObject.Find("Player").transform;
+        playerPos = PlayerController.instance.transform;
     }
     // Start is called before the first frame update
     public void Check()
