@@ -48,6 +48,7 @@ public class EnemyController : MonoBehaviour
     private float returnTimer = 3;
     private bool canMove;
     private bool isMove;
+    public bool isdead;
     public bool isGround;
     public bool isPatrolling;
     public bool isFollowing;
@@ -76,28 +77,33 @@ public class EnemyController : MonoBehaviour
         {
             if (!canMove)
                 return;
-
+            if(isdead != true)
+            {
+                Move();
+            }
                 
-            Move();
         }
     }
 
     private void Update()
     {
-        if (GameManager.Instance.isGame)
+        if(isdead != true)
         {
-            if (!canMove)
-                return;
-
-
-            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation")&& !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani"))
+            if (GameManager.Instance.isGame)
             {
-                Rotation();
-            }
+                if (!canMove)
+                    return;
 
-            Condition();
-            Animation();
-            Attack_Stop();
+
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation") && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani"))
+                {
+                    Rotation();
+                }
+
+                Condition();
+                Animation();
+                Attack_Stop();
+            }
         }
     }
 
@@ -161,13 +167,13 @@ public class EnemyController : MonoBehaviour
     }
     public void Follow(Transform target)
     {
-        followTarget = target;
+            followTarget = target;
 
-        if (!isFollowing && !isReturning)
-        {
-            isFollowing = true;
-            StartCoroutine(IFollow());
-        }
+            if (!isFollowing && !isReturning)
+            {
+                isFollowing = true;
+                StartCoroutine(IFollow());
+            }
 
     }
     public void Condition()
@@ -293,21 +299,33 @@ public class EnemyController : MonoBehaviour
 
     public void GetDamage(int damage)
     {
-        hpNow -= damage;
-
-        if (hpNow <= 0)
+        if(isdead!=true)
         {
-            animator.SetTrigger("Death");
-            Death();
+            hpNow -= damage;
+
+            if (hpNow <= 0)
+            {
+                animator.SetTrigger("Death");
+                Death();
+            }
+            else
+                animator.SetTrigger("Hit");
         }
-        else
-            animator.SetTrigger("Hit");
     }
 
     public void Death()
     {
+        transform.position = transform.position;
+        Rigidbody2D rigid;
+        rigid = GetComponent<Rigidbody2D>();
 
+        rigid.isKinematic = true;
+
+        col.isTrigger = true;
+        isdead = true;
         Instantiate(Coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
+
+        
     }
 
     public void Animation()
@@ -332,67 +350,75 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator IFollow()
     {
-        float timer = returnTimer; //timer to return after palyer leave
+            float timer = returnTimer; //timer to return after palyer leave
 
         while (isFollowing)
         {
+            if(isdead)
+            {
+                break;
+            }
             isPatrolling = false;
             if (Vector2.Distance(transform.position, followTarget.position) > returnRadius && timer <= 0) //if target leave
-            {
-                isFollowing = false;
-                followTarget = null;
+                {
+                    isFollowing = false;
+                    followTarget = null;
 
-                isReturning = true;
+                    isReturning = true;
 
-                patrollSin = 0;
+                    patrollSin = 0;
 
-                StartCoroutine(IReturnToStartPos()); //start returning
-            }
+                    StartCoroutine(IReturnToStartPos()); //start returning
+                }
             else if (!isGround) //if the target jumps over the gap  
-            {
-                isFollowing = false;
-                followTarget = null;
+                {
+                    isFollowing = false;
+                    followTarget = null;
 
-                isReturning = true;
+                    isReturning = true;
 
-                patrollSin = 0;
+                    patrollSin = 0;
 
-                StartCoroutine(IReturnToStartPos());
-            }
+                    StartCoroutine(IReturnToStartPos());
+                }
             else
-            {
-                if (Vector2.Distance(transform.position, followTarget.position) > rangeRadius && !isAttack && !isRangeAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation")&& !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani"))
-                {
-                    isMove = true;
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
+             {
+                    if (Vector2.Distance(transform.position, followTarget.position) > rangeRadius && !isAttack && !isRangeAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation") && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani"))
+                    {
+                        isMove = true;
+                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
 
-                }
-                else if (isRangeAttack == false && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
-                {
-                    RangeAttack(); //attack
-                }
-                else if (isAttack == false && Vector2.Distance(transform.position, followTarget.position) < attackRadius)
-                {
-                    Attack(); //attack
-                }
+                    }
+                    else if (isRangeAttack == false && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
+                    {
+                        RangeAttack(); //attack
+                    }
+                    else if (isAttack == false && Vector2.Distance(transform.position, followTarget.position) < attackRadius)
+                    {
+                        Attack(); //attack
+                    }
 
-                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation") && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani") && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
-                {
-                    isMove = true;
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
+                    if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation") && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani") && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
+                    {
+                        isMove = true;
+                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
+                    }
+
+
+                    timer -= Time.deltaTime;
                 }
+                yield return null;
 
-
-                timer -= Time.deltaTime;
-            }
-            yield return null;
         }
-
-        yield return null;
+            yield return null;
+        
     }
 
     IEnumerator IReturnToStartPos()
     {
+        if(isdead != true)
+        {
+  
         while (transform.position.x != starterPos.x)
         {
             isMove = true;
@@ -409,6 +435,7 @@ public class EnemyController : MonoBehaviour
 
         isReturning = false;
         yield return null;
+        }
     }
 
     public void OnDrawGizmos()
