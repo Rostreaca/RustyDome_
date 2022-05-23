@@ -21,7 +21,16 @@ public class EnemyCombat : Combat
 
         enemyController.isAttack = false;
     }
+    public void OnRangeAttackEnd()
+    {
+        animator.SetBool("RangeAttack", false);
+        enemyController.isRangeAttack = false;
+    }
 
+    public void CreateProjectile()
+    {
+        Instantiate(enemyController.Projectile, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, enemyController.Actor.transform);
+    }
     public override void HitDetected()
     {
         if (colliderDetected.gameObject.CompareTag("Player"))
