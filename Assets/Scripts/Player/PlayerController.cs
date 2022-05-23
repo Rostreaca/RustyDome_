@@ -85,6 +85,8 @@ public class PlayerController : MonoBehaviour
             Attack();
             Jump();
             Animation();
+
+            PowerRegen();
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -263,12 +265,21 @@ public class PlayerController : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    animator.SetBool(meleeWeapon.animName, isAttack);
+                    if (powerNow > meleeWeapon.powerCon)
+                    {
+                        powerNow -= meleeWeapon.powerCon;
+                        animator.SetBool(meleeWeapon.animName, isAttack);
+                    }
                 }
 
                 if (Input.GetMouseButtonDown(1))
                 {
-                    animator.SetBool("RangeAttack", isAttack);
+                    if (powerNow > rangeWeapon.powerCon)
+                    {
+                        powerNow -= rangeWeapon.powerCon;
+                        animator.SetBool("RangeAttack", isAttack);
+                    }
+
                 }
             }
         }
@@ -323,6 +334,18 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetTrigger("Death");
         GameManager.Instance.GameOver(); //set game state to game over
+    }
+
+    public void PowerRegen()
+    {
+        if (powerNow < powerMax)
+        {
+            powerNow += powerRegen;
+            if (powerNow > powerMax)
+            {
+                powerNow = powerMax;
+            }
+        }
     }
 
 }
