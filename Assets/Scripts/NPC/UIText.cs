@@ -64,7 +64,7 @@ public class UIText : MonoBehaviour
         }
         if(Input.GetKey("f")&& sayCount ==1 && sayEnd ==true)
         {
-            npc_Text = "이것은 테스트용 대화입니다. 0.999999 = 1인가요?";
+            npc_Text = "이것은 테스트용 대화입니다.";
             Type_init();
             sayCount = 2;
         }
