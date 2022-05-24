@@ -60,9 +60,17 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
         animator = GetComponentInChildren<Animator>();
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Left_Ani"))
+        {
+            animator.SetBool("Flip", true);
+        }
+        else
+            animator.SetBool("Flip", true);
     }
 
     public void FixedUpdate()
@@ -109,7 +117,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetAxis("Horizontal") > 0)
                 animator.SetBool("Flip", false);
-            else
+            else if(Input.GetAxis("Horizontal") < 0)
                 animator.SetBool("Flip", true);
         }
     }
@@ -125,7 +133,7 @@ public class PlayerController : MonoBehaviour
                 rigid.gravityScale = 0;
                 isDash = true;
                 StartCoroutine(IDash(dir));
-                powerNow -= 30;
+                powerNow -= 1;
             }
         }
     }
