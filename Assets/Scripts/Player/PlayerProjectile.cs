@@ -26,7 +26,7 @@ public class PlayerProjectile : MonoBehaviour
     }
     void Start()
     {
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 2.5f);
     }
 
     // Update is called once per frame
@@ -43,6 +43,10 @@ public class PlayerProjectile : MonoBehaviour
 
             ProjectileAttack(enemy, damage);
 
+            Destroy(gameObject);
+        }
+        if (colliderDetected.gameObject.CompareTag("Ground") || colliderDetected.gameObject.CompareTag("Platform"))
+        {
             Destroy(gameObject);
         }
     }

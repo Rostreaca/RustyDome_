@@ -45,6 +45,10 @@ public class Projectile : MonoBehaviour
 
             Destroy(gameObject);
         }
+        if (colliderDetected.gameObject.CompareTag("Ground") || colliderDetected.gameObject.CompareTag("Platform"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void ProjectileAttack(PlayerController player, int damage)
