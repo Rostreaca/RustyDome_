@@ -45,12 +45,28 @@ public class PlayerProjectile : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        else if (colliderDetected.gameObject.CompareTag("Boss"))
+        {
+            BossGetDamage boss = colliderDetected.GetComponent<BossGetDamage>();
+
+            int damage = projectiledmg;
+
+            ProjectileAttacktoBoss(boss, damage);
+
+            Destroy(gameObject);
+        }
+
         if (colliderDetected.gameObject.CompareTag("Ground") || colliderDetected.gameObject.CompareTag("Platform"))
         {
             Destroy(gameObject);
         }
     }
 
+    public void ProjectileAttacktoBoss(BossGetDamage boss, int damage)
+    {
+        boss.GetDamage(damage);
+    }
     public void ProjectileAttack(EnemyController enemy, int damage)
     {
         enemy.GetDamage(damage);
