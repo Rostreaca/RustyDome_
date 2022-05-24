@@ -15,9 +15,14 @@ public class Platform : MonoBehaviour
     void Update()
     {
         if (playerCheck && Input.GetKey(KeyCode.S))
+        {
             effector.rotationalOffset = 180f;
+        }
         else if (Input.GetKeyDown(KeyCode.W))
+        {
             effector.rotationalOffset = 0f;
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

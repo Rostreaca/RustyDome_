@@ -442,11 +442,6 @@ public class EnemyController : MonoBehaviour
 
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(starterPos.x, transform.position.y), speed * Time.deltaTime); //move to start pos
 
-            if (hpNow < hpMax)
-            {
-                hpNow = hpMax;
-            }
-
             yield return null;
         }
 
