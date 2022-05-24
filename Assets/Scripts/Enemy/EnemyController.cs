@@ -180,13 +180,10 @@ public class EnemyController : MonoBehaviour
     }
     public void Condition()
     {
-
-
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Hit_Right_Animation"))
         {
             isFollowing = false;
         }
-
         if (isFollowing || isReturning)
         {
             isPatrolling = false;
@@ -373,6 +370,7 @@ public class EnemyController : MonoBehaviour
 
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Hit_Right_Animation"))
             {
+                isMove = false;
                 yield return null;
             }
             isPatrolling = false;
@@ -399,8 +397,8 @@ public class EnemyController : MonoBehaviour
                     StartCoroutine(IReturnToStartPos());
                 }
             else
-             {
-                    if (Vector2.Distance(transform.position, followTarget.position) > rangeRadius && !isAttack && !isRangeAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
+            {
+                if (Vector2.Distance(transform.position, followTarget.position) > rangeRadius && !isAttack && !isRangeAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
                     {
                         isMove = true;
                         transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
