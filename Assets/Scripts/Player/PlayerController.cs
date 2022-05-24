@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public float forcePower;
     public float upperForcePower;
 
+    public bool isGround = false;
     public bool onLadder = false;
     public bool isClimb = false;
     public bool isAttack = false;
@@ -39,7 +40,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigid;
     private CapsuleCollider2D col;
     private bool isDash = false;
-    private bool isGround = false;
     [SerializeField]
     private bool canAirJump;
 
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && powerNow >30 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Right_Ani") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Left_Ani"))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !ishit && !isAttack && powerNow >  30)
         {
             int dir = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
             if (dashTimer == 0 && dir != 0)
@@ -194,7 +194,6 @@ public class PlayerController : MonoBehaviour
                         animator.SetBool("Climb", false);
                     }
 
-                    animator.SetTrigger("Jump");
                     powerNow -= 20;
                 }
             }
