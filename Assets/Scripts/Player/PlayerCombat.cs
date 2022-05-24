@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCombat : Combat
 {
+    GameObject Actor;
+    public GameObject projectile;
     private Rigidbody2D rigid;
     private Animator animator;
     private PlayerController playerController;
@@ -12,6 +14,7 @@ public class PlayerCombat : Combat
 
     public override void Start()
     {
+        Actor = GameObject.Find("Actor");
         base.Start();
 
         rigid = GetComponentInParent<Rigidbody2D>();
@@ -42,6 +45,17 @@ public class PlayerCombat : Combat
         playerController.isAttack = false;
     }
 
+    public void CreateLeftProjectile()
+    {
+        Instantiate(projectile, new Vector2(transform.position.x - 0.75f, transform.position.y-0.28f), Quaternion.identity, Actor.transform);
+        PlayerProjectile.instance.rigid.velocity = new Vector2(-PlayerProjectile.instance.speed, 0);
+    }
+
+    public void CreateRightProjectile()
+    {
+        Instantiate(projectile, new Vector2(transform.position.x+0.85f, transform.position.y-0.28f), Quaternion.identity, Actor.transform);
+        PlayerProjectile.instance.rigid.velocity = new Vector2(PlayerProjectile.instance.speed, 0);
+    }
     public void OnRangeAttackEnd()
     {
         animator.SetBool("RangeAttack", false);

@@ -47,7 +47,7 @@ public class ItemMagnetic : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject != null & collision.gameObject.CompareTag("Ground"))
+        if(collision.gameObject != null & collision.gameObject.CompareTag("Ground") || collision.gameObject != null & collision.gameObject.CompareTag("Platform"))
         {
             isGrounded = true;
         }

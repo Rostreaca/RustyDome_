@@ -54,6 +54,8 @@ public class EnemyController : MonoBehaviour
     public bool isFollowing;
     public bool isReturning;
 
+    private string meleeAttackanim = "BrokenClockwoker_Melee_Right_Animation";
+    private string RangeAttackanim = "BrokenClockwoker_Range_Right_Ani";
     public void Singleton()
     {
         instance = this;
@@ -87,7 +89,7 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if(isdead != true)
+        if(!isdead)
         {
             if (GameManager.Instance.isGame)
             {
@@ -95,7 +97,7 @@ public class EnemyController : MonoBehaviour
                     return;
 
 
-                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation") && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani"))
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
                 {
                     Rotation();
                 }
@@ -179,7 +181,17 @@ public class EnemyController : MonoBehaviour
     public void Condition()
     {
 
-        if (isFollowing)
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Hit_Right_Animation"))
+        {
+            isFollowing = false;
+        }
+
+        if (isFollowing || isReturning)
+        {
+            isPatrolling = false;
+        }
+        else if  (!isFollowing && animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Hit_Right_Animation"))
         {
             isPatrolling = false;
         }
@@ -188,10 +200,8 @@ public class EnemyController : MonoBehaviour
 
         if (isReturning)
             isPatrolling = false;
-        else
-            isPatrolling = true;
 
-        if (!isFollowing && !isReturning && !isPatrolling)
+        if (!isFollowing && !isReturning && !isPatrolling && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Hit_Right_Animation"))
         {
             isPatrolling = true;
         }
@@ -259,18 +269,18 @@ public class EnemyController : MonoBehaviour
     }
     public void Attack_Stop()
     {
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation"))
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim))
         {
             isRangeAttack = false;
             isAttack = false;
         }
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim))
         {
             isMove = false;
         }
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
         {
             isMove = false;
         }
@@ -299,7 +309,8 @@ public class EnemyController : MonoBehaviour
 
     public void GetDamage(int damage)
     {
-        if(isdead!=true)
+        isMove = false;
+        if (isdead!=true)
         {
             hpNow -= damage;
 
@@ -330,6 +341,7 @@ public class EnemyController : MonoBehaviour
 
     public void Animation()
     {
+
         animator.SetBool("Move", isMove);
     }
 
@@ -341,7 +353,7 @@ public class EnemyController : MonoBehaviour
         {
             return;
         }
-        bool grounded = hit.collider != null && hit.collider.CompareTag("Ground");
+        bool grounded = hit.collider != null && hit.collider.CompareTag("Ground") || hit.collider != null && hit.collider.CompareTag("Platform");
         isGround = grounded;
 
         if (!isGround)
@@ -350,13 +362,18 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator IFollow()
     {
-            float timer = returnTimer; //timer to return after palyer leave
+        float timer = returnTimer; //timer to return after palyer leave
 
         while (isFollowing)
         {
             if(isdead)
             {
                 break;
+            }
+
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Hit_Right_Animation"))
+            {
+                yield return null;
             }
             isPatrolling = false;
             if (Vector2.Distance(transform.position, followTarget.position) > returnRadius && timer <= 0) //if target leave
@@ -383,7 +400,7 @@ public class EnemyController : MonoBehaviour
                 }
             else
              {
-                    if (Vector2.Distance(transform.position, followTarget.position) > rangeRadius && !isAttack && !isRangeAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation") && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani"))
+                    if (Vector2.Distance(transform.position, followTarget.position) > rangeRadius && !isAttack && !isRangeAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
                     {
                         isMove = true;
                         transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
@@ -398,7 +415,7 @@ public class EnemyController : MonoBehaviour
                         Attack(); //attack
                     }
 
-                    if (!animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Melee_Right_Animation") && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Range_Right_Ani") && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
+                    if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim) && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
                     {
                         isMove = true;
                         transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
