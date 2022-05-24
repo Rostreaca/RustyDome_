@@ -115,24 +115,24 @@ public class BossTest : MonoBehaviour
         {
             if (transform.position.x > saveTargetPos.x && rightmove == false)// 왼쪽에 플레이어가 있으면 추격.
             {
-                rigid.velocity = new Vector2(-6, 0);
+                rigid.velocity = new Vector2(-8, 0);
                 leftmove = true;
             }
             else if(transform.position.x < saveTargetPos.x&&leftmove == false)
             {
-                rigid.velocity = new Vector2(6, 0);
+                rigid.velocity = new Vector2(8, 0);
                 rightmove = true;
             }
             else if(transform.position.x == TargetPos.position.x)//위치가 같을 경우 2번패턴의 방향
             {
                 if(transform.localScale == new Vector3(1, 1, 1))//정방향(왼쪽)을 바라보고 있을때
                 {
-                    rigid.velocity = new Vector2(-6, 0);
+                    rigid.velocity = new Vector2(-8, 0);
                     leftmove = true;
                 }
                 else if(transform.localScale == new Vector3(-1, 1, 1))//역방향(오른쪽)을 바라보고 있을때
                 {
-                    rigid.velocity = new Vector2(6, 0);
+                    rigid.velocity = new Vector2(8, 0);
                     rightmove = true;
                 }
             }
