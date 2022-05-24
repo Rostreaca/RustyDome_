@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
                 rigid.gravityScale = 0;
                 isDash = true;
                 StartCoroutine(IDash(dir));
-                powerNow -= 1;
+                powerNow -= 30;
             }
         }
     }

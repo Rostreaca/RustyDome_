@@ -46,7 +46,10 @@ public class BossController : MonoBehaviour
 
     public void Death()
     {
-        isdead = true;
-        anim.SetTrigger("Death");
+        if(isdead ==false)
+        {
+            isdead = true;
+            anim.SetTrigger("Death");
+        }
     }
 }
