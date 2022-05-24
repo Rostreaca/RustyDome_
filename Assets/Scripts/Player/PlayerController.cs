@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     public bool onLadder = false;
     public bool isClimb = false;
     public bool isAttack = false;
-    public bool ishit = false;
+    public bool isHit = false;
 
     public Animator animator;
 
@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if(!isDash && !isClimb && !isAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Left_Ani")&& !animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Right_Ani"))
+        if(!isDash && !isClimb && !isAttack && !isHit)
         {
             transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime);
         }
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !ishit && !isAttack && powerNow >  30)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttack && !isHit && powerNow >  30)
         {
             int dir = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
             if (dashTimer == 0 && dir != 0)
@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && powerNow > 20)
+        if (Input.GetKeyDown(KeyCode.Space) && !isHit && powerNow > 20)
         {
             if (!isAttack)
             {
@@ -270,7 +270,7 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        if (!isAttack && !isClimb)
+        if (!isAttack && !isClimb && !isHit)
         { 
             if(powerNow > 15)
             {
@@ -326,7 +326,7 @@ public class PlayerController : MonoBehaviour
 
     public void GetDamage(int damage, Transform enemy)
     {
-        if(ishit == false)
+        if (isHit == false)
         {
             animator.SetTrigger("Hit");
             hpNow -= damage;
@@ -345,11 +345,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator IHit()
     {
-        ishit = true;
+        isHit = true;
 
         yield return new WaitForSeconds(noHitTime);
 
-        ishit = false;
+        isHit = false;
     }
 
     public void Death()
