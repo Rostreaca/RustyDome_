@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && powerNow >30)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && powerNow >30 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Right_Ani") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Left_Ani"))
         {
             int dir = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
             if (dashTimer == 0 && dir != 0)
@@ -124,7 +124,6 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("Dash");
                 rigid.gravityScale = 0;
                 isDash = true;
-
                 StartCoroutine(IDash(dir));
                 powerNow -= 30;
             }
@@ -135,6 +134,10 @@ public class PlayerController : MonoBehaviour
     {
         while (dashTimer < dashCoolTime)
         {
+            if(animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Right_Ani")&& animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Left_Ani"))
+            {
+                dashTimer = dashCoolTime;
+            }
             if (isDash)
             {
                 if (dashTimer < dashTime) //dashing
