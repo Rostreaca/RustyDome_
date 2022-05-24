@@ -3479,14 +3479,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoreSlot0
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: count
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1 &495394897
@@ -8598,7 +8590,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527170070}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -8733,15 +8725,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MobileSlot1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 11400000, guid: 94434d90ead29164d98a5e54bc178c36,
-        type: 2}
-    - target: {fileID: 0}
-      propertyPath: count
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
@@ -9557,7 +9540,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 169.14, y: -134.02}
+  m_AnchoredPosition: {x: 169.14001, y: -134.02002}
   m_SizeDelta: {x: -363.64, y: -409.601}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &718550299
@@ -10796,19 +10779,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeWeaponSlot2
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 11400000, guid: c6f2cc669b04d7e46ab55d201df13e5e,
-        type: 2}
-    - target: {fileID: 0}
-      propertyPath: count
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: equipSlot
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1 &904086609
@@ -11341,8 +11311,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -14}
-  m_SizeDelta: {x: 0, y: -421.6859}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &942396572
 CanvasGroup:
@@ -12739,15 +12709,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GoodsSlot0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 11400000, guid: c6f2cc669b04d7e46ab55d201df13e5e,
-        type: 2}
-    - target: {fileID: 0}
-      propertyPath: count
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1103403393135181728, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
@@ -15302,19 +15263,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MeleeWeaponSlot0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 11400000, guid: 0e02c0a8bb5aba844901683f720ce246,
-        type: 2}
-    - target: {fileID: 0}
-      propertyPath: count
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: equipSlot
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
@@ -17993,15 +17941,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangeWeaponSlot1
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 11400000, guid: 94434d90ead29164d98a5e54bc178c36,
-        type: 2}
-    - target: {fileID: 0}
-      propertyPath: count
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &1708665481
@@ -20607,19 +20546,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeWeaponSlot1
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 11400000, guid: 94434d90ead29164d98a5e54bc178c36,
-        type: 2}
-    - target: {fileID: 0}
-      propertyPath: count
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: equipSlot
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1 &1948690428
@@ -21112,15 +21038,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeicalWeaponSlot1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 11400000, guid: 94434d90ead29164d98a5e54bc178c36,
-        type: 2}
-    - target: {fileID: 0}
-      propertyPath: count
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}

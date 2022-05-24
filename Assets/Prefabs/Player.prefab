@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderDetected: {fileID: 0}
+  projectile: {fileID: 0}
 --- !u!1 &5022922352837849916
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,8 +279,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f673fde25c9c1246bbb7984ad123b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpMax: 5555
-  hpNow: 5555
+  hpMax: 1000
+  hpNow: 1000
   powerMax: 100
   powerNow: 100
   powerRegen: 10

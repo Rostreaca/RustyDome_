@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossPattern2Combat : MonoBehaviour
 {
     public Collider2D colliderDetected;
-    public int pattern2dmg = 60;
+    public int pattern2dmg = 1;
 
 
     public void HitDetected()
