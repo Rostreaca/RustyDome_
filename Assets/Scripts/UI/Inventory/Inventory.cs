@@ -30,10 +30,6 @@ public class Inventory : MonoBehaviour
 
     void SIngleton_Init()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
         instance = this;
     }
 

@@ -8,9 +8,9 @@ public class UIManager : MonoBehaviour
 
     public enum ScreenState { Game, Pause, Inform, Map, Inventory, Customize, GameOver}
 
-    public RectTransform healthBar, powerBar;
-    public int healthBarMinRight, healthBarMaxRight;
-    public int powerBarminRight, powerBarmaxRight;
+    //public RectTransform healthBar, powerBar;
+    //public int healthBarMinRight, healthBarMaxRight;
+    //public int powerBarminRight, powerBarmaxRight;
 
     [Header("Components")]
     public CanvasGroup gameScreen, pauseScreen, mapScreen, inventoryScreen, customizeScreen, gameoverScreen;
@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
                 ChangeScreen(ScreenState.Inventory);
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C)&& WorkBenchController.instance.canopenCustomize == true)
         {
             if (customizeScreen.alpha > 0)
                 ChangeScreen(ScreenState.Game);
@@ -96,7 +96,7 @@ public class UIManager : MonoBehaviour
                 break;
 
             case ScreenState.Map:
-                ScreenActive(mapScreen, false);
+                ScreenActive(mapScreen, true);
                 GameManager.Instance.isPause = true;
                 Time.timeScale = 0;
                 break;
@@ -115,8 +115,8 @@ public class UIManager : MonoBehaviour
 
             case ScreenState.GameOver:
                 ScreenActive(gameoverScreen, true);
-                GameManager.Instance.isPause = true;
-                Time.timeScale = 0;
+                //GameManager.Instance.isPause = true;
+                //Time.timeScale = 0;
                 break;
         }
     }
@@ -158,19 +158,19 @@ public class UIManager : MonoBehaviour
 
     public void GameScreenUpdate()
     {
-        HealthbarUpdate();
-        PowerBarUpdate();
+        //HealthbarUpdate();
+        //PowerBarUpdate();
     }
 
-    public void HealthbarUpdate()
-    {
-        float percent = PlayerController.instance.hpNow / PlayerController.instance.hpMax;
-        healthBar.SetRight(healthBarMinRight + (healthBarMaxRight - healthBarMinRight) * percent);
-    }
+    //public void HealthbarUpdate()
+    //{
+    //    float percent = PlayerController.instance.hpNow / PlayerController.instance.hpMax;
+    //    healthBar.SetRight(healthBarMinRight + (healthBarMaxRight - healthBarMinRight) * percent);
+    //}
 
-    public void PowerBarUpdate()
-    {
-        float percent = PlayerController.instance.powerNow / PlayerController.instance.powerMax;
-        powerBar.SetRight(powerBarminRight + (powerBarmaxRight - powerBarminRight) * percent);
-    }
+    //public void PowerBarUpdate()
+    //{
+    //    float percent = PlayerController.instance.powerNow / PlayerController.instance.powerMax;
+    //    powerBar.SetRight(powerBarminRight + (powerBarmaxRight - powerBarminRight) * percent);
+    //}
 }

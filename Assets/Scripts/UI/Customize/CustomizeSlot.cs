@@ -64,7 +64,7 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
 
         else
         {
-            icon.color = new Color(0, 0, 0, 0);
+
         }
     }
 }

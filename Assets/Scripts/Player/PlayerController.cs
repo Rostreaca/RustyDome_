@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public float dashTime;
     public float dashSpeed;
     public float jumpPower;
-    public float noHitTime;
+    public float noHitTime=0.5f;
     public float forcePower;
     public float upperForcePower;
 
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if(!isDash && !isClimb && !isAttack)
+        if(!isDash && !isClimb && !isAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Left_Ani")&& !animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Right_Ani"))
         {
             transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime);
         }
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && powerNow >30)
         {
             int dir = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
             if (dashTimer == 0 && dir != 0)
@@ -126,6 +126,7 @@ public class PlayerController : MonoBehaviour
                 isDash = true;
 
                 StartCoroutine(IDash(dir));
+                powerNow -= 30;
             }
         }
     }
@@ -159,7 +160,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && powerNow > 20)
         {
             if (!isAttack)
             {
@@ -175,6 +176,7 @@ public class PlayerController : MonoBehaviour
                     }
 
                     animator.SetTrigger("Jump");
+                    powerNow -= 20;
                 }
                 
                 else if (canAirJump)
@@ -190,6 +192,7 @@ public class PlayerController : MonoBehaviour
                     }
 
                     animator.SetTrigger("Jump");
+                    powerNow -= 20;
                 }
             }
         }
@@ -258,29 +261,35 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         if (!isAttack && !isClimb)
-        {
-            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+        { 
+            if(powerNow > 15)
             {
-                isAttack = true;
+                if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+            {
+                    isAttack = true;
 
-                if (Input.GetMouseButtonDown(0))
-                {
-                    if (powerNow > meleeWeapon.powerCon)
+                    if (Input.GetMouseButtonDown(0))
                     {
-                        powerNow -= meleeWeapon.powerCon;
-                        animator.SetBool(meleeWeapon.animName, isAttack);
-                    }
-                }
-
-                if (Input.GetMouseButtonDown(1))
-                {
-                    if (powerNow > rangeWeapon.powerCon)
-                    {
-                        powerNow -= rangeWeapon.powerCon;
-                        animator.SetBool("RangeAttack", isAttack);
+                        if (powerNow > meleeWeapon.powerCon)
+                        {
+                            powerNow -= meleeWeapon.powerCon;
+                            animator.SetBool(meleeWeapon.animName, isAttack);
+                            powerNow -= 15;
+                        }
                     }
 
+                    if (Input.GetMouseButtonDown(1))
+                    {
+                        if (powerNow > rangeWeapon.powerCon)
+                        {
+                            powerNow -= rangeWeapon.powerCon;
+                            animator.SetBool("RangeAttack", isAttack);
+                            powerNow -= 15;
+                        }
+
+                    }
                 }
+             
             }
         }
     }
@@ -307,27 +316,30 @@ public class PlayerController : MonoBehaviour
 
     public void GetDamage(int damage, Transform enemy)
     {
-        hpNow -= damage;
-
-        Vector2 dir = enemy.position.x < transform.position.x ? Vector2.right : Vector2.left;
-        rigid.AddForce(dir * forcePower + Vector2.up * upperForcePower);
-        StartCoroutine(IHit());
-
-        if (hpNow <= 0)
+        if(ishit == false)
         {
-            Death();
+            animator.SetTrigger("Hit");
+            hpNow -= damage;
+
+            Vector2 dir = enemy.position.x < transform.position.x ? Vector2.right : Vector2.left;
+            rigid.AddForce(dir * forcePower + Vector2.up * upperForcePower);
+            StartCoroutine(IHit());
+
+            if (hpNow <= 0)
+            {
+                Death();
+            }
         }
+
     }
 
     private IEnumerator IHit()
     {
         ishit = true;
-        col.enabled = false;
 
         yield return new WaitForSeconds(noHitTime);
 
         ishit = false;
-        col.enabled = true;
     }
 
     public void Death()
@@ -338,13 +350,13 @@ public class PlayerController : MonoBehaviour
 
     public void PowerRegen()
     {
-        if (powerNow < powerMax)
+        if (powerNow != powerMax)
         {
-            powerNow += powerRegen;
-            if (powerNow > powerMax)
-            {
-                powerNow = powerMax;
-            }
+            powerNow += powerRegen * Time.deltaTime;
+        }
+        if (powerNow > powerMax)
+        {
+            powerNow = powerMax;
         }
     }
 

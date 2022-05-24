@@ -5,18 +5,26 @@ using UnityEngine.UI;
 
 public class WorkBenchText : UIText
 {
+    public static WorkBenchText instance;
+
     [Header("WorkBenchText에서 필요한 값")]
     public Transform workBenchPos;
     PlayerController player;
     GameManager gm;
+    void singleton()
+    {
+        instance = this;
+    }
     void Awake()
     {
+        singleton();
         originPos = dialog.transform.position;
         gm = GameManager.Instance;
         player = PlayerController.instance;
     }
     private void OnDisable()
     {
+        WorkBenchController.instance.canopenCustomize = false;
         WorkBenchController.instance.anim.SetBool("isOpen", false);
         sayCount = 0;
     }
@@ -35,6 +43,7 @@ public class WorkBenchText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
+            WorkBenchController.instance.canopenCustomize = true;
             dialog.transform.position = originPos;
             WorkBenchController.instance.anim.SetBool("isOpen", true);
             player.hpNow = player.hpMax; //체력 회복

@@ -7,6 +7,8 @@ public class WorkBenchController : NPCManager
     public static WorkBenchController instance;
 
     public Animator anim;
+
+    public bool canopenCustomize;
     public void SIngleton_Init()
     {
         instance = this;
