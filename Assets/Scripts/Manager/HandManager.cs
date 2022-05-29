@@ -31,13 +31,6 @@ public class HandManager : MonoBehaviour
     void Start()
     {
         icon = GetComponent<Image>();
-        Drop();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        icon.transform.position = Input.mousePosition + offset;
     }
 
     public void TakeItem(Item item)
@@ -53,6 +46,11 @@ public class HandManager : MonoBehaviour
         item = null;
 
         icon.color = new Color(0, 0, 0, 0);
+    }
+
+    public void UpdateHand()
+    {
+        icon.transform.localPosition = Input.mousePosition + offset;
     }
 
 }

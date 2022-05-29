@@ -25,7 +25,7 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (this.item == null)
+        if (this.item == null || count < 1)
             return;
 
         icon.color = Color.gray;
@@ -34,11 +34,12 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnDrag(PointerEventData eventData)
     {
-
+        HandManager.instance.UpdateHand();
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        icon.color = Color.white;
         HandManager.instance.Drop();
     }
 
@@ -50,8 +51,17 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
 
         if (HandManager.instance.item != null)
         {
-            Add(HandManager.instance.item);
+            Equip(HandManager.instance.item);
         }
+    }
+
+    public void Equip(Item item)
+    {
+        this.item = item;
+        count = 1;
+
+        UpdateSlot();
+        PlayerController.instance.StateUpdate();
     }
 
     public override void UpdateSlot()
@@ -60,11 +70,6 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             icon.sprite = item.icon;
             icon.color = Color.white;
-        }
-
-        else
-        {
-
         }
     }
 }

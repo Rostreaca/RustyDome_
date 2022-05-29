@@ -16,6 +16,16 @@ public class PlayerController : MonoBehaviour
     public int def;
     public int money;
 
+    public float playerHp;
+    public float playerPower;
+    public int playerPowerRegen;
+
+    public float moduleHp;
+    public float modulePower;
+    public int modulePowerRegen;
+
+    public List<CustomizeSlot> moduleEquipSlots = new List<CustomizeSlot>();
+
     public MeleeWeapon meleeWeapon;
     public RangeWeapon rangeWeapon;
 
@@ -60,17 +70,21 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
         animator = GetComponentInChildren<Animator>();
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Left_Ani"))
-        {
             animator.SetBool("Flip", true);
-        }
         else
             animator.SetBool("Flip", true);
+
+        for (int i=0; i<5; i++)
+        {
+            moduleEquipSlots.Add(GameObject.Find("ModuleEquipSlot" + i).GetComponent<CustomizeSlot>());
+        }
+
+        StateUpdate();
     }
 
     public void FixedUpdate()
@@ -367,6 +381,40 @@ public class PlayerController : MonoBehaviour
         if (powerNow > powerMax)
         {
             powerNow = powerMax;
+        }
+    }
+
+    public void StateUpdate()
+    {
+        ModuleUpdate();
+
+        hpMax = playerHp + moduleHp;
+        powerMax = playerPower + modulePower;
+        powerRegen = playerPowerRegen + modulePowerRegen;
+
+        if (hpNow > hpMax)
+            hpNow = hpMax;
+
+        if (powerNow > powerMax)
+            powerNow = powerMax;
+    }
+
+    public void ModuleUpdate()
+    {
+        moduleHp = 0;
+        modulePower = 0;
+        modulePowerRegen = 0;
+
+        foreach (CustomizeSlot slot in moduleEquipSlots)
+        {
+            if (slot.item != null)
+            {
+                Module module = slot.item as Module;
+
+                moduleHp += module.hp;
+                modulePower += module.power;
+                modulePowerRegen += module.powerRegen;
+            }
         }
     }
 
