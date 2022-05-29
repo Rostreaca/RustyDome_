@@ -99,7 +99,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031050009897858402}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.7, y: 27.76, z: 0}
+  m_LocalPosition: {x: 9.4, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -167,7 +167,7 @@ MonoBehaviour:
   money: 0
   meleeWeapon: {fileID: 11400000, guid: 0e02c0a8bb5aba844901683f720ce246, type: 2}
   rangeWeapon: {fileID: 11400000, guid: 1c8f42f50efc28c4faaa1a88c3a678ab, type: 2}
-  moveSpeed: 2.5
+  moveSpeed: 3
   dashCoolTime: 1
   dashTimer: 0
   dashTime: 0.4

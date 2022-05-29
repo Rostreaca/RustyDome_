@@ -77,7 +77,7 @@ public class BossTest : MonoBehaviour
     public void Attack1()
     {
         if (HandPos.position != TargetPos.position)
-            HandPos.position = Vector2.MoveTowards(HandPos.position, saveTargetPos, 6f * Time.deltaTime);
+            HandPos.position = Vector2.MoveTowards(HandPos.position, saveTargetPos, 1f * Time.deltaTime);
 
     }
 
