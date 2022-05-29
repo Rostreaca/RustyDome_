@@ -8,6 +8,7 @@ public class CameraManager : MonoBehaviour
     Transform player; //Player position
 
     public Vector2 offset; //Camera offset by player position
+    public float cameraXPosMin, cameraXPosMax;
     public float cameraYPosMin, cameraYPosMax; //Camera position clamp
     public float smoothSpeed;
 
@@ -39,6 +40,6 @@ public class CameraManager : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, newPos, smoothSpeed * Time.deltaTime); //Set camera position smooth
 
-        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, cameraYPosMin, cameraYPosMax), transform.position.z); //make clamp
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, cameraXPosMin, cameraXPosMax), Mathf.Clamp(transform.position.y, cameraYPosMin, cameraYPosMax), transform.position.z); //make clamp
     }
 }
