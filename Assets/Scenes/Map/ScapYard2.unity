@@ -25468,6 +25468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0}
+  cameraXPosMin: 9
+  cameraXPosMax: 32
   cameraYPosMin: -1.75
   cameraYPosMax: 15
   smoothSpeed: 5

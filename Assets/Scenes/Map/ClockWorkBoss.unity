@@ -20551,7 +20551,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0}
-  cameraYPosMin: -1.75
+  cameraXPosMin: 9.5
+  cameraXPosMax: 16.8
+  cameraYPosMin: 4
   cameraYPosMax: 15
   smoothSpeed: 5
 --- !u!81 &1586314389
@@ -25775,12 +25777,12 @@ PrefabInstance:
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.4
+      value: 22.52
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20
+      value: 5.18
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
