@@ -43,12 +43,12 @@ public class WorkBenchText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
+            sayCount = 1;
             WorkBenchController.instance.canopenCustomize = true;
             dialog.transform.position = originPos;
             WorkBenchController.instance.anim.SetBool("isOpen", true);
             player.hpNow = player.hpMax; //체력 회복
             gm.checkPoint = workBenchPos.transform; //체크포인트 저장
-            sayCount = 1;
             
         }
     }

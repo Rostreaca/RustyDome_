@@ -10,15 +10,11 @@ public class NPCController : NPCManager
 
     private void Singleton_Init()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
             instance = this;
     }
     private void Awake()
     {
+        playerPos = GameObject.Find("Player").transform;
         anim = GetComponent<Animator>();
         Singleton_Init();
     }

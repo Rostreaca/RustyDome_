@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class UIText : MonoBehaviour
 {
-
+    public Animator npc_anim;
+    public Text []t1ext;
     private IEnumerator init_Type;
 
     public GameObject dialog;
@@ -15,6 +16,7 @@ public class UIText : MonoBehaviour
     public Text text;
 
     public string npc_Text="'F'";
+
 
     public int sayCount = 0;
     public int textEnd=0;
@@ -26,6 +28,7 @@ public class UIText : MonoBehaviour
 
     void Awake()
     {
+        npc_anim = npc.GetComponent<Animator>();
         originPos = dialog.transform.position;
         init_Type = Typing();
     }
@@ -37,7 +40,7 @@ public class UIText : MonoBehaviour
     void OnDisable()
     {
         sayCount = 0;
-        NPCController.instance.anim.SetBool("isTalking", false);
+        npc_anim.SetBool("isTalking", false);
         dialog.transform.position = originPos;
     }
     // Update is called once per frame
@@ -53,32 +56,27 @@ public class UIText : MonoBehaviour
         if (sayCount == 0)
         {
             npc_Text = "'F'";
-        }
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
+        } 
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)  
         {
-            NPCController.instance.anim.SetTrigger("Talk");
-            NPCController.instance.anim.SetBool("isTalking", true);
-            npc_Text = "저는 이곳의 주민인 Rivad 입니다.";
+            npc_anim.SetTrigger("Talk");
+            npc_anim.SetBool("isTalking", true);
+            npc_Text = t1ext[0].text;
             Type_init();
-            sayCount = 1;
-        }
-        if(Input.GetKey("f")&& sayCount ==1 && sayEnd ==true)
-        {
-            npc_Text = "이것은 테스트용 대화입니다.";
-            Type_init();
-            sayCount = 2;
-        }
-        if(Input.GetKey("f")&& sayCount ==2 && sayEnd == true)
-        {
-            npc_Text = "더 이상 할 대화가 없군요. 잘 가요.";
-            Type_init();
-            sayCount = 3;
-        }
-        if(Input.GetKey("f") && sayCount == 3 && sayEnd == true)
-        {
-            NPCController.instance.anim.SetBool("isTalking",false);
-            dialog.SetActive(false);
-        }
+            sayCount ++;
+        }     
+        if (Input.GetKey("f")&&sayCount>0 && sayCount !=t1ext.Length && sayEnd == true)
+            {
+                npc_Text = t1ext[sayCount].text;
+                Type_init();
+                sayCount ++;
+            }
+            if (Input.GetKey("f") && sayCount == t1ext.Length && sayEnd == true)
+            {
+                npc_anim.SetBool("isTalking", false);
+                dialog.SetActive(false);
+            }
+       
     }
 
     public void TextPosition(Transform transform, GameObject dialog, GameObject npc, float height)//대화창 위치를 캐릭터 머리 위로 조정
