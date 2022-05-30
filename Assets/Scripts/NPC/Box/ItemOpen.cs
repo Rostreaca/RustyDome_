@@ -5,13 +5,13 @@ using UnityEngine;
 public class ItemOpen : MonoBehaviour
 {
     Rigidbody2D rigid;
-    public float x,y;
-    public float v = 7.0f;
-    public float t,g; //속력,시간,중력가속도
+    private float x,y;
+    private float v = 7.0f;
+    private float t,g; //속력,시간,중력가속도
 
-    public float theta;
+    private float theta;
 
-    void Awake()
+    private void Awake()
     {
         if(BoxText.instance !=null)
         {
@@ -19,7 +19,7 @@ public class ItemOpen : MonoBehaviour
         }
         rigid = GetComponent<Rigidbody2D>();
     }
-    void Start()
+    private void Start()
     {
         t = Time.deltaTime;
         g = 9.8f;
@@ -27,7 +27,7 @@ public class ItemOpen : MonoBehaviour
 
     }
 
-    void Parabola()
+    private void Parabola()
     {
         x = v* Mathf.Cos(theta * Mathf.Deg2Rad) *t;
         y = v* Mathf.Sin(theta * Mathf.Deg2Rad) *t-(0.5f*g*t*t);

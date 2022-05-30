@@ -1,23 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    public enum ScreenState { Game, Pause, Inform, Map, Inventory, Customize, GameOver}
+    public PlayerController player;
 
-    //public RectTransform healthBar, powerBar;
-    //public int healthBarMinRight, healthBarMaxRight;
-    //public int powerBarminRight, powerBarmaxRight;
+    public enum ScreenState {Game, Pause, Inform, Map, Inventory, Customize, GameOver}
+    public Image hpbar, powerbar;
+    public Text scrapText;
 
     [Header("Components")]
     public CanvasGroup gameScreen, pauseScreen, mapScreen, inventoryScreen, customizeScreen, gameoverScreen;
     [HideInInspector]
     public ScreenState screenState;
 
-    void SingletonInit()
+    private void Awake()
     {
         if (instance != null)
             Destroy(gameObject);
@@ -25,9 +26,9 @@ public class UIManager : MonoBehaviour
             instance = this;
     }
 
-    private void Awake()
+    private void Start()
     {
-        SingletonInit();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -65,7 +66,7 @@ public class UIManager : MonoBehaviour
         }
 
         if (!GameManager.Instance.isPause)
-            GameScreenUpdate();
+            UpdateGameScreen();
     }
 
     public void ChangeScreen(ScreenState screenState)
@@ -156,21 +157,29 @@ public class UIManager : MonoBehaviour
         return canvasGroup.blocksRaycasts;
     }
 
-    public void GameScreenUpdate()
+    public void UpdateGameScreen()
     {
-        //HealthbarUpdate();
-        //PowerBarUpdate();
+        UpdateHealthBar();
+        UpdatePowerBar();
+        UpdateScrap();
     }
 
-    //public void HealthbarUpdate()
-    //{
-    //    float percent = PlayerController.instance.hpNow / PlayerController.instance.hpMax;
-    //    healthBar.SetRight(healthBarMinRight + (healthBarMaxRight - healthBarMinRight) * percent);
-    //}
+    public void UpdateHealthBar()
+    {
+        float hp = PlayerController.instance.hpNow;
+        float maxhp = PlayerController.instance.hpMax;
+        hpbar.fillAmount = Mathf.Lerp(hpbar.fillAmount, hp / maxhp, Time.deltaTime * 15f);
+    }
 
-    //public void PowerBarUpdate()
-    //{
-    //    float percent = PlayerController.instance.powerNow / PlayerController.instance.powerMax;
-    //    powerBar.SetRight(powerBarminRight + (powerBarmaxRight - powerBarminRight) * percent);
-    //}
+    public void UpdatePowerBar()
+    {
+        float curpower = PlayerController.instance.powerNow;
+        float maxpower = PlayerController.instance.powerMax;
+        powerbar.fillAmount = Mathf.Lerp(powerbar.fillAmount, curpower / maxpower, Time.deltaTime * 15f);
+    }
+
+    public void UpdateScrap()
+    {
+        scrapText.text = player.scrap.ToString();
+    }
 }

@@ -11,10 +11,11 @@ public class PlayerController : MonoBehaviour
     public float powerMax;
     public float powerNow;
     public int powerRegen;
+    public int def;
+
     public int ammoMax;
     public int ammoNow;
-    public int def;
-    public int money;
+    public int scrap;
 
     public float playerHp;
     public float playerPower;
@@ -53,8 +54,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool canAirJump;
 
-
-    void SIngleton_Init()
+    private void SIngleton_Init()
     {
         if (instance != null)
         {
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         }
         instance = this;
     }
-    void Awake()
+    private void Awake()
     {
         SIngleton_Init();
     }
@@ -416,6 +416,11 @@ public class PlayerController : MonoBehaviour
                 modulePowerRegen += module.powerRegen;
             }
         }
+    }
+
+    public void GetScrap(int value)
+    {
+        scrap += value;
     }
 
 }

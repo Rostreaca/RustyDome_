@@ -16,10 +16,12 @@ public class ItemMagnetic : MonoBehaviour
     {
         instance = this;
     }
+
     private void OnDisable()
     {
         isGrounded = false;
     }
+
     private void Awake()
     {
         Singleton_Init();
