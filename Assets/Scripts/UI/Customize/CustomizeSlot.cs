@@ -62,6 +62,7 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
 
         UpdateSlot();
         PlayerController.instance.StateUpdate();
+        Customize.instance.UpdateOccupancy();
     }
 
     public override void UpdateSlot()
@@ -70,6 +71,11 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             icon.sprite = item.icon;
             icon.color = Color.white;
+        }
+
+        else
+        {
+            icon.color = new Color(0, 0, 0, 0);
         }
     }
 }

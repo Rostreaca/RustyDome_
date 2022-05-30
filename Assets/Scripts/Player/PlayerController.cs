@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttack && !isHit && powerNow >  30)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttack && !isHit && isGround && powerNow >  30)
         {
             int dir = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
             if (dashTimer == 0 && dir != 0)

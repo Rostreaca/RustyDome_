@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/Module", order = 1)]
 public class Module : Item
 {
-    public int occupancyPoint;
+    public float occupancyPoint;
 
     public int hp;
     public int power;

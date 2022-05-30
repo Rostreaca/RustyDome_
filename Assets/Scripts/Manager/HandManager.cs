@@ -31,6 +31,8 @@ public class HandManager : MonoBehaviour
     void Start()
     {
         icon = GetComponent<Image>();
+
+        Drop();
     }
 
     public void TakeItem(Item item)

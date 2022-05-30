@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
         SingletonInit();
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {

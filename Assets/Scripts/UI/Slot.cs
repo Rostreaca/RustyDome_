@@ -18,6 +18,8 @@ public abstract class Slot : MonoBehaviour, IPointerClickHandler
 
         if (item != null)
             slotItemName = item.itemName;
+
+        UpdateSlot();
     }
 
     public abstract void OnPointerClick(PointerEventData eventData);
