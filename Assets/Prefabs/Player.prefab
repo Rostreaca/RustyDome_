@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 328975872937787814}
   m_Layer: 3
   m_Name: MeleeAttackTrigger (1)
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,6 +165,13 @@ MonoBehaviour:
   ammoNow: 1
   def: 0
   money: 0
+  playerHp: 0
+  playerPower: 0
+  playerPowerRegen: 0
+  moduleHp: 0
+  modulePower: 0
+  modulePowerRegen: 0
+  moduleEquipSlots: []
   meleeWeapon: {fileID: 11400000, guid: 0e02c0a8bb5aba844901683f720ce246, type: 2}
   rangeWeapon: {fileID: 11400000, guid: 1c8f42f50efc28c4faaa1a88c3a678ab, type: 2}
   moveSpeed: 3
@@ -195,7 +202,7 @@ GameObject:
   - component: {fileID: 3224372812890901466}
   m_Layer: 3
   m_Name: BossRoomTrigger
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,7 +251,7 @@ GameObject:
   - component: {fileID: 8984363902686219709}
   m_Layer: 3
   m_Name: MeleeAttackTrigger
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

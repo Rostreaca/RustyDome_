@@ -27104,12 +27104,12 @@ PrefabInstance:
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.53
+      value: 3.48
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.52
+      value: 6.17
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
@@ -28540,6 +28540,7 @@ GameObject:
   - component: {fileID: 2144576055}
   - component: {fileID: 2144576056}
   - component: {fileID: 2144576057}
+  - component: {fileID: 2144576058}
   m_Layer: 2
   m_Name: Managers
   m_TagString: Untagged
@@ -28598,6 +28599,19 @@ MonoBehaviour:
   customizeScreen: {fileID: 1631756234}
   gameoverScreen: {fileID: 1415315294}
   screenState: 0
+--- !u!114 &2144576058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144576054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522309d6a350f164c94ee93c0c53baf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isallkilled: 0
 --- !u!1 &2145594237
 GameObject:
   m_ObjectHideFlags: 0
