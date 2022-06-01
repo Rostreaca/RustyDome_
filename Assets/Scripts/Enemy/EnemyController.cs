@@ -30,7 +30,12 @@ public class EnemyController : MonoBehaviour
     public float attackRadius;
     public float rangeRadius;
     public Transform followTarget;
+
     public GameObject Coin;
+
+    public GameObject GoldCoin;
+    public GameObject SilverCoin;
+
     public GameObject Projectile;
     public GameObject Actor;
 
@@ -79,17 +84,17 @@ public class EnemyController : MonoBehaviour
         {
             if (!canMove)
                 return;
-            if(isdead != true)
+            if (isdead != true)
             {
                 Move();
             }
-                
+
         }
     }
 
     private void Update()
     {
-        if(!isdead)
+        if (!isdead)
         {
             if (GameManager.Instance.isGame)
             {
@@ -115,7 +120,7 @@ public class EnemyController : MonoBehaviour
 
         //if (!isAttack)
         //    isMove = true;
-        
+
 
         if (isPatrolling && !isFollowing && !isReturning)
         {
@@ -144,7 +149,7 @@ public class EnemyController : MonoBehaviour
 
         float x = patrollRadius * patrollSin + starterPos.x;
 
-        transform.position = Vector2.MoveTowards(transform.position,  new Vector2(x, transform.position.y), speed * Time.deltaTime); //radius¿¡ ¹þ¾î³µ´Ù°¡ °©ÀÚ±â ÁøÀÔÇÏ¸é Á¸³ª »¡¶óÁü+ ¹ö±×³²
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(x, transform.position.y), speed * Time.deltaTime); //radius¿¡ ¹þ¾î³µ´Ù°¡ °©ÀÚ±â ÁøÀÔÇÏ¸é Á¸³ª »¡¶óÁü+ ¹ö±×³²
     }
     public void Cliffcheck()
     {
@@ -169,13 +174,13 @@ public class EnemyController : MonoBehaviour
     }
     public void Follow(Transform target)
     {
-            followTarget = target;
+        followTarget = target;
 
-            if (!isFollowing && !isReturning)
-            {
-                isFollowing = true;
-                StartCoroutine(IFollow());
-            }
+        if (!isFollowing && !isReturning)
+        {
+            isFollowing = true;
+            StartCoroutine(IFollow());
+        }
 
     }
     public void Condition()
@@ -188,7 +193,7 @@ public class EnemyController : MonoBehaviour
         {
             isPatrolling = false;
         }
-        else if  (!isFollowing && animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Hit_Right_Animation"))
+        else if (!isFollowing && animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Hit_Right_Animation"))
         {
             isPatrolling = false;
         }
@@ -286,7 +291,7 @@ public class EnemyController : MonoBehaviour
         {
             meleeSkillCoolTimeNow += Time.deltaTime;
         }
-        if(meleeSkillCoolTimeNow >= meleeSkillCoolTimeMax || isMove == true )
+        if (meleeSkillCoolTimeNow >= meleeSkillCoolTimeMax || isMove == true)
         {
             meleeSkillCoolTimeNow = 0f;
             cooltimecheck = true;
@@ -307,7 +312,7 @@ public class EnemyController : MonoBehaviour
     public void GetDamage(int damage)
     {
         isMove = false;
-        if (isdead!=true)
+        if (isdead != true)
         {
             hpNow -= damage;
 
@@ -331,9 +336,19 @@ public class EnemyController : MonoBehaviour
 
         col.isTrigger = true;
         isdead = true;
+
         Instantiate(Coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
 
-        
+        int silver = Random.Range(0, 3);
+        int gold = Random.Range(0, 2);
+        for (int j = 1; j <= silver; j++)
+        {
+            Instantiate(SilverCoin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
+        }
+        for (int j = 1; j <= gold; j++)
+        {
+            Instantiate(GoldCoin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
+        }
     }
 
     public void Animation()
@@ -346,11 +361,11 @@ public class EnemyController : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f);
 
-        if(hit.collider !=null&&hit.collider.tag ==("NPC")|| hit.collider != null && hit.collider.tag == ("Projectile"))
+        if (hit.collider != null && hit.collider.tag == ("NPC") || hit.collider != null && hit.collider.tag == ("Projectile"))
         {
             return;
         }
-        bool grounded = hit.collider != null && hit.collider.CompareTag("Ground") || hit.collider != null && hit.collider.CompareTag("Platform") || hit.collider != null && hit.collider.CompareTag("Ladder");
+        bool grounded = hit.collider != null && hit.collider.CompareTag("Ground") || hit.collider != null && hit.collider.CompareTag("Platform") || hit.collider != null && hit.collider.CompareTag("Ladder") || hit.collider !=null && hit.collider.CompareTag("Bound");
         isGround = grounded;
 
         if (!isGround)
@@ -363,7 +378,7 @@ public class EnemyController : MonoBehaviour
 
         while (isFollowing)
         {
-            if(isdead)
+            if (isdead)
             {
                 break;
             }
@@ -375,76 +390,76 @@ public class EnemyController : MonoBehaviour
             }
             isPatrolling = false;
             if (Vector2.Distance(transform.position, followTarget.position) > returnRadius && timer <= 0) //if target leave
-                {
-                    isFollowing = false;
-                    followTarget = null;
+            {
+                isFollowing = false;
+                followTarget = null;
 
-                    isReturning = true;
+                isReturning = true;
 
-                    patrollSin = 0;
+                patrollSin = 0;
 
-                    StartCoroutine(IReturnToStartPos()); //start returning
-                }
+                StartCoroutine(IReturnToStartPos()); //start returning
+            }
             else if (!isGround) //if the target jumps over the gap  
-                {
-                    isFollowing = false;
-                    followTarget = null;
+            {
+                isFollowing = false;
+                followTarget = null;
 
-                    isReturning = true;
+                isReturning = true;
 
-                    patrollSin = 0;
+                patrollSin = 0;
 
-                    StartCoroutine(IReturnToStartPos());
-                }
+                StartCoroutine(IReturnToStartPos());
+            }
             else
             {
                 if (Vector2.Distance(transform.position, followTarget.position) > rangeRadius && !isAttack && !isRangeAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
-                    {
-                        isMove = true;
-                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
+                {
+                    isMove = true;
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
 
-                    }
-                    else if (isRangeAttack == false && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
-                    {
-                        RangeAttack(); //attack
-                    }
-                    else if (isAttack == false && Vector2.Distance(transform.position, followTarget.position) < attackRadius)
-                    {
-                        Attack(); //attack
-                    }
-
-                    if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim) && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
-                    {
-                        isMove = true;
-                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
-                    }
-
-
-                    timer -= Time.deltaTime;
                 }
-                yield return null;
+                else if (isRangeAttack == false && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
+                {
+                    RangeAttack(); //attack
+                }
+                else if (isAttack == false && Vector2.Distance(transform.position, followTarget.position) < attackRadius)
+                {
+                    Attack(); //attack
+                }
+
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim) && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
+                {
+                    isMove = true;
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
+                }
+
+
+                timer -= Time.deltaTime;
+            }
+            yield return null;
 
         }
-            yield return null;
-        
+        yield return null;
+
     }
 
     IEnumerator IReturnToStartPos()
     {
-        if(isdead != true)
+        if (isdead != true)
         {
-  
-        while (transform.position.x != starterPos.x)
-        {
-            isMove = true;
 
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(starterPos.x, transform.position.y), speed * Time.deltaTime); //move to start pos
+            while (transform.position.x != starterPos.x)
+            {
+                isMove = true;
 
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(starterPos.x, transform.position.y), speed * Time.deltaTime); //move to start pos
+
+                yield return null;
+            }
+
+            isReturning = false;
             yield return null;
-        }
-
-        isReturning = false;
-        yield return null;
         }
     }
 

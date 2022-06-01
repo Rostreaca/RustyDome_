@@ -65,7 +65,7 @@ MonoBehaviour:
   playerPos: {fileID: 5017879092320931488, guid: 19542202eb5128c408ac484f15fa4196,
     type: 3}
   isGrounded: 0
-  followRange: 0.7
+  followRange: 1.5
 --- !u!1 &6858372336167351654
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,12 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f7dd29b4e272149978482200cdb2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  v: 7
-  t: 0
-  g: 9.8
-  theta: 90
 --- !u!114 &7494468821248782328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,3 +218,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iteminfo: {fileID: 7973177237843733996}
+  scrapValue: 5

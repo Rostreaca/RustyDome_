@@ -189,11 +189,11 @@ public class BossTest : MonoBehaviour
         {
             if (transform.localScale == new Vector3(-1, 1, 1))//역방향(오른쪽)을 바라보고 있을때
             {
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(TargetPos.position.x - 1.0f, transform.position.y), 1.2f * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(TargetPos.position.x - 2.5f, transform.position.y), 1.2f * Time.deltaTime);
             }
             else if(transform.localScale == new Vector3(1, 1, 1))//정방향(왼쪽)을 바라보고 있을때
             {
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(TargetPos.position.x + 1.0f, transform.position.y), 1.2f * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(TargetPos.position.x + 2.5f, transform.position.y), 1.2f * Time.deltaTime);
             }
         }
     }

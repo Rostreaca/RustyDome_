@@ -10,7 +10,7 @@ public class ItemMagnetic : MonoBehaviour
     public Transform playerPos;
 
     public bool isGrounded = false;
-    public float followRange = 0.3f;
+    public float followRange = 1.5f;
 
     void Singleton_Init()
     {
@@ -38,7 +38,7 @@ public class ItemMagnetic : MonoBehaviour
         {
             if (itemPos != null)
             {
-                itemPos.position = Vector2.MoveTowards(itemPos.transform.position, playerPos.transform.position, 2 / 2.0f * Time.deltaTime);
+                itemPos.position = Vector2.MoveTowards(itemPos.transform.position, playerPos.transform.position, 3 / 2.0f * Time.deltaTime);
             }
         }    
     }
