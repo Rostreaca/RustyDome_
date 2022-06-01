@@ -40827,6 +40827,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
+      propertyPath: rangeWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 1f47b1267e39d904f81fdee8d0298e18,
+        type: 2}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_RootOrder
@@ -41341,6 +41347,18 @@ CanvasGroup:
     type: 3}
   m_PrefabInstance: {fileID: 670349909}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &670477443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 983134390, guid: effd1684cbca804499f736f484c32b45,
+    type: 3}
+  m_PrefabInstance: {fileID: 670349909}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &738642762
 GameObject:
   m_ObjectHideFlags: 0
@@ -48635,8 +48653,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1276939267}
-  hpbar: {fileID: 596010453}
-  powerbar: {fileID: 1117870591}
+  hpBar: {fileID: 596010453}
+  powerBar: {fileID: 1117870591}
+  ammoBar: {fileID: 670477443}
   scrapText: {fileID: 1633407276}
   gameScreen: {fileID: 670349913}
   pauseScreen: {fileID: 851430360}
