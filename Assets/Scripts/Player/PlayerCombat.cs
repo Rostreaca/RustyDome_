@@ -12,7 +12,7 @@ public class PlayerCombat : Combat
     private PlayerController playerController;
 
     private bool canCombo;
-    private bool comboReserve;
+    public bool comboReserve;
 
     public override void Start()
     {
