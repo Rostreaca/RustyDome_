@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource bgm;
     public AudioClip bgmlist;
     public static SoundManager instance;
+    public float volume;
 
     public void singleton_Init()
     {
@@ -31,7 +32,7 @@ public class SoundManager : MonoBehaviour
         GameObject go = new GameObject(sfxName + "Sound");
         AudioSource audiosource = go.AddComponent<AudioSource>();
         audiosource.clip = clip;
-        audiosource.volume = 0.1f;
+        audiosource.volume = volume;
         audiosource.Play();
 
         Destroy(go, clip.length);

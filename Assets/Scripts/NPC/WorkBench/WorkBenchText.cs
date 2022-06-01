@@ -43,6 +43,7 @@ public class WorkBenchText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
+            SoundManager.instance.SFXPlay("Workbench_Openthird",sfxclip[0]);
             sayCount = 1;
             WorkBenchController.instance.canopenCustomize = true;
             dialog.transform.position = originPos;
