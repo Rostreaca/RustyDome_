@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bound : MonoBehaviour
 {
-    public Entrance curEntrance;
     BoxCollider2D col;
 
     private void Start()
@@ -17,11 +16,6 @@ public class Bound : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             CameraManager.instance.SetBound(col);
-
-            if (curEntrance != null)
-            {
-                curEntrance.Entree();
-            }
         }
     }
 }
