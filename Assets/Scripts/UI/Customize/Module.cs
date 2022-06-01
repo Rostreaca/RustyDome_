@@ -10,4 +10,6 @@ public class Module : Item
     public int hp;
     public int power;
     public int powerRegen;
+    public int MeleeDmg;
+    public float Speed;
 }
