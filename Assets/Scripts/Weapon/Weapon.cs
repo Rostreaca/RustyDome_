@@ -4,7 +4,10 @@ using UnityEngine;
 
 public abstract class Weapon : Item
 {
+    public string animName;
     public int dmg;
+    public int powerCon;
+
     public abstract void Use();
 
 }

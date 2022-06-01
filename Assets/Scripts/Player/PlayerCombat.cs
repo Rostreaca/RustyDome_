@@ -6,6 +6,7 @@ public class PlayerCombat : Combat
 {
     GameObject Actor;
     public GameObject projectile;
+    public Transform projectileTransform;
     private Rigidbody2D rigid;
     private Animator animator;
     private PlayerController playerController;
@@ -20,6 +21,7 @@ public class PlayerCombat : Combat
         rigid = GetComponentInParent<Rigidbody2D>();
         playerController = GetComponentInParent<PlayerController>();
         animator = GetComponent<Animator>();
+        projectileTransform = transform.GetChild(2).transform;
     }
 
     public void OnMeleeAttackBegin(float timeToCombo)
@@ -45,17 +47,12 @@ public class PlayerCombat : Combat
         playerController.isAttack = false;
     }
 
-    public void CreateLeftProjectile()
+    public void CreateProjectile()
     {
-        Instantiate(projectile, new Vector2(transform.position.x - 0.75f, transform.position.y-0.28f), Quaternion.identity, Actor.transform);
-        PlayerProjectile.instance.rigid.velocity = new Vector2(-PlayerProjectile.instance.speed, 0);
+        Debug.Log(projectile);
+        Instantiate(projectile, projectileTransform.position, Quaternion.identity, Actor.transform);
     }
 
-    public void CreateRightProjectile()
-    {
-        Instantiate(projectile, new Vector2(transform.position.x+0.85f, transform.position.y-0.28f), Quaternion.identity, Actor.transform);
-        PlayerProjectile.instance.rigid.velocity = new Vector2(PlayerProjectile.instance.speed, 0);
-    }
     public void OnRangeAttackEnd()
     {
         animator.SetBool("RangeAttack", false);

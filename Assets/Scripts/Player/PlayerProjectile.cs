@@ -5,27 +5,21 @@ using UnityEngine;
 public class PlayerProjectile : MonoBehaviour
 {
     //걍 leftProjectile 이 함수의 rigid값을 -로 하고 반대로
-
-    public static PlayerProjectile instance;
     public Rigidbody2D rigid;
 
     public Collider2D colliderDetected;
-    public int projectiledmg;
+    public int dmg;
     public float speed = 3f;
 
-    void singleton()
-    {
-        instance = this;
-    }
     // Start is called before the first frame update
     private void Awake()
     {
-        projectiledmg = PlayerController.instance.rangeWeapon.dmg;
+        dmg = PlayerController.instance.rangeWeapon.dmg;
         rigid = GetComponent<Rigidbody2D>();
-        singleton();
     }
     void Start()
     {
+        rigid.velocity = transform.position.x > PlayerController.instance.transform.position.x ? new Vector2(speed, 0) : new Vector2(-speed, 0);
         Destroy(gameObject, 2.5f);
     }
 
@@ -39,9 +33,7 @@ public class PlayerProjectile : MonoBehaviour
         {
             EnemyController enemy = colliderDetected.GetComponent<EnemyController>();
 
-            int damage = projectiledmg;
-
-            ProjectileAttack(enemy, damage);
+            ProjectileAttack(enemy);
 
             Destroy(gameObject);
         }
@@ -50,9 +42,7 @@ public class PlayerProjectile : MonoBehaviour
         {
             BossGetDamage boss = colliderDetected.GetComponent<BossGetDamage>();
 
-            int damage = projectiledmg;
-
-            ProjectileAttacktoBoss(boss, damage);
+            ProjectileAttacktoBoss(boss);
 
             Destroy(gameObject);
         }
@@ -63,13 +53,13 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
-    public void ProjectileAttacktoBoss(BossGetDamage boss, int damage)
+    public void ProjectileAttacktoBoss(BossGetDamage boss)
     {
-        boss.GetDamage(damage);
+        boss.GetDamage(dmg);
     }
-    public void ProjectileAttack(EnemyController enemy, int damage)
+    public void ProjectileAttack(EnemyController enemy)
     {
-        enemy.GetDamage(damage);
+        enemy.GetDamage(dmg);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
