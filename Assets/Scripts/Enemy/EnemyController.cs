@@ -350,7 +350,7 @@ public class EnemyController : MonoBehaviour
         {
             return;
         }
-        bool grounded = hit.collider != null && hit.collider.CompareTag("Ground") || hit.collider != null && hit.collider.CompareTag("Platform") || hit.collider != null && hit.collider.CompareTag("Ladder");
+        bool grounded = hit.collider != null && hit.collider.CompareTag("Ground") || hit.collider != null && hit.collider.CompareTag("Platform") || hit.collider != null && hit.collider.CompareTag("Ladder") || hit.collider !=null && hit.collider.CompareTag("Bound");
         isGround = grounded;
 
         if (!isGround)
