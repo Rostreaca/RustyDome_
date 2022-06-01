@@ -23,10 +23,6 @@ public class PlayerProjectile : MonoBehaviour
         Destroy(gameObject, 2.5f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
     public void HitDetected()
     {
         if (colliderDetected.gameObject.CompareTag("Enemy"))

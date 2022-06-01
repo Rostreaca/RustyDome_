@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Bound : MonoBehaviour
 {
+    public Entrance curEntrance;
     BoxCollider2D col;
-    Transform target;
 
     private void Start()
     {
         col = GetComponent<BoxCollider2D>();   
-        target = transform.GetChild(0).GetComponent<Transform>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,8 +17,11 @@ public class Bound : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             CameraManager.instance.SetBound(col);
-            CameraManager.instance.transform.position = new Vector3(target.position.x, target.position.y, CameraManager.instance.transform.position.z);
-            PlayerController.instance.transform.position = target.position;
+
+            if (curEntrance != null)
+            {
+                curEntrance.Entree();
+            }
         }
     }
 }
