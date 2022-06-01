@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public PlayerController player;
 
     public enum ScreenState {Game, Pause, Inform, Map, Inventory, Customize, GameOver}
-    public Image hpbar, powerbar;
+    public Image hpBar, powerBar, ammoBar;
     public Text scrapText;
 
     [Header("Components")]
@@ -29,6 +29,10 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+        hpBar = GameObject.Find("Healthbar_Health").GetComponent<Image>();
+        powerBar = GameObject.Find("Powerbar_Power").GetComponent<Image>();
+        ammoBar = GameObject.Find("Ammobar_Ammo").GetComponent<Image>();
     }
 
     private void Update()
@@ -161,21 +165,30 @@ public class UIManager : MonoBehaviour
     {
         UpdateHealthBar();
         UpdatePowerBar();
+        UpdateAmmoBar();
+
         UpdateScrap();
     }
 
     public void UpdateHealthBar()
     {
         float hp = PlayerController.instance.hpNow;
-        float maxhp = PlayerController.instance.hpMax;
-        hpbar.fillAmount = Mathf.Lerp(hpbar.fillAmount, hp / maxhp, Time.deltaTime * 15f);
+        float maxHp = PlayerController.instance.hpMax;
+        hpBar.fillAmount = Mathf.Lerp(hpBar.fillAmount, hp / maxHp, Time.deltaTime * 15f);
     }
 
     public void UpdatePowerBar()
     {
-        float curpower = PlayerController.instance.powerNow;
-        float maxpower = PlayerController.instance.powerMax;
-        powerbar.fillAmount = Mathf.Lerp(powerbar.fillAmount, curpower / maxpower, Time.deltaTime * 15f);
+        float curPower = PlayerController.instance.powerNow;
+        float maxPower = PlayerController.instance.powerMax;
+        powerBar.fillAmount = Mathf.Lerp(powerBar.fillAmount, curPower / maxPower, Time.deltaTime * 15f);
+    }
+
+    public void UpdateAmmoBar()
+    {
+        float curAmmo = PlayerController.instance.ammoNow;
+        float maxAmmo = PlayerController.instance.ammoMax;
+        ammoBar.fillAmount = ((curAmmo / maxAmmo) * 10 * 0.09f) + 0.05f;
     }
 
     public void UpdateScrap()

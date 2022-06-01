@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class MeleeWeapon : Weapon
 {
-    public string animName;
-
-    public int powerCon;
     public int skillDmg;
     public int skillPowerCon;
     public int skillCoolTime;

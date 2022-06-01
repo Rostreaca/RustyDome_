@@ -298,17 +298,16 @@ public class PlayerController : MonoBehaviour
                         {
                             powerNow -= meleeWeapon.powerCon;
                             animator.SetBool(meleeWeapon.animName, isAttack);
-                            powerNow -= 15;
                         }
                     }
 
                     if (Input.GetMouseButtonDown(1))
                     {
-                        if (powerNow > rangeWeapon.powerCon)
+                        if (powerNow > rangeWeapon.powerCon && ammoNow > rangeWeapon.ammoCon)
                         {
                             powerNow -= rangeWeapon.powerCon;
-                            animator.SetBool("RangeAttack", isAttack);
-                            powerNow -= 15;
+                            ammoNow -= rangeWeapon.ammoCon;
+                            animator.SetBool(rangeWeapon.animName, isAttack);
                         }
 
                     }
