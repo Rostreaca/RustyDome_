@@ -82,7 +82,7 @@ public class MerchantText : UIText
         {
             npc_Text = "(±¸¸Å)'F'";
         }
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.coinCount >= 100)
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && PlayerController.instance.scrap >= 100)
         {
             npc_anim.SetTrigger("Talk");
             npc_anim.SetBool("isTalking", true);
@@ -91,13 +91,13 @@ public class MerchantText : UIText
 
             TradeFInish = true;
             Cantrade = false;
-            GameManager.Instance.coinCount -= 100;
+            PlayerController.instance.scrap -= 100;
 
             sayCount++;
 
         }
 
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.coinCount < 100)
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && PlayerController.instance.scrap < 100)
         {
             npc_anim.SetTrigger("Talk");
             npc_anim.SetBool("isTalking", true);

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIText : MonoBehaviour
 {
-    public AudioClip sfxclip;
+    public AudioClip[] sfxclip;
 
     public Animator npc_anim;
     public Text []t1ext;
@@ -61,8 +61,7 @@ public class UIText : MonoBehaviour
         } 
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)  
         {
-            SoundManager.instance.SFXPlay("falconpunch",sfxclip);
-            npc_anim.SetTrigger("Talk");
+            //SoundManager.instance.SFXPlay("falconpunch",sfxclip[0]);
             npc_anim.SetBool("isTalking", true);
             npc_Text = t1ext[0].text;
             Type_init();
