@@ -339,15 +339,22 @@ public class EnemyController : MonoBehaviour
 
         Instantiate(Coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
 
-        int silver = Random.Range(0, 3);
-        int gold = Random.Range(0, 2);
+        int silver = Random.Range(0, 10);
+        Debug.Log("silver"+silver);
+        int gold = Random.Range(0, 10);
+        Debug.Log("gold"+gold);
+        
         for (int j = 1; j <= silver; j++)
         {
-            Instantiate(SilverCoin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
+            float dropPos = Random.Range(-0.5f, 0.5f);
+            
+            Instantiate(SilverCoin, new Vector2(transform.position.x + dropPos, transform.position.y + 5), Quaternion.identity, Actor.transform);
         }
         for (int j = 1; j <= gold; j++)
         {
-            Instantiate(GoldCoin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
+            float dropPos = Random.Range(0, 0);
+
+            Instantiate(GoldCoin, new Vector2(transform.position.x + dropPos, transform.position.y + 5), Quaternion.identity, Actor.transform);
         }
     }
 
