@@ -12,13 +12,39 @@ public class QuestNPCText : UIText
     {
         CheckSayEnd();
         TextPosition(transform, dialog, npc, 1.5f);
-        if(questStart == false)
+
+        if (questStart == false && QuestManager.instance.isallkilled == false)
         {
             Say();
         }
-        else
+        else if (questStart == true && questClear == false || QuestManager.instance.isallkilled == true && questClear == false)
         {
             Quest();
+        }
+        else if(questClear == true)
+        {
+            Thanks();
+        }
+    }
+
+    public void Thanks()
+    {
+        if (sayCount == 0)
+        {
+            npc_Text = "'F'";
+        }
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
+        {
+            npc_anim.SetTrigger("Talk");
+            npc_anim.SetBool("isTalking", true);
+            npc_Text = "도와줘서 고맙네..";
+            Type_init();
+            sayCount++;
+        }
+        if (Input.GetKey("f") && sayCount == 1 && sayEnd == true)
+        {
+            npc_anim.SetBool("isTalking", false);
+            dialog.SetActive(false);
         }
     }
     new public void Say()
@@ -62,6 +88,7 @@ public class QuestNPCText : UIText
             npc_anim.SetBool("isTalking", true);
             npc_Text = "고맙네.. 이건 보상일세..";
             Type_init();
+            questClear = true;
             PlayerController.instance.scrap += 1500;//이부분에 보상아이템 추가, 바로 템칸으로 추가? or 아이템드롭처럼 바닥에 떨어지게함
 
             sayCount++;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7795516198423240879}
   m_Layer: 0
   m_Name: QuestCheckScene
-  m_TagString: Untagged
+  m_TagString: Quest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isquestZone: 0
+  Enemycount: 0
   isallkilled: 0
 --- !u!61 &7795516198423240879
 BoxCollider2D:

@@ -96,7 +96,7 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if(QuestManager.instance.isquestZone && !wascounted && monsterisquestzone)
+        if(!wascounted && monsterisquestzone)
         {
             QuestManager.instance.Enemycount++;
             wascounted = true;
