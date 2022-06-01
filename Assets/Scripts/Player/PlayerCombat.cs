@@ -12,6 +12,7 @@ public class PlayerCombat : Combat
     private PlayerController playerController;
 
     private bool canCombo;
+    private bool comboReserve;
 
     public override void Start()
     {
@@ -24,10 +25,13 @@ public class PlayerCombat : Combat
         projectileTransform = transform.GetChild(2).transform;
     }
 
-    public void OnMeleeAttackBegin(float timeToCombo)
+    public void ComboTrigger()
     {
-        StartCoroutine(ICombo(timeToCombo)); //Start combo system 
+        StartCoroutine(ICombo()); //Start combo system 
+    }
 
+    public void OnMeleeAttackBegin()
+    {
         //Rotation
         if (Input.GetAxis("Horizontal") > 0)
             animator.SetBool("Flip", false);
@@ -37,19 +41,27 @@ public class PlayerCombat : Combat
 
     public void OnMeleeAttackEnd()
     {
-        StopCoroutine(ICombo(0)); //Stop combo 
+        if (comboReserve)
+        {
+            animator.SetTrigger("AttackCombo");
+            comboReserve = false;
+        }
 
-        //Animator update
-        animator.ResetTrigger("AttackCombo");
-        animator.SetBool(playerController.meleeWeapon.animName, false);
+        else
+        {
+            StopCoroutine(ICombo()); //Stop combo 
 
-        canCombo = false; //block combo
-        playerController.isAttack = false;
+            //Animator update
+            animator.ResetTrigger("AttackCombo");
+            animator.SetBool(playerController.meleeWeapon.animName, false);
+
+            canCombo = false; //block combo
+            playerController.isAttack = false;
+        }
     }
 
     public void CreateProjectile()
     {
-        Debug.Log(projectile);
         Instantiate(projectile, projectileTransform.position, Quaternion.identity, Actor.transform);
     }
 
@@ -60,10 +72,8 @@ public class PlayerCombat : Combat
         playerController.isAttack = false;
     }
 
-    IEnumerator ICombo(float comboTimer)
+    IEnumerator ICombo()
     {
-        canCombo = false;
-        yield return new WaitForSeconds(comboTimer);
         canCombo = true;
 
         while (canCombo)
@@ -71,8 +81,8 @@ public class PlayerCombat : Combat
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 canCombo = false;
-                animator.SetTrigger("AttackCombo");
-                StopCoroutine(ICombo(0));
+                comboReserve = true;
+                StopCoroutine(ICombo());
             }
             yield return null;
         }
