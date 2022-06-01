@@ -39,6 +39,7 @@ public class EnemyController : MonoBehaviour
     public GameObject Projectile;
     public GameObject Actor;
 
+    public bool monsterisquestzone;
     public bool isAttack;
     public bool isRangeAttack;
     public bool cooltimecheck;
@@ -53,6 +54,7 @@ public class EnemyController : MonoBehaviour
     private float returnTimer = 3;
     private bool canMove;
     private bool isMove;
+    private bool wascounted;
     public bool isdead;
     public bool isGround;
     public bool isPatrolling;
@@ -94,6 +96,11 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        if(QuestManager.instance.isquestZone && !wascounted && monsterisquestzone)
+        {
+            QuestManager.instance.Enemycount++;
+            wascounted = true;
+        }
         if (!isdead)
         {
             if (GameManager.Instance.isGame)
@@ -328,6 +335,10 @@ public class EnemyController : MonoBehaviour
 
     public void Death()
     {
+        if(QuestManager.instance.isquestZone&& monsterisquestzone)
+        {
+            QuestManager.instance.Enemycount--;
+        }
         transform.position = transform.position;
         Rigidbody2D rigid;
         rigid = GetComponent<Rigidbody2D>();
@@ -348,13 +359,13 @@ public class EnemyController : MonoBehaviour
         {
             float dropPos = Random.Range(-0.5f, 0.5f);
             
-            Instantiate(SilverCoin, new Vector2(transform.position.x + dropPos, transform.position.y + 5), Quaternion.identity, Actor.transform);
+            Instantiate(SilverCoin, new Vector2(transform.position.x + dropPos, transform.position.y + 0.5f), Quaternion.identity, Actor.transform);
         }
         for (int j = 1; j <= gold; j++)
         {
             float dropPos = Random.Range(0, 0);
 
-            Instantiate(GoldCoin, new Vector2(transform.position.x + dropPos, transform.position.y + 5), Quaternion.identity, Actor.transform);
+            Instantiate(GoldCoin, new Vector2(transform.position.x + dropPos, transform.position.y + 0.5f), Quaternion.identity, Actor.transform);
         }
     }
 
@@ -368,11 +379,11 @@ public class EnemyController : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f);
 
-        if (hit.collider != null && hit.collider.tag == ("NPC") || hit.collider != null && hit.collider.tag == ("Projectile"))
+        if (hit.collider != null && hit.collider.tag == ("NPC") || hit.collider != null && hit.collider.tag == ("Projectile") )
         {
             return;
         }
-        bool grounded = hit.collider != null && hit.collider.CompareTag("Ground") || hit.collider != null && hit.collider.CompareTag("Platform") || hit.collider != null && hit.collider.CompareTag("Ladder") || hit.collider !=null && hit.collider.CompareTag("Bound");
+        bool grounded = hit.collider != null && hit.collider.CompareTag("Ground") || hit.collider != null && hit.collider.CompareTag("Platform") || hit.collider != null && hit.collider.CompareTag("Ladder") || hit.collider !=null && hit.collider.CompareTag("Bound") || hit.collider != null && hit.collider.tag == ("Quest");
         isGround = grounded;
 
         if (!isGround)
@@ -470,6 +481,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+            if(collision.gameObject.tag == "Quest")
+        {
+            monsterisquestzone = true;
+        }
+    }
     public void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, attackRadius);

@@ -7,6 +7,9 @@ public class NPCManager : MonoBehaviour
 
     public GameObject dialog;
     public Transform playerPos;
+
+
+    public bool hasdialog;
     public bool isSee;
     public bool isSay;
 
@@ -15,6 +18,7 @@ public class NPCManager : MonoBehaviour
     {
         playerPos = PlayerController.instance.transform;
     }
+
     // Start is called before the first frame update
     public void Check()
     {

@@ -14,8 +14,10 @@ public class EnemyDie : MonoBehaviour
         {
             instance = this;
         }
-        else
-            Destroy(gameObject);
+    }
+
+    private void Update()
+    {
     }
 
 }

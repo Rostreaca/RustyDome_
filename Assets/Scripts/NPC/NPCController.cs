@@ -14,9 +14,12 @@ public class NPCController : NPCManager
     }
     private void Awake()
     {
-        playerPos = GameObject.Find("Player").transform;
         anim = GetComponent<Animator>();
         Singleton_Init();
+    }
+    public void Start()
+    {
+        playerPos = GameObject.Find("Player").transform;
     }
     // Start is called before the first frame update
 
