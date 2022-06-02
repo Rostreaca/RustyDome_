@@ -41056,12 +41056,12 @@ PrefabInstance:
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 143.73
+      value: 87.3
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.65
+      value: 14.8
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
@@ -49432,9 +49432,19 @@ PrefabInstance:
       objectReference: {fileID: 898704015}
     - target: {fileID: 4911929352861092232, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
+      propertyPath: sfxclip.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911929352861092232, guid: 936c75f6ec9412e43b350befe5bb6533,
+        type: 3}
       propertyPath: sfxclip.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: d3b3995421e96ec4b96839042653e768, type: 3}
+      objectReference: {fileID: 8300000, guid: 5a5654b6ce02bfa479809cb35b01b9bd, type: 3}
+    - target: {fileID: 4911929352861092232, guid: 936c75f6ec9412e43b350befe5bb6533,
+        type: 3}
+      propertyPath: sfxclip.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 698b7b655cc112e488d8dd12339abc96, type: 3}
     - target: {fileID: 4911929353546397290, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
       propertyPath: m_Name
@@ -49917,5 +49927,85 @@ PrefabInstance:
       propertyPath: npc
       value: 
       objectReference: {fileID: 1681904358}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: sfxclip.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: sfxclip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e9fbbb34c5a9c9f4abfb86937061d340, type: 3}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b42280630acbcd4487351bf9b9e7b1f, type: 3}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b407b64c3c940c04eb63ad01d0020176, type: 3}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: cba5447613788c2459f610f4e5d5df99, type: 3}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: b97b9688bac53ad47ae9bd82069456e2, type: 3}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 290364d6b1d6c504aa6afd82db397f26, type: 3}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 187b90de740f7e94b9f2468d3d5e0a13, type: 3}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 355e5258c9a0cee49b3de768570a2fc2, type: 3}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4d41af7119ff957418afd2e461f1ac11, type: 3}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: bf8890956f4337f47af0ebd4a7c19fdb, type: 3}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: e970bb9eb4c9ccc4e92a0cfe7a5553ae, type: 3}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.data[10]
+      value: 
+      objectReference: {fileID: 8300000, guid: f1695380f9da4a64bab15762c15a6351, type: 3}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.data[11]
+      value: 
+      objectReference: {fileID: 8300000, guid: f1695380f9da4a64bab15762c15a6351, type: 3}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: talkclip.Array.data[12]
+      value: 
+      objectReference: {fileID: 8300000, guid: b97b9688bac53ad47ae9bd82069456e2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 434578aeca63aec44b848b09cef40d89, type: 3}

@@ -55,7 +55,6 @@ public class QuestNPCText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
-            npc_anim.SetTrigger("Talk");
             npc_anim.SetBool("isTalking", true);
             npc_Text = t1ext[0].text;
             Type_init();

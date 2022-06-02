@@ -26,8 +26,16 @@ public class MerchantText : UIText
         {
             Thanks();
         }
-       
     }
+    public override void talksound()
+    {
+        if (sayCount != 0)
+        {
+            int talk = Random.Range(0, 11);
+            SoundManager.instance.SFXPlay("Talk", talkclip[talk]);
+        }
+    }
+
     public void Thanks()
     {
         if (sayCount == 0)
@@ -36,7 +44,6 @@ public class MerchantText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
-            npc_anim.SetTrigger("Talk");
             npc_anim.SetBool("isTalking", true);
             npc_Text = "고맙네..";
             Type_init();
@@ -56,7 +63,6 @@ public class MerchantText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
-            npc_anim.SetTrigger("Talk");
             npc_anim.SetBool("isTalking", true);
             npc_Text = t1ext[0].text;
             Type_init();
@@ -84,7 +90,6 @@ public class MerchantText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && PlayerController.instance.scrap >= 100)
         {
-            npc_anim.SetTrigger("Talk");
             npc_anim.SetBool("isTalking", true);
             npc_Text = "고맙네..";
             Type_init();
@@ -99,7 +104,6 @@ public class MerchantText : UIText
 
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && PlayerController.instance.scrap < 100)
         {
-            npc_anim.SetTrigger("Talk");
             npc_anim.SetBool("isTalking", true);
             npc_Text = "자네.. 부품을 더 모아야겠구먼..";
             Type_init();

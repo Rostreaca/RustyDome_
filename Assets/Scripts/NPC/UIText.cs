@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIText : MonoBehaviour
 {
     public AudioClip[] sfxclip;
+    public AudioClip[] talkclip;
 
     public Animator npc_anim;
     public Text []t1ext;
@@ -61,7 +62,7 @@ public class UIText : MonoBehaviour
         } 
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)  
         {
-            //SoundManager.instance.SFXPlay("falconpunch",sfxclip[0]);
+
             npc_anim.SetBool("isTalking", true);
             npc_Text = t1ext[0].text;
             Type_init();
@@ -110,6 +111,7 @@ public class UIText : MonoBehaviour
     {
         for (int i = 0; i <= npc_Text.Length; i++)
         {
+            talksound();
             text.text = npc_Text.Substring(0, i);
             yield return new WaitForSeconds(0.1f);
             textEnd ++;
@@ -119,4 +121,5 @@ public class UIText : MonoBehaviour
             sayEnd = true;
         }
     }
+    public virtual void talksound() { }
 }
