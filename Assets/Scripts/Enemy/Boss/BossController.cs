@@ -16,6 +16,8 @@ public class BossController : MonoBehaviour
     public GameObject Actor;
     public Animator anim;
 
+    public GameObject Door;
+    DoorController doorcontrol;
     private void singleton()
     {
         if(instance !=null)
@@ -27,6 +29,7 @@ public class BossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        doorcontrol = Door.GetComponent<DoorController>();
         singleton();
     }
     private void Awake()
@@ -51,5 +54,10 @@ public class BossController : MonoBehaviour
             isdead = true;
             anim.SetTrigger("Death");
         }
+    }
+
+    public void doorOpen()
+    {
+        doorcontrol.doorOpen = true;
     }
 }

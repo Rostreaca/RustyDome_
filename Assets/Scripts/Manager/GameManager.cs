@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public bool isGame;
     public bool isPause;
     public int coinCount;
-    public int killCount;
+    public bool hasLeverhandle;
     [Header("Checkpoint")]
     public Transform checkPoint;
     private void Awake()
