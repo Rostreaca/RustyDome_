@@ -6,7 +6,7 @@ public class DoorController : MonoBehaviour
 {
     public static DoorController instance;
     public bool doorOpen;
-
+    public float doorspeed = 7f;
     private Vector2 targetpos;
     private Vector2 Originpos;
     // Start is called before the first frame update
@@ -40,10 +40,10 @@ public class DoorController : MonoBehaviour
 
     void DoorOpen()
     {
-        transform.position = Vector2.MoveTowards(transform.position, targetpos, 4f * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, targetpos, doorspeed * Time.deltaTime);
     }
     void DoorClose()
     {
-        transform.position = Vector2.MoveTowards(transform.position, Originpos, 4f * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, Originpos, doorspeed * Time.deltaTime);
     }
 }
