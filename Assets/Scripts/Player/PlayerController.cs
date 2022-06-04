@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public float powerMax;
     public float powerNow;
     public int powerRegen;
-    public int def;
 
     public int ammoMax;
     public int ammoNow;
@@ -67,9 +66,8 @@ public class PlayerController : MonoBehaviour
     {
         SIngleton_Init();
     }
-    // Start is called before the first frame update
 
-    void Start()
+    private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
@@ -98,8 +96,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (GameManager.Instance.isGame && !GameManager.Instance.isPause)
         {
@@ -110,11 +107,6 @@ public class PlayerController : MonoBehaviour
             Animation();
 
             PowerRegen();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Inventory.instance.AddItem(Inventory.instance.testItem);
         }
     }
 
@@ -153,7 +145,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator IDash(int dir)
+    private IEnumerator IDash(int dir)
     {
         while (dashTimer < dashCoolTime)
         {

@@ -883,6 +883,11 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.469507
       objectReference: {fileID: 0}
+    - target: {fileID: 7434246335345700363, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.71
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc8156ecf1bdefa4aa63ee7f89940721, type: 3}
 --- !u!1 &665155501
@@ -1197,7 +1202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260269a09e029ef4bb7c18040cc57b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxclip: {fileID: 0}
+  sfxclip:
+  - {fileID: 0}
+  talkclip: []
   npc_anim: {fileID: 0}
   t1ext: []
   dialog: {fileID: 2035045682}
@@ -1326,7 +1333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821f5ef01d212a749aa7527fdecb69d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxclip: {fileID: 0}
+  sfxclip:
+  - {fileID: 0}
+  talkclip: []
   npc_anim: {fileID: 0}
   t1ext: []
   dialog: {fileID: 429474313}
@@ -3558,7 +3567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faea9eb4fed11174ab07de97b1677c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxclip: {fileID: 0}
+  sfxclip:
+  - {fileID: 0}
+  talkclip: []
   npc_anim: {fileID: 0}
   t1ext: []
   dialog: {fileID: 1512966626}
@@ -3710,7 +3721,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128716508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.98, y: -0.2, z: -10}
+  m_LocalPosition: {x: 46.84, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6449,6 +6460,16 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3860631001890491395, guid: 196432ce6ad90754693070c5fc2dedd2,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860631001890491395, guid: 196432ce6ad90754693070c5fc2dedd2,
+        type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3860631001890491404, guid: 196432ce6ad90754693070c5fc2dedd2,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6558,6 +6579,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomizeScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860631002891789549, guid: 196432ce6ad90754693070c5fc2dedd2,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860631002891789549, guid: 196432ce6ad90754693070c5fc2dedd2,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860631002891789549, guid: 196432ce6ad90754693070c5fc2dedd2,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860631003590295196, guid: 196432ce6ad90754693070c5fc2dedd2,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4234409472619456939, guid: 196432ce6ad90754693070c5fc2dedd2,
         type: 3}
