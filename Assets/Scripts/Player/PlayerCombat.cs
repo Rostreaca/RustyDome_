@@ -11,32 +11,30 @@ public class PlayerCombat : Combat
     private Animator animator;
     private PlayerController playerController;
 
+    public float chargeTime = 1f;
+
     private bool canCombo;
     public bool comboReserve;
 
     public override void Start()
     {
-        Actor = GameObject.Find("Actor");
         base.Start();
-
+        Actor = GameObject.Find("Actor");
         rigid = GetComponentInParent<Rigidbody2D>();
         playerController = GetComponentInParent<PlayerController>();
         animator = GetComponent<Animator>();
         projectileTransform = transform.GetChild(2).transform;
     }
 
-    public void ComboTrigger()
-    {
-        StartCoroutine(ICombo()); //Start combo system 
-    }
-
     public void OnMeleeAttackBegin()
     {
-        //Rotation
-        if (Input.GetAxis("Horizontal") > 0)
-            animator.SetBool("Flip", false);
-        else
-            animator.SetBool("Flip", true);
+        StartCoroutine(ICombo()); //Start combo system 
+        StartCoroutine(ICharge());
+    }
+
+    public void OnMeleeChargeAttackBegin()
+    {
+        playerController.isCharge = false;
     }
 
     public void OnMeleeAttackEnd()
@@ -58,6 +56,11 @@ public class PlayerCombat : Combat
             canCombo = false; //block combo
             playerController.isAttack = false;
         }
+    }
+
+    public void OnMeleeChargeAttackEnd()
+    {
+        playerController.isAttack = false;
     }
 
     public void CreateProjectile()
@@ -82,8 +85,28 @@ public class PlayerCombat : Combat
             {
                 canCombo = false;
                 comboReserve = true;
-                StopCoroutine(ICombo());
             }
+            yield return null;
+        }
+    }
+
+    IEnumerator ICharge()
+    {
+        float time = 0;
+
+        while (!playerController.isCharge)
+        {
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                StopCoroutine(ICharge());
+            }
+
+            if (time >= chargeTime)
+            {
+                playerController.isCharge = true;
+            }
+
+            time += Time.deltaTime;
             yield return null;
         }
     }
@@ -98,6 +121,7 @@ public class PlayerCombat : Combat
 
             MeleeAttack(enemy, damage);
         }
+
         else if (colliderDetected.gameObject.CompareTag("Boss"))
         {
             BossGetDamage boss = colliderDetected.GetComponent<BossGetDamage>();

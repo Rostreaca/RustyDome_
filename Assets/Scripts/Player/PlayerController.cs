@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public bool isClimb = false;
     public bool isAttack = false;
     public bool isHit = false;
+    public bool isCharge = false;
 
     public Animator animator;
 
@@ -225,7 +226,7 @@ public class PlayerController : MonoBehaviour
     private void GroundCheck()
     {
         LayerMask layerMask = 1 << LayerMask.NameToLayer("Ground");
-        RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f, layerMask);
+        RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, new Vector2(col.bounds.size.x * 0.75f, col.bounds.size.y), CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f, layerMask);
         bool grounded = hit.collider != null;
 
         grounded = grounded || isClimb;
@@ -285,34 +286,39 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         if (!isAttack && !isClimb && !isHit)
-        { 
-            if(powerNow > 15)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
-            {
+                if (powerNow >= meleeWeapon.powerCon)
+                {
                     isAttack = true;
 
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        if (powerNow >= meleeWeapon.powerCon)
-                        {
-                            powerNow -= meleeWeapon.powerCon;
-                            animator.SetBool(meleeWeapon.animName, isAttack);
-                        }
-                    }
-
-                    if (Input.GetMouseButtonDown(1))
-                    {
-                        if (powerNow >= rangeWeapon.powerCon && ammoNow >= rangeWeapon.ammoCon)
-                        {
-                            powerNow -= rangeWeapon.powerCon;
-                            ammoNow -= rangeWeapon.ammoCon;
-                            animator.SetBool(rangeWeapon.animName, isAttack);
-                        }
-
-                    }
+                    powerNow -= meleeWeapon.powerCon;
+                    animator.SetBool(meleeWeapon.animName, true);
                 }
-             
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                if (powerNow >= rangeWeapon.powerCon && ammoNow >= rangeWeapon.ammoCon)
+                {
+                    isAttack = true;
+
+                    powerNow -= rangeWeapon.powerCon;
+                    ammoNow -= rangeWeapon.ammoCon;
+                    animator.SetBool(rangeWeapon.animName, true);
+                }
+
+            }
+
+            if (isCharge)
+            {
+                if (Input.GetKeyUp(KeyCode.Mouse0))
+                {
+                    isAttack = true;
+
+                    animator.SetTrigger(meleeWeapon.skillAnimName);
+                }
             }
         }
     }
