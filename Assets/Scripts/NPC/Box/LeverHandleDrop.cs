@@ -2,22 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDrop : MonoBehaviour
+public class LeverHandleDrop : MonoBehaviour
 {
     public ItemMagnetic iteminfo;
-    public int scrapValue = 5;
-
-    public void anyevent()
-    {
-
-    }
+    // Start is called before the first frame update
+    // Update is called once per frame
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && iteminfo.isGrounded == true)
         {
-            anyevent();
-            collision.GetComponent<PlayerController>().GetScrap(scrapValue);
+            GameManager.Instance.hasLeverhandle = true;
             Destroy(gameObject);
         }
-    }  
+    }
 }

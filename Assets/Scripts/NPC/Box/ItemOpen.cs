@@ -9,7 +9,7 @@ public class ItemOpen : MonoBehaviour
     private float v = 7.0f;
     private float t,g; //속력,시간,중력가속도
 
-    private float theta;
+    public float theta;
 
     private void Awake()
     {

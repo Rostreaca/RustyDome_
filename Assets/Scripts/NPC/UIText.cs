@@ -84,7 +84,7 @@ public class UIText : MonoBehaviour
 
     public void TextPosition(Transform transform, GameObject dialog, GameObject npc, float height)//대화창 위치를 캐릭터 머리 위로 조정
     {
-        transform.position = Camera.main.WorldToScreenPoint(npc.transform.position + new Vector3(0, height, 0));
+        transform.position = (npc.transform.position + new Vector3(0, height, 0));
         dialog.transform.position = transform.position;
     }
     public void Type_init()//Typing() 코루틴 초기화

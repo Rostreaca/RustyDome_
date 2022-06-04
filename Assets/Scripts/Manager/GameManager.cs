@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public bool isPause;
     public int coinCount;
     public bool hasLeverhandle;
+    public bool hasGateKey;
     [Header("Checkpoint")]
     public Transform checkPoint;
     private void Awake()
