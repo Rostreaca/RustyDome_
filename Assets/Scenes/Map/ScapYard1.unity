@@ -1163,6 +1163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faea9eb4fed11174ab07de97b1677c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxclip: []
+  talkclip: []
+  npc_anim: {fileID: 0}
+  t1ext: []
   dialog: {fileID: 1054903784}
   npc: {fileID: 0}
   nextTextBtn: {fileID: 313034583}
@@ -10086,6 +10090,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260269a09e029ef4bb7c18040cc57b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxclip: []
+  talkclip: []
+  npc_anim: {fileID: 0}
+  t1ext: []
   dialog: {fileID: 108512397}
   npc: {fileID: 0}
   nextTextBtn: {fileID: 1882223535}
@@ -25883,7 +25891,8 @@ MonoBehaviour:
   cameraXPosMax: 39
   cameraYPosMin: -1.75
   cameraYPosMax: 15
-  smoothSpeed: 5
+  moveSpeed: 0
+  bound: {fileID: 0}
 --- !u!81 &1586314389
 AudioListener:
   m_ObjectHideFlags: 0
@@ -26701,7 +26710,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   informText: {fileID: 654465072}
-  slots: []
+  occupancyText: {fileID: 0}
+  occupancyImg: {fileID: 0}
+  occupancyPoint: 0
+  equipSlots: []
+  inventorySlots: []
   testItem: {fileID: 11400000, guid: c6f2cc669b04d7e46ab55d201df13e5e, type: 2}
 --- !u!1 &1658175648
 GameObject:
@@ -27301,6 +27314,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821f5ef01d212a749aa7527fdecb69d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxclip: []
+  talkclip: []
+  npc_anim: {fileID: 0}
+  t1ext: []
   dialog: {fileID: 1604290358}
   npc: {fileID: 0}
   nextTextBtn: {fileID: 946628497}
@@ -32124,6 +32141,7 @@ MonoBehaviour:
   isGame: 0
   isPause: 0
   coinCount: 0
+  killCount: 0
   checkPoint: {fileID: 0}
 --- !u!114 &2144576057
 MonoBehaviour:
@@ -32137,6 +32155,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6cd1d7e5570ada458373385ba0cf725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  hpBar: {fileID: 0}
+  powerBar: {fileID: 0}
+  ammoBar: {fileID: 0}
+  scrapText: {fileID: 0}
   gameScreen: {fileID: 1526388016}
   pauseScreen: {fileID: 1079415691}
   mapScreen: {fileID: 1934277188}
