@@ -6,6 +6,7 @@ public class BossGetDamage : MonoBehaviour
 {
     BossController boss;
     private bool isdie = false;
+    public AudioClip[] sfxclip;
     // Start is called before the firs
 
     // Update is called once per frame

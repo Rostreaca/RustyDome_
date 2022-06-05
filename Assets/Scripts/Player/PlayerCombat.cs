@@ -136,6 +136,14 @@ public class PlayerCombat : Combat
         enemy.GetDamage(damage);
     }
 
+
+
+    public void SoundPlay(AudioClip audio)
+    {
+
+        SoundManager.instance.SFXPlay("aa", audio);
+    }
+
     public void MeleeAttacktoBoss(BossGetDamage boss, int damage)
     {
         boss.GetDamage(damage);

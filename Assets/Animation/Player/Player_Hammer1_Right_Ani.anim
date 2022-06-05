@@ -332,6 +332,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.16666667
+    functionName: SoundPlay
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 1adcf35aa7cd56042b85e76d48460230,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.5
     functionName: OnMeleeAttackEnd
     data: 

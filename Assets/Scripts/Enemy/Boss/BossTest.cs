@@ -7,6 +7,7 @@ public class BossTest : MonoBehaviour
     public Animator anim;
 
     public static BossTest instance;
+    
     [Header("Pattern1 Parameters")]
     public Transform HandPos;
     public Transform TargetPos;
@@ -51,6 +52,7 @@ public class BossTest : MonoBehaviour
     {
         if(BossController.instance.isdead != true) // 보스가 살아있을 경우에만 작동
         {
+            
             rollbackPos();
             memory();
             followcondition();
@@ -78,7 +80,7 @@ public class BossTest : MonoBehaviour
     {
         if (HandPos.position != TargetPos.position)
             HandPos.position = Vector2.MoveTowards(HandPos.position, saveTargetPos, 1f * Time.deltaTime);
-
+                
     }
 
     public void rollbackPos()
@@ -151,6 +153,7 @@ public class BossTest : MonoBehaviour
     {
         if (p1coolstart == true)
         {
+            
             anim.SetBool("Pattern1isCool", true);
         }
         if (p1cooltimer > 0 && anim.GetBool("Pattern1isCool")==true)
@@ -204,5 +207,9 @@ public class BossTest : MonoBehaviour
         {
             follow();
         }
+    }
+    public void SoundPlay(AudioClip audio)
+    {
+        SoundManager.instance.SFXPlay("aa",audio);
     }
 }

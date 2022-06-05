@@ -195,6 +195,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.41666666
+    functionName: SoundPlay
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: c15508b165dc51046bb0711e6b0f765b,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.1666666
     functionName: OnRangeAttackEnd
     data: 

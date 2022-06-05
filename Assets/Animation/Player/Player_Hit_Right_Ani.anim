@@ -41,8 +41,21 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 1621221454, guid: 48b6f9e8e617f2442b312cab33d9a0a5, type: 3}
+    - {fileID: 1718377659, guid: 48b6f9e8e617f2442b312cab33d9a0a5, type: 3}
+    - {fileID: 414065638, guid: 48b6f9e8e617f2442b312cab33d9a0a5, type: 3}
+    - {fileID: -1446819067, guid: 48b6f9e8e617f2442b312cab33d9a0a5, type: 3}
+    - {fileID: -752536510, guid: 48b6f9e8e617f2442b312cab33d9a0a5, type: 3}
+    - {fileID: 995504102, guid: 48b6f9e8e617f2442b312cab33d9a0a5, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -67,4 +80,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: SoundPlay
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

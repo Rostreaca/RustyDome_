@@ -49,13 +49,15 @@ public class SoundManager : MonoBehaviour
         Destroy(go, clip.length);
     }
 
-    public void SFXStop(string sfxName, AudioClip clip) //효과음 재생, 재생할 부분에서 script 에 함수 추가.
+    public void SFXPlay(string sfxName, AudioClip clip,float a) //효과음 재생, 재생할 부분에서 script 에 함수 추가.
     {
         GameObject go = new GameObject(sfxName + "Sound");
         AudioSource audiosource = go.AddComponent<AudioSource>();
         audiosource.clip = clip;
-        audiosource.volume = volume;
-        audiosource.Stop();
+        audiosource.volume = a;
+        audiosource.Play();
+
+        Destroy(go, clip.length);
     }
 
     public void BackgroundMusic(AudioClip clip)

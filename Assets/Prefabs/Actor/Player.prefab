@@ -99,6 +99,9 @@ MonoBehaviour:
   moduleHp: 0
   modulePower: 0
   modulePowerRegen: 0
+  sfxclip:
+  - {fileID: 8300000, guid: 557ab4731baefc0449bfed6c7c539e9c, type: 3}
+  - {fileID: 8300000, guid: d5059d1e57d54d441a7f51198f72db72, type: 3}
   moduleEquipSlots: []
   meleeWeapon: {fileID: 11400000, guid: 0e02c0a8bb5aba844901683f720ce246, type: 2}
   rangeWeapon: {fileID: 11400000, guid: 1c8f42f50efc28c4faaa1a88c3a678ab, type: 2}
@@ -394,3 +397,4 @@ MonoBehaviour:
   projectile: {fileID: 5362479334467672664, guid: 081a53d4f4d616f4293ec46a6f0bba7f,
     type: 3}
   projectileTransform: {fileID: 0}
+  comboReserve: 0

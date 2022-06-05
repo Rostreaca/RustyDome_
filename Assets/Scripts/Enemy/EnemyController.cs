@@ -31,6 +31,8 @@ public class EnemyController : MonoBehaviour
     public float rangeRadius;
     public Transform followTarget;
 
+    public AudioClip[] sfxclip;
+
     public GameObject Coin;
 
     public GameObject GoldCoin;

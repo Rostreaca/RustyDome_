@@ -13,10 +13,9 @@ public class BossPattern1Combat : MonoBehaviour
         if (colliderDetected.gameObject.CompareTag("Player"))
         {
             PlayerController player = colliderDetected.GetComponent<PlayerController>();
-
             int damage = pattern1dmg;
-
             MeleeAttack(player, damage);
+
         }
     }
 

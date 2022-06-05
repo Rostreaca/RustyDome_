@@ -415,6 +415,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
     public void GetScrap(int value)
     {
         scrap += value;
