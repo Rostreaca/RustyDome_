@@ -47,4 +47,9 @@ public class EnemyCombat : Combat
     {
         player.GetDamage(damage, enemyController.transform);
     }
+
+    public void SoundPlay(AudioClip audio)
+    {
+        SoundManager.instance.SFXPlay("aa", audio);
+    }
 }
