@@ -7,7 +7,10 @@ public class BossTest : MonoBehaviour
     public Animator anim;
 
     public static BossTest instance;
-    
+
+    public AudioSource p2audio;
+    public AudioClip p2clip;
+    public int isSounding = 0;
     [Header("Pattern1 Parameters")]
     public Transform HandPos;
     public Transform TargetPos;
@@ -52,7 +55,7 @@ public class BossTest : MonoBehaviour
     {
         if(BossController.instance.isdead != true) // 보스가 살아있을 경우에만 작동
         {
-            
+            p2audio.clip = p2clip;
             rollbackPos();
             memory();
             followcondition();
@@ -115,6 +118,11 @@ public class BossTest : MonoBehaviour
     {
         if (isRush == true) // isRush가 트루면 실행
         {
+            if(isSounding ==0)
+            {
+                isSounding ++;
+                p2audio.Play();
+            }
             if (transform.position.x > saveTargetPos.x && rightmove == false)// 왼쪽에 플레이어가 있으면 추격.
             {
                 rigid.velocity = new Vector2(-8, 0);
@@ -141,6 +149,11 @@ public class BossTest : MonoBehaviour
         }
         if(anim.GetBool("Pattern2start") == false)
         {
+            if(isSounding == 1)
+            {
+                isSounding--;
+                p2audio.Stop();
+            }
             isattack2 = false;
             isRush = false;
             leftmove = false;
@@ -211,5 +224,8 @@ public class BossTest : MonoBehaviour
     public void SoundPlay(AudioClip audio)
     {
         SoundManager.instance.SFXPlay("aa",audio);
+        
+        
     }
+
 }

@@ -42086,12 +42086,12 @@ PrefabInstance:
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 113.1
+      value: 110.2
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.9
+      value: 11.7
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
@@ -51828,6 +51828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b6c60146834e1d4981dfea1081b00aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx: {fileID: 0}
   bgm: {fileID: 2144576058}
   bgmlist:
   - {fileID: 8300000, guid: bc449a1629ccdac4fb16db0f06a022bc, type: 3}
@@ -51835,6 +51836,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a6b84c185d5898849bb6fdc56ad8cc99, type: 3}
   volume: 2
   soundtracknumber: 0
+  isStop: 0
 --- !u!1001 &393279834902861044
 PrefabInstance:
   m_ObjectHideFlags: 0

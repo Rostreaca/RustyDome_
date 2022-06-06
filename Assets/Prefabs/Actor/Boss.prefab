@@ -1911,6 +1911,7 @@ GameObject:
   - component: {fileID: 1717954853244337165}
   - component: {fileID: 1717954853244337155}
   - component: {fileID: 1717954853244337156}
+  - component: {fileID: -5639113185922764166}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -2011,23 +2012,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  sfxclip:
-  - {fileID: 0}
-  - {fileID: 8300000, guid: f05870182d24d0042a9cd4d0cd062d32, type: 3}
-  - {fileID: 8300000, guid: 3b3ab6175fb1fcb44bbcee1adbfe5eb5, type: 3}
-  - {fileID: 8300000, guid: c8a63d7fcebc1434d8cfb5f0220ff185, type: 3}
-  - {fileID: 8300000, guid: 96df093731675ff40823d7e9ecc5f1b4, type: 3}
-  - {fileID: 8300000, guid: ec236ff0490d9f14aa8afd43f4615a2b, type: 3}
-  - {fileID: 8300000, guid: ed53e649aa5178841a6d07d1c98b3397, type: 3}
-  - {fileID: 8300000, guid: 942d4aa3b5d236841bbb5577b6d3a916, type: 3}
-  - {fileID: 8300000, guid: b028802db7d362d429e5d68f1c04e6af, type: 3}
-  - {fileID: 8300000, guid: 2f113138ebd937445ade7855c5f0ff57, type: 3}
-  - {fileID: 8300000, guid: 3561a3974dcc91045a493c041f51eb00, type: 3}
-  - {fileID: 8300000, guid: 92095a39785921f419592296fc3f037b, type: 3}
-  - {fileID: 8300000, guid: bc17846ec61b1e648991ccbec646295d, type: 3}
-  - {fileID: 8300000, guid: dc50cb616987b434ca5dffec2a953895, type: 3}
-  - {fileID: 8300000, guid: d2eacc2c394a5084d8a79e0311cbabc8, type: 3}
-  - {fileID: 8300000, guid: d3f09da9a34e438489d97dbcf351c5d9, type: 3}
+  p2audio: {fileID: -5639113185922764166}
+  p2clip: {fileID: 8300000, guid: b028802db7d362d429e5d68f1c04e6af, type: 3}
+  isSounding: 0
   HandPos: {fileID: 8406268035165580839}
   TargetPos: {fileID: 0}
   handmovecontrol: {fileID: 1717954854201990000}
@@ -2104,6 +2091,102 @@ MonoBehaviour:
   Actor: {fileID: 0}
   anim: {fileID: 0}
   Door: {fileID: 0}
+--- !u!82 &-5639113185922764166
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717954853244337154}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1717954853272292248
 GameObject:
   m_ObjectHideFlags: 0
@@ -3290,7 +3373,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.78, y: 0.75}
+    oldSize: {x: 1.21875, y: 1.171875}
     newSize: {x: 0.78, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
