@@ -155,6 +155,14 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: SoundPlay
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 5a85e8a8064dd2f419a90203bb3476a3,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.5833333
     functionName: DoorOpen
     data: 

@@ -52,4 +52,6 @@ public class LeverText : UIText
             dialog.SetActive(false);
         }
     }
+
+
 }
