@@ -35,7 +35,7 @@ public class LeverText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.hasLeverhandle !=true)
         {
-            npc_Text = "핸들이 없습니다.";
+            npc_Text = "손잡이가 없는 레버다.";
             Type_init();
             sayCount++;
         }

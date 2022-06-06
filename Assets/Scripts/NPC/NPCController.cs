@@ -10,7 +10,7 @@ public class NPCController : NPCManager
 
     private void Singleton_Init()
     {
-            instance = this;
+         instance = this;
     }
     private void Awake()
     {

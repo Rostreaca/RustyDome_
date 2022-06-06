@@ -17,12 +17,18 @@ public class Platform : MonoBehaviour
         if (playerCheck && Input.GetKey(KeyCode.S))
         {
             effector.rotationalOffset = 180f;
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            effector.rotationalOffset = 0f;
-        }
 
+            Invoke("PlatformReset", 0.5f);
+        }
+        //else if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    effector.rotationalOffset = 0f;
+        //}
+    }
+
+    public void PlatformReset()
+    {
+        effector.rotationalOffset = 0f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
