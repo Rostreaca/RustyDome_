@@ -21,4 +21,9 @@ public class LeverEvent : MonoBehaviour
     {
         doorcontrol.doorOpen = true;
     }
+
+    public void SoundPlay(AudioClip audio)
+    {
+        SoundManager.instance.SFXPlay("aa", audio);
+    }
 }

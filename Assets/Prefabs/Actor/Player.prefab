@@ -69,8 +69,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.08511591, y: 0.2175256}
-  m_Size: {x: 0.41995335, y: 0.9445722}
+  m_Offset: {x: 0.06278992, y: -0.52996635}
+  m_Size: {x: 0.6208496, y: 0.9374504}
   m_Direction: 0
 --- !u!114 &1031050009897858403
 MonoBehaviour:
@@ -89,7 +89,6 @@ MonoBehaviour:
   powerMax: 100
   powerNow: 100
   powerRegen: 25
-  def: 0
   ammoMax: 10
   ammoNow: 10
   scrap: 0
@@ -99,12 +98,9 @@ MonoBehaviour:
   moduleHp: 0
   modulePower: 0
   modulePowerRegen: 0
-  sfxclip:
-  - {fileID: 8300000, guid: 557ab4731baefc0449bfed6c7c539e9c, type: 3}
-  - {fileID: 8300000, guid: d5059d1e57d54d441a7f51198f72db72, type: 3}
   moduleEquipSlots: []
   meleeWeapon: {fileID: 11400000, guid: 0e02c0a8bb5aba844901683f720ce246, type: 2}
-  rangeWeapon: {fileID: 11400000, guid: 1c8f42f50efc28c4faaa1a88c3a678ab, type: 2}
+  rangeWeapon: {fileID: 11400000, guid: 47629b171b289eb4991490a1b527eb79, type: 2}
   moveSpeed: 3
   dashCoolTime: 1
   dashTimer: 0
@@ -119,6 +115,7 @@ MonoBehaviour:
   isClimb: 0
   isAttack: 0
   isHit: 0
+  isCharge: 0
   animator: {fileID: 1029559398038586708}
   canAirJump: 0
 --- !u!1 &3224372812890901468
@@ -299,7 +296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8706815117996269894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.068, y: 0.741, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -397,4 +394,5 @@ MonoBehaviour:
   projectile: {fileID: 5362479334467672664, guid: 081a53d4f4d616f4293ec46a6f0bba7f,
     type: 3}
   projectileTransform: {fileID: 0}
+  chargeTime: 1
   comboReserve: 0
