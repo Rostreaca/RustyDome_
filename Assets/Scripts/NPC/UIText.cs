@@ -15,6 +15,7 @@ public class UIText : MonoBehaviour
     public GameObject dialog;
     public GameObject npc;
     public GameObject nextTextBtn;
+    
 
     public Text text;
 
@@ -122,4 +123,5 @@ public class UIText : MonoBehaviour
         }
     }
     public virtual void talksound() { }
+    
 }

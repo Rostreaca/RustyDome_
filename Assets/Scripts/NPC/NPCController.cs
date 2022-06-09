@@ -34,5 +34,8 @@ public class NPCController : NPCManager
     {
         Gizmos.DrawWireSphere(transform.position, seeRange);
     }
-
+    public void SoundPlay(AudioClip audio)
+    {
+        SoundManager.instance.SFXPlay("gate", audio);
+    }
 }
