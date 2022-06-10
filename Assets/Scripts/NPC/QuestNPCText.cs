@@ -97,7 +97,7 @@ public class QuestNPCText : UIText
             Type_init();
             questClear = true;
             PlayerController.instance.scrap += 1500;//이부분에 보상아이템 추가, 바로 템칸으로 추가? or 아이템드롭처럼 바닥에 떨어지게함
-            //Customize.instance.AddModule(module);
+            Customize.instance.AddModule(module);
             //Instantiate(item, new Vector2(transform.position.x, transform.position.y), Quaternion.identity,Actor.transform);
             Debug.Log("a");
             sayCount++;

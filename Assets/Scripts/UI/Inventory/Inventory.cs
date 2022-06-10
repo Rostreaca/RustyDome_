@@ -12,6 +12,14 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     private List<InventorySlot> slots = new List<InventorySlot>();
+    private List<InventorySlot> cores = new List<InventorySlot>();
+    private List<InventorySlot> meleeWeapons = new List<InventorySlot>();
+    private List<InventorySlot> rangeWeapons = new List<InventorySlot>();
+    private List<InventorySlot> specialWrapons = new List<InventorySlot>();
+    private List<InventorySlot> mobiles = new List<InventorySlot>();
+    private List<InventorySlot> goods = new List<InventorySlot>();
+    private List<InventorySlot> specials = new List<InventorySlot>();
+
 
     public Item testItem;
 
@@ -41,6 +49,7 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         slots = GetComponentsInChildren<InventorySlot>().ToList();
+            
 
         foreach(InventorySlot slot in slots)
         {
