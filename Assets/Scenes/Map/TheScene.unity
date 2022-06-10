@@ -3246,6 +3246,11 @@ PrefabInstance:
       propertyPath: Enemycount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7795516198423240878, guid: fb981076d1e0fb3498021a5fcf4718b5,
+        type: 3}
+      propertyPath: isallkilled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7795516198423240912, guid: fb981076d1e0fb3498021a5fcf4718b5,
         type: 3}
       propertyPath: m_RootOrder
@@ -53133,8 +53138,8 @@ PrefabInstance:
         type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: c6f2cc669b04d7e46ab55d201df13e5e,
-        type: 2}
+      objectReference: {fileID: 6858372336167351654, guid: d59940a620c94174bb16df3cf3a7d11e,
+        type: 3}
     - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
         type: 3}
       propertyPath: module
@@ -53653,6 +53658,12 @@ PrefabInstance:
       propertyPath: npc
       value: 
       objectReference: {fileID: 1681904358}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: c6f2cc669b04d7e46ab55d201df13e5e,
+        type: 2}
     - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
         type: 3}
       propertyPath: module
