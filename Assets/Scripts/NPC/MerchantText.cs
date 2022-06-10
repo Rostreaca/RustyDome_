@@ -6,6 +6,7 @@ public class MerchantText : UIText
 {
     public bool Cantrade;
     public bool TradeFInish;
+    public Module module;
 
     // Start is called before the first frame update
 
@@ -93,6 +94,7 @@ public class MerchantText : UIText
             npc_anim.SetBool("isTalking", true);
             npc_Text = "°í¸¿³×..";
             Type_init();
+            Customize.instance.AddModule(module);
 
             TradeFInish = true;
             Cantrade = false;

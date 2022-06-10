@@ -6,8 +6,16 @@ public class QuestNPCText : UIText
 {
     public bool questStart;
     public bool questClear;
+    public Module module;
+    public Item item;
+    public GameObject Actor;
     // Start is called before the first frame update
     // Update is called once per frame
+    private void Awake()
+    {
+        Actor = GameObject.Find("Actor");
+    }
+
     void Update()
     {
         CheckSayEnd();
@@ -83,13 +91,15 @@ public class QuestNPCText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && QuestManager.instance.isallkilled == true) //일단 임시로 killcount라는 변수(아무런 작동없음) 설정함.
         {
-            npc_anim.SetTrigger("Talk");
             npc_anim.SetBool("isTalking", true);
             npc_Text = "고맙네.. 이건 보상일세..";
+
             Type_init();
             questClear = true;
             PlayerController.instance.scrap += 1500;//이부분에 보상아이템 추가, 바로 템칸으로 추가? or 아이템드롭처럼 바닥에 떨어지게함
-
+            //Customize.instance.AddModule(module);
+            //Instantiate(item, new Vector2(transform.position.x, transform.position.y), Quaternion.identity,Actor.transform);
+            Debug.Log("a");
             sayCount++;
 
         }

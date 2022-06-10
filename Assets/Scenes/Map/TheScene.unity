@@ -1476,6 +1476,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1879674175583819552, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1879674175583819554, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
         type: 3}
       propertyPath: m_Name
@@ -42101,12 +42106,12 @@ PrefabInstance:
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 111.01
+      value: 98.66
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.69
+      value: 13.32
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
@@ -44354,7 +44359,7 @@ PrefabInstance:
     - target: {fileID: 5223418038189493197, guid: 4c3ea90c90e83ca4d915fa95b80aa070,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 97.34
+      value: 96.46
       objectReference: {fileID: 0}
     - target: {fileID: 5223418038189493197, guid: 4c3ea90c90e83ca4d915fa95b80aa070,
         type: 3}
@@ -50450,6 +50455,11 @@ PrefabInstance:
       objectReference: {fileID: 565518335}
     - target: {fileID: 2762408464262613263, guid: 28acc67039cb93040a91c21eab0bf51b,
         type: 3}
+      propertyPath: seeRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762408464262613263, guid: 28acc67039cb93040a91c21eab0bf51b,
+        type: 3}
       propertyPath: playerPos
       value: 
       objectReference: {fileID: 598838486}
@@ -52676,6 +52686,23 @@ PrefabInstance:
       objectReference: {fileID: 1616813569}
     - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
         type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: c6f2cc669b04d7e46ab55d201df13e5e,
+        type: 2}
+    - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
+        type: 3}
+      propertyPath: module
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a75922dd997a784481fc2665b7092f3,
+        type: 2}
+    - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
+        type: 3}
+      propertyPath: npc_anim
+      value: 
+      objectReference: {fileID: 308979699}
+    - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
+        type: 3}
       propertyPath: talkclip.Array.size
       value: 11
       objectReference: {fileID: 0}
@@ -53181,6 +53208,17 @@ PrefabInstance:
       propertyPath: npc
       value: 
       objectReference: {fileID: 1681904358}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: module
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a75922dd997a784481fc2665b7092f3,
+        type: 2}
+    - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
+        type: 3}
+      propertyPath: npc_anim
+      value: 
+      objectReference: {fileID: 308979699}
     - target: {fileID: 8946965874496655075, guid: 434578aeca63aec44b848b09cef40d89,
         type: 3}
       propertyPath: sfxclip.Array.size
