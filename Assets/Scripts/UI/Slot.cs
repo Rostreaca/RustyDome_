@@ -36,13 +36,6 @@ public abstract class Slot : MonoBehaviour, IPointerClickHandler
                 return true;
             }
         }
-        else if (slotItemName == "")
-        {
-            this.item = newitem;
-            count++;
-            UpdateSlot();
-            return true;
-        }
         return false;
     }
 

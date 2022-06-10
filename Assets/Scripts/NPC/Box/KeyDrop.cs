@@ -13,7 +13,6 @@ public class KeyDrop : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && iteminfo.isGrounded == true)
         {
             Inventory.instance.AddItem(item);
-            Debug.Log("AA");
             GameManager.Instance.hasGateKey = true;
             Destroy(gameObject);
         }

@@ -54,7 +54,9 @@ public class InventorySlot : Slot
 
         else
         {
-            countText.color = new Color(0, 0, 0, 0);
+            if (countText != null)
+                countText.color = new Color(0, 0, 0, 0);
+            
             icon.color = new Color(0, 0, 0, 0);
         }
     }
