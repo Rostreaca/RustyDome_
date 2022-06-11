@@ -13,7 +13,6 @@ public class LeverHandleDrop : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && iteminfo.isGrounded == true)
         {
             Inventory.instance.AddItem(item);
-            GameManager.Instance.hasLeverhandle = true;
             Destroy(gameObject);
         }
     }

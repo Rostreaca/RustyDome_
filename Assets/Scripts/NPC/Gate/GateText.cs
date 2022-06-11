@@ -5,6 +5,7 @@ using UnityEngine;
 public class GateText : UIText
 {
     public bool isGateOpen;
+    public Item item;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,13 +38,13 @@ public class GateText : UIText
         {
             npc_Text = "'F'";
         }
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.hasGateKey != true)
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && Inventory.instance.Search(item) == false)
         {
             npc_Text = "열쇠가 없습니다.";
             Type_init();
             sayCount++;
         }
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.hasGateKey == true)
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && Inventory.instance.Search(item))
         {
             isGateOpen = true;
             npc_anim.SetBool("GateOpen", true);// 레버가 바뀌는 애니메이션 실행.

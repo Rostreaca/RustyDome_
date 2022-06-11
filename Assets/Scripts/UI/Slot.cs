@@ -39,6 +39,34 @@ public abstract class Slot : MonoBehaviour, IPointerClickHandler
         return false;
     }
 
+    public bool Minus(Item newitem)
+    {
+        if (slotItemName == newitem.itemName)
+        {
+            if (count == item.stackSize)
+            {
+                // 아이템을 차감
+                count--;
+                UpdateSlot();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool Ishave(Item newitem)
+    {
+        if (slotItemName == newitem.itemName)
+        {
+            if (count == item.stackSize)
+            {
+                // 아이템을 확인
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void Remove()
     {
         count--;

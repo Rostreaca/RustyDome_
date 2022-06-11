@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LeverText : UIText
 {
+    public Item item;
     public bool isopen;
     // Start is called before the first frame update
     void Start()
@@ -33,13 +34,13 @@ public class LeverText : UIText
         {
             npc_Text = "'F'";
         }
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.hasLeverhandle !=true)
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true &&Inventory.instance.Search(item) != true)
         {
             npc_Text = "손잡이가 없는 레버다.";
             Type_init();
             sayCount++;
         }
-        if(Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.hasLeverhandle == true)
+        if(Input.GetKey("f") && sayCount == 0 && sayEnd == true && Inventory.instance.Search(item) == true)
         {
             isopen = true;
             npc_anim.SetBool("HandleWork", true);// 레버가 바뀌는 애니메이션 실행.

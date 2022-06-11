@@ -48,6 +48,29 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void RemoveItem(Item item)
+    {
+        foreach (Slot slot in slots)
+        {
+            if (slot.Minus(item))
+            {
+                return;
+            }
+        }
+    }
+
+    public bool Search(Item item)
+    {
+        foreach (Slot slot in slots)
+        {
+            if (slot.Ishave(item))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void DisplayInform(string text)
     {
         informText.text = text;

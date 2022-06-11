@@ -6,6 +6,7 @@ public class LeverEvent : MonoBehaviour
 {
     public GameObject door;
     DoorController doorcontrol;
+    public Item item;
     // Start is called before the first frame update
     void Start()
     {
