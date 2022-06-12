@@ -44,6 +44,7 @@ public class LeverText : UIText
         {
             isopen = true;
             npc_anim.SetBool("HandleWork", true);// 레버가 바뀌는 애니메이션 실행.
+            Inventory.instance.RemoveItem(item);
             Type_init();
             sayCount++;
             dialog.SetActive(false);
