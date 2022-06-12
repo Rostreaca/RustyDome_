@@ -5,7 +5,6 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public AudioSource sfx;
-    public AudioSource bgm;
     public AudioClip[] bgmlist;
     public static SoundManager instance;
     public float volume;
@@ -21,13 +20,13 @@ public class SoundManager : MonoBehaviour
     }
     private void Awake()
     {
-        BackgroundMusic(bgmlist[soundtracknumber]);
+//        BackgroundMusic(bgmlist[soundtracknumber]);
         singleton_Init();
     }
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(2))
+/*        if(Input.GetMouseButtonDown(2))
         {
             soundtracknumber++;
             BackgroundMusic(bgmlist[soundtracknumber]);
@@ -37,6 +36,7 @@ public class SoundManager : MonoBehaviour
             soundtracknumber = 0;
             BackgroundMusic(bgmlist[soundtracknumber]);
         }
+*/
     }
 
     public void SFXPlay(string sfxName, AudioClip clip) //효과음 재생, 재생할 부분에서 script 에 함수 추가.
@@ -53,10 +53,11 @@ public class SoundManager : MonoBehaviour
     }
 
 
-    public void BackgroundMusic(AudioClip clip)
+   /* public void BackgroundMusic(AudioClip clip)
     {
         bgm.clip = clip;
         bgm.loop = true;
         bgm.Play();
     }
+   */
 }
