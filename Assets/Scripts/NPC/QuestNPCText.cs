@@ -43,7 +43,6 @@ public class QuestNPCText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
-            npc_anim.SetTrigger("Talk");
             npc_anim.SetBool("isTalking", true);
             npc_Text = "도와줘서 고맙네..";
             Type_init();
@@ -106,7 +105,6 @@ public class QuestNPCText : UIText
 
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && QuestManager.instance.isallkilled !=true)
         {
-            npc_anim.SetTrigger("Talk");
             npc_anim.SetBool("isTalking", true);
             npc_Text = "망가진 기계들을 \n 처리하고 와주게..";
             Type_init();
