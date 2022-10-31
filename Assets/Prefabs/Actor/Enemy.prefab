@@ -369,9 +369,11 @@ MonoBehaviour:
   hpMax: 100
   hpNow: 100
   speed: 0.5
-  stunMeterMax: 0
-  stunMeterNow: 0
-  stunMeterRegen: 0
+  stunMeterMax: 100
+  stunMeterNow: 100
+  stunMeterRegen: 10
+  stunMeterRegenTime: 2
+  stunMeterRegenTimer: 0
   meleeDmg: 70
   rangeDmg: 100
   meleeSkillCoolTimeNow: 0

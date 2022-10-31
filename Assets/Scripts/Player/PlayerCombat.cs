@@ -118,8 +118,8 @@ public class PlayerCombat : Combat
             EnemyController enemy = colliderDetected.GetComponent<EnemyController>();
 
             int damage = playerController.meleeWeapon.dmg;
-
-            MeleeAttack(enemy, damage);
+            int stunDamage = playerController.meleeWeapon.stunDmg;
+            MeleeAttack(enemy, damage, stunDamage);
         }
 
         else if (colliderDetected.gameObject.CompareTag("Boss"))
@@ -131,21 +131,20 @@ public class PlayerCombat : Combat
             MeleeAttacktoBoss(boss, damage);
         }
     }
-    public void MeleeAttack(EnemyController enemy, int damage)
+
+    public void MeleeAttack(EnemyController enemy, int damage, int stunDamage)
     {
-        enemy.GetDamage(damage);
-    }
-
-
-
-    public void SoundPlay(AudioClip audio)
-    {
-
-        SoundManager.instance.SFXPlay("aa", audio);
+        enemy.GetDamage(damage, stunDamage);
     }
 
     public void MeleeAttacktoBoss(BossGetDamage boss, int damage)
     {
         boss.GetDamage(damage);
+    }
+
+    public void SoundPlay(AudioClip audio)
+    {
+
+        SoundManager.instance.SFXPlay("aa", audio);
     }
 }

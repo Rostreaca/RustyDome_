@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RangeWeapon : Weapon
 {
+    public int stunDmg;
     public int ammoCon;
     public int skillDmg;
     public int skillPowerCon;

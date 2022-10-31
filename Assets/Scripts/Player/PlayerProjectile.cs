@@ -9,14 +9,17 @@ public class PlayerProjectile : MonoBehaviour
 
     public Collider2D colliderDetected;
     public int dmg;
+    public int stunDmg;
     public float speed = 3f;
 
     // Start is called before the first frame update
     private void Awake()
     {
         dmg = PlayerController.instance.rangeWeapon.dmg;
+        stunDmg = PlayerController.instance.rangeWeapon.stunDmg;
         rigid = GetComponent<Rigidbody2D>();
     }
+
     void Start()
     {
         rigid.velocity = transform.position.x > PlayerController.instance.transform.position.x ? new Vector2(speed, 0) : new Vector2(-speed, 0);
@@ -49,14 +52,16 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
+    public void ProjectileAttack(EnemyController enemy)
+    {
+        enemy.GetDamage(dmg, stunDmg);
+    }
+
     public void ProjectileAttacktoBoss(BossGetDamage boss)
     {
         boss.GetDamage(dmg);
     }
-    public void ProjectileAttack(EnemyController enemy)
-    {
-        enemy.GetDamage(dmg);
-    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         colliderDetected = collision;

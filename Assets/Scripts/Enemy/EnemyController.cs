@@ -14,6 +14,10 @@ public class EnemyController : MonoBehaviour
     public float stunMeterMax;
     public float stunMeterNow;
     public float stunMeterRegen;
+    public float stunMeterRegenTime;
+    public float stunMeterRegenTimer;
+    public float stunTime = 1.5f;
+    public float stunTimer = 0f;
 
     public int meleeDmg;
     public float rangeDmg;
@@ -54,9 +58,10 @@ public class EnemyController : MonoBehaviour
     private Vector2 starterPos;
     private float patrollTimer = 0.02f;
     private float returnTimer = 3;
-    private bool canMove;
+
     private bool isMove;
     private bool wascounted;
+    public bool isStun;
     public bool isdead;
     public bool isGround;
     public bool isPatrolling;
@@ -69,6 +74,7 @@ public class EnemyController : MonoBehaviour
     {
         instance = this;
     }
+
     private void Start()
     {
         Singleton();
@@ -76,7 +82,6 @@ public class EnemyController : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
 
-        canMove = true;
         isPatrolling = true;
         starterPos = transform.position;
         Actor = GameObject.Find("Actor");
@@ -86,13 +91,10 @@ public class EnemyController : MonoBehaviour
     {
         if (GameManager.Instance.isGame)
         {
-            if (!canMove)
-                return;
-            if (isdead != true)
+            if (!isdead && !isStun)
             {
                 Move();
             }
-
         }
     }
 
@@ -107,18 +109,34 @@ public class EnemyController : MonoBehaviour
         {
             if (GameManager.Instance.isGame)
             {
-                if (!canMove)
-                    return;
-
-
                 if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
                 {
                     Rotation();
                 }
 
-                Condition();
+                if (!isStun)
+                {
+                    Regen();
+                    Condition();
+                }
+
                 Animation();
                 Attack_Stop();
+            }
+        }
+    }
+
+    public void Regen()
+    {
+        if (stunMeterNow < stunMeterMax)
+        {
+            if (stunMeterRegenTimer <= 0)
+            {
+                stunMeterNow += stunMeterRegen * Time.deltaTime;
+            }
+            else
+            {
+                stunMeterRegenTimer -= Time.deltaTime;
             }
         }
     }
@@ -126,10 +144,6 @@ public class EnemyController : MonoBehaviour
     public void Move()
     {
         GroundCheck();
-
-        //if (!isAttack)
-        //    isMove = true;
-
 
         if (isPatrolling && !isFollowing && !isReturning)
         {
@@ -141,9 +155,7 @@ public class EnemyController : MonoBehaviour
     {
         isMove = true;
 
-
         patrollSin += patrollTimer * speed;
-
 
         if (patrollSin >= 2)
         {
@@ -181,8 +193,12 @@ public class EnemyController : MonoBehaviour
         }
 
     }
+
     public void Follow(Transform target)
     {
+        if (isStun)
+            return;
+
         followTarget = target;
 
         if (!isFollowing && !isReturning)
@@ -192,12 +208,14 @@ public class EnemyController : MonoBehaviour
         }
 
     }
+
     public void Condition()
     {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Hit_Right_Animation"))
         {
             isFollowing = false;
         }
+
         if (isFollowing || isReturning)
         {
             isPatrolling = false;
@@ -278,6 +296,7 @@ public class EnemyController : MonoBehaviour
             animator.SetTrigger("RangeAttack");
         }
     }
+
     public void Attack_Stop()
     {
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim))
@@ -318,12 +337,13 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(int damage, int stunDamage)
     {
         isMove = false;
         if (isdead != true)
         {
             hpNow -= damage;
+            stunMeterNow -= stunDamage;
 
             if (hpNow <= 0)
             {
@@ -331,8 +351,40 @@ public class EnemyController : MonoBehaviour
                 Death();
             }
             else
-                animator.SetTrigger("Hit");
+            {
+                if (stunMeterNow <= 0)
+                {
+                    //스턴애니메이션트리거
+                    Stun();
+                }
+
+                else
+                {
+                    animator.SetTrigger("Hit");
+                    stunMeterRegenTimer = stunMeterRegenTime;
+                }
+            }
         }
+    }
+
+    public void Stun()
+    {
+        isStun = true;
+        stunTimer = stunTime;
+        StartCoroutine(IStun());
+    }
+
+    IEnumerator IStun()
+    {
+        while (stunTimer > 0)
+        {
+            stunTimer -= Time.deltaTime;
+            yield return null;
+        }
+
+        isStun = false;
+        stunMeterNow = stunMeterMax;
+        yield return null;
     }
 
     public void Death()
@@ -373,7 +425,6 @@ public class EnemyController : MonoBehaviour
 
     public void Animation()
     {
-
         animator.SetBool("Move", isMove);
     }
 
