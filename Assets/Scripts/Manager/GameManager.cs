@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
 
+    public static GameManager Instance;
+    
     void SingletonInit()
     {
         if (Instance != null)
@@ -13,7 +14,7 @@ public class GameManager : MonoBehaviour
         else
             Instance = this;
     }
-
+    public bool CutscenePlaying;
     [Header("Parameters")]
     public bool isGame;
     public bool isPause;

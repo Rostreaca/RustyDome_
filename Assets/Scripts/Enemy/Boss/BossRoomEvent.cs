@@ -30,9 +30,10 @@ public class BossRoomEvent : MonoBehaviour
     public void FollowDetected()
     {
             if (BossTest.instance.anim.GetBool("Pattern1start") == false && BossTest.instance.anim.GetBool("Pattern2start") == false&&Playerhit ==  true)
-            {
-                BossTest.instance.follow();
-            }
+        {
+            GameManager.Instance.CutscenePlaying = true;
+            BossTest.instance.follow();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

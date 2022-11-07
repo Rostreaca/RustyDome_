@@ -88,26 +88,37 @@ public class PlayerController : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (GameManager.Instance.isGame && !GameManager.Instance.isPause) //check Game status
+        if(GameManager.Instance.CutscenePlaying==false)
         {
-            Move();
-            Climb();
-            GroundCheck();
+            if (GameManager.Instance.isGame && !GameManager.Instance.isPause) //check Game status
+            {
+                Move();
+                Climb();
+                GroundCheck();
+            }
         }
+        else
+        {
+            animator.SetBool("Move",false);
+        }
+        
     }
 
     private void Update()
     {
-        if (GameManager.Instance.isGame && !GameManager.Instance.isPause)
+        if(GameManager.Instance.CutscenePlaying==false)
         {
-            Rotation();
-            Dash();
-            Attack();
-            Jump();
-            Animation();
+            if (GameManager.Instance.isGame && !GameManager.Instance.isPause)
+            {
+                Rotation();
+                Dash();
+                Attack();
+                Jump();
+                Animation();
 
-            PowerRegen();
-        }
+                PowerRegen();
+            }
+        }    
     }
 
     private void Move()
