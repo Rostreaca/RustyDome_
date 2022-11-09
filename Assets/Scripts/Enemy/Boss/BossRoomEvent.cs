@@ -7,6 +7,8 @@ public class BossRoomEvent : MonoBehaviour
     public GameObject hpbar;
     public GameObject bossroomdoor;
 
+    public int Checking_Cutscene;
+
     DoorController door;
     public bool Playerhit;
     // Start is called before the first frame update
@@ -19,21 +21,23 @@ public class BossRoomEvent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(BossController.instance.isdead !=true)
+        if(BossTest.instance !=null)
         {
-            FollowDetected();
+            if (BossController.instance.isdead != true)
+            {
+                FollowDetected();
 
+            }
         }
 
     }
 
     public void FollowDetected()
     {
-            if (BossTest.instance.anim.GetBool("Pattern1start") == false && BossTest.instance.anim.GetBool("Pattern2start") == false&&Playerhit ==  true)
-        {
-            GameManager.Instance.CutscenePlaying = true;
-            BossTest.instance.follow();
-        }
+            if (BossTest.instance.anim.GetBool("Pattern1start") == false && BossTest.instance.anim.GetBool("Pattern2start") == false && Playerhit == true)
+            {
+                BossTest.instance.follow();
+            }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -42,6 +46,14 @@ public class BossRoomEvent : MonoBehaviour
         {
             if (BossController.instance.isdead != true)
             {
+                if(Checking_Cutscene <1)
+                {
+                    GameManager.Instance.CutscenePlaying = true;
+                    Checking_Cutscene++;
+                }
+
+                Anime_boss.instance.playerentered = true;
+
                 door.doorOpen = false;
 
                 hpbar.SetActive(true);

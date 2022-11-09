@@ -18,19 +18,16 @@ public class BossController : MonoBehaviour
 
     public GameObject Door;
     DoorController doorcontrol;
-    private void singleton()
+    private void Singleton()
     {
-        if(instance !=null)
-        {
-            Destroy(gameObject);
-        }
         instance = this;
     }
     // Start is called before the first frame update
     void Start()
     {
+        Door = GameObject.Find("BossRoomDoor").gameObject;
         doorcontrol = Door.GetComponent<DoorController>();
-        singleton();
+        Singleton();
     }
     private void Awake()
     {

@@ -48,6 +48,7 @@ public class BossTest : MonoBehaviour
         saveBossVelocity = rigid.velocity;
         init_p1cool = p1cooltimer;
         init_p2cool = p2cooltimer;
+
     }
 
     // Update is called once per frame
