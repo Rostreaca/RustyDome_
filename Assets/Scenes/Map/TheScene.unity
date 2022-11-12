@@ -1156,12 +1156,12 @@ PrefabInstance:
     - target: {fileID: 164407732752673731, guid: 89fb80512e4f3ae4f86ce09427afd13f,
         type: 3}
       propertyPath: m_Size.x
-      value: 29.260723
+      value: 29.740513
       objectReference: {fileID: 0}
     - target: {fileID: 164407732752673731, guid: 89fb80512e4f3ae4f86ce09427afd13f,
         type: 3}
       propertyPath: m_Offset.x
-      value: -4.121107
+      value: -4.361002
       objectReference: {fileID: 0}
     - target: {fileID: 164407732752673732, guid: 89fb80512e4f3ae4f86ce09427afd13f,
         type: 3}
@@ -2092,7 +2092,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1319675164}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &309377922
 MonoBehaviour:
@@ -45929,8 +45929,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa6900f92e82de4591b623c291fdb50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpMax: 0
-  hpNow: 0
+  hpMax: 1000
+  hpNow: 1000
   isdead: 0
   isItemdrop: 0
   Item: {fileID: 0}
@@ -46129,6 +46129,71 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1197164494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1197164495}
+  - component: {fileID: 1197164497}
+  - component: {fileID: 1197164496}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1197164495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197164494}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 964.6112, y: 580.3286, z: -5.1163845}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1319675164}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1197164496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197164494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1630de5602ef4974296bda0ffca72547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmsoundcon: {fileID: 0}
+  effectsoundcon: {fileID: 0}
+--- !u!114 &1197164497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197164494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b6c60146834e1d4981dfea1081b00aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 0}
+  sfx: {fileID: 0}
+  bgmlist: []
+  volume: 1
+  soundtracknumber: 0
+  isStop: 0
 --- !u!1 &1227070816
 GameObject:
   m_ObjectHideFlags: 0
@@ -50168,6 +50233,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1197164495}
   - {fileID: 2144576055}
   - {fileID: 309377921}
   m_Father: {fileID: 0}
@@ -52330,7 +52396,7 @@ PrefabInstance:
     - target: {fileID: 7425845232793993780, guid: 4181981ad7fd2dd46bc111be7493b0da,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 223.92
+      value: 223.94
       objectReference: {fileID: 0}
     - target: {fileID: 7425845232793993780, guid: 4181981ad7fd2dd46bc111be7493b0da,
         type: 3}
@@ -52400,12 +52466,12 @@ PrefabInstance:
     - target: {fileID: 7425845232793993781, guid: 4181981ad7fd2dd46bc111be7493b0da,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.64
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7425845232793993781, guid: 4181981ad7fd2dd46bc111be7493b0da,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.56
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7425845232793993783, guid: 4181981ad7fd2dd46bc111be7493b0da,
         type: 3}
@@ -52509,7 +52575,6 @@ GameObject:
   - component: {fileID: 2144576055}
   - component: {fileID: 2144576056}
   - component: {fileID: 2144576057}
-  - component: {fileID: 2144576059}
   m_Layer: 2
   m_Name: Managers
   m_TagString: Untagged
@@ -52530,7 +52595,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1319675164}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2144576056
 MonoBehaviour:
@@ -52573,23 +52638,6 @@ MonoBehaviour:
   customizeScreen: {fileID: 1070940543}
   gameoverScreen: {fileID: 166128992}
   screenState: 0
---- !u!114 &2144576059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2144576054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6c60146834e1d4981dfea1081b00aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sfx: {fileID: 0}
-  bgmlist: []
-  volume: 2
-  soundtracknumber: 0
-  isStop: 0
 --- !u!1001 &393279834902861044
 PrefabInstance:
   m_ObjectHideFlags: 0
