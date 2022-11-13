@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
         else
             Instance = this;
     }
+    public GameObject LettorBox;
     public bool CutscenePlaying;
     [Header("Parameters")]
     public bool isGame;

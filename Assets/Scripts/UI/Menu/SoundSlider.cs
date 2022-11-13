@@ -25,8 +25,14 @@ public class SoundSlider : MonoBehaviour
         {
             effectsoundcon = GameObject.Find("SfxSlider").GetComponent<Slider>();
         }
-        mixer.SetFloat("Sfx", effectsoundcon.value);
-        mixer.SetFloat("Bgm", bgmsoundcon.value);
+        if(effectsoundcon !=null)
+        {
+            mixer.SetFloat("Sfx", effectsoundcon.value);
+        }
+        if(bgmsoundcon !=null)
+        {
+            mixer.SetFloat("Bgm", bgmsoundcon.value);
+        }
         //SoundManager.instance.volume = effectsoundcon.value;
     }
 }
