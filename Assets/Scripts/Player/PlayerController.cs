@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Transform PlayerPos;
     public static PlayerController instance;
 
     public float hpMax;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public float noHitTime=0.5f;
     public float forcePower;
     public float upperForcePower;
+    public float gravityScale;
 
     public bool isGround = false;
     public bool onLadder = false;
@@ -90,6 +92,7 @@ public class PlayerController : MonoBehaviour
 
     public void FixedUpdate()
     {
+        PlayerPos = transform;
         if(GameManager.Instance.CutscenePlaying==false)
         {
             if (GameManager.Instance.isGame && !GameManager.Instance.isPause) //check Game status
@@ -178,7 +181,7 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     rigid.velocity = Vector2.zero;
-                    rigid.gravityScale = 1;
+                    rigid.gravityScale = gravityScale;
                     isDash = false;
                 }
             }
@@ -286,7 +289,7 @@ public class PlayerController : MonoBehaviour
 
         else 
         {
-            rigid.gravityScale = 1;
+            rigid.gravityScale = gravityScale;
         }
     }
 

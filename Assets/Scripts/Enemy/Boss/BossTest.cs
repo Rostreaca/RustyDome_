@@ -226,7 +226,6 @@ public class BossTest : MonoBehaviour
     {
         SoundManager.instance.SFXPlay("aa",audio);
         
-        
     }
 
 }
