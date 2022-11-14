@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     public bool isCharge = false;
 
     public Animator animator;
+    public SpriteRenderer spriteRenderer;
 
     private Rigidbody2D rigid;
     private CapsuleCollider2D col;
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
         animator = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Left_Ani"))
             animator.SetBool("Flip", true);
@@ -133,10 +135,12 @@ public class PlayerController : MonoBehaviour
     {
         if (!isDash && !isAttack)
         {
+            //¿À¸¥ÂÊ
             if (Input.GetAxis("Horizontal") > 0)
-                animator.SetBool("Flip", false);
-            else if(Input.GetAxis("Horizontal") < 0)
-                animator.SetBool("Flip", true);
+                spriteRenderer.flipX = false;
+            //¿ÞÂÊ
+            else if (Input.GetAxis("Horizontal") < 0)
+                spriteRenderer.flipX = true;
         }
     }
 

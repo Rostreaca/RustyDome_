@@ -116,30 +116,29 @@ public class PlayerCombat : Combat
         if (colliderDetected.gameObject.CompareTag("Enemy"))
         {
             EnemyController enemy = colliderDetected.GetComponent<EnemyController>();
-
-            int damage = playerController.meleeWeapon.dmg;
-            int stunDamage = playerController.meleeWeapon.stunDmg;
-            MeleeAttack(enemy, damage, stunDamage);
+            MeleeAttack(enemy);
         }
 
         else if (colliderDetected.gameObject.CompareTag("Boss"))
         {
             BossGetDamage boss = colliderDetected.GetComponent<BossGetDamage>();
-
-            int damage = playerController.meleeWeapon.dmg;
-
-            MeleeAttacktoBoss(boss, damage);
+            MeleeAttacktoBoss(boss);
         }
     }
 
-    public void MeleeAttack(EnemyController enemy, int damage, int stunDamage)
+    public void MeleeAttack(EnemyController enemy)
     {
-        enemy.GetDamage(damage, stunDamage);
+        enemy.GetDamage(playerController.meleeWeapon.dmg, playerController.meleeWeapon.stunDmg);
     }
 
-    public void MeleeAttacktoBoss(BossGetDamage boss, int damage)
+    public void RangeAttack(EnemyController enemy)
     {
-        boss.GetDamage(damage);
+        enemy.GetDamage(playerController.rangeWeapon.dmg, playerController.rangeWeapon.stunDmg);
+    }
+
+    public void MeleeAttacktoBoss(BossGetDamage boss)
+    {
+        boss.GetDamage(playerController.meleeWeapon.dmg);
     }
 
     public void SoundPlay(AudioClip audio)

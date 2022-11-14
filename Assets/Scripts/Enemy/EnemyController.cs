@@ -62,7 +62,7 @@ public class EnemyController : MonoBehaviour
     private bool isMove;
     private bool wascounted;
     public bool isStun;
-    public bool isdead;
+    public bool isDead;
     public bool isGround;
     public bool isPatrolling;
     public bool isFollowing;
@@ -91,7 +91,7 @@ public class EnemyController : MonoBehaviour
     {
         if (GameManager.Instance.isGame)
         {
-            if (!isdead && !isStun)
+            if (!isDead && !isStun)
             {
                 Move();
             }
@@ -105,21 +105,19 @@ public class EnemyController : MonoBehaviour
             QuestManager.instance.Enemycount++;
             wascounted = true;
         }
-        if (!isdead)
+
+        if (!isDead)
         {
             if (GameManager.Instance.isGame)
             {
-                if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim)
+                    && !isStun)
                 {
                     Rotation();
                 }
 
-                if (!isStun)
-                {
-                    Regen();
-                    Condition();
-                }
-
+                Regen();
+                Condition();
                 Animation();
                 Attack_Stop();
             }
@@ -172,6 +170,7 @@ public class EnemyController : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, new Vector2(x, transform.position.y), speed * Time.deltaTime); //radius¿¡ ¹þ¾î³µ´Ù°¡ °©ÀÚ±â ÁøÀÔÇÏ¸é Á¸³ª »¡¶óÁü+ ¹ö±×³²
     }
+
     public void Cliffcheck()
     {
         Vector2 frontcheck = new Vector2(transform.position.x + 0.5f, transform.position.y);
@@ -191,22 +190,17 @@ public class EnemyController : MonoBehaviour
         {
             patrollTimer *= -1;
         }
-
     }
 
     public void Follow(Transform target)
     {
-        if (isStun)
-            return;
-
         followTarget = target;
 
-        if (!isFollowing && !isReturning)
+        if (!isFollowing && !isReturning && !isStun)
         {
             isFollowing = true;
             StartCoroutine(IFollow());
         }
-
     }
 
     public void Condition()
@@ -340,7 +334,7 @@ public class EnemyController : MonoBehaviour
     public void GetDamage(int damage, int stunDamage)
     {
         isMove = false;
-        if (isdead != true)
+        if (isDead != true)
         {
             hpNow -= damage;
             stunMeterNow -= stunDamage;
@@ -400,7 +394,7 @@ public class EnemyController : MonoBehaviour
         rigid.isKinematic = true;
 
         col.isTrigger = true;
-        isdead = true;
+        isDead = true;
 
         Instantiate(Coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
 
@@ -449,7 +443,7 @@ public class EnemyController : MonoBehaviour
 
         while (isFollowing)
         {
-            if (isdead)
+            if (isDead || isStun)
             {
                 break;
             }
@@ -505,7 +499,6 @@ public class EnemyController : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
                 }
 
-
                 timer -= Time.deltaTime;
             }
             yield return null;
@@ -517,7 +510,7 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator IReturnToStartPos()
     {
-        if (isdead != true)
+        if (isDead != true)
         {
 
             while (transform.position.x != starterPos.x)
