@@ -15,6 +15,7 @@ public class PlayerCombat : Combat
 
     private bool canCombo;
     public bool comboReserve;
+    private bool isAiming;
 
     public override void Start()
     {
@@ -54,13 +55,13 @@ public class PlayerCombat : Combat
             animator.SetBool(playerController.meleeWeapon.animName, false);
 
             canCombo = false; //block combo
-            playerController.isAttack = false;
+            playerController.isMeleeAttack = false;
         }
     }
 
     public void OnMeleeChargeAttackEnd()
     {
-        playerController.isAttack = false;
+        playerController.isMeleeAttack = false;
     }
 
     public void CreateProjectile()
@@ -68,7 +69,7 @@ public class PlayerCombat : Combat
         Instantiate(projectile, projectileTransform.position, Quaternion.identity, Actor.transform);
     }
 
-    public void RangeAttackAimEvent()
+    public void OnRangeAttackAim()
     {
         if (animator.GetBool("RangeAttack"))
         {
@@ -78,31 +79,75 @@ public class PlayerCombat : Combat
             {
                 playerController.powerNow -= playerController.rangeWeapon.powerCon;
                 playerController.ammoNow -= playerController.rangeWeapon.ammoCon;
-                animator.SetTrigger("RangeAttackShoot");
+
+                animator.SetTrigger("RangeAttack_Shoot");
             }
 
             //사격불가
             else
             {
-                animator.SetBool("RangeAttack", false);
-                animator.SetTrigger("RangeAttackOutOfAmmo");
+                animator.SetTrigger("RangeAttack_OutOfAmmo");
             }
+
+            animator.SetBool("RangeAttack", false);
         }
 
         else
         {
-
+            if (!isAiming)
+            {
+                isAiming = true;
+                StartCoroutine(IAim());
+            }
         }
+    }
+
+    private IEnumerator IAim()
+    {
+        float t = 0;
+        while (t < 5)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                animator.SetBool("RangeAttack", true);
+                break;
+            }
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        if (t >= 5)
+        {
+            animator.SetTrigger("RangeAttack_End");
+        }
+
+        isAiming = false;
+        yield return null;
     }
 
     public void RangeAttack()
     {
-        animator.SetBool("RangeAttack", false);
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector2(1, 1), 0, new Vector2(0, 0));
+        if (hit.collider != null)
+        {
+            Collider2D col = hit.collider;
+            if (col.gameObject.CompareTag("Enemy"))
+            {
+                EnemyController enemy = colliderDetected.GetComponent<EnemyController>();
+                RangeAttack(enemy);
+            }
+
+            else if (col.gameObject.CompareTag("Boss"))
+            {
+                BossGetDamage boss = colliderDetected.GetComponent<BossGetDamage>();
+                RangeAttacktoBoss(boss);
+            }
+        }
     }
 
     public void OnRangeAttackEnd()
     {
-        playerController.isAttack = false;
+        playerController.isRangeAttack = false;
     }
 
     IEnumerator ICombo()
@@ -169,6 +214,11 @@ public class PlayerCombat : Combat
     public void MeleeAttacktoBoss(BossGetDamage boss)
     {
         boss.GetDamage(playerController.meleeWeapon.dmg);
+    }
+
+    public void RangeAttacktoBoss(BossGetDamage boss)
+    {
+        boss.GetDamage(playerController.rangeWeapon.dmg);
     }
 
     public void SoundPlay(AudioClip audio)

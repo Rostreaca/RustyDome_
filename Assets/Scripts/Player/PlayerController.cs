@@ -45,7 +45,15 @@ public class PlayerController : MonoBehaviour
     public bool isGround = false;
     public bool onLadder = false;
     public bool isClimb = false;
-    public bool isAttack = false;
+    public bool isMeleeAttack = false;
+    public bool isRangeAttack = false;
+    public bool isAttack
+    {
+        get
+        {
+            return isMeleeAttack || isRangeAttack;
+        }
+    }
     public bool isHit = false;
     public bool isCharge = false;
 
@@ -149,17 +157,18 @@ public class PlayerController : MonoBehaviour
     private void Roll()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && isGround && powerNow > 30 &&
-            !isAttack && !isHit)
+            !isMeleeAttack && !isHit)
         {
             int dir = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
             if (rollTimer == 0 && dir != 0)
             {
                 animator.SetTrigger("Roll");
-                rigid.gravityScale = 0;
-                Debug.Log("Roll");
+                isRangeAttack = false;
                 isRoll = true;
-                StartCoroutine(IRoll(dir));
+
+                rigid.gravityScale = 0;
                 powerNow -= 30;
+                StartCoroutine(IRoll(dir));
             }
         }
     }
@@ -244,7 +253,7 @@ public class PlayerController : MonoBehaviour
 
     private void Climb()
     {
-        if (onLadder)
+        if (onLadder && !isAttack)
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -292,7 +301,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (powerNow >= meleeWeapon.powerCon)
                 {
-                    isAttack = true;
+                    isMeleeAttack = true;
 
                     powerNow -= meleeWeapon.powerCon;
                     animator.SetBool(meleeWeapon.animName, true);
@@ -302,7 +311,7 @@ public class PlayerController : MonoBehaviour
             //우클릭, 원거리공격
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                isAttack = true;
+                isRangeAttack = true;
 
                 animator.SetBool(rangeWeapon.animName, true);
             }
