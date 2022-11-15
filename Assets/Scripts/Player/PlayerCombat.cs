@@ -68,20 +68,40 @@ public class PlayerCombat : Combat
         Instantiate(projectile, projectileTransform.position, Quaternion.identity, Actor.transform);
     }
 
+    public void RangeAttackAimEvent()
+    {
+        if (animator.GetBool("RangeAttack"))
+        {
+            //사격가능
+            if (playerController.powerNow >= playerController.rangeWeapon.powerCon &&
+                playerController.ammoNow >= playerController.rangeWeapon.ammoCon)
+            {
+                playerController.powerNow -= playerController.rangeWeapon.powerCon;
+                playerController.ammoNow -= playerController.rangeWeapon.ammoCon;
+                animator.SetTrigger("RangeAttackShoot");
+            }
+
+            //사격불가
+            else
+            {
+                animator.SetBool("RangeAttack", false);
+                animator.SetTrigger("RangeAttackOutOfAmmo");
+            }
+        }
+
+        else
+        {
+
+        }
+    }
+
     public void RangeAttack()
     {
-        if (playerController.powerNow >= playerController.rangeWeapon.powerCon &&
-            playerController.ammoNow >= playerController.rangeWeapon.ammoCon)
-        {
-            playerController.powerNow -= playerController.rangeWeapon.powerCon;
-            playerController.ammoNow -= playerController.rangeWeapon.ammoCon;
-        }
+        animator.SetBool("RangeAttack", false);
     }
 
     public void OnRangeAttackEnd()
     {
-        animator.SetBool("RangeAttack", false);
-
         playerController.isAttack = false;
     }
 
