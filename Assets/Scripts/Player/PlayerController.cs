@@ -31,15 +31,15 @@ public class PlayerController : MonoBehaviour
     public RangeWeapon rangeWeapon;
 
     public float moveSpeed;
-    public float rollCoolTime;
+    public float rollCoolTime = 0.5f;
     public float rollTimer;
-    public float rollTime;
+    public float rollTime = 0.5f;
     public float rollSpeed;
     public float jumpPower;
-    public float noHitTime=0.5f;
+    public float noHitTime = 0.5f;
     public float forcePower;
     public float upperForcePower;
-    public float gravityScale;
+    public float gravityScale = 1f;
 
     public bool isGround = false;
     public bool onLadder = false;
@@ -124,7 +124,8 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if(!isRoll && !isClimb && !isAttack && !isHit)
+        if (!isRoll && !isClimb && !isAttack && !isHit
+            && !animator.GetCurrentAnimatorStateInfo(0).IsName("Land"))
         {
             transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime);
         }
@@ -154,6 +155,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetTrigger("Roll");
                 rigid.gravityScale = 0;
+                Debug.Log("Roll");
                 isRoll = true;
                 StartCoroutine(IRoll(dir));
                 powerNow -= 30;
@@ -213,13 +215,8 @@ public class PlayerController : MonoBehaviour
             //    rigid.velocity = new Vector2(rigid.velocity.x, 0);
             //    rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             //    canAirJump = false;
-
-            //    if (isClimb)
-            //    {
-            //        isClimb = false;
-            //        animator.SetBool("Climb", false);
-            //    }
-
+            
+            //    animator.SetTrigger("Jump");
             //    powerNow -= 20;
             //}
         }
