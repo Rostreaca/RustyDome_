@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -124,8 +125,8 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (!isRoll && !isClimb && !isAttack && !isHit
-            && !animator.GetCurrentAnimatorStateInfo(0).IsName("Land"))
+        if (!isRoll && !isClimb && !isAttack && !isHit &&
+            !animator.GetCurrentAnimatorStateInfo(0).IsName("Land"))
         {
             transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime);
         }
@@ -147,8 +148,8 @@ public class PlayerController : MonoBehaviour
 
     private void Roll()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isGround && powerNow > 30
-            && !isAttack && !isHit)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isGround && powerNow > 30 &&
+            !isAttack && !isHit)
         {
             int dir = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
             if (rollTimer == 0 && dir != 0)
@@ -192,8 +193,8 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && powerNow >= 20
-            && !isHit && !isAttack)
+        if (Input.GetKeyDown(KeyCode.Space) && powerNow >= 20 &&
+            !isHit && !isAttack)
         {
             if (isGround)
             {
@@ -286,6 +287,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAttack && !isClimb && !isHit)
         {
+            //좌클릭, 근접공격
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if (powerNow >= meleeWeapon.powerCon)
@@ -297,27 +299,18 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            //우클릭, 원거리공격
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                if (powerNow >= rangeWeapon.powerCon && ammoNow >= rangeWeapon.ammoCon)
-                {
-                    isAttack = true;
+                isAttack = true;
 
-                    powerNow -= rangeWeapon.powerCon;
-                    ammoNow -= rangeWeapon.ammoCon;
-                    animator.SetBool(rangeWeapon.animName, true);
-                }
-
+                animator.SetBool(rangeWeapon.animName, true);
             }
 
-            if (isCharge)
+            //휠클릭, 특수공격
+            if (Input.GetKeyDown(KeyCode.Mouse2))
             {
-                if (Input.GetKeyUp(KeyCode.Mouse0))
-                {
-                    isAttack = true;
-
-                    animator.SetTrigger(meleeWeapon.skillAnimName);
-                }
+                throw new NotImplementedException();
             }
         }
     }
@@ -421,8 +414,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-
 
     public void GetScrap(int value)
     {

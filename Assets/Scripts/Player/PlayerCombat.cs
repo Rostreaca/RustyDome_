@@ -68,6 +68,16 @@ public class PlayerCombat : Combat
         Instantiate(projectile, projectileTransform.position, Quaternion.identity, Actor.transform);
     }
 
+    public void RangeAttack()
+    {
+        if (playerController.powerNow >= playerController.rangeWeapon.powerCon &&
+            playerController.ammoNow >= playerController.rangeWeapon.ammoCon)
+        {
+            playerController.powerNow -= playerController.rangeWeapon.powerCon;
+            playerController.ammoNow -= playerController.rangeWeapon.ammoCon;
+        }
+    }
+
     public void OnRangeAttackEnd()
     {
         animator.SetBool("RangeAttack", false);
