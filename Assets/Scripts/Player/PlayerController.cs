@@ -31,10 +31,10 @@ public class PlayerController : MonoBehaviour
     public RangeWeapon rangeWeapon;
 
     public float moveSpeed;
-    public float dashCoolTime;
-    public float dashTimer;
-    public float dashTime;
-    public float dashSpeed;
+    public float rollCoolTime;
+    public float rollTimer;
+    public float rollTime;
+    public float rollSpeed;
     public float jumpPower;
     public float noHitTime=0.5f;
     public float forcePower;
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rigid;
     private CapsuleCollider2D col;
-    private bool isDash = false;
+    private bool isRoll = false;
     [SerializeField]
     private bool canAirJump;
 
@@ -77,11 +77,6 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Left_Ani"))
-            animator.SetBool("Flip", true);
-        else
-            animator.SetBool("Flip", true);
-
         for (int i=0; i<5; i++)
         {
             moduleEquipSlots.Add(GameObject.Find("ModuleEquipSlot" + i).GetComponent<CustomizeSlot>());
@@ -93,7 +88,7 @@ public class PlayerController : MonoBehaviour
     public void FixedUpdate()
     {
         PlayerPos = transform;
-        if(GameManager.Instance.CutscenePlaying==false)
+        if(GameManager.Instance.CutscenePlaying == false)
         {
             if (GameManager.Instance.isGame && !GameManager.Instance.isPause) //check Game status
             {
@@ -102,6 +97,7 @@ public class PlayerController : MonoBehaviour
                 GroundCheck();
             }
         }
+
         else
         {
             animator.SetBool("Move",false);
@@ -111,12 +107,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.Instance.CutscenePlaying==false)
+        if(GameManager.Instance.CutscenePlaying == false)
         {
             if (GameManager.Instance.isGame && !GameManager.Instance.isPause)
             {
                 Rotation();
-                Dash();
+                Roll();
                 Attack();
                 Jump();
                 Animation();
@@ -128,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if(!isDash && !isClimb && !isAttack && !isHit)
+        if(!isRoll && !isClimb && !isAttack && !isHit)
         {
             transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime);
         }
@@ -136,100 +132,96 @@ public class PlayerController : MonoBehaviour
 
     private void Rotation()
     {
-        if (!isDash && !isAttack)
+        if (!isRoll && !isClimb && !isAttack && !isHit)
         {
-            //오른쪽
-            if (Input.GetAxis("Horizontal") > 0)
-                spriteRenderer.flipX = false;
             //왼쪽
-            else if (Input.GetAxis("Horizontal") < 0)
-                spriteRenderer.flipX = true;
+            if (Input.GetAxis("Horizontal") < 0)
+            spriteRenderer.flipX = true;
+
+            //오른쪽
+            else if (Input.GetAxis("Horizontal") > 0)
+            spriteRenderer.flipX = false;
         }
     }
 
-    private void Dash()
+    private void Roll()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isAttack && !isHit && isGround && powerNow >  30)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isGround && powerNow > 30
+            && !isAttack && !isHit)
         {
             int dir = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
-            if (dashTimer == 0 && dir != 0)
+            if (rollTimer == 0 && dir != 0)
             {
-                animator.SetTrigger("Dash");
+                animator.SetTrigger("Roll");
                 rigid.gravityScale = 0;
-                isDash = true;
-                StartCoroutine(IDash(dir));
+                isRoll = true;
+                StartCoroutine(IRoll(dir));
                 powerNow -= 30;
             }
         }
     }
 
-    private IEnumerator IDash(int dir)
+    private IEnumerator IRoll(int dir)
     {
-        while (dashTimer < dashCoolTime)
+        while (rollTimer < rollCoolTime)
         {
-            if(animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Right_Ani")&& animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hit_Left_Ani"))
+            if (isRoll)
             {
-                dashTimer = dashCoolTime;
-            }
-            if (isDash)
-            {
-                if (dashTimer < dashTime) //dashing
+                if (rollTimer < rollTime) //dashing
                 {
-                    rigid.velocity = new Vector2(dir * dashSpeed, 0);
+                    rigid.velocity = new Vector2(dir * rollSpeed, 0);
                 }
 
                 else
                 {
                     rigid.velocity = Vector2.zero;
                     rigid.gravityScale = gravityScale;
-                    isDash = false;
+                    isRoll = false;
                 }
             }
 
-            dashTimer += Time.deltaTime;
+            rollTimer += Time.deltaTime;
             yield return null;
         }
 
-        dashTimer = 0;
+        rollTimer = 0;
         yield return null;
     }
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isHit && powerNow > 20)
+        if (Input.GetKeyDown(KeyCode.Space) && powerNow >= 20
+            && !isHit && !isAttack)
         {
-            if (!isAttack)
+            if (isGround)
             {
-                if (isGround)
+                rigid.velocity = new Vector2(rigid.velocity.x, 0);
+                rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+
+                if (isClimb)
                 {
-                    rigid.velocity = new Vector2(rigid.velocity.x, 0);
-                    rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-
-                    if (isClimb)
-                    {
-                        isClimb = false;
-                        animator.SetBool("Climb", false);
-                    }
-
-                    animator.SetTrigger("Jump");
-                    powerNow -= 20;
+                    isClimb = false;
+                    animator.SetBool("Climb", false);
                 }
-                
-                else if (canAirJump)
-                {
-                    rigid.velocity = new Vector2(rigid.velocity.x, 0);
-                    rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-                    canAirJump = false;
 
-                    if (isClimb)
-                    {
-                        isClimb = false;
-                        animator.SetBool("Climb", false);
-                    }
-
-                    powerNow -= 20;
-                }
+                animator.SetTrigger("Jump");
+                powerNow -= 20;
             }
+
+            //else if (canAirJump)
+            //{
+            //    rigid.velocity = new Vector2(rigid.velocity.x, 0);
+            //    rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            //    canAirJump = false;
+
+            //    if (isClimb)
+            //    {
+            //        isClimb = false;
+            //        animator.SetBool("Climb", false);
+            //    }
+
+            //    powerNow -= 20;
+            //}
         }
     }
 
