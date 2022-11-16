@@ -570,8 +570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad8b7894ecb53d46a04a71885dbd15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SaveData: {fileID: 0}
-  SaveGameManager: {fileID: 0}
 --- !u!1001 &210586372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42338,6 +42336,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
+      propertyPath: hpNow
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
