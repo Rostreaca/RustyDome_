@@ -42332,6 +42332,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1788282253}
     m_Modifications:
+    - target: {fileID: 1029559398038586708, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 076c2e2df6dca19489ad5716bcec3ffe, type: 2}
     - target: {fileID: 1031050009897858402, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_Name
@@ -42366,12 +42371,12 @@ PrefabInstance:
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 122.19
+      value: 148.46
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.69
+      value: 12.42
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
@@ -43172,7 +43177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &820982891
 Transform:
   m_ObjectHideFlags: 0
@@ -43254,8 +43259,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aleadyhitting: 0
-  EffectImage: {fileID: 8805539628231450024, guid: 706f78d8a01d2f744a18339085cbab1a,
-    type: 3}
+  EffectImage:
+  - {fileID: 8805539628231450024, guid: 706f78d8a01d2f744a18339085cbab1a, type: 3}
+  - {fileID: 1472921604996067818, guid: 2e3fc4c69021e574ba113e4de8819465, type: 3}
+  - {fileID: 3455106438593519746, guid: d94657eae012f68428e41526f210a2f4, type: 3}
+  - {fileID: 3144577311814629851, guid: 181a35a33207c5f46a57d18cb841ec46, type: 3}
   random_position: {x: 0, y: 0}
   spawn_position: {x: 0, y: 0}
   randompos_x: 0
