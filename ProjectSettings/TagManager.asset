@@ -17,18 +17,18 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - Ground
   - Water
   - UI
-  - Ground
-  - Levitation
+  - Player
+  - RollingPlayer
+  - PlayerProjectile
+  - Enemy
+  - EnemyProjectile
   - NPC
   - Door
   - QuestBound
-  - 
-  - 
-  - 
-  - 
+  - Levitation
   - 
   - 
   - 
@@ -50,8 +50,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Character
+  - name: Player
     uniqueID: 4250275025
+    locked: 0
+  - name: PlayerWeapon
+    uniqueID: 2017747101
     locked: 0
   - name: UI
     uniqueID: 164563699

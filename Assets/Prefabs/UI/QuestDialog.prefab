@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxclip: []
+  talkclip: []
   npc_anim: {fileID: 0}
   t1ext:
   - {fileID: 2982144388109462022, guid: aba282fad4eb0414c8bc0f2c4703d0a3, type: 3}
@@ -112,6 +113,9 @@ MonoBehaviour:
   originPos: {x: 0, y: 0}
   questStart: 0
   questClear: 0
+  module: {fileID: 0}
+  item: {fileID: 0}
+  Actor: {fileID: 0}
 --- !u!1 &1993108228101879785
 GameObject:
   m_ObjectHideFlags: 0
