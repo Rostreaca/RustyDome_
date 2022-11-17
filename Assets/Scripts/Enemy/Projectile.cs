@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public EnemyController launcher;
     Rigidbody2D rigid;
 
     public Collider2D colliderDetected;
@@ -15,15 +16,6 @@ public class Projectile : MonoBehaviour
         
         rigid = GetComponent<Rigidbody2D>();
 
-        if (EnemyController.instance.transform.localScale==new Vector3(-1,1,1)) //플레이어가 왼쪽에 있을때
-        {
-            rigid.velocity = new Vector2(-speed, 0);
-        }
-
-        if (EnemyController.instance.transform.localScale == new Vector3(1, 1, 1)) //플레이어가 오른쪽에 있을때
-        {
-            rigid.velocity = new Vector2(speed, 0);
-        }
         Destroy(gameObject, 3f);
     }
 
@@ -35,6 +27,19 @@ public class Projectile : MonoBehaviour
 
     public void HitDetected()
     {
+        if(colliderDetected.gameObject.CompareTag("Enemy"))
+        {
+            launcher = colliderDetected.GetComponent<EnemyController>();
+            if (launcher.transform.localScale == new Vector3(-1, 1, 1)) //플레이어가 왼쪽에 있을때
+            {
+                rigid.velocity = new Vector2(-speed, 0);
+            }
+
+            if (launcher.transform.localScale == new Vector3(1, 1, 1)) //플레이어가 오른쪽에 있을때
+            {
+                rigid.velocity = new Vector2(speed, 0);
+            }
+        }
         if (colliderDetected.gameObject.CompareTag("Player"))
         {
             PlayerController player = colliderDetected.GetComponent<PlayerController>();
@@ -60,4 +65,6 @@ public class Projectile : MonoBehaviour
         colliderDetected = collision;
         HitDetected();
     }
+
+    
 }

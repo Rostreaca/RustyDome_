@@ -351,8 +351,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06580639, y: -0.12922883}
-  m_Size: {x: 0.50268364, y: 0.73914003}
+  m_Offset: {x: 0.026779175, y: -0.17315316}
+  m_Size: {x: 0.17080688, y: 0.6512914}
   m_Direction: 0
 --- !u!114 &4980854292804328397
 MonoBehaviour:
@@ -374,11 +374,13 @@ MonoBehaviour:
   stunMeterRegen: 10
   stunMeterRegenTime: 2
   stunMeterRegenTimer: 0
+  stunTime: 1.5
+  stunTimer: 0
   meleeDmg: 70
   rangeDmg: 100
   meleeSkillCoolTimeNow: 0
   meleeSkillCoolTimeMax: 2
-  RangeSkillCoolTimeNow: 0
+  RangeSkillCoolTimeNow: 3
   RangeSkillCoolTimeMax: 3
   patrollRadius: 1
   patrollSin: 0
@@ -400,7 +402,8 @@ MonoBehaviour:
   isRangeAttack: 0
   cooltimecheck: 0
   rangecoolcheck: 0
-  isdead: 0
+  isStun: 0
+  isDead: 0
   isGround: 0
   isPatrolling: 0
   isFollowing: 0

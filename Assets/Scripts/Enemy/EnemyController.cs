@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public static EnemyController instance;
 
     public int hpMax;
     public int hpNow;
@@ -45,20 +44,20 @@ public class EnemyController : MonoBehaviour
     public GameObject Projectile;
     public GameObject Actor;
 
-    public bool monsterisquestzone;
-    public bool isAttack;
-    public bool isRangeAttack;
-    public bool cooltimecheck;
-    public bool rangecoolcheck;
 
     private CapsuleCollider2D col;
-    private SpriteRenderer rend;
     private Animator animator;
 
     private Vector2 starterPos;
     private float patrollTimer = 0.02f;
     private float returnTimer = 3;
 
+    [Header("상태")]
+    public bool monsterisquestzone;
+    public bool isAttack;
+    public bool isRangeAttack;
+    public bool cooltimecheck;
+    public bool rangecoolcheck;
     private bool isMove;
     private bool wascounted;
     public bool isStun;
@@ -68,18 +67,13 @@ public class EnemyController : MonoBehaviour
     public bool isFollowing;
     public bool isReturning;
 
+    public Collider2D checkcol;
     private string meleeAttackanim = "BrokenClockwoker_Melee_Right_Animation";
     private string RangeAttackanim = "BrokenClockwoker_Range_Right_Ani";
-    public void Singleton()
-    {
-        instance = this;
-    }
-
+    
     private void Start()
     {
-        Singleton();
         col = GetComponent<CapsuleCollider2D>();
-        rend = GetComponent<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
 
         isPatrolling = true;
@@ -116,7 +110,7 @@ public class EnemyController : MonoBehaviour
                     Rotation();
                 }
 
-                Regen();
+                Stun_Regen();
                 Condition();
                 Animation();
                 Attack_Stop();
@@ -124,7 +118,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void Regen()
+    public void Stun_Regen()
     {
         if (stunMeterNow < stunMeterMax)
         {
@@ -168,11 +162,12 @@ public class EnemyController : MonoBehaviour
 
         float x = patrollRadius * patrollSin + starterPos.x;
 
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(x, transform.position.y), speed * Time.deltaTime); //radius에 벗어났다가 갑자기 진입하면 존나 빨라짐+ 버그남
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(x, transform.position.y), speed * Time.deltaTime);
     }
 
     public void Cliffcheck()
     {
+        
         Vector2 frontcheck = new Vector2(transform.position.x + 0.5f, transform.position.y);
         if (transform.localScale == new Vector3(-1, 1, 1))
         {
@@ -182,16 +177,33 @@ public class EnemyController : MonoBehaviour
         {
             frontcheck.x = transform.position.x + 0.5f;
         }
-
+        int layermask = ((1 << LayerMask.NameToLayer("Ground")) + (1 << LayerMask.NameToLayer("Platform")));
         Debug.DrawRay(frontcheck, Vector3.down);
-        RaycastHit2D cliffray = Physics2D.Raycast(frontcheck, Vector3.down, 1);
+        RaycastHit2D cliffray = Physics2D.Raycast(frontcheck, Vector3.down, 1,layermask);
 
-        if (cliffray.collider == null)
+        checkcol = cliffray.collider ;
+
+        if (cliffray.collider==null)
         {
             patrollTimer *= -1;
         }
     }
 
+    public void GroundCheck()
+    {
+        RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f);
+
+        if (hit.collider != null && hit.collider.tag == ("NPC") || hit.collider != null && hit.collider.tag == ("Projectile"))
+        {
+            return;
+        }
+
+        bool grounded = hit.collider != null && hit.collider.CompareTag("Ground") || hit.collider != null && hit.collider.CompareTag("Platform") || hit.collider != null && hit.collider.CompareTag("Ladder") || hit.collider != null && hit.collider.CompareTag("Bound") || hit.collider != null && hit.collider.tag == ("Quest");
+        isGround = grounded;
+
+        if (!isGround)
+            patrollTimer = -patrollTimer;
+    }
     public void Follow(Transform target)
     {
         followTarget = target;
@@ -203,18 +215,14 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void Condition()
+    public void Condition() //상태 설정
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Hit_Right_Animation"))
-        {
-            isFollowing = false;
-        }
 
         if (isFollowing || isReturning)
         {
             isPatrolling = false;
         }
-        else if (!isFollowing && animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Hit_Right_Animation"))
+        else if (!isFollowing && animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim))
         {
             isPatrolling = false;
         }
@@ -224,7 +232,7 @@ public class EnemyController : MonoBehaviour
         if (isReturning)
             isPatrolling = false;
 
-        if (!isFollowing && !isReturning && !isPatrolling && !animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Hit_Right_Animation"))
+        if (!isFollowing && !isReturning && !isPatrolling && !animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim))
         {
             isPatrolling = true;
         }
@@ -267,7 +275,7 @@ public class EnemyController : MonoBehaviour
                 transform.localScale = new Vector3(-1, 1, 1);
             }
         }
-    }
+    }//방향전환
 
     private void Attack()
     {
@@ -329,7 +337,7 @@ public class EnemyController : MonoBehaviour
             rangecoolcheck = true;
         }
 
-    }
+    } // 공격 쿨타임
 
     public void GetDamage(int damage, int stunDamage)
     {
@@ -422,20 +430,6 @@ public class EnemyController : MonoBehaviour
         animator.SetBool("Move", isMove);
     }
 
-    public void GroundCheck()
-    {
-        RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f);
-
-        if (hit.collider != null && hit.collider.tag == ("NPC") || hit.collider != null && hit.collider.tag == ("Projectile") )
-        {
-            return;
-        }
-        bool grounded = hit.collider != null && hit.collider.CompareTag("Ground") || hit.collider != null && hit.collider.CompareTag("Platform") || hit.collider != null && hit.collider.CompareTag("Ladder") || hit.collider !=null && hit.collider.CompareTag("Bound") || hit.collider != null && hit.collider.tag == ("Quest");
-        isGround = grounded;
-
-        if (!isGround)
-            patrollTimer = -patrollTimer;
-    }
 
     IEnumerator IFollow()
     {
@@ -448,13 +442,15 @@ public class EnemyController : MonoBehaviour
                 break;
             }
 
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("BrokenClockwoker_Hit_Right_Animation"))
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) || animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
             {
+                isPatrolling = false;
+                isReturning = false;
                 isMove = false;
                 yield return null;
             }
             isPatrolling = false;
-            if (Vector2.Distance(transform.position, followTarget.position) > returnRadius && timer <= 0) //if target leave
+            if (Vector2.Distance(transform.position, followTarget.position) > returnRadius && timer <= 0 && !animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim)&& !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim)) //if target leave
             {
                 isFollowing = false;
                 followTarget = null;
@@ -462,6 +458,10 @@ public class EnemyController : MonoBehaviour
                 isReturning = true;
 
                 patrollSin = 0;
+                if(transform.localScale.x == -1)
+                {
+                    patrollTimer *= -1;
+                }
 
                 StartCoroutine(IReturnToStartPos()); //start returning
             }
@@ -471,7 +471,11 @@ public class EnemyController : MonoBehaviour
                 followTarget = null;
 
                 isReturning = true;
-
+                
+                if (transform.localScale.x == -1)
+                {
+                    patrollTimer *= -1;
+                }
                 patrollSin = 0;
 
                 StartCoroutine(IReturnToStartPos());
@@ -512,7 +516,10 @@ public class EnemyController : MonoBehaviour
     {
         if (isDead != true)
         {
-
+            if(isFollowing||isAttack||isRangeAttack||isPatrolling)
+            {
+                yield return null;
+            }
             while (transform.position.x != starterPos.x)
             {
                 isMove = true;

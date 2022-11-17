@@ -570,6 +570,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad8b7894ecb53d46a04a71885dbd15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
+  ammo: 0
+  isGameLoaded: 0
+  player: {fileID: 0}
+  player_stats: {fileID: 0}
 --- !u!1001 &210586372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -981,6 +986,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bound4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723387596187617662, guid: 3e8ca84f0d1731240b66bba10367e40c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8723387596187617663, guid: 3e8ca84f0d1731240b66bba10367e40c,
         type: 3}
@@ -3491,16 +3501,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1788282253}
     m_Modifications:
-    - target: {fileID: 7795516198423240878, guid: fb981076d1e0fb3498021a5fcf4718b5,
-        type: 3}
-      propertyPath: Enemycount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795516198423240878, guid: fb981076d1e0fb3498021a5fcf4718b5,
-        type: 3}
-      propertyPath: isallkilled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7795516198423240912, guid: fb981076d1e0fb3498021a5fcf4718b5,
         type: 3}
       propertyPath: m_RootOrder
@@ -3560,11 +3560,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: QuestCheckScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795516198423240913, guid: fb981076d1e0fb3498021a5fcf4718b5,
-        type: 3}
-      propertyPath: m_TagString
-      value: Quest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb981076d1e0fb3498021a5fcf4718b5, type: 3}
@@ -41998,12 +41993,12 @@ PrefabInstance:
     - target: {fileID: 4977609546660823330, guid: 688e105d1713123439b9cb38bc65ef1e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 162.89
+      value: 158.6
       objectReference: {fileID: 0}
     - target: {fileID: 4977609546660823330, guid: 688e105d1713123439b9cb38bc65ef1e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.75
+      value: 23.71
       objectReference: {fileID: 0}
     - target: {fileID: 4977609546660823330, guid: 688e105d1713123439b9cb38bc65ef1e,
         type: 3}
@@ -42049,6 +42044,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5019400979809706572, guid: 688e105d1713123439b9cb38bc65ef1e,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688e105d1713123439b9cb38bc65ef1e, type: 3}
@@ -42356,7 +42356,7 @@ PrefabInstance:
     - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: gravityScale
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
@@ -42366,12 +42366,12 @@ PrefabInstance:
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 219.42
+      value: 122.19
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.26
+      value: 14.69
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
@@ -43327,6 +43327,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bound6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723387596187617662, guid: 3e8ca84f0d1731240b66bba10367e40c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8723387596187617663, guid: 3e8ca84f0d1731240b66bba10367e40c,
         type: 3}
@@ -46103,6 +46108,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bound2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723387596187617662, guid: 3e8ca84f0d1731240b66bba10367e40c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8723387596187617663, guid: 3e8ca84f0d1731240b66bba10367e40c,
         type: 3}
@@ -51396,6 +51406,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bound3
       objectReference: {fileID: 0}
+    - target: {fileID: 8723387596187617662, guid: 3e8ca84f0d1731240b66bba10367e40c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8723387596187617663, guid: 3e8ca84f0d1731240b66bba10367e40c,
         type: 3}
       propertyPath: m_RootOrder
@@ -51782,6 +51797,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bound5
       objectReference: {fileID: 0}
+    - target: {fileID: 8723387596187617662, guid: 3e8ca84f0d1731240b66bba10367e40c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8723387596187617663, guid: 3e8ca84f0d1731240b66bba10367e40c,
         type: 3}
       propertyPath: m_RootOrder
@@ -52054,6 +52074,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bound1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723387596187617662, guid: 3e8ca84f0d1731240b66bba10367e40c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8723387596187617663, guid: 3e8ca84f0d1731240b66bba10367e40c,
         type: 3}
@@ -52867,6 +52892,7 @@ MonoBehaviour:
   CutscenePlaying: 0
   isGame: 0
   isPause: 0
+  isEnd: 0
   coinCount: 0
   checkPoint: {fileID: 0}
 --- !u!114 &2144576057

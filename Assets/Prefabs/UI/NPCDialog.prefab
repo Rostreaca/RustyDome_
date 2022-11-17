@@ -213,7 +213,6 @@ GameObject:
   - component: {fileID: 4818857141142143472}
   - component: {fileID: 4818857141142143485}
   - component: {fileID: 4818857141142143486}
-  - component: {fileID: 4818857141142143487}
   m_Layer: 5
   m_Name: NPCText
   m_TagString: Untagged
@@ -283,29 +282,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!114 &4818857141142143487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4818857141142143473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821f5ef01d212a749aa7527fdecb69d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npc_anim: {fileID: 0}
-  t1ext: []
-  dialog: {fileID: 4818857141309050721}
-  npc: {fileID: 0}
-  nextTextBtn: {fileID: 4818857139729035206}
-  text: {fileID: 4818857141142143486}
-  npc_Text: '''F'''
-  sayCount: 0
-  textEnd: 0
-  sayEnd: 0
-  originPos: {x: 0, y: 0}
 --- !u!1 &4818857141309050721
 GameObject:
   m_ObjectHideFlags: 0

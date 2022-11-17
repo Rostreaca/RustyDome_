@@ -2985,6 +2985,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad8b7894ecb53d46a04a71885dbd15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
+  ammo: 0
+  isGameLoaded: 0
   player: {fileID: 0}
   player_stats: {fileID: 0}
 --- !u!4 &1602419205
