@@ -30,12 +30,7 @@ public class PlayerCombat : Combat
     public void OnMeleeAttackBegin()
     {
         StartCoroutine(ICombo()); //Start combo system 
-        StartCoroutine(ICharge());
-    }
-
-    public void OnMeleeChargeAttackBegin()
-    {
-        playerController.isCharge = false;
+        //StartCoroutine(ICharge());
     }
 
     public void OnMeleeAttackEnd()
@@ -63,6 +58,48 @@ public class PlayerCombat : Combat
     {
         playerController.isMeleeAttack = false;
     }
+
+    IEnumerator ICombo()
+    {
+        yield return new WaitForEndOfFrame();
+        canCombo = true;
+
+        while (canCombo)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                canCombo = false;
+                comboReserve = true;
+            }
+            yield return null;
+        }
+    }
+
+    //public void OnMeleeChargeAttackBegin()
+    //{
+    //    playerController.isCharge = false;
+    //}
+
+    //IEnumerator ICharge()
+    //{
+    //    float time = 0;
+
+    //    while (!playerController.isCharge)
+    //    {
+    //        if (Input.GetKeyUp(KeyCode.Mouse0))
+    //        {
+    //            StopCoroutine(ICharge());
+    //        }
+
+    //        if (time >= chargeTime)
+    //        {
+    //            playerController.isCharge = true;
+    //        }
+
+    //        time += Time.deltaTime;
+    //        yield return null;
+    //    }
+    //}
 
     public void CreateProjectile()
     {
@@ -148,42 +185,6 @@ public class PlayerCombat : Combat
     public void OnRangeAttackEnd()
     {
         playerController.isRangeAttack = false;
-    }
-
-    IEnumerator ICombo()
-    {
-        canCombo = true;
-
-        while (canCombo)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                canCombo = false;
-                comboReserve = true;
-            }
-            yield return null;
-        }
-    }
-
-    IEnumerator ICharge()
-    {
-        float time = 0;
-
-        while (!playerController.isCharge)
-        {
-            if (Input.GetKeyUp(KeyCode.Mouse0))
-            {
-                StopCoroutine(ICharge());
-            }
-
-            if (time >= chargeTime)
-            {
-                playerController.isCharge = true;
-            }
-
-            time += Time.deltaTime;
-            yield return null;
-        }
     }
 
     public override void HitDetected()
