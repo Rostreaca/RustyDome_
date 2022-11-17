@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class CreateHitEffect : MonoBehaviour
 {
-    
     BoxCollider2D boxcol;
     public bool aleadyhitting;
-    public GameObject[] EffectImage;
+    public GameObject EffectImage;
     public Vector2 random_position, spawn_position;
     public float randompos_x,randompos_y;
     // Start is called before the first frame update
@@ -34,13 +33,12 @@ public class CreateHitEffect : MonoBehaviour
 
     void CreateEffect()
     {
-        int random_range = Random.Range(0, EffectImage.Length-1);
         randompos_x = Random.Range(-(boxcol.bounds.size.x/2), boxcol.bounds.size.x/2);
         randompos_y = Random.Range(-(boxcol.bounds.size.y/2), boxcol.bounds.size.y/2);
 
         random_position = new Vector2(randompos_x, randompos_y);
 
         spawn_position = new Vector2(transform.position.x+randompos_x,transform.position.y+randompos_y);
-        Instantiate(EffectImage[random_range], spawn_position, Quaternion.identity);
+        Instantiate(EffectImage, spawn_position, Quaternion.identity);
     }
 }
