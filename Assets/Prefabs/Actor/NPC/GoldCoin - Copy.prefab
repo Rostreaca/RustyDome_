@@ -48,7 +48,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.16851218
+  m_Radius: 0.11249555
 --- !u!114 &7973177237843733996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,9 +79,9 @@ GameObject:
   - component: {fileID: 6858372336167351652}
   - component: {fileID: 6858372336167351658}
   - component: {fileID: 6858372336167351657}
-  - component: {fileID: -8962237568520431496}
+  - component: {fileID: 7494468821248782328}
   m_Layer: 0
-  m_Name: Handle
+  m_Name: GoldCoin - Copy
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,8 +144,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: f8f05d0119cbac041b64b2b257fd0a35, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e95fb905c1aea2d468c616b26c461564, type: 3}
+  m_Color: {r: 0.9963192, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -170,7 +170,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.25
+  m_GravityScale: 0.35
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -204,8 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f7dd29b4e272149978482200cdb2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theta: 0
---- !u!114 &-8962237568520431496
+  theta: 70
+--- !u!114 &7494468821248782328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,8 +214,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6858372336167351654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd975ba7f2609140a3505584bb4468f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bb59bb7d530eca4180ba511a4da060d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   iteminfo: {fileID: 7973177237843733996}
-  item: {fileID: 11400000, guid: c6f2cc669b04d7e46ab55d201df13e5e, type: 2}
+  scrapValue: 5
