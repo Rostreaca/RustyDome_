@@ -213,9 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260269a09e029ef4bb7c18040cc57b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxclip:
-  - {fileID: 0}
-  talkclip: []
+  sfxclip: {fileID: 0}
   npc_anim: {fileID: 0}
   t1ext: []
   dialog: {fileID: 6765776726465216662}

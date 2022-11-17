@@ -7,9 +7,8 @@ public class PlayerCombat : Combat
     GameObject Actor;
     public GameObject projectile;
     public Transform projectileTransform;
-
-    public Animator animator, weaponAnimator, rangeEffectAnimator;
     private Rigidbody2D rigid;
+    private Animator animator;
     private PlayerController playerController;
 
     public float chargeTime = 1f;
@@ -18,13 +17,14 @@ public class PlayerCombat : Combat
     public bool comboReserve;
     private bool isAiming;
 
-
     public override void Start()
     {
         base.Start();
         Actor = GameObject.Find("Actor");
         rigid = GetComponentInParent<Rigidbody2D>();
         playerController = GetComponentInParent<PlayerController>();
+        animator = GetComponent<Animator>();
+        projectileTransform = transform.GetChild(2).transform;
     }
 
     public void OnMeleeAttackBegin()
@@ -38,7 +38,6 @@ public class PlayerCombat : Combat
         if (comboReserve)
         {
             animator.SetTrigger("AttackCombo");
-            weaponAnimator.SetTrigger("AttackCombo");
             comboReserve = false;
         }
 
@@ -48,9 +47,7 @@ public class PlayerCombat : Combat
 
             //Animator update
             animator.ResetTrigger("AttackCombo");
-            weaponAnimator.ResetTrigger("AttackCombo");
             animator.SetBool(playerController.meleeWeapon.animName, false);
-            weaponAnimator.SetBool(playerController.meleeWeapon.animName, false);
 
             canCombo = false; //block combo
             playerController.isMeleeAttack = false;
@@ -121,7 +118,6 @@ public class PlayerCombat : Combat
                 playerController.ammoNow -= playerController.rangeWeapon.ammoCon;
 
                 animator.SetTrigger("RangeAttack_Shoot");
-                rangeEffectAnimator.SetTrigger("RangeAttack_Effect" + Random.Range(0, 3).ToString());
             }
 
             //사격불가
@@ -146,7 +142,7 @@ public class PlayerCombat : Combat
     private IEnumerator IAim()
     {
         float t = 0;
-        while (t < 1)
+        while (t < 5)
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
@@ -157,7 +153,7 @@ public class PlayerCombat : Combat
             yield return null;
         }
 
-        if (t >= 1)
+        if (t >= 5)
         {
             animator.SetTrigger("RangeAttack_End");
         }
@@ -224,16 +220,6 @@ public class PlayerCombat : Combat
     public void RangeAttacktoBoss(BossGetDamage boss)
     {
         boss.GetDamage(playerController.rangeWeapon.dmg);
-    }
-
-    public void OnRollBegin()
-    {
-        playerController.gameObject.layer = LayerMask.NameToLayer("RollingPlayer");
-    }
-
-    public void OnRollEnd()
-    {
-        playerController.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     public void SoundPlay(AudioClip audio)
