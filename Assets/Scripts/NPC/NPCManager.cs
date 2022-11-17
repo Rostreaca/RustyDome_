@@ -33,19 +33,21 @@ public class NPCManager : MonoBehaviour
 
     public void CreateTextBox()
     {
-
-        if (isSee == true)
+        if(dialog !=null)
         {
-            if (isSay == false)
+            if (isSee == true)
             {
-                dialog.SetActive(true);
+                if (isSay == false)
+                {
+                    dialog.SetActive(true);
+                }
+                isSay = true;
             }
-            isSay = true;
-        }
-        else if (isSee != true)
-        {
-            dialog.SetActive(false);
-            isSay = false;
+            else if (isSee != true)
+            {
+                dialog.SetActive(false);
+                isSay = false;
+            }
         }
     }
 

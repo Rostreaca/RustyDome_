@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public GameObject MainMenu, OptionMenu;
-    public Button StartButton,OptionButton,EndButton,BackButton;
+    public Button StartButton,OptionButton,EndButton,BackButton,ContinueButton;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,7 @@ public class MenuManager : MonoBehaviour
         OptionButton.onClick.AddListener(Option);
         EndButton.onClick.AddListener(GameEnd);
         BackButton.onClick.AddListener(OptionBack);
+        ContinueButton.onClick.AddListener(Continue);
     }
 
     // Update is called once per frame
@@ -44,4 +45,11 @@ public class MenuManager : MonoBehaviour
         MainMenu.SetActive(true);
         OptionMenu.SetActive(false);
     }
+    public void Continue()
+    {
+        SceneManager.LoadScene("TheScene");
+
+        DataManager.instance.isGameLoaded = true;
+    }
+
 }
