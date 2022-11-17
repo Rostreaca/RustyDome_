@@ -103,15 +103,15 @@ MonoBehaviour:
   meleeWeapon: {fileID: 11400000, guid: 0e02c0a8bb5aba844901683f720ce246, type: 2}
   rangeWeapon: {fileID: 11400000, guid: 47629b171b289eb4991490a1b527eb79, type: 2}
   moveSpeed: 3
-  rollCoolTime: 0
+  rollCoolTime: 2
   rollTimer: 0
   rollTime: 0
-  rollSpeed: 0
-  jumpPower: 7
+  rollSpeed: 2
+  jumpPower: 12
   noHitTime: 0.5
   forcePower: 0
   upperForcePower: 0
-  gravityScale: 0
+  gravityScale: 3
   isGround: 0
   onLadder: 0
   isClimb: 0

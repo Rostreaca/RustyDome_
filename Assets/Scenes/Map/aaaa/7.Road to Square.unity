@@ -927,7 +927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -5235,10 +5234,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4713692547227542689, guid: 48b7b630d1052f94eb7d4f9b158818a1,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 063634a9f64edd542bcacee8a8dc0037, type: 2}
     - target: {fileID: 4713692547227542691, guid: 48b7b630d1052f94eb7d4f9b158818a1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4713692547227542691, guid: 48b7b630d1052f94eb7d4f9b158818a1,
         type: 3}
@@ -5295,6 +5299,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: lever_nohandle
       objectReference: {fileID: 0}
+    - target: {fileID: 4713692547227542702, guid: 48b7b630d1052f94eb7d4f9b158818a1,
+        type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 1655060411}
+    - target: {fileID: 4713692547227542702, guid: 48b7b630d1052f94eb7d4f9b158818a1,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: c6f2cc669b04d7e46ab55d201df13e5e,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48b7b630d1052f94eb7d4f9b158818a1, type: 3}
 --- !u!1001 &670349909
@@ -11541,6 +11556,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7425845232793993779, guid: 4181981ad7fd2dd46bc111be7493b0da,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95676ca379046194e901b2e5fd5a80e0,
+        type: 3}
     - target: {fileID: 7425845232793993780, guid: 4181981ad7fd2dd46bc111be7493b0da,
         type: 3}
       propertyPath: m_RootOrder
@@ -11603,6 +11624,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4181981ad7fd2dd46bc111be7493b0da, type: 3}
+--- !u!1 &1655060411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7425845232793993783, guid: 4181981ad7fd2dd46bc111be7493b0da,
+    type: 3}
+  m_PrefabInstance: {fileID: 1655060410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1674741231 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4818857141142143473, guid: c8426c58d62f2574ab0fa7af9e817d1d,
@@ -12141,6 +12168,7 @@ MonoBehaviour:
   CutscenePlaying: 0
   isGame: 0
   isPause: 0
+  isEnd: 0
   coinCount: 0
   checkPoint: {fileID: 0}
 --- !u!114 &2144576057

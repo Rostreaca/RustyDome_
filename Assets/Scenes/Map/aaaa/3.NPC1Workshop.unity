@@ -927,7 +927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -4645,6 +4644,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 47629b171b289eb4991490a1b527eb79,
         type: 2}
+    - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
+      propertyPath: rollCoolTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_RootOrder
@@ -11493,6 +11497,7 @@ MonoBehaviour:
   CutscenePlaying: 0
   isGame: 0
   isPause: 0
+  isEnd: 0
   coinCount: 0
   checkPoint: {fileID: 0}
 --- !u!114 &2144576057
