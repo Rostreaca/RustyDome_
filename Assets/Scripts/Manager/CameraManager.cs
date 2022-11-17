@@ -47,6 +47,7 @@ public class CameraManager : MonoBehaviour
         halfWidth = halfHeight * Screen.width / Screen.height;
 
         player = GameObject.FindGameObjectWithTag("Player").transform; //Find player in scene
+
         if(GameObject.Find("Anime_Boss"))
         {
             boss = GameObject.Find("Anime_Boss").transform;

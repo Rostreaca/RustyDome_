@@ -104,6 +104,7 @@ MonoBehaviour:
   rangeWeapon: {fileID: 11400000, guid: 47629b171b289eb4991490a1b527eb79, type: 2}
   moveSpeed: 3
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
+<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player/Player.prefab
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
@@ -112,6 +113,8 @@ MonoBehaviour:
 >>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
 =======
 >>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
+=======
+>>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
 =======
 >>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
   rollCoolTime: 1
@@ -127,6 +130,7 @@ MonoBehaviour:
   upperForcePower: 0
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player/Player.prefab
   gravityScale: 1
+<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
 =======
   rollCoolTime: 2
@@ -148,6 +152,8 @@ MonoBehaviour:
 >>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
 =======
 >>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
+=======
+>>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
 =======
 >>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
   isGround: 0
@@ -240,6 +246,7 @@ Transform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
+<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player/Player.prefab
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
@@ -248,6 +255,8 @@ Transform:
 >>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
 =======
 >>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
+=======
+>>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
 =======
 >>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
 --- !u!212 &5203793394305300074
@@ -323,6 +332,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
+<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
 =======
   m_GameObject: {fileID: 3864066950699480349}
   m_Enabled: 1
@@ -375,6 +385,8 @@ BoxCollider2D:
 >>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
 =======
 >>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
+=======
+>>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
 =======
 >>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
 --- !u!1 &8002706383204267057
@@ -481,6 +493,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
+<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player/Player.prefab
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
 <<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
@@ -509,6 +522,11 @@ Transform:
 >>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
 =======
 >>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
+=======
+  - {fileID: 7828873690864586782}
+  - {fileID: 4130600187804690138}
+  - {fileID: 182299341562624290}
+>>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
 =======
   - {fileID: 7828873690864586782}
   - {fileID: 4130600187804690138}

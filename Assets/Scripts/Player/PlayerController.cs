@@ -57,8 +57,8 @@ public class PlayerController : MonoBehaviour
     public bool isHit = false;
     public bool isCharge = false;
 
-    public Animator animator;
-    public SpriteRenderer spriteRenderer;
+    public Animator animator, weaponAnimator, rangeEffectAnimator;
+    public SpriteRenderer spriteRenderer, weaponSpriteRenderer, rangeEffectSpriteRenderer;
 
     private Rigidbody2D rigid;
     private CapsuleCollider2D col;
@@ -83,8 +83,6 @@ public class PlayerController : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
-        animator = GetComponentInChildren<Animator>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         for (int i=0; i<5; i++)
         {
@@ -144,13 +142,33 @@ public class PlayerController : MonoBehaviour
     {
         if (!isRoll && !isClimb && !isAttack && !isHit)
         {
+            //대략 0.015f = 1px
+            float weaponSpriteOffset = 0.185f;
+            float rangeEffectSpriteOffset = 0.5f;
+
             //왼쪽
             if (Input.GetAxis("Horizontal") < 0)
-            spriteRenderer.flipX = true;
+            {
+                spriteRenderer.flipX = true;
+                
+                weaponSpriteRenderer.flipX = true;
+                weaponSpriteRenderer.gameObject.transform.localPosition = new Vector3(-weaponSpriteOffset, 0, 0);
+
+                rangeEffectSpriteRenderer.flipX = true;
+                rangeEffectSpriteRenderer.gameObject.transform.localPosition = new Vector3(-rangeEffectSpriteOffset, -0.12f, 0);
+            }
 
             //오른쪽
             else if (Input.GetAxis("Horizontal") > 0)
-            spriteRenderer.flipX = false;
+            {
+                spriteRenderer.flipX = false;
+                
+                weaponSpriteRenderer.flipX = false;
+                weaponSpriteRenderer.gameObject.transform.localPosition = new Vector3(weaponSpriteOffset, 0, 0);
+                
+                rangeEffectSpriteRenderer.flipX = false;
+                rangeEffectSpriteRenderer.gameObject.transform.localPosition = new Vector3(rangeEffectSpriteOffset, -0.12f, 0);
+            }
         }
     }
 
@@ -305,6 +323,7 @@ public class PlayerController : MonoBehaviour
 
                     powerNow -= meleeWeapon.powerCon;
                     animator.SetBool(meleeWeapon.animName, true);
+                    weaponAnimator.SetBool(meleeWeapon.animName, true);
                 }
             }
 
@@ -314,6 +333,7 @@ public class PlayerController : MonoBehaviour
                 isRangeAttack = true;
 
                 animator.SetBool(rangeWeapon.animName, true);
+                weaponAnimator.SetBool(rangeWeapon.animName, true);
             }
 
             //휠클릭, 특수공격
