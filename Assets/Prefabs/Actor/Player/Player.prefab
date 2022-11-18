@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1031050009897858397}
   - component: {fileID: 1031050009897858396}
   - component: {fileID: 1031050009897858403}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -103,59 +103,15 @@ MonoBehaviour:
   meleeWeapon: {fileID: 11400000, guid: 0e02c0a8bb5aba844901683f720ce246, type: 2}
   rangeWeapon: {fileID: 11400000, guid: 47629b171b289eb4991490a1b527eb79, type: 2}
   moveSpeed: 3
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
   rollCoolTime: 1
-=======
-  rollCoolTime: 0
->>>>>>> parent of ebeba7d (11.17):Assets/Prefabs/Actor/Player.prefab
   rollTimer: 0
-  rollTime: 0
-  rollSpeed: 0
+  rollTime: 0.5
+  rollSpeed: 6
   jumpPower: 7
   noHitTime: 0.5
   forcePower: 0
   upperForcePower: 0
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player/Player.prefab
   gravityScale: 1
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-=======
-  rollCoolTime: 2
-  rollTimer: 0
-  rollTime: 0
-  rollSpeed: 2
-  jumpPower: 12
-  noHitTime: 0.5
-  forcePower: 0
-  upperForcePower: 0
-  gravityScale: 3
->>>>>>> 89b7215429b928c9545b13482a619b01c7aa0299:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-=======
-  gravityScale: 0
->>>>>>> parent of ebeba7d (11.17):Assets/Prefabs/Actor/Player.prefab
-=======
->>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
   isGround: 0
   onLadder: 0
   isClimb: 0
@@ -164,8 +120,151 @@ MonoBehaviour:
   isHit: 0
   isCharge: 0
   animator: {fileID: 1029559398038586708}
-  spriteRenderer: {fileID: 0}
+  weaponAnimator: {fileID: 2744850405335258431}
+  rangeEffectAnimator: {fileID: 6907866116498629365}
+  spriteRenderer: {fileID: 1029559398038586709}
+  weaponSpriteRenderer: {fileID: 4557901201467675764}
+  rangeEffectSpriteRenderer: {fileID: 5203793394305300074}
   canAirJump: 0
+--- !u!1 &1489895272562888245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 182299341562624290}
+  m_Layer: 6
+  m_Name: Triggers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &182299341562624290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489895272562888245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3103753552137142727}
+  - {fileID: 8109288749169631158}
+  - {fileID: 3224372812890901467}
+  m_Father: {fileID: 7434246335345700363}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2562984489625593082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7828873690864586782}
+  - component: {fileID: 4557901201467675764}
+  - component: {fileID: 2744850405335258431}
+  m_Layer: 0
+  m_Name: WeaponSprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7828873690864586782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562984489625593082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.185, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7434246335345700363}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &4557901201467675764
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562984489625593082}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!95 &2744850405335258431
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2562984489625593082}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6877ecb5d7b3ff64199660ff4ba057d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3224372812890901468
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3224372812890901467}
   - component: {fileID: 3224372812890901466}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: BossRoomTrigger
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -195,7 +294,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7434246335345700363}
+  m_Father: {fileID: 182299341562624290}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &3224372812890901466
@@ -223,7 +322,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8109288749169631158}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: RangeProjectileTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,28 +336,47 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3629818841803827066}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 182299341562624290}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7829629246784151944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4130600187804690138}
+  - component: {fileID: 5203793394305300074}
+  - component: {fileID: 6907866116498629365}
+  m_Layer: 0
+  m_Name: RangeEffectSprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4130600187804690138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7829629246784151944}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: -0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7434246335345700363}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
 --- !u!212 &5203793394305300074
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -321,7 +439,7 @@ Animator:
   m_GameObject: {fileID: 7829629246784151944}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9b5de007d755ef240b88ae4da9b200bf, type: 2}
+  m_Controller: {fileID: 9100000, guid: 54ae2b88758fd9548be6a1717e3e56d2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -331,64 +449,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-=======
-  m_GameObject: {fileID: 3864066950699480349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79a15120845a19c46936c18e14b58f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aleadyhitting: 0
-  EffectImage:
-  - {fileID: 8805539628231450024, guid: 706f78d8a01d2f744a18339085cbab1a, type: 3}
-  - {fileID: 1472921604996067818, guid: 2e3fc4c69021e574ba113e4de8819465, type: 3}
-  - {fileID: 3455106438593519746, guid: d94657eae012f68428e41526f210a2f4, type: 3}
-  - {fileID: 3144577311814629851, guid: 181a35a33207c5f46a57d18cb841ec46, type: 3}
-  random_position: {x: 0, y: 0}
-  spawn_position: {x: 0, y: 0}
-  randompos_x: 0
-  randompos_y: 0
---- !u!61 &3864066950699480345
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3864066950699480349}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
->>>>>>> 89b7215429b928c9545b13482a619b01c7aa0299:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-=======
->>>>>>> parent of ebeba7d (11.17):Assets/Prefabs/Actor/Player.prefab
-=======
->>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
 --- !u!1 &8002706383204267057
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +460,7 @@ GameObject:
   - component: {fileID: 3103753552137142727}
   - component: {fileID: 1333546315795597786}
   - component: {fileID: 8984363902686219709}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: MeleeAttackTrigger
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -414,12 +474,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8002706383204267057}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7434246335345700363}
+  m_Father: {fileID: 182299341562624290}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1333546315795597786
@@ -473,7 +533,7 @@ GameObject:
   - component: {fileID: 1029559398038586709}
   - component: {fileID: 1029559398038586708}
   - component: {fileID: 5550369828999967334}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,46 +552,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
   - {fileID: 7828873690864586782}
   - {fileID: 4130600187804690138}
   - {fileID: 182299341562624290}
-=======
-  - {fileID: 3103753552137142727}
-  - {fileID: 8109288749169631158}
-  - {fileID: 3224372812890901467}
-  - {fileID: 3864066950699480348}
->>>>>>> 89b7215429b928c9545b13482a619b01c7aa0299:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-<<<<<<< HEAD:Assets/Prefabs/Actor/Player.prefab
-=======
-  - {fileID: 3103753552137142727}
-  - {fileID: 8109288749169631158}
-  - {fileID: 3224372812890901467}
->>>>>>> parent of ebeba7d (11.17):Assets/Prefabs/Actor/Player.prefab
-=======
->>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
->>>>>>> parent of cdac265 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
-  - {fileID: 7828873690864586782}
-  - {fileID: 4130600187804690138}
-  - {fileID: 182299341562624290}
->>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
-=======
-  - {fileID: 7828873690864586782}
-  - {fileID: 4130600187804690138}
-  - {fileID: 182299341562624290}
->>>>>>> parent of b486f41 (1):Assets/Prefabs/Actor/Player/Player.prefab
   m_Father: {fileID: 1033877053335472382}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -597,7 +620,7 @@ Animator:
   m_GameObject: {fileID: 8706815117996269894}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: edb7e6b4e7fd21a47a46d87a8957c948, type: 2}
+  m_Controller: {fileID: 9100000, guid: 076c2e2df6dca19489ad5716bcec3ffe, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -622,6 +645,9 @@ MonoBehaviour:
   colliderDetected: {fileID: 0}
   projectile: {fileID: 5362479334467672664, guid: 081a53d4f4d616f4293ec46a6f0bba7f,
     type: 3}
-  projectileTransform: {fileID: 0}
+  projectileTransform: {fileID: 8109288749169631158}
+  animator: {fileID: 1029559398038586708}
+  weaponAnimator: {fileID: 2744850405335258431}
+  rangeEffectAnimator: {fileID: 6907866116498629365}
   chargeTime: 1
   comboReserve: 0
