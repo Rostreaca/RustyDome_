@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4974898988824210184}
   - component: {fileID: 5026445057108876262}
   - component: {fileID: 739505851359189458}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: MeleeAttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 5026696709412739420}
   - component: {fileID: 4980528505677962537}
   - component: {fileID: 991087418}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: EyesTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 5181413037844041332}
   - component: {fileID: 4920582854758273738}
   - component: {fileID: 5412694577757674114}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 5019400979809706572}
   - component: {fileID: 5035362315506767280}
   - component: {fileID: 4980854292804328397}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -389,12 +389,12 @@ MonoBehaviour:
   rangeRadius: 1.5
   followTarget: {fileID: 0}
   sfxclip: []
-  Coin: {fileID: 3570157381209698220, guid: 23ea70a8a03f44549a093a2cd3e646c1, type: 3}
-  GoldCoin: {fileID: 6858372336167351654, guid: e3d7dd37f0ea2e4478f29e7cca8bad94,
+  Coin: {fileID: 3570157381209698220, guid: e6e3bc4aabc9f8841b59101b5c6e756e, type: 3}
+  GoldCoin: {fileID: 6858372336167351654, guid: 82a82202a1913024290c818b2a47983d,
     type: 3}
-  SilverCoin: {fileID: 3570157381209698220, guid: 23ea70a8a03f44549a093a2cd3e646c1,
+  SilverCoin: {fileID: 3570157381209698220, guid: e6e3bc4aabc9f8841b59101b5c6e756e,
     type: 3}
-  Projectile: {fileID: 6150922933576637939, guid: 9fc1df973df32b24b9115f57c6ad4baf,
+  Projectile: {fileID: 6150922933576637939, guid: a84a182922484bf4781aa261608308c3,
     type: 3}
   Actor: {fileID: 0}
   monsterisquestzone: 0
@@ -419,7 +419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810251278644925554}
   - component: {fileID: 7110491408293437298}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: DieTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
