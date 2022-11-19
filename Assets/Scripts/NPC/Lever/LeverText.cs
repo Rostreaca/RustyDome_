@@ -20,6 +20,15 @@ public class LeverText : UIText
     // Update is called once per frame
     void Update()
     {
+
+        if(Inventory.instance.Search(item) != true)
+        {
+            GameManager.Instance.HaveLever = false;
+        }
+        else if(Inventory.instance.Search(item) == true)
+        {
+            GameManager.Instance.HaveLever = true;
+        }
         CheckSayEnd();
         if(!isopen)
         {
@@ -34,13 +43,13 @@ public class LeverText : UIText
         {
             npc_Text = "'F'";
         }
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true &&Inventory.instance.Search(item) != true)
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.HaveLever != true)
         {
             npc_Text = "손잡이가 없는 레버다.";
             Type_init();
             sayCount++;
         }
-        if(Input.GetKey("f") && sayCount == 0 && sayEnd == true && Inventory.instance.Search(item) == true)
+        if(Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.HaveLever == true)
         {
             isopen = true;
             npc_anim.SetBool("HandleWork", true);// 레버가 바뀌는 애니메이션 실행.

@@ -19,7 +19,13 @@ public class GameManager : MonoBehaviour
     [Header("Parameters")]
     public bool isGame;
     public bool isPause;
+    public bool isSave;
     public bool isEnd;
+    [Header("PlayingDatas")]
+    public bool isBossDead;
+    public bool isGateOpen;
+    public bool HaveLever;
+    public bool HaveGateKey;
     public int coinCount;
     [Header("Checkpoint")]
     public Transform checkPoint;

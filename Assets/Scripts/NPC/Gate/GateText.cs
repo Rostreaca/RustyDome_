@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GateText : UIText
 {
-    public bool isGateOpen;
     public Item item;
     // Start is called before the first frame update
     void Start()
@@ -21,12 +20,20 @@ public class GateText : UIText
     void Update()
     {
 
+        if (Inventory.instance.Search(item) != true)
+        {
+            GameManager.Instance.HaveGateKey = false;
+        }
+        else if (Inventory.instance.Search(item) == true)
+        {
+            GameManager.Instance.HaveGateKey = true;
+        }
         CheckSayEnd();
-        if (!isGateOpen)
+        if (!GameManager.Instance.isGateOpen)
         {
             CheckHasKey();
         }
-        if(isGateOpen)
+        if(GameManager.Instance.isGateOpen)
         {
             EnterTheGate();
         }
@@ -38,15 +45,15 @@ public class GateText : UIText
         {
             npc_Text = "'F'";
         }
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && Inventory.instance.Search(item) == false)
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.HaveGateKey == false)
         {
             npc_Text = "열쇠가 없습니다.";
             Type_init();
             sayCount++;
         }
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && Inventory.instance.Search(item))
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.HaveGateKey == true)
         {
-            isGateOpen = true;
+            GameManager.Instance.isGateOpen = true;
             npc_anim.SetBool("GateOpen", true);// 레버가 바뀌는 애니메이션 실행.
             Type_init();
             sayCount++;
