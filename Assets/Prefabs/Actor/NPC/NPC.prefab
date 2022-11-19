@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5223418038189493196}
   - component: {fileID: 5223418038189493195}
   - component: {fileID: 2085056092455683526}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: NPC
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -139,9 +139,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialog: {fileID: 0}
   playerPos: {fileID: 0}
+  hasdialog: 0
   isSee: 0
   isSay: 0
   seeRange: 0.5
+  anim: {fileID: 0}
 --- !u!95 &2085056092455683526
 Animator:
   serializedVersion: 4
