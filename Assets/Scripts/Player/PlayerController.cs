@@ -323,7 +323,6 @@ public class PlayerController : MonoBehaviour
 
                     powerNow -= meleeWeapon.powerCon;
                     animator.SetBool(meleeWeapon.animName, true);
-                    weaponAnimator.SetBool(meleeWeapon.animName, true);
                 }
             }
 
@@ -333,7 +332,6 @@ public class PlayerController : MonoBehaviour
                 isRangeAttack = true;
 
                 animator.SetBool(rangeWeapon.animName, true);
-                weaponAnimator.SetBool(rangeWeapon.animName, true);
             }
 
             //휠클릭, 특수공격
