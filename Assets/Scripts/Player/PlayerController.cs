@@ -57,8 +57,9 @@ public class PlayerController : MonoBehaviour
     public bool isHit = false;
     public bool isCharge = false;
 
-    public Animator animator, weaponAnimator, rangeEffectAnimator;
-    public SpriteRenderer spriteRenderer, weaponSpriteRenderer, rangeEffectSpriteRenderer;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer, rangeEffectSpriteRenderer;
+    public PlayerWeaponSprite weaponSprite;
 
     private Rigidbody2D rigid;
     private CapsuleCollider2D col;
@@ -118,7 +119,7 @@ public class PlayerController : MonoBehaviour
         {
             if (GameManager.Instance.isGame && !GameManager.Instance.isPause)
             {
-                Rotation();
+                Rotate();
                 Roll();
                 Attack();
                 Jump();
@@ -138,21 +139,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Rotation()
+    private void Rotate()
     {
         if (!isRoll && !isClimb && !isAttack && !isHit)
         {
             //´ë·« 0.015f = 1px
-            float weaponSpriteOffset = 0.185f;
             float rangeEffectSpriteOffset = 0.5f;
 
             //¿ÞÂÊ
             if (Input.GetAxis("Horizontal") < 0)
             {
                 spriteRenderer.flipX = true;
-                
-                weaponSpriteRenderer.flipX = true;
-                weaponSpriteRenderer.gameObject.transform.localPosition = new Vector3(-weaponSpriteOffset, 0, 0);
 
                 rangeEffectSpriteRenderer.flipX = true;
                 rangeEffectSpriteRenderer.gameObject.transform.localPosition = new Vector3(-rangeEffectSpriteOffset, -0.12f, 0);
@@ -163,12 +160,11 @@ public class PlayerController : MonoBehaviour
             {
                 spriteRenderer.flipX = false;
                 
-                weaponSpriteRenderer.flipX = false;
-                weaponSpriteRenderer.gameObject.transform.localPosition = new Vector3(weaponSpriteOffset, 0, 0);
-                
                 rangeEffectSpriteRenderer.flipX = false;
                 rangeEffectSpriteRenderer.gameObject.transform.localPosition = new Vector3(rangeEffectSpriteOffset, -0.12f, 0);
             }
+
+            weaponSprite.Rotate();
         }
     }
 

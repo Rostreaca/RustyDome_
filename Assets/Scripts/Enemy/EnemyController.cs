@@ -201,14 +201,13 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
-        Debug.Log(hit.collider);
-
         bool grounded = (hit.collider != null && hit.collider.CompareTag("Ground")) || (hit.collider != null && hit.collider.CompareTag("Platform")) || (hit.collider != null && hit.collider.tag == ("Quest"));
         isGround = grounded;
 
         if (!isGround)
             patrollTimer = -patrollTimer;
     }
+
     public void Follow(Transform target)
     {
         followTarget = target;
@@ -222,7 +221,6 @@ public class EnemyController : MonoBehaviour
 
     public void Condition() //상태 설정
     {
-
         if (isFollowing || isReturning)
         {
             isPatrolling = false;
@@ -243,9 +241,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    //방향전환
     private void Rotation()
     {
+        //방향전환
         if (isPatrolling)
         {
             if (patrollTimer > 0)

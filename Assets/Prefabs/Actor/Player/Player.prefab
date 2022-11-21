@@ -120,11 +120,9 @@ MonoBehaviour:
   isHit: 0
   isCharge: 0
   animator: {fileID: 1029559398038586708}
-  weaponAnimator: {fileID: 2744850405335258431}
-  rangeEffectAnimator: {fileID: 6907866116498629365}
   spriteRenderer: {fileID: 1029559398038586709}
-  weaponSpriteRenderer: {fileID: 4557901201467675764}
   rangeEffectSpriteRenderer: {fileID: 5203793394305300074}
+  weaponSprite: {fileID: 492853359567547487}
   canAirJump: 0
 --- !u!1 &1489895272562888245
 GameObject:
@@ -154,7 +152,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3103753552137142727}
   - {fileID: 8109288749169631158}
   - {fileID: 3224372812890901467}
   m_Father: {fileID: 7434246335345700363}
@@ -190,7 +187,8 @@ Transform:
   m_LocalPosition: {x: 0.185, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3103753552137142727}
   m_Father: {fileID: 7434246335345700363}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -232,12 +230,12 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2017747101
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -280,6 +278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 1029559398038586708}
   weaponAnimator: {fileID: 2744850405335258431}
+  spriteRenderer: {fileID: 4557901201467675764}
+  meleeAttackTrigger: {fileID: 1333546315795597786}
 --- !u!1 &3224372812890901468
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +310,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 182299341562624290}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &3224372812890901466
 CapsuleCollider2D:
@@ -357,7 +357,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 182299341562624290}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7829629246784151944
 GameObject:
@@ -490,11 +490,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8002706383204267057}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.185, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 182299341562624290}
+  m_Father: {fileID: 7828873690864586782}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1333546315795597786
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a0d729cd0d53f42bed6cc0aa701ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combat: {fileID: 0}
+  combat: {fileID: 5550369828999967334}
 --- !u!1 &8706815117996269894
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,8 +611,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -44692271
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -959010689, guid: e6a203daffca8a54d9e5cf62543506d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

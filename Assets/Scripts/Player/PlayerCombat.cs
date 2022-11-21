@@ -50,7 +50,6 @@ public class PlayerCombat : Combat
             animator.ResetTrigger("AttackCombo");
             weaponAnimator.ResetTrigger("AttackCombo");
             animator.SetBool(playerController.meleeWeapon.animName, false);
-            weaponAnimator.SetBool(playerController.meleeWeapon.animName, false);
 
             canCombo = false; //block combo
             playerController.isMeleeAttack = false;
