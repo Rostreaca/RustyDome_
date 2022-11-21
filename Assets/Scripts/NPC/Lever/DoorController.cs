@@ -5,7 +5,6 @@ using UnityEngine;
 public class DoorController : MonoBehaviour
 {
     public static DoorController instance;
-    public bool doorOpen;
     public float doorspeed = 7f;
     private Vector2 targetpos;
     private Vector2 Originpos;
@@ -28,11 +27,11 @@ public class DoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(doorOpen == true)
+        if(GameManager.Instance.isDoorOpen == true)
         {
             DoorOpen();
         }
-        if(doorOpen == false)
+        if(GameManager.Instance.isDoorOpen == false)
         {
             DoorClose();
         }

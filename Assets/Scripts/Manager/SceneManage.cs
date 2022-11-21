@@ -56,6 +56,11 @@ public class SceneManage : MonoBehaviour
                 farfromportal = -3f;
             }
         }
+        else if(PrePortal !=null && NextPortal ==null)
+        {
+            farfromportal = -3f;
+        }
+
     }
     public void NextSceneLoad()
     {

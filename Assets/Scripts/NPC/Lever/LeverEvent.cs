@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class LeverEvent : MonoBehaviour
 {
-    public GameObject door;
     DoorController doorcontrol;
     public Item item;
     // Start is called before the first frame update
     void Start()
     {
-        doorcontrol = door.GetComponent<DoorController>();
     }
 
     // Update is called once per frame
@@ -20,7 +18,7 @@ public class LeverEvent : MonoBehaviour
 
     public void DoorOpen()
     {
-        doorcontrol.doorOpen = true;
+        GameManager.Instance.isDoorOpen = true;
     }
 
     public void SoundPlay(AudioClip audio)

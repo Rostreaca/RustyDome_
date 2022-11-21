@@ -15,7 +15,6 @@ public class BossRoomEvent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         door = bossroomdoor.GetComponent<DoorController>();
         PlayerUI = GameObject.Find("GameScreen");
         hpbar = GameObject.Find("[UI]").transform.Find("Canvas").transform.Find("GameScreen").transform.Find("Boss HP Bar").gameObject;
@@ -32,7 +31,7 @@ public class BossRoomEvent : MonoBehaviour
 
             } 
         }
-        if(BossController.instance.isdead == true)
+        if(BossController.instance !=null && BossController.instance.isdead == true)
         {
             hpbar.SetActive(false);
         }
@@ -65,7 +64,7 @@ public class BossRoomEvent : MonoBehaviour
 
                 Anime_boss.instance.playerentered = true;
 
-                door.doorOpen = false;
+                GameManager.Instance.isDoorOpen = false;
                 if(GameManager.Instance.CutscenePlaying == false)
                 {
                     PlayerUI.SetActive(true);

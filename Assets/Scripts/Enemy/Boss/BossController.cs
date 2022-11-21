@@ -25,7 +25,7 @@ public class BossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Door = GameObject.Find("BossRoomDoor").gameObject;
+        Door = GameObject.Find("Door").gameObject;
         doorcontrol = Door.GetComponent<DoorController>();
         Singleton();
     }
@@ -63,6 +63,6 @@ public class BossController : MonoBehaviour
 
     public void doorOpen()
     {
-        doorcontrol.doorOpen = true;
+        GameManager.Instance.isDoorOpen = true;
     }
 }

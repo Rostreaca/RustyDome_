@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public bool isSave;
     public bool isEnd;
     [Header("PlayingDatas")]
+    public bool isDoorOpen;
     public bool isBossDead;
     public bool isGateOpen;
     public bool HaveLever;
@@ -39,7 +40,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
     }
 
     public void StartGame()
