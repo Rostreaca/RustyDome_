@@ -18,10 +18,11 @@ public class WorkBenchText : UIText
     }
     void Awake()
     {
+        npc = GameObject.Find("WorkBench");
+        workBenchPos = npc.transform;
         singleton();
         originPos = dialog.transform.position;
-        gm = GameManager.Instance;
-        player = PlayerController.instance;
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
     private void OnDisable()
     {
@@ -52,8 +53,9 @@ public class WorkBenchText : UIText
             dialog.transform.position = originPos;
             WorkBenchController.instance.anim.SetBool("isOpen", true);
             player.hpNow = player.hpMax; //체력 회복
-            gm.checkPoint = workBenchPos.transform; //체크포인트 저장
+            GameManager.Instance.checkPoint = workBenchPos.transform; //체크포인트 저장
             isopen = true;
+            GameManager.Instance.isSave = true;
         }
     }
 

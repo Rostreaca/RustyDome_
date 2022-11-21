@@ -6,12 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public static MenuManager Instance;
+
+    public int SceneIndex;
     public GameObject MainMenu, OptionMenu;
     public Button StartButton,OptionButton,EndButton,BackButton,ContinueButton;
 
+    public void Singleton_Init()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+            Instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
+        Singleton_Init();
         StartButton.onClick.AddListener(GameStart);
         OptionButton.onClick.AddListener(Option);
         EndButton.onClick.AddListener(GameEnd);
@@ -47,7 +60,7 @@ public class MenuManager : MonoBehaviour
     }
     public void Continue()
     {
-        SceneManager.LoadScene("TheScene");
+        SceneManager.LoadScene(SceneIndex);
 
         DataManager.instance.isGameLoaded = true;
     }

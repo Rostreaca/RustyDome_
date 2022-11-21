@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class CameraManager : MonoBehaviour
 {
+    public Canvas canvas;
     public static CameraManager instance; //static camera for use in other scripts
 
     Transform player,boss; //Player position
@@ -50,6 +52,8 @@ public class CameraManager : MonoBehaviour
 
     public void FixedUpdate()
     {
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        canvas.worldCamera = gameObject.GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player").transform; //Find player in scene
 
         if (GameObject.Find("Anime_Boss"))
