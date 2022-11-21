@@ -167,21 +167,50 @@ public class PlayerCombat : Combat
 
     public void RangeAttack()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector2(1, 1), 0, new Vector2(0, 0));
+        int layerMask = (1 << LayerMask.NameToLayer("Enemy")) + (1 << LayerMask.NameToLayer("Ground"));
+        float maxDistance = 7.5f;
+
+        Vector2 startPos = new Vector3(transform.position.x, transform.position.y - 0.45f);
+        Vector2 dir = new Vector3(gameObject.GetComponent<SpriteRenderer>().flipX ? -1 : 1, 0);
+
+        RaycastHit2D hit = Physics2D.BoxCast(startPos, new Vector2(1, 1), 0, dir, maxDistance, layerMask);
         if (hit.collider != null)
         {
             Collider2D col = hit.collider;
+
             if (col.gameObject.CompareTag("Enemy"))
             {
-                EnemyController enemy = colliderDetected.GetComponent<EnemyController>();
+                EnemyController enemy = col.gameObject.GetComponent<EnemyController>();
                 RangeAttack(enemy);
             }
 
             else if (col.gameObject.CompareTag("Boss"))
             {
-                BossGetDamage boss = colliderDetected.GetComponent<BossGetDamage>();
+                BossGetDamage boss = col.gameObject.GetComponent<BossGetDamage>();
                 RangeAttacktoBoss(boss);
             }
+        }
+    }
+
+    public void OnDrawGizmos()
+    {
+        int layerMask = (1 << LayerMask.NameToLayer("Enemy")) + (1 << LayerMask.NameToLayer("Ground"));
+        float maxDistance = 7.5f;
+
+        Vector3 startPos = new Vector3(transform.position.x, transform.position.y - 0.45f, transform.position.z);
+        Vector3 dir = new Vector3(gameObject.GetComponent<SpriteRenderer>().flipX ? -1 : 1, 0);
+
+        RaycastHit2D hit = Physics2D.BoxCast(startPos, new Vector2(1, 1), 0, dir, maxDistance, layerMask);
+        Gizmos.color = Color.red;
+
+        if (hit)
+        {
+            Gizmos.DrawRay(startPos, dir * hit.distance);
+            Gizmos.DrawWireCube(startPos + dir * hit.distance, new Vector2(1, 1));
+        }
+        else
+        {
+            Gizmos.DrawRay(startPos, dir * maxDistance);
         }
     }
 
