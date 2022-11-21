@@ -46,17 +46,18 @@ public class CameraManager : MonoBehaviour
         halfHeight = theCamera.orthographicSize;
         halfWidth = halfHeight * Screen.width / Screen.height;
 
-        player = GameObject.FindGameObjectWithTag("Player").transform; //Find player in scene
-
-        if(GameObject.Find("Anime_Boss"))
-        {
-            boss = GameObject.Find("Anime_Boss").transform;
-        }
     }
 
     public void FixedUpdate()
     {
-        if(GameManager.Instance.CutscenePlaying == false)
+        player = GameObject.FindGameObjectWithTag("Player").transform; //Find player in scene
+
+        if (GameObject.Find("Anime_Boss"))
+        {
+            boss = GameObject.Find("Anime_Boss").transform;
+        }
+
+        if (GameManager.Instance.CutscenePlaying == false)
         {
             Vector3 newPos = new Vector3(player.position.x + offset.x, player.position.y + offset.y + 1.5f, transform.position.z); //Local vector get player position
             transform.position = Vector3.Lerp(transform.position, newPos, moveSpeed * Time.deltaTime); //Set camera position smooth

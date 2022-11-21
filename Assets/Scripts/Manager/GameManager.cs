@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class GameManager : MonoBehaviour
 {
-
     public static GameManager Instance;
     
     void SingletonInit()
@@ -39,6 +37,11 @@ public class GameManager : MonoBehaviour
         StartGame(); //when scene load game'll start
     }
 
+    private void Update()
+    {
+        
+    }
+
     public void StartGame()
     {
         isGame = true;
@@ -49,4 +52,6 @@ public class GameManager : MonoBehaviour
         isGame = false; //disable game
         UIManager.instance.ChangeScreen(UIManager.ScreenState.GameOver); //change screen to lose
     }
+    
+
 }

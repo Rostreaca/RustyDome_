@@ -27,7 +27,7 @@ public class MenuManager : MonoBehaviour
 
     public void GameStart()
     {
-        SceneManager.LoadScene("TheScene");
+        SceneManager.LoadScene(2);
     }
 
     public void Option()
