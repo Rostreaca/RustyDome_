@@ -9,6 +9,8 @@ public class SceneManage : MonoBehaviour
     public int NextScene, PreScene;
     public GameObject NextPortal;
     public GameObject PrePortal;
+
+    public float farfromportal = 3f;
     // Start is called before the first frame update
 
     public void Singleton_Init()
@@ -43,6 +45,17 @@ public class SceneManage : MonoBehaviour
         nowscene = SceneManager.GetActiveScene();
         NextScene = nowscene.buildIndex + 1;
         PreScene = nowscene.buildIndex - 1;
+        if(PrePortal !=null&&NextPortal!=null)
+        {
+            if (PrePortal.transform.position.x > NextPortal.transform.position.x)
+            {
+                farfromportal = 3f;
+            }
+            else if (PrePortal.transform.position.x < NextPortal.transform.position.x)
+            {
+                farfromportal = -3f;
+            }
+        }
     }
     public void NextSceneLoad()
     {
@@ -54,7 +67,8 @@ public class SceneManage : MonoBehaviour
     }
     public void NextSceneMover()
     {
-        PlayerController.instance.transform.position = new Vector2(PrePortal.transform.position.x -3f, PrePortal.transform.position.y);
+        PlayerController.instance.transform.position = new Vector2(PrePortal.transform.position.x -farfromportal, PrePortal.transform.position.y);
+        
     }
     public void PreSceneLoad()
     {
@@ -63,6 +77,6 @@ public class SceneManage : MonoBehaviour
     }
     public void PreSceneMover()
     {
-        PlayerController.instance.transform.position = new Vector2(NextPortal.transform.position.x + 3f, NextPortal.transform.position.y);
+        PlayerController.instance.transform.position = new Vector2(NextPortal.transform.position.x + farfromportal, NextPortal.transform.position.y);
     }
 }
