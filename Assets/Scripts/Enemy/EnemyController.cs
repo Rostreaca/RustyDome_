@@ -44,12 +44,12 @@ public class EnemyController : MonoBehaviour
     public GameObject Projectile;
     public GameObject Actor;
 
-
     private CapsuleCollider2D col;
+    private SpriteRenderer sprite;
     private Animator animator;
 
     private Vector2 starterPos;
-    private float patrollTimer = 0.02f;
+    public float patrollTimer = 0.02f;
     private float returnTimer = 3;
 
     [Header("상태")]
@@ -75,6 +75,7 @@ public class EnemyController : MonoBehaviour
     {
         col = GetComponent<CapsuleCollider2D>();
         animator = GetComponentInChildren<Animator>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
 
         isPatrolling = true;
         starterPos = transform.position;
@@ -167,9 +168,9 @@ public class EnemyController : MonoBehaviour
 
     public void Cliffcheck()
     {
-        
         Vector2 frontcheck = new Vector2(transform.position.x + 0.5f, transform.position.y);
-        if (transform.localScale == new Vector3(-1, 1, 1))
+
+        if (sprite.flipX)
         {
             frontcheck.x = transform.position.x - 0.5f;
         }
@@ -177,28 +178,32 @@ public class EnemyController : MonoBehaviour
         {
             frontcheck.x = transform.position.x + 0.5f;
         }
+
         int layermask = ((1 << LayerMask.NameToLayer("Ground")) + (1 << LayerMask.NameToLayer("Platform")));
         Debug.DrawRay(frontcheck, Vector3.down);
         RaycastHit2D cliffray = Physics2D.Raycast(frontcheck, Vector3.down, 1,layermask);
 
         checkcol = cliffray.collider ;
 
-        if (cliffray.collider==null)
+        if (cliffray.collider == null)
         {
-            patrollTimer *= -1;
+            patrollTimer = -patrollTimer;
         }
     }
 
     public void GroundCheck()
     {
-        RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f);
+        int layermask = 1 << LayerMask.NameToLayer("Ground");
+        RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f, layermask);
 
         if (hit.collider != null && hit.collider.tag == ("NPC") || hit.collider != null && hit.collider.tag == ("Projectile"))
         {
             return;
         }
 
-        bool grounded = hit.collider != null && hit.collider.CompareTag("Ground") || hit.collider != null && hit.collider.CompareTag("Platform") || hit.collider != null && hit.collider.CompareTag("Ladder") || hit.collider != null && hit.collider.CompareTag("Bound") || hit.collider != null && hit.collider.tag == ("Quest");
+        Debug.Log(hit.collider);
+
+        bool grounded = (hit.collider != null && hit.collider.CompareTag("Ground")) || (hit.collider != null && hit.collider.CompareTag("Platform")) || (hit.collider != null && hit.collider.tag == ("Quest"));
         isGround = grounded;
 
         if (!isGround)
@@ -238,17 +243,18 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //방향전환
     private void Rotation()
     {
         if (isPatrolling)
         {
             if (patrollTimer > 0)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                sprite.flipX = false;
             }
             else
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                sprite.flipX = true;
             }
         }
 
@@ -256,11 +262,11 @@ public class EnemyController : MonoBehaviour
         {
             if (transform.position.x <= followTarget.position.x)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                sprite.flipX = false;
             }
             else
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                sprite.flipX = true;
             }
         }
 
@@ -268,14 +274,14 @@ public class EnemyController : MonoBehaviour
         {
             if (transform.position.x <= starterPos.x)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                sprite.flipX = false;
             }
             else
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                sprite.flipX = true;
             }
         }
-    }//방향전환
+    }
 
     private void Attack()
     {
@@ -289,7 +295,6 @@ public class EnemyController : MonoBehaviour
     }
     private void RangeAttack()
     {
-
         if (RangeSkillCoolTimeNow <= 0)
         {
             rangecoolcheck = false;
@@ -449,6 +454,7 @@ public class EnemyController : MonoBehaviour
                 isMove = false;
                 yield return null;
             }
+
             isPatrolling = false;
             if (Vector2.Distance(transform.position, followTarget.position) > returnRadius && timer <= 0 && !animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim)&& !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim)) //if target leave
             {
@@ -458,9 +464,9 @@ public class EnemyController : MonoBehaviour
                 isReturning = true;
 
                 patrollSin = 0;
-                if(transform.localScale.x == -1)
+                if(sprite.flipX)
                 {
-                    patrollTimer *= -1;
+                    patrollTimer = -patrollTimer;
                 }
 
                 StartCoroutine(IReturnToStartPos()); //start returning
@@ -472,9 +478,9 @@ public class EnemyController : MonoBehaviour
 
                 isReturning = true;
                 
-                if (transform.localScale.x == -1)
+                if (sprite.flipX)
                 {
-                    patrollTimer *= -1;
+                    patrollTimer *= -patrollTimer;
                 }
                 patrollSin = 0;
 
@@ -505,11 +511,11 @@ public class EnemyController : MonoBehaviour
 
                 timer -= Time.deltaTime;
             }
+
             yield return null;
-
         }
-        yield return null;
 
+        yield return null;
     }
 
     IEnumerator IReturnToStartPos()
@@ -536,11 +542,12 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-            if(collision.gameObject.tag == "Quest")
+        if(collision.gameObject.tag == "Quest")
         {
             monsterisquestzone = true;
         }
     }
+
     public void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, attackRadius);
