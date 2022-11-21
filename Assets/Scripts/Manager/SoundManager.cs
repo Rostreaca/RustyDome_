@@ -41,7 +41,7 @@ public class SoundManager : MonoBehaviour
             bgm.Stop();
             PlayingMusic = false;
         }
-        if (Input.GetMouseButtonDown(2) )
+        if (Input.GetKey(KeyCode.T))
         {
             if (soundtracknumber == bgmlist.Length-1)
             {

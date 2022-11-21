@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
+using UnityEngine.SceneManagement;
 public class DataManager : MonoBehaviour
 {
 
 	[Header("저장될 자료형")]
-	public Transform player_pos;
+	public SaveData loadData;
 	public float hp ;
 	public int ammo ;
 	public float power;
 	public int scrap;
+	public float player_pos_x, player_pos_y;
 	//public int questprogress;
+	public int SaveSceneIndex;
 	public bool isbossDead;
 	public bool HaveLever;
 	public bool HaveGatekey;
@@ -38,7 +40,10 @@ public class DataManager : MonoBehaviour
     }
     void Update()
 	{
-
+		if(Input.GetKey(KeyCode.S))
+        {
+			GameManager.Instance.isSave = true;
+        }
 		if (player ==null && GameObject.FindWithTag("Player") )
         {
 			player = GameObject.FindWithTag("Player");
@@ -54,21 +59,36 @@ public class DataManager : MonoBehaviour
 			power = player_stats.powerNow;
 			scrap = player_stats.scrap;
 			//GameManager에서 가져올 값들
+			if(GameManager.Instance.checkPoint!=null)
+            {
+				player_pos_x = GameManager.Instance.checkPoint.position.x;
+				player_pos_y = GameManager.Instance.checkPoint.position.y;
+			}
+			SaveSceneIndex = SceneManage.Instance.nowscene.buildIndex;
 			isbossDead = GameManager.Instance.isBossDead;
-			player_pos = GameManager.Instance.checkPoint;
 			HaveLever = GameManager.Instance.HaveLever;
 			HaveGatekey = GameManager.Instance.HaveGateKey;
 			isGateOpen = GameManager.Instance.isGateOpen;
 			if (GameManager.Instance.isSave == true)
-            {
-				SaveData character = new SaveData(player_pos, hp, power, ammo, scrap, isbossDead,HaveLever,HaveGatekey,isGateOpen);
+			{
+				GameManager.Instance.isSave = false;
+
+				SaveData character = new SaveData(player_pos_x,player_pos_y, hp, power, ammo, scrap, SaveSceneIndex, isbossDead,HaveLever,HaveGatekey,isGateOpen);
 
 				SaveSystem.Save(character);
+
 			}
+		}
+		loadData = SaveSystem.Load();
+
+		if(MenuManager.Instance !=null)
+        {
+			MenuManager.Instance.SceneIndex = loadData.sceneIndex;
 		}
 
 		if (isGameLoaded ==true )
-        {
+		{
+
 			Invoke("LoadData", 0.1f);
         }
 
@@ -81,47 +101,50 @@ public class DataManager : MonoBehaviour
     public void LoadData()
     {
 
-		SaveData loadData = SaveSystem.Load();
-
-
-		if(player_stats!=null)
+		if (player_stats!=null)
         {
-			player_stats.transform.position = loadData.player_pos.position;
+			player_stats.transform.position = new Vector2(loadData.player_pos_x,loadData.player_pos_y);
 			player_stats.hpNow = loadData.hp;
 			player_stats.ammoNow = loadData.bullets;
 			player_stats.powerNow = loadData.powers;
 			player_stats.scrap = loadData.scraps;
 		}
-
-		GameManager.Instance.isBossDead = loadData.isbossDead;
-		GameManager.Instance.HaveLever = loadData.HaveLever;
-		GameManager.Instance.HaveGateKey = loadData.HaveGatekey;
-		GameManager.Instance.isGateOpen = loadData.isGateOpen;
+		if(GameManager.Instance !=null)
+        {
+			GameManager.Instance.isBossDead = loadData.isbossDead;
+			GameManager.Instance.HaveLever = loadData.HaveLever;
+			GameManager.Instance.HaveGateKey = loadData.HaveGatekey;
+			GameManager.Instance.isGateOpen = loadData.isGateOpen;
+		}
 
 		isGameLoaded = false;
 	}
 }
+
 [System.Serializable]
 public class SaveData
 {
-    public SaveData(Transform _player_pos, float _hp, float _powers, int _bullets, int _scraps,
+    public SaveData(float _player_pos_x,float _player_pos_y, float _hp, float _powers, int _bullets, int _scraps, int _sceneIndex,
 		bool _isbossDead, bool _HaveLever, bool _HaveGatekey, bool _isGateOpen)
     {
-		_player_pos = player_pos;
+		player_pos_x = _player_pos_x;
+		player_pos_y = _player_pos_y;
         hp = _hp;
 		powers = _powers;
         bullets = _bullets;
 		scraps = _scraps;
+		sceneIndex = _sceneIndex;
 		isbossDead = _isbossDead;
 		HaveLever = _HaveLever;
 		HaveGatekey = _HaveGatekey;
 		isGateOpen = _isGateOpen;
     }
-	public Transform player_pos;
+	public float player_pos_x, player_pos_y;
     public float hp;
 	public float powers;
     public int bullets;
 	public int scraps;
+	public int sceneIndex;
 	//public int questprogress;
 	public bool isbossDead;
 	public bool HaveLever;

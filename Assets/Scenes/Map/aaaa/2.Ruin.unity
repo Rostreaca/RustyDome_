@@ -13692,7 +13692,6 @@ GameObject:
   - component: {fileID: 2144576055}
   - component: {fileID: 2144576056}
   - component: {fileID: 2144576057}
-  - component: {fileID: 2144576059}
   m_Layer: 2
   m_Name: Managers
   m_TagString: Untagged
@@ -13733,6 +13732,7 @@ MonoBehaviour:
   isPause: 0
   isSave: 0
   isEnd: 0
+  isDoorOpen: 0
   isBossDead: 0
   isGateOpen: 0
   HaveLever: 0
@@ -13763,26 +13763,6 @@ MonoBehaviour:
   customizeScreen: {fileID: 1070940543}
   gameoverScreen: {fileID: 166128992}
   screenState: 0
---- !u!114 &2144576059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2144576054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6c60146834e1d4981dfea1081b00aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sfxgroup: {fileID: 0}
-  bgm: {fileID: 0}
-  sfx: {fileID: 0}
-  bgmlist: []
-  volume: 2
-  soundtracknumber: 0
-  isStop: 0
-  PlayingMusic: 0
 --- !u!1001 &393279834902861044
 PrefabInstance:
   m_ObjectHideFlags: 0
