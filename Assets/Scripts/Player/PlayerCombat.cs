@@ -68,7 +68,7 @@ public class PlayerCombat : Combat
 
         while (canCombo)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Z))
             {
                 canCombo = false;
                 comboReserve = true;
@@ -147,7 +147,7 @@ public class PlayerCombat : Combat
         float t = 0;
         while (t < 1)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.X))
             {
                 animator.SetBool("RangeAttack", true);
                 break;
@@ -170,10 +170,10 @@ public class PlayerCombat : Combat
         int layerMask = (1 << LayerMask.NameToLayer("Enemy")) + (1 << LayerMask.NameToLayer("Ground"));
         float maxDistance = 7.5f;
 
-        Vector2 startPos = new Vector3(transform.position.x, transform.position.y - 0.45f);
+        Vector2 startPos = new Vector3(transform.position.x, transform.position.y - 0.5f);
         Vector2 dir = new Vector3(gameObject.GetComponent<SpriteRenderer>().flipX ? -1 : 1, 0);
 
-        RaycastHit2D hit = Physics2D.BoxCast(startPos, new Vector2(1, 1), 0, dir, maxDistance, layerMask);
+        RaycastHit2D hit = Physics2D.BoxCast(startPos, new Vector2(1, 0.95f), 0, dir, maxDistance, layerMask);
         if (hit.collider != null)
         {
             Collider2D col = hit.collider;
@@ -197,10 +197,10 @@ public class PlayerCombat : Combat
         int layerMask = (1 << LayerMask.NameToLayer("Enemy")) + (1 << LayerMask.NameToLayer("Ground"));
         float maxDistance = 7.5f;
 
-        Vector3 startPos = new Vector3(transform.position.x, transform.position.y - 0.45f, transform.position.z);
+        Vector3 startPos = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
         Vector3 dir = new Vector3(gameObject.GetComponent<SpriteRenderer>().flipX ? -1 : 1, 0);
 
-        RaycastHit2D hit = Physics2D.BoxCast(startPos, new Vector2(1, 1), 0, dir, maxDistance, layerMask);
+        RaycastHit2D hit = Physics2D.BoxCast(startPos, new Vector2(1, 0.95f), 0, dir, maxDistance, layerMask);
         Gizmos.color = Color.red;
 
         if (hit)
@@ -217,6 +217,12 @@ public class PlayerCombat : Combat
     public void OnRangeAttackEnd()
     {
         playerController.isRangeAttack = false;
+    }
+
+    public void OnSpecialAttackEnd()
+    {
+        animator.SetBool(playerController.specialWeapon.animName, false);
+        playerController.isSpecialAttack = false;
     }
 
     public override void HitDetected()

@@ -312,8 +312,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAttack && !isClimb && !isHit)
         {
-            //좌클릭, 근접공격
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            //좌클릭, Z버튼 근접공격
+            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Z))
             {
                 if (powerNow >= meleeWeapon.powerCon)
                 {
@@ -324,16 +324,16 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            //우클릭, 원거리공격
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            //우클릭, X버튼 원거리공격
+            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.X))
             {
                 isRangeAttack = true;
 
                 animator.SetBool(rangeWeapon.animName, true);
             }
 
-            //휠클릭, 특수공격
-            if (Input.GetKeyDown(KeyCode.Mouse2))
+            //휠클릭, C버튼 특수공격
+            if (Input.GetKeyDown(KeyCode.Mouse2) || Input.GetKeyDown(KeyCode.C))
             {
                 isSpecialAttack = true;
 

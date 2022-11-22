@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
                 ChangeScreen(ScreenState.Inventory);
         }
 
-        if (Input.GetKeyDown(KeyCode.C)&& WorkBenchController.instance.canopenCustomize == true)
+        if (Input.GetKeyDown(KeyCode.U) && WorkBenchController.instance.canopenCustomize == true)
         {
             if (customizeScreen.alpha > 0)
                 ChangeScreen(ScreenState.Game);
