@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public MeleeWeapon meleeWeapon;
     public RangeWeapon rangeWeapon;
+    public SpecialWeapon specialWeapon;
 
     public float moveSpeed;
     public float rollCoolTime = 0.5f;
@@ -47,11 +48,12 @@ public class PlayerController : MonoBehaviour
     public bool isClimb = false;
     public bool isMeleeAttack = false;
     public bool isRangeAttack = false;
+    public bool isSpecialAttack = false;
     public bool isAttack
     {
         get
         {
-            return isMeleeAttack || isRangeAttack;
+            return isMeleeAttack || isRangeAttack || isSpecialAttack;
         }
     }
     public bool isHit = false;
@@ -333,7 +335,9 @@ public class PlayerController : MonoBehaviour
             //휠클릭, 특수공격
             if (Input.GetKeyDown(KeyCode.Mouse2))
             {
-                throw new NotImplementedException();
+                isSpecialAttack = true;
+
+                animator.SetBool(specialWeapon.animName, true);
             }
         }
     }

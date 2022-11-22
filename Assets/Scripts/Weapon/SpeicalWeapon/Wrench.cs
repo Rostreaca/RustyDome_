@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wrench : MonoBehaviour
+[CreateAssetMenu(fileName = "Wrench", menuName = "ScriptableObjects/SpecialWeapon/Wrench", order = 1)]
+public class Wrench : SpecialWeapon
 {
-    // Start is called before the first frame update
-    void Start()
+    public Wrench()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        animName = "SpecialAttack";
+        itemName = "Wrench";
     }
 }
