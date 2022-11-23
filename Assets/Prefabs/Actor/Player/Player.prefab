@@ -89,7 +89,7 @@ MonoBehaviour:
   hpNow: 500
   powerMax: 100
   powerNow: 100
-  powerRegen: 25
+  powerRegen: 10
   ammoMax: 10
   ammoNow: 10
   scrap: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   rollTimer: 0
   rollTime: 0.5
   rollSpeed: 6
-  jumpPower: 7
+  jumpPower: 12
   noHitTime: 0.5
   forcePower: 0
   upperForcePower: 0

@@ -5784,7 +5784,7 @@ PrefabInstance:
     - target: {fileID: 7795516198423240878, guid: fb981076d1e0fb3498021a5fcf4718b5,
         type: 3}
       propertyPath: isallkilled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7795516198423240912, guid: fb981076d1e0fb3498021a5fcf4718b5,
         type: 3}
@@ -10876,7 +10876,12 @@ PrefabInstance:
         type: 3}
       propertyPath: dialog
       value: 
-      objectReference: {fileID: 1483311924}
+      objectReference: {fileID: 6433660718969375366}
+    - target: {fileID: 5223418038189493195, guid: 806c70c89eef457459ba494ac9cc2563,
+        type: 3}
+      propertyPath: seeRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5223418038189493197, guid: 806c70c89eef457459ba494ac9cc2563,
         type: 3}
       propertyPath: m_RootOrder
@@ -10885,12 +10890,12 @@ PrefabInstance:
     - target: {fileID: 5223418038189493197, guid: 806c70c89eef457459ba494ac9cc2563,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 94.76739
+      value: 97.1
       objectReference: {fileID: 0}
     - target: {fileID: 5223418038189493197, guid: 806c70c89eef457459ba494ac9cc2563,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 49.74954
+      value: 49.6
       objectReference: {fileID: 0}
     - target: {fileID: 5223418038189493197, guid: 806c70c89eef457459ba494ac9cc2563,
         type: 3}
@@ -11108,6 +11113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713e7800b9cf504488ec2bc79a911d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   offset: {x: 0, y: 0}
   cameraXPosMin: 0
   cameraXPosMax: 9999
@@ -12706,7 +12712,7 @@ PrefabInstance:
     - target: {fileID: 4911929353546397291, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -393.99997
+      value: -394
       objectReference: {fileID: 0}
     - target: {fileID: 4911929353546397291, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
@@ -12747,7 +12753,7 @@ PrefabInstance:
         type: 3}
       propertyPath: npc
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1426277099}
     - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
         type: 3}
       propertyPath: item
@@ -12764,7 +12770,48 @@ PrefabInstance:
         type: 3}
       propertyPath: npc_anim
       value: 
+      objectReference: {fileID: 1259354430}
+    - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
+        type: 3}
+      propertyPath: t1ext.Array.size
+      value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
+        type: 3}
+      propertyPath: t1ext.Array.data[4]
+      value: 
+      objectReference: {fileID: 935881442789059079, guid: 8de8be0cc1bf9e34caf599d39d951cdf,
+        type: 3}
+    - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
+        type: 3}
+      propertyPath: t1ext.Array.data[5]
+      value: 
+      objectReference: {fileID: 935881442789059079, guid: e7f1dda91f25dd74c8189d71b2a24230,
+        type: 3}
+    - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
+        type: 3}
+      propertyPath: t1ext.Array.data[6]
+      value: 
+      objectReference: {fileID: 935881442789059079, guid: bafd2de1fa45b4248b40665a4f7f5aee,
+        type: 3}
+    - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
+        type: 3}
+      propertyPath: t1ext.Array.data[7]
+      value: 
+      objectReference: {fileID: 935881442789059079, guid: 0cfee274c04c7344a95b6199d5f4e11c,
+        type: 3}
+    - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
+        type: 3}
+      propertyPath: t1ext.Array.data[8]
+      value: 
+      objectReference: {fileID: 935881442789059079, guid: 9ab05a6b3827ef643a44bf1c77fcacfd,
+        type: 3}
+    - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
+        type: 3}
+      propertyPath: t1ext.Array.data[9]
+      value: 
+      objectReference: {fileID: 935881442789059079, guid: 9ab05a6b3827ef643a44bf1c77fcacfd,
+        type: 3}
     - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
         type: 3}
       propertyPath: talkclip.Array.size
@@ -12937,6 +12984,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 312245850244d6845899291dcc593c17, type: 3}
+--- !u!1 &6433660718969375366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1993108228377733091, guid: 312245850244d6845899291dcc593c17,
+    type: 3}
+  m_PrefabInstance: {fileID: 6433660718969375365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6765776726504457243
 PrefabInstance:
   m_ObjectHideFlags: 0

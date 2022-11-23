@@ -183,7 +183,7 @@ public class PlayerController : MonoBehaviour
                 isRoll = true;
 
                 rigid.gravityScale = 0;
-                powerNow -= 30;
+                powerNow -= 40;
                 StartCoroutine(IRoll(dir));
             }
         }
@@ -233,7 +233,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 animator.SetTrigger("Jump");
-                powerNow -= 20;
+                powerNow -= 30;
             }
 
             //else if (canAirJump)

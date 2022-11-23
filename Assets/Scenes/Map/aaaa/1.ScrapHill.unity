@@ -13500,13 +13500,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
+      propertyPath: hpMax
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
+      propertyPath: hpNow
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
       propertyPath: scrap
       value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
+      propertyPath: playerHp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
       propertyPath: rollTime
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
+      propertyPath: jumpPower
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
@@ -13517,6 +13537,11 @@ PrefabInstance:
         type: 3}
       propertyPath: rollTimer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
+      propertyPath: forcePower
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
@@ -13532,6 +13557,11 @@ PrefabInstance:
     - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: rollCoolTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
+      propertyPath: upperForcePower
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
@@ -21876,6 +21906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713e7800b9cf504488ec2bc79a911d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   offset: {x: 0, y: 0}
   cameraXPosMin: 0
   cameraXPosMax: 9999

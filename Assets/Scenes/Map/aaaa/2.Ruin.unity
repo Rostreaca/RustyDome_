@@ -2005,6 +2005,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 256635601}
     m_Modifications:
+    - target: {fileID: 5068792468522066685, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5068792468522066686, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5344,6 +5349,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
+      propertyPath: forcePower
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
+      propertyPath: powerRegen
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
       propertyPath: rangeWeapon
       value: 
       objectReference: {fileID: 11400000, guid: 47629b171b289eb4991490a1b527eb79,
@@ -5353,6 +5368,16 @@ PrefabInstance:
       propertyPath: gravityScale
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
+      propertyPath: upperForcePower
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031050009897858403, guid: bc8156ecf1bdefa4aa63ee7f89940721,
+        type: 3}
+      propertyPath: moduleEquipSlots.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_RootOrder
@@ -5361,12 +5386,12 @@ PrefabInstance:
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 80.19
+      value: 73.97
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.87
+      value: 65.28
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
@@ -5452,6 +5477,10 @@ PrefabInstance:
     - target: {fileID: 101611303, guid: effd1684cbca804499f736f484c32b45, type: 3}
       propertyPath: m_Name
       value: Ammobar_Cover
+      objectReference: {fileID: 0}
+    - target: {fileID: 101611303, guid: effd1684cbca804499f736f484c32b45, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 330967801, guid: effd1684cbca804499f736f484c32b45, type: 3}
       propertyPath: m_AnchorMax.y
@@ -7585,6 +7614,11 @@ PrefabInstance:
       propertyPath: dialog
       value: 
       objectReference: {fileID: 1483311924}
+    - target: {fileID: 5223418038189493195, guid: 806c70c89eef457459ba494ac9cc2563,
+        type: 3}
+      propertyPath: seeRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5223418038189493197, guid: 806c70c89eef457459ba494ac9cc2563,
         type: 3}
       propertyPath: m_RootOrder
@@ -7830,6 +7864,11 @@ PrefabInstance:
     - target: {fileID: 3785809639241506266, guid: 196432ce6ad90754693070c5fc2dedd2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860631001890491395, guid: 196432ce6ad90754693070c5fc2dedd2,
+        type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3860631001890491404, guid: 196432ce6ad90754693070c5fc2dedd2,
@@ -12862,6 +12901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713e7800b9cf504488ec2bc79a911d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   offset: {x: 0, y: 0}
   cameraXPosMin: 0
   cameraXPosMax: 9999
@@ -13298,6 +13338,7 @@ MonoBehaviour:
   npc_anim: {fileID: 974632490}
   t1ext:
   - {fileID: 8915270614370359667, guid: 8a4a8f85c7d409f4c9f67b12d8c4d8e7, type: 3}
+  - {fileID: 8915270614370359667, guid: 0e69ef70d22c31147a60cfc2a0b8e9c3, type: 3}
   dialog: {fileID: 1483311924}
   npc: {fileID: 974632489}
   nextTextBtn: {fileID: 170750928}
