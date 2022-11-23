@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public bool isSave;
     public bool isEnd;
     [Header("PlayingDatas")]
+    public bool isQuestStart;
+    public bool isQuestClear;
     public bool isDoorOpen;
     public bool isBossDead;
     public bool isGateOpen;

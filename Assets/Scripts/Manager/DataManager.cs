@@ -13,7 +13,9 @@ public class DataManager : MonoBehaviour
 	public float power;
 	public int scrap;
 	public float player_pos_x, player_pos_y;
-	//public int questprogress;
+	public bool isquestClear;
+	public bool isQuestStart;
+	public int questprogress;
 	public int SaveSceneIndex;
 	public bool isbossDead;
 	public bool HaveLever;
@@ -64,6 +66,9 @@ public class DataManager : MonoBehaviour
 				player_pos_x = GameManager.Instance.checkPoint.position.x;
 				player_pos_y = GameManager.Instance.checkPoint.position.y;
 			}
+			isQuestStart = GameManager.Instance.isQuestStart;
+			isquestClear = GameManager.Instance.isQuestClear;
+			questprogress = QuestManager.instance.Enemycount;
 			SaveSceneIndex = SceneManage.Instance.nowscene.buildIndex;
 			isbossDead = GameManager.Instance.isBossDead;
 			HaveLever = GameManager.Instance.HaveLever;
@@ -73,7 +78,7 @@ public class DataManager : MonoBehaviour
 			{
 				GameManager.Instance.isSave = false;
 
-				SaveData character = new SaveData(player_pos_x,player_pos_y, hp, power, ammo, scrap, SaveSceneIndex, isbossDead,HaveLever,HaveGatekey,isGateOpen);
+				SaveData character = new SaveData(player_pos_x,player_pos_y, hp, power, ammo, scrap, SaveSceneIndex,isQuestStart, questprogress,isquestClear,isbossDead,HaveLever,HaveGatekey,isGateOpen);
 
 				SaveSystem.Save(character);
 
@@ -125,7 +130,7 @@ public class DataManager : MonoBehaviour
 public class SaveData
 {
     public SaveData(float _player_pos_x,float _player_pos_y, float _hp, float _powers, int _bullets, int _scraps, int _sceneIndex,
-		bool _isbossDead, bool _HaveLever, bool _HaveGatekey, bool _isGateOpen)
+		bool _isQuestStart,int _questprogress,bool _isquestClear ,bool _isbossDead, bool _HaveLever, bool _HaveGatekey, bool _isGateOpen)
     {
 		player_pos_x = _player_pos_x;
 		player_pos_y = _player_pos_y;
@@ -134,6 +139,9 @@ public class SaveData
         bullets = _bullets;
 		scraps = _scraps;
 		sceneIndex = _sceneIndex;
+		isQuestStart = _isQuestStart;
+		questprogress = _questprogress;
+		isquestClear = _isquestClear;
 		isbossDead = _isbossDead;
 		HaveLever = _HaveLever;
 		HaveGatekey = _HaveGatekey;
@@ -145,7 +153,9 @@ public class SaveData
     public int bullets;
 	public int scraps;
 	public int sceneIndex;
-	//public int questprogress;
+	public int questprogress;
+	public bool isQuestStart;
+	public bool isquestClear;
 	public bool isbossDead;
 	public bool HaveLever;
 	public bool HaveGatekey;

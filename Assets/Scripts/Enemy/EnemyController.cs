@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class EnemyController : MonoBehaviour
 {
 
@@ -44,6 +43,7 @@ public class EnemyController : MonoBehaviour
     public GameObject Projectile;
     public GameObject Actor;
 
+    public GameObject QuestProgresstxt;
     private CapsuleCollider2D col;
     private SpriteRenderer sprite;
     private Animator animator;
@@ -53,13 +53,11 @@ public class EnemyController : MonoBehaviour
     private float returnTimer = 3;
 
     [Header("ป๓ลย")]
-    public bool monsterisquestzone;
     public bool isAttack;
     public bool isRangeAttack;
     public bool cooltimecheck;
     public bool rangecoolcheck;
     private bool isMove;
-    private bool wascounted;
     public bool isStun;
     public bool isDead;
     public bool isGround;
@@ -73,6 +71,7 @@ public class EnemyController : MonoBehaviour
     
     private void Start()
     {
+        QuestProgresstxt = GameObject.Find("[UI]").transform.Find("Canvas").transform.Find("GameScreen").transform.GetChild(3).gameObject;
         col = GetComponent<CapsuleCollider2D>();
         animator = GetComponentInChildren<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -95,12 +94,6 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if(!wascounted && monsterisquestzone)
-        {
-            QuestManager.instance.Enemycount++;
-            wascounted = true;
-        }
-
         if (!isDead)
         {
             if (GameManager.Instance.isGame)
@@ -394,9 +387,11 @@ public class EnemyController : MonoBehaviour
 
     public void Death()
     {
-        if(QuestManager.instance.isquestZone&& monsterisquestzone)
+        if(GameManager.Instance.isQuestStart == true)
         {
-            QuestManager.instance.Enemycount--;
+            QuestManager.instance.Enemycount++;
+
+            QuestProgresstxt.SetActive(true);
         }
         transform.position = transform.position;
         Rigidbody2D rigid;
@@ -535,14 +530,6 @@ public class EnemyController : MonoBehaviour
 
             isReturning = false;
             yield return null;
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Quest")
-        {
-            monsterisquestzone = true;
         }
     }
 

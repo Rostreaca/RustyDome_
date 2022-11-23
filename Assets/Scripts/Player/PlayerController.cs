@@ -71,11 +71,14 @@ public class PlayerController : MonoBehaviour
 
     private void SIngleton_Init()
     {
-        if (instance != null)
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != null)
         {
             Destroy(gameObject);
         }
-        instance = this;
     }
     private void Awake()
     {
