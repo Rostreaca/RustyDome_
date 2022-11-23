@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneManage : MonoBehaviour
 {
+    public GameObject fadeLettorBox;
     public static SceneManage Instance;
     public Scene nowscene;
     public int NextScene, PreScene;
@@ -60,7 +61,16 @@ public class SceneManage : MonoBehaviour
         {
             farfromportal = -3f;
         }
+    }
 
+    public void FadeIn()
+    {
+        if (farfromportal < 0)
+        {
+            fadeLettorBox = GameObject.Find("UI").transform.Find("Canvas").transform.Find("RightFadeOut").gameObject;
+        }
+
+        fadeLettorBox.SetActive(true);
     }
     public void NextSceneLoad()
     {
