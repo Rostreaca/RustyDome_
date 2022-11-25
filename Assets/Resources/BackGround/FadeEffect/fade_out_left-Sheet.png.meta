@@ -109,7 +109,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -128,9 +128,9 @@ TextureImporter:
       name: fade_out_left-Sheet_1
       rect:
         serializedVersion: 2
-        x: 512
+        x: 511
         y: 0
-        width: 512
+        width: 504
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -149,9 +149,9 @@ TextureImporter:
       name: fade_out_left-Sheet_2
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1022
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -170,9 +170,9 @@ TextureImporter:
       name: fade_out_left-Sheet_3
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 1533
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -191,9 +191,9 @@ TextureImporter:
       name: fade_out_left-Sheet_4
       rect:
         serializedVersion: 2
-        x: 2048
+        x: 2044
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -212,9 +212,9 @@ TextureImporter:
       name: fade_out_left-Sheet_5
       rect:
         serializedVersion: 2
-        x: 2560
+        x: 2555
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -233,9 +233,9 @@ TextureImporter:
       name: fade_out_left-Sheet_6
       rect:
         serializedVersion: 2
-        x: 3072
+        x: 3066
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -254,9 +254,9 @@ TextureImporter:
       name: fade_out_left-Sheet_7
       rect:
         serializedVersion: 2
-        x: 3584
+        x: 3577
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -275,9 +275,9 @@ TextureImporter:
       name: fade_out_left-Sheet_8
       rect:
         serializedVersion: 2
-        x: 4096
+        x: 4088
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -296,9 +296,9 @@ TextureImporter:
       name: fade_out_left-Sheet_9
       rect:
         serializedVersion: 2
-        x: 4608
+        x: 4599
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -317,9 +317,9 @@ TextureImporter:
       name: fade_out_left-Sheet_10
       rect:
         serializedVersion: 2
-        x: 5120
+        x: 5110
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -338,9 +338,9 @@ TextureImporter:
       name: fade_out_left-Sheet_11
       rect:
         serializedVersion: 2
-        x: 5632
+        x: 5621
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -359,9 +359,9 @@ TextureImporter:
       name: fade_out_left-Sheet_12
       rect:
         serializedVersion: 2
-        x: 6144
+        x: 6132
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -380,9 +380,9 @@ TextureImporter:
       name: fade_out_left-Sheet_13
       rect:
         serializedVersion: 2
-        x: 6656
+        x: 6643
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -401,9 +401,9 @@ TextureImporter:
       name: fade_out_left-Sheet_14
       rect:
         serializedVersion: 2
-        x: 7168
+        x: 7154
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -422,9 +422,9 @@ TextureImporter:
       name: fade_out_left-Sheet_15
       rect:
         serializedVersion: 2
-        x: 7680
+        x: 7665
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -443,19 +443,19 @@ TextureImporter:
       name: fade_out_left-Sheet_16
       rect:
         serializedVersion: 2
-        x: 8192
+        x: 8193
         y: 0
-        width: 512
+        width: 511
         height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9957f7128b40bcd4a9718b8dda5cb459
-      internalID: 1300468426
+      spriteID: dc126c9db7cd5ba43954c9947a2ae4ff
+      internalID: -1218543230
       vertices: []
       indices: 
       edges: []
@@ -472,7 +472,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       fade_out_left-Sheet_3: 1023429124
-      fade_out_left-Sheet_16: 1300468426
+      fade_out_left-Sheet_16: -1218543230
       fade_out_left-Sheet_9: -1660186947
       fade_out_left-Sheet_13: -1804873238
       fade_out_left-Sheet_1: -43718572

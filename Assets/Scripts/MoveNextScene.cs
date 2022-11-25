@@ -22,7 +22,21 @@ public class MoveNextScene : MonoBehaviour
     {
             if (collision.gameObject != null & collision.gameObject.tag == "Player")
             {
-                SceneManage.Instance.NextSceneLoad();
+            if(PlayerController.instance.transform.position.x < portal.transform.position.x)
+            {
+                SceneManage.Instance.FadeIn(false);
             }
+            else if(PlayerController.instance.transform.position.x > portal.transform.position.x)
+            {
+                SceneManage.Instance.FadeIn(true);
+            }
+            Invoke("SceneLoad", 0.3f);
+            }
+    }
+
+    public void SceneLoad()
+    {
+        
+        SceneManage.Instance.NextSceneLoad();
     }
 }

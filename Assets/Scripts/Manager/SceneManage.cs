@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneManage : MonoBehaviour
 {
-    public GameObject fadeLettorBox;
+    public GameObject RightFadeIn, LeftFadeIn;
     public static SceneManage Instance;
     public Scene nowscene;
     public int NextScene, PreScene;
@@ -31,6 +31,8 @@ public class SceneManage : MonoBehaviour
     }
     private void Awake()
     {
+        RightFadeIn = gameObject.transform.GetChild(0).gameObject;
+        LeftFadeIn = gameObject.transform.GetChild(1).gameObject;
         Singleton_Init();
     }
     private void Update()
@@ -63,37 +65,52 @@ public class SceneManage : MonoBehaviour
         }
     }
 
-    public void FadeIn()
+    public void FadeIn(bool isLeft)
     {
-        if (farfromportal < 0)
+        if (isLeft !=true)
         {
-            fadeLettorBox = GameObject.Find("UI").transform.Find("Canvas").transform.Find("RightFadeOut").gameObject;
+            RightFadeIn.SetActive(true);
         }
-
-        fadeLettorBox.SetActive(true);
+        if(isLeft ==true)
+        {
+            LeftFadeIn.SetActive(true);
+        }
+    }
+    public void FadeOut()
+    {
+        if(RightFadeIn.activeSelf == true)
+        {
+            RightFadeIn.GetComponent<Animator>().SetTrigger("FadeOut");
+        }
+        if (LeftFadeIn.activeSelf == true)
+        {
+            LeftFadeIn.GetComponent<Animator>().SetTrigger("FadeOut");
+        }
     }
     public void NextSceneLoad()
     {
-        if(nowscene.buildIndex ==4 )
+        if (nowscene.buildIndex == 4)
         {
-            SceneManager.LoadScene(NextScene+1);
-
+            SceneManager.LoadScene(NextScene + 1);
             Invoke("NextSceneMover", 0.1f);
             return;
         }
-        else if(NextScene != 0)
+        else if (NextScene != 0)
         {
             SceneManager.LoadScene(NextScene);
-        }    
-        Invoke("NextSceneMover", 0.1f);
+            Invoke("NextSceneMover", 0.1f);
+        }
+        
     }
     public void NextSceneMover()
     {
         if(PrePortal != null)
         {
             PlayerController.instance.transform.position = new Vector2(PrePortal.transform.position.x - farfromportal, PrePortal.transform.position.y);
+
         }
-        
+
+        Invoke("FadeOut",0.5f);
     }
     public void PreSceneLoad()
     {
@@ -106,5 +123,7 @@ public class SceneManage : MonoBehaviour
         {
             PlayerController.instance.transform.position = new Vector2(NextPortal.transform.position.x + farfromportal, NextPortal.transform.position.y);
         }
+
+        Invoke("FadeOut", 0.5f);
     }
 }

@@ -20,7 +20,21 @@ public class MovePreScene : MonoBehaviour
     {
             if (collision.gameObject != null & collision.gameObject.tag == "Player")
             {
-                SceneManage.Instance.PreSceneLoad();
+
+            if (PlayerController.instance.transform.position.x < portal.transform.position.x)
+            {
+                SceneManage.Instance.FadeIn(false);
             }
+            else if (PlayerController.instance.transform.position.x > portal.transform.position.x)
+            {
+                SceneManage.Instance.FadeIn(true);
+            }
+
+            Invoke("SceneLoad", 0.3f);
+            }
+    }
+    public void SceneLoad()
+    {
+        SceneManage.Instance.PreSceneLoad();
     }
 }

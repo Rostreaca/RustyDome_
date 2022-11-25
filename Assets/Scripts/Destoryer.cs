@@ -20,4 +20,8 @@ public class Destoryer : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    public void Disabler()
+    {
+        gameObject.SetActive(false);
+    }
 }
