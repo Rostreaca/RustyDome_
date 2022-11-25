@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class QuestNPCText : UIText
 {
+    public GameObject QuestProgresstxt;
     public bool questStart;
     public bool talkQuestClear;
     public Module module;
@@ -13,6 +14,7 @@ public class QuestNPCText : UIText
     // Update is called once per frame
     private void Awake()
     {
+        QuestProgresstxt = GameObject.Find("[UI]").transform.Find("Canvas").transform.Find("GameScreen").transform.GetChild(3).gameObject;
         Actor = GameObject.Find("Actor");
     }
 
@@ -109,7 +111,7 @@ public class QuestNPCText : UIText
             npc_anim.SetBool("isTalking", true);
             npc_Text = "망가진 기계들을 \n 처리하고 와주게..";
             Type_init();
-
+            QuestProgresstxt.SetActive(true);
             sayCount++;
 
         }

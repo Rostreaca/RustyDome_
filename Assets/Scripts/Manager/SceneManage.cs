@@ -74,7 +74,14 @@ public class SceneManage : MonoBehaviour
     }
     public void NextSceneLoad()
     {
-        if(NextScene != 0)
+        if(nowscene.buildIndex ==4 )
+        {
+            SceneManager.LoadScene(NextScene+1);
+
+            Invoke("NextSceneMover", 0.1f);
+            return;
+        }
+        else if(NextScene != 0)
         {
             SceneManager.LoadScene(NextScene);
         }    
@@ -82,7 +89,10 @@ public class SceneManage : MonoBehaviour
     }
     public void NextSceneMover()
     {
-        PlayerController.instance.transform.position = new Vector2(PrePortal.transform.position.x -farfromportal, PrePortal.transform.position.y);
+        if(PrePortal != null)
+        {
+            PlayerController.instance.transform.position = new Vector2(PrePortal.transform.position.x - farfromportal, PrePortal.transform.position.y);
+        }
         
     }
     public void PreSceneLoad()
@@ -92,6 +102,9 @@ public class SceneManage : MonoBehaviour
     }
     public void PreSceneMover()
     {
-        PlayerController.instance.transform.position = new Vector2(NextPortal.transform.position.x + farfromportal, NextPortal.transform.position.y);
+        if (NextPortal != null)
+        {
+            PlayerController.instance.transform.position = new Vector2(NextPortal.transform.position.x + farfromportal, NextPortal.transform.position.y);
+        }
     }
 }

@@ -43,7 +43,6 @@ public class EnemyController : MonoBehaviour
     public GameObject Projectile;
     public GameObject Actor;
 
-    public GameObject QuestProgresstxt;
     private CapsuleCollider2D col;
     private SpriteRenderer sprite;
     private Animator animator;
@@ -71,7 +70,6 @@ public class EnemyController : MonoBehaviour
     
     private void Start()
     {
-        QuestProgresstxt = GameObject.Find("[UI]").transform.Find("Canvas").transform.Find("GameScreen").transform.GetChild(3).gameObject;
         col = GetComponent<CapsuleCollider2D>();
         animator = GetComponentInChildren<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -390,8 +388,6 @@ public class EnemyController : MonoBehaviour
         if(GameManager.Instance.isQuestStart == true)
         {
             QuestManager.instance.Enemycount++;
-
-            QuestProgresstxt.SetActive(true);
         }
         transform.position = transform.position;
         Rigidbody2D rigid;
