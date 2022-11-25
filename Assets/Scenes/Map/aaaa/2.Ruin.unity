@@ -2120,6 +2120,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 5068792468522066687, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5262425853011484413, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5794,6 +5799,11 @@ PrefabInstance:
       propertyPath: m_Alpha
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8107862871216725733, guid: effd1684cbca804499f736f484c32b45,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8107862871216725735, guid: effd1684cbca804499f736f484c32b45,
         type: 3}
       propertyPath: m_Name
@@ -7437,10 +7447,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 323320511, guid: fb8791bc1ab240e4f8b5b251e47d9733, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3765027623916779425, guid: fb8791bc1ab240e4f8b5b251e47d9733,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7546,31 +7552,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3765027623916779426, guid: fb8791bc1ab240e4f8b5b251e47d9733,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3765027623916779427, guid: fb8791bc1ab240e4f8b5b251e47d9733,
-        type: 3}
-      propertyPath: m_UiScaleMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3765027623916779427, guid: fb8791bc1ab240e4f8b5b251e47d9733,
-        type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3765027623916779427, guid: fb8791bc1ab240e4f8b5b251e47d9733,
-        type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 3765027623916779427, guid: fb8791bc1ab240e4f8b5b251e47d9733,
-        type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1080
-      objectReference: {fileID: 0}
     - target: {fileID: 3765027624832191827, guid: fb8791bc1ab240e4f8b5b251e47d9733,
         type: 3}
       propertyPath: m_IsActive
@@ -7581,8 +7562,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneManager
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3765027623916779424, guid: fb8791bc1ab240e4f8b5b251e47d9733, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb8791bc1ab240e4f8b5b251e47d9733, type: 3}
 --- !u!1001 &923209719
 PrefabInstance:

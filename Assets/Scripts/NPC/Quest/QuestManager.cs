@@ -5,7 +5,6 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager instance;
-    public bool isquestZone;
     public int Enemycount;
     private void Awake()
     {

@@ -5767,6 +5767,11 @@ PrefabInstance:
       propertyPath: isallkilled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7795516198423240878, guid: fb981076d1e0fb3498021a5fcf4718b5,
+        type: 3}
+      propertyPath: isquestZone
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7795516198423240912, guid: fb981076d1e0fb3498021a5fcf4718b5,
         type: 3}
       propertyPath: m_RootOrder

@@ -37,11 +37,11 @@ public class SceneManage : MonoBehaviour
     }
     private void Update()
     {
-        if (NextPortal = GameObject.Find("NextScenePortal"))
+        if (GameObject.Find("NextScenePortal"))
         {
             NextPortal = GameObject.Find("NextScenePortal");
         }
-        if (PrePortal = GameObject.Find("PreScenePortal"))
+        if (GameObject.Find("PreScenePortal"))
         {
             PrePortal = GameObject.Find("PreScenePortal");
         }
@@ -92,22 +92,19 @@ public class SceneManage : MonoBehaviour
         if (nowscene.buildIndex == 4)
         {
             SceneManager.LoadScene(NextScene + 1);
-            Invoke("NextSceneMover", 0.1f);
-            return;
         }
         else if (NextScene != 0)
         {
             SceneManager.LoadScene(NextScene);
-            Invoke("NextSceneMover", 0.1f);
         }
-        
+        Invoke("NextSceneMover", 0.1f);
     }
     public void NextSceneMover()
     {
-        if(PrePortal != null)
+        if (PrePortal != null)
         {
             PlayerController.instance.transform.position = new Vector2(PrePortal.transform.position.x - farfromportal, PrePortal.transform.position.y);
-
+            
         }
 
         Invoke("FadeOut",0.5f);

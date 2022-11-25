@@ -52,15 +52,15 @@ public class CameraManager : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if(GameObject.Find("SceneManager"))
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        canvas.worldCamera = gameObject.GetComponent<Camera>();
+        if (GameObject.Find("SceneManager"))
         {
             Canvas scenemanager = GameObject.Find("SceneManager").GetComponent<Canvas>();
 
             scenemanager.worldCamera = gameObject.GetComponent<Camera>();
         }
 
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        canvas.worldCamera = gameObject.GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player").transform; //Find player in scene
 
         if (GameObject.Find("Anime_Boss"))
