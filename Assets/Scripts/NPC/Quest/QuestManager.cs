@@ -8,13 +8,17 @@ public class QuestManager : MonoBehaviour
     public int Enemycount;
     private void Awake()
     {
-        if (instance != null)
+        if(instance == null)
+        {
+
+            instance = this;
+        }
+        else if (instance != null)
         {
             Destroy(gameObject);
             return;
         }
 
-        instance = this;
         DontDestroyOnLoad(gameObject);
     }
     // Start is called before the first frame update

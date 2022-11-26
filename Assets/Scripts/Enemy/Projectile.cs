@@ -30,12 +30,13 @@ public class Projectile : MonoBehaviour
         if(colliderDetected.gameObject.CompareTag("Enemy"))
         {
             launcher = colliderDetected.GetComponent<EnemyController>();
-            if (launcher.transform.localScale == new Vector3(-1, 1, 1)) //플레이어가 왼쪽에 있을때
+            SpriteRenderer launcher_sprite = launcher.transform.GetChild(0).GetComponent<SpriteRenderer>();
+            if (launcher_sprite.flipX == true) //플레이어가 왼쪽에 있을때
             {
                 rigid.velocity = new Vector2(-speed, 0);
             }
 
-            if (launcher.transform.localScale == new Vector3(1, 1, 1)) //플레이어가 오른쪽에 있을때
+            if (launcher_sprite.flipX == false) //플레이어가 오른쪽에 있을때
             {
                 rigid.velocity = new Vector2(speed, 0);
             }
