@@ -4,40 +4,45 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    private PlatformEffector2D effector;
+   
     private bool playerCheck;
 
     void Start()
     {
-        effector = GetComponent<PlatformEffector2D>();
     }
 
     void Update()
     {
         if (playerCheck && Input.GetKey(KeyCode.S))
         {
-            effector.rotationalOffset = 180f;
-
-            Invoke("PlatformReset", 0.5f);
+            StartCoroutine(CharacterDown());
         }
-        //else if (Input.GetKeyDown(KeyCode.W))
-        //{
-        //    effector.rotationalOffset = 0f;
-        //}
     }
 
-    public void PlatformReset()
-    {
-        effector.rotationalOffset = 0f;
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        playerCheck = true;
+        if (collision.gameObject != null && collision.gameObject.CompareTag("Player"))
+        {
+            playerCheck = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        playerCheck = false;
+
+        if (collision.gameObject != null && collision.gameObject.CompareTag("Player"))
+        {
+            playerCheck = false;
+        }
+    }
+
+    private IEnumerator CharacterDown()
+    {
+        CapsuleCollider2D playercol = PlayerController.instance.GetComponent<CapsuleCollider2D>();
+        CompositeCollider2D platformcol = GetComponent<CompositeCollider2D>(); 
+        Physics2D.IgnoreCollision(playercol, platformcol);
+        yield return new WaitForSeconds(0.5f);
+        Physics2D.IgnoreCollision(playercol, platformcol,false);
     }
 }

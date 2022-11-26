@@ -42,10 +42,6 @@ public class DataManager : MonoBehaviour
     }
     void Update()
 	{
-		if(Input.GetKey(KeyCode.S))
-        {
-			GameManager.Instance.isSave = true;
-        }
 		if (player ==null && GameObject.FindWithTag("Player") )
         {
 			player = GameObject.FindWithTag("Player");
