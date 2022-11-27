@@ -20,7 +20,6 @@ public class MovePreScene : MonoBehaviour
     {
             if (collision.gameObject != null & collision.gameObject.tag == "Player")
             {
-
             if (PlayerController.instance.transform.position.x < portal.transform.position.x)
             {
                 SceneManage.Instance.FadeIn(false);

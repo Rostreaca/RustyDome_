@@ -78,7 +78,7 @@ public class SceneManage : MonoBehaviour
     }
     public void FadeOut()
     {
-        if(RightFadeIn.activeSelf == true)
+        if (RightFadeIn.activeSelf == true)
         {
             RightFadeIn.GetComponent<Animator>().SetTrigger("FadeOut");
         }
