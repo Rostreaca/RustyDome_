@@ -55,6 +55,13 @@ public class PlayerController : MonoBehaviour
         {
             return isMeleeAttack || isRangeAttack || isSpecialAttack;
         }
+
+        set
+        {
+            isMeleeAttack = value;
+            isRangeAttack = value;
+            isSpecialAttack = value;
+        }
     }
     public bool isHit = false;
     public bool isCharge = false;
@@ -371,6 +378,9 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("Hit");
             hpNow -= damage;
+
+            StopAllCoroutines();
+            isAttack = false;
 
             Vector2 dir = enemy.position.x < transform.position.x ? Vector2.right : Vector2.left;
             rigid.AddForce(dir * forcePower + Vector2.up * upperForcePower);

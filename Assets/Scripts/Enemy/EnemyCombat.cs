@@ -31,7 +31,8 @@ public class EnemyCombat : Combat
     {
         Instantiate(enemyController.Projectile, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, enemyController.Actor.transform);
     }
-    public override void HitDetected()
+
+    public override void MeleeHitDetected()
     {
         if (colliderDetected.gameObject.CompareTag("Player"))
         {

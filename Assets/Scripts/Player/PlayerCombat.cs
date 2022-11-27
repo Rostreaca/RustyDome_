@@ -8,8 +8,9 @@ public class PlayerCombat : Combat
     public GameObject projectile;
     public Transform projectileTransform;
 
+    private SpecialAttackTrigger specialAttackTrigger;
+
     public Animator animator, weaponAnimator, rangeEffectAnimator;
-    private Rigidbody2D rigid;
     private PlayerController playerController;
 
     public float chargeTime = 1f;
@@ -22,8 +23,10 @@ public class PlayerCombat : Combat
     public override void Start()
     {
         base.Start();
+        specialAttackTrigger = GetComponentInChildren<SpecialAttackTrigger>();
+        specialAttackTrigger.combat = this;
+
         Actor = GameObject.Find("Actor");
-        rigid = GetComponentInParent<Rigidbody2D>();
         playerController = GetComponentInParent<PlayerController>();
     }
 
@@ -225,7 +228,12 @@ public class PlayerCombat : Combat
         playerController.isSpecialAttack = false;
     }
 
-    public override void HitDetected()
+    public void Execution()
+    {
+
+    }
+
+    public override void MeleeHitDetected()
     {
         if (colliderDetected.gameObject.CompareTag("Enemy"))
         {
@@ -237,6 +245,15 @@ public class PlayerCombat : Combat
         {
             BossGetDamage boss = colliderDetected.GetComponent<BossGetDamage>();
             MeleeAttacktoBoss(boss);
+        }
+    }
+
+    public void SpecialHitDetected()
+    {
+        if (colliderDetected.gameObject.CompareTag("Enemy"))
+        {
+            EnemyController enemy = colliderDetected.GetComponent<EnemyController>();
+            MeleeAttack(enemy);
         }
     }
 

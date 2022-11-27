@@ -341,24 +341,19 @@ public class EnemyController : MonoBehaviour
             hpNow -= damage;
             stunMeterNow -= stunDamage;
 
+            animator.SetTrigger("Hit");
+            stunMeterRegenTimer = stunMeterRegenTime;
+
+            StopAllCoroutines();
+
+            if (stunMeterNow <= 0)
+            {
+                Stun();
+            }
+
             if (hpNow <= 0)
             {
-                animator.SetTrigger("Death");
                 Death();
-            }
-            else
-            {
-                if (stunMeterNow <= 0)
-                {
-                    //스턴애니메이션트리거
-                    Stun();
-                }
-
-                else
-                {
-                    animator.SetTrigger("Hit");
-                    stunMeterRegenTimer = stunMeterRegenTime;
-                }
             }
         }
     }
@@ -366,6 +361,7 @@ public class EnemyController : MonoBehaviour
     public void Stun()
     {
         isStun = true;
+        animator.SetBool("Stun", true);
         stunTimer = stunTime;
         StartCoroutine(IStun());
     }
@@ -379,6 +375,7 @@ public class EnemyController : MonoBehaviour
         }
 
         isStun = false;
+        animator.SetBool("Stun", false);
         stunMeterNow = stunMeterMax;
         yield return null;
     }
@@ -394,8 +391,9 @@ public class EnemyController : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
 
         rigid.isKinematic = true;
-
         col.isTrigger = true;
+
+        animator.SetTrigger("Death");
         isDead = true;
 
         Instantiate(Coin, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
@@ -429,79 +427,77 @@ public class EnemyController : MonoBehaviour
     {
         float timer = returnTimer; //timer to return after palyer leave
 
-        while (isFollowing)
+        if (!isDead && !isStun)
         {
-            if (isDead || isStun)
+            while (isFollowing)
             {
-                break;
-            }
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) || animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
+                {
+                    isPatrolling = false;
+                    isReturning = false;
+                    isMove = false;
+                    yield return null;
+                }
 
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) || animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
-            {
                 isPatrolling = false;
-                isReturning = false;
-                isMove = false;
+                if (Vector2.Distance(transform.position, followTarget.position) > returnRadius && timer <= 0 && !animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim)) //if target leave
+                {
+                    isFollowing = false;
+                    followTarget = null;
+
+                    isReturning = true;
+
+                    patrollSin = 0;
+                    if (sprite.flipX)
+                    {
+                        patrollTimer = -patrollTimer;
+                    }
+
+                    StartCoroutine(IReturnToStartPos()); //start returning
+                }
+                else if (!isGround) //if the target jumps over the gap  
+                {
+                    isFollowing = false;
+                    followTarget = null;
+
+                    isReturning = true;
+
+                    if (sprite.flipX)
+                    {
+                        patrollTimer *= -patrollTimer;
+                    }
+                    patrollSin = 0;
+
+                    StartCoroutine(IReturnToStartPos());
+                }
+                else
+                {
+                    if (Vector2.Distance(transform.position, followTarget.position) > rangeRadius && !isAttack && !isRangeAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
+                    {
+                        isMove = true;
+                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
+
+                    }
+                    else if (isRangeAttack == false && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
+                    {
+                        RangeAttack(); //attack
+                    }
+                    else if (isAttack == false && Vector2.Distance(transform.position, followTarget.position) < attackRadius)
+                    {
+                        Attack(); //attack
+                    }
+
+                    if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim) && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
+                    {
+                        isMove = true;
+                        transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
+                    }
+
+                    timer -= Time.deltaTime;
+                }
+
                 yield return null;
             }
-
-            isPatrolling = false;
-            if (Vector2.Distance(transform.position, followTarget.position) > returnRadius && timer <= 0 && !animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim)&& !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim)) //if target leave
-            {
-                isFollowing = false;
-                followTarget = null;
-
-                isReturning = true;
-
-                patrollSin = 0;
-                if(sprite.flipX)
-                {
-                    patrollTimer = -patrollTimer;
-                }
-
-                StartCoroutine(IReturnToStartPos()); //start returning
-            }
-            else if (!isGround) //if the target jumps over the gap  
-            {
-                isFollowing = false;
-                followTarget = null;
-
-                isReturning = true;
-                
-                if (sprite.flipX)
-                {
-                    patrollTimer *= -patrollTimer;
-                }
-                patrollSin = 0;
-
-                StartCoroutine(IReturnToStartPos());
-            }
-            else
-            {
-                if (Vector2.Distance(transform.position, followTarget.position) > rangeRadius && !isAttack && !isRangeAttack && !animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
-                {
-                    isMove = true;
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
-
-                }
-                else if (isRangeAttack == false && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
-                {
-                    RangeAttack(); //attack
-                }
-                else if (isAttack == false && Vector2.Distance(transform.position, followTarget.position) < attackRadius)
-                {
-                    Attack(); //attack
-                }
-
-                if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim) && Vector2.Distance(transform.position, followTarget.position) < rangeRadius && Vector2.Distance(transform.position, followTarget.position) > attackRadius)
-                {
-                    isMove = true;
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(followTarget.position.x, transform.position.y), speed * Time.deltaTime);
-                }
-
-                timer -= Time.deltaTime;
-            }
-
-            yield return null;
         }
 
         yield return null;
@@ -509,7 +505,7 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator IReturnToStartPos()
     {
-        if (isDead != true)
+        if (!isDead && !isStun)
         {
             if(isFollowing||isAttack||isRangeAttack||isPatrolling)
             {

@@ -14,6 +14,11 @@ public class PlayerWeaponSprite : MonoBehaviour
         {
             weaponAnimator.Play("MeleeAttack1");
         }
+
+        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("SpecialAttack"))
+        {
+            weaponAnimator.Play("SpecialAttack");
+        }
     }
 
     public void Rotate()

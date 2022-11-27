@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeAttackTrigger : MonoBehaviour
+public class SpecialAttackTrigger : MonoBehaviour
 {
-    public Combat combat;
+    public PlayerCombat combat;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         combat.colliderDetected = collision;
-        combat.MeleeHitDetected();
+        combat.SpecialHitDetected();
     }
 }

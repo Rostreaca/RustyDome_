@@ -13,7 +13,7 @@ public class Combat : MonoBehaviour
         meleeAttackTrigger.combat = this;
     }
 
-    public virtual void HitDetected()
+    public virtual void MeleeHitDetected()
     {
 
     }
