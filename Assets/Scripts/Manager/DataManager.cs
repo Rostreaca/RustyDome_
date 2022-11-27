@@ -35,6 +35,7 @@ public class DataManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 		instance = this;
+		DontDestroyOnLoad(gameObject);
 	}
 	private void Awake()
     {
@@ -93,7 +94,6 @@ public class DataManager : MonoBehaviour
 			Invoke("LoadData", 0.1f);
         }
 
-		DontDestroyOnLoad(this.gameObject);
 	}
     private void LateUpdate()
     {

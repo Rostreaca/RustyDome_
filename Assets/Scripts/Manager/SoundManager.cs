@@ -17,12 +17,15 @@ public class SoundManager : MonoBehaviour
     public bool PlayingMusic = false;
     public void singleton_Init()
     {
-        if(instance !=null)
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else if(instance !=null)
         {
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-        instance = this;
     }
     private void Awake()
     {
