@@ -21,7 +21,7 @@ public class DataManager : MonoBehaviour
 	public bool HaveLever;
 	public bool HaveGatekey;
 	public bool isGateOpen;
-	public bool isGameLoaded = false;
+	public bool isGameLoaded = false; 
 	public static DataManager instance;
 
 	public GameObject player;
@@ -77,22 +77,23 @@ public class DataManager : MonoBehaviour
 
 				SaveData character = new SaveData(player_pos_x,player_pos_y, hp, power, ammo, scrap, SaveSceneIndex,isQuestStart, questprogress,isquestClear,isbossDead,HaveLever,HaveGatekey,isGateOpen);
 
-				SaveSystem.Save(character);
+				SaveSystem.Save(character,"Main");
 
 			}
 		}
-		loadData = SaveSystem.Load();
+		loadData = SaveSystem.Load("Main");
 
-		if(MenuManager.Instance !=null)
+		if (MenuManager.Instance !=null)
         {
 			MenuManager.Instance.SceneIndex = loadData.sceneIndex;
 		}
 
-		if (isGameLoaded ==true )
+		if (isGameLoaded == true)
 		{
 
 			Invoke("LoadData", 0.1f);
-        }
+		}
+
 
 	}
     private void LateUpdate()
@@ -162,7 +163,7 @@ public static class SaveSystem
 {
 	private static string SavePath = Application.persistentDataPath + "/saves/";
 
-	public static void Save(SaveData saveData)
+	public static void Save(SaveData saveData, string filename)
 	{
 		if (!Directory.Exists(SavePath))
 		{
@@ -171,21 +172,20 @@ public static class SaveSystem
 
 		string saveJson = JsonUtility.ToJson(saveData);
 
-		string saveFilePath = SavePath + "savedata.json";
+		string saveFilePath = SavePath + filename +"savedata.json";
 		File.WriteAllText(saveFilePath, saveJson);
 		Debug.Log("저장 성공: " + saveFilePath);
 	}
 
-	public static SaveData Load()
+	public static SaveData Load(string filename)
 	{
-		string saveFilePath = SavePath + "savedata.json";
+		string saveFilePath = SavePath + filename +"savedata.json";
 
 		if (!File.Exists(saveFilePath))
 		{
 			Debug.LogError("저장된 파일이 없습니다.");
 			return null;
 		}
-
 		string saveFile = File.ReadAllText(saveFilePath);
 		SaveData saveData = JsonUtility.FromJson<SaveData>(saveFile);
 		return saveData;

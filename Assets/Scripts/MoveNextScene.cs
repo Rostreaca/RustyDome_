@@ -21,8 +21,8 @@ public class MoveNextScene : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
             if (collision.gameObject != null & collision.gameObject.tag == "Player")
-            {
-            if(PlayerController.instance.transform.position.x < portal.transform.position.x)
+        {
+            if (PlayerController.instance.transform.position.x < portal.transform.position.x)
             {
                 SceneManage.Instance.FadeIn(false);
             }
