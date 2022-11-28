@@ -23,6 +23,10 @@ public class BossRoomEvent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.Instance.isBossDead == true)
+        {
+            Destroy(gameObject);
+        }
         if (BossTest.instance !=null)
         {
             if (BossController.instance.isdead != true)

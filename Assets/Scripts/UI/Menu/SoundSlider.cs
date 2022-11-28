@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 public class SoundSlider : MonoBehaviour
 {
     public AudioMixer mixer;
-    public Slider bgmsoundcon,effectsoundcon;
+    public Slider soundcon;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,22 +16,13 @@ public class SoundSlider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(bgmsoundcon == null && GameObject.Find("BgmSlider"))
+        if(soundcon == null && GameObject.Find("SoundSlider"))
         {
-            bgmsoundcon = GameObject.Find("BgmSlider").GetComponent<Slider>();
+            soundcon = GameObject.Find("SoundSlider").GetComponent<Slider>();
         }
-
-        if(effectsoundcon == null && GameObject.Find("SfxSlider"))
+        if(soundcon != null)
         {
-            effectsoundcon = GameObject.Find("SfxSlider").GetComponent<Slider>();
-        }
-        if(effectsoundcon !=null)
-        {
-            mixer.SetFloat("Sfx", effectsoundcon.value);
-        }
-        if(bgmsoundcon !=null)
-        {
-            mixer.SetFloat("Bgm", bgmsoundcon.value);
+            mixer.SetFloat("Master", soundcon.value);
         }
         //SoundManager.instance.volume = effectsoundcon.value;
     }

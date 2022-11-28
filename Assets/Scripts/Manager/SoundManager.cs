@@ -7,14 +7,9 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
 
     public AudioMixerGroup sfxgroup;
-    public AudioSource bgm;
     public AudioSource sfx;
-    public AudioClip[] bgmlist;
 
     public float volume;
-    public int soundtracknumber;
-    public bool isStop;
-    public bool PlayingMusic = false;
     public void singleton_Init()
     {
         if(instance == null)
@@ -34,33 +29,6 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.T)&&PlayingMusic ==false)
-        {
-            BackgroundMusic(bgmlist[soundtracknumber]);
-            PlayingMusic = true;
-        }
-        if(Input.GetKey(KeyCode.Y) && PlayingMusic == true)
-        {
-            bgm.Stop();
-            PlayingMusic = false;
-        }
-        if (Input.GetKey(KeyCode.T))
-        {
-            if (soundtracknumber == bgmlist.Length-1)
-            {
-                soundtracknumber = 0;
-            }
-            else
-            {
-                soundtracknumber++;
-            }
-            BackgroundMusic(bgmlist[soundtracknumber]);
-        }
-        //if (soundtracknumber == bgmlist.Length)
-        //{
-        //    soundtracknumber = 0;
-        //    BackgroundMusic(bgmlist[soundtracknumber]);
-        //}
 
     }
 
@@ -79,11 +47,5 @@ public class SoundManager : MonoBehaviour
     }
 
 
-    public void BackgroundMusic(AudioClip clip)
-    {
-        bgm.clip = clip;
-        bgm.loop = true;
-        bgm.Play();
-    }
 
 }

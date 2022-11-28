@@ -32,6 +32,10 @@ public class Anime_boss : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(GameManager.Instance.isBossDead == true)
+        {
+            Destroy(gameObject);
+        }
         anim.SetBool("PlayerEntering", playerentered);
 
     }

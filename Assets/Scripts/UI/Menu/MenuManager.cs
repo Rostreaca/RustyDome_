@@ -40,7 +40,10 @@ public class MenuManager : MonoBehaviour
 
     public void GameStart()
     {
-        SceneManager.LoadScene(2);
+        Scene Menuscene;
+        Menuscene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(Menuscene.buildIndex+1);
+        //SceneManager.LoadScene(8);
     }
 
     public void Option()

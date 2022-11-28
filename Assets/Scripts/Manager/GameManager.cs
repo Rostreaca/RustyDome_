@@ -7,10 +7,15 @@ public class GameManager : MonoBehaviour
     
     void SingletonInit()
     {
-        if (Instance != null)
-            Destroy(gameObject);
-        else
+        if(Instance == null)
+        {
             Instance = this;
+        }
+        else if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
     public GameObject LettorBox;
     public bool CutscenePlaying;

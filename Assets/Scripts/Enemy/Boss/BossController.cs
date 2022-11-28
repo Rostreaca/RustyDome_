@@ -56,6 +56,7 @@ public class BossController : MonoBehaviour
     {
         if(isdead ==false)
         {
+            GameManager.Instance.isBossDead = true;
             isdead = true;
             anim.SetTrigger("Death");
         }
@@ -64,5 +65,6 @@ public class BossController : MonoBehaviour
     public void doorOpen()
     {
         GameManager.Instance.isDoorOpen = true;
+        GameManager.Instance.isSave = true;
     }
 }
