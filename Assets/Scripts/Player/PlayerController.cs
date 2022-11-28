@@ -281,13 +281,13 @@ public class PlayerController : MonoBehaviour
     {
         if (onLadder && !isAttack)
         {
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.UpArrow))
             {
                 isClimb = true;
                 animator.SetBool("Climb", true);
             }
 
-            else if (Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
                 LayerMask layerMask = 1 << LayerMask.NameToLayer("Ground");
                 RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f, layerMask);

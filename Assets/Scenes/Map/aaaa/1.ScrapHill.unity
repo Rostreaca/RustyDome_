@@ -14893,7 +14893,7 @@ GameObject:
   - component: {fileID: 852298308}
   - component: {fileID: 852298307}
   - component: {fileID: 852298313}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platform
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -15492,6 +15492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85df8b5eb9f3b34d8ba4741de9184a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCheck: 0
 --- !u!1 &961209391
 GameObject:
   m_ObjectHideFlags: 0

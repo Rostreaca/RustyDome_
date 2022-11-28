@@ -5,7 +5,7 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
    
-    private bool playerCheck;
+    public bool playerCheck;
 
     void Start()
     {
@@ -13,7 +13,7 @@ public class Platform : MonoBehaviour
 
     void Update()
     {
-        if (playerCheck && Input.GetKey(KeyCode.S))
+        if (playerCheck && Input.GetKey(KeyCode.DownArrow))
         {
             StartCoroutine(CharacterDown());
         }
