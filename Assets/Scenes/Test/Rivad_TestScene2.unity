@@ -44223,6 +44223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85df8b5eb9f3b34d8ba4741de9184a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCheck: 0
 --- !u!1 &964805594
 GameObject:
   m_ObjectHideFlags: 0
@@ -50056,6 +50057,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4980854292804328397, guid: a59433c46176e994082f0fe0013e166c,
+        type: 3}
+      propertyPath: stunTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a59433c46176e994082f0fe0013e166c, type: 3}
 --- !u!1 &1483311924 stripped
@@ -51967,13 +51973,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxgroup: {fileID: 0}
-  bgm: {fileID: 0}
   sfx: {fileID: 0}
-  bgmlist: []
   volume: 2
-  soundtracknumber: 0
-  isStop: 0
-  PlayingMusic: 0
 --- !u!1001 &393279834902861044
 PrefabInstance:
   m_ObjectHideFlags: 0

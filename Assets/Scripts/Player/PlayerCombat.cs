@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class PlayerCombat : Combat
 {
-    GameObject Actor;
+    public GameObject Actor;
     public GameObject projectile;
     public Transform projectileTransform;
 
     private SpecialAttackTrigger specialAttackTrigger;
 
     public Animator animator, weaponAnimator, rangeEffectAnimator;
-    private PlayerController playerController;
+    private PlayerController player;
+
+    public EnemyController executionTarget;
 
     public float chargeTime = 1f;
 
@@ -27,7 +29,7 @@ public class PlayerCombat : Combat
         specialAttackTrigger.combat = this;
 
         Actor = GameObject.Find("Actor");
-        playerController = GetComponentInParent<PlayerController>();
+        player = GetComponentInParent<PlayerController>();
     }
 
     public void OnMeleeAttackBegin()
@@ -52,16 +54,16 @@ public class PlayerCombat : Combat
             //Animator update
             animator.ResetTrigger("AttackCombo");
             weaponAnimator.ResetTrigger("AttackCombo");
-            animator.SetBool(playerController.meleeWeapon.animName, false);
+            animator.SetBool(player.meleeWeapon.animName, false);
 
             canCombo = false; //block combo
-            playerController.isMeleeAttack = false;
+            player.isMeleeAttack = false;
         }
     }
 
     public void OnMeleeChargeAttackEnd()
     {
-        playerController.isMeleeAttack = false;
+        player.isMeleeAttack = false;
     }
 
     IEnumerator ICombo()
@@ -116,11 +118,11 @@ public class PlayerCombat : Combat
         if (animator.GetBool("RangeAttack"))
         {
             //사격가능
-            if (playerController.powerNow >= playerController.rangeWeapon.powerCon &&
-                playerController.ammoNow >= playerController.rangeWeapon.ammoCon)
+            if (player.powerNow >= player.rangeWeapon.powerCon &&
+                player.ammoNow >= player.rangeWeapon.ammoCon)
             {
-                playerController.powerNow -= playerController.rangeWeapon.powerCon;
-                playerController.ammoNow -= playerController.rangeWeapon.ammoCon;
+                player.powerNow -= player.rangeWeapon.powerCon;
+                player.ammoNow -= player.rangeWeapon.ammoCon;
 
                 animator.SetTrigger("RangeAttack_Shoot");
                 rangeEffectAnimator.SetTrigger("RangeAttack_Effect" + Random.Range(0, 3).ToString());
@@ -219,18 +221,13 @@ public class PlayerCombat : Combat
 
     public void OnRangeAttackEnd()
     {
-        playerController.isRangeAttack = false;
+        player.isRangeAttack = false;
     }
 
     public void OnSpecialAttackEnd()
     {
-        animator.SetBool(playerController.specialWeapon.animName, false);
-        playerController.isSpecialAttack = false;
-    }
-
-    public void Execution()
-    {
-
+        animator.SetBool(player.specialWeapon.animName, false);
+        player.isSpecialAttack = false;
     }
 
     public override void MeleeHitDetected()
@@ -253,38 +250,70 @@ public class PlayerCombat : Combat
         if (colliderDetected.gameObject.CompareTag("Enemy"))
         {
             EnemyController enemy = colliderDetected.GetComponent<EnemyController>();
-            MeleeAttack(enemy);
+            SpecialAttack(enemy);
         }
     }
 
     public void MeleeAttack(EnemyController enemy)
     {
-        enemy.GetDamage(playerController.meleeWeapon.dmg, playerController.meleeWeapon.stunDmg);
+        enemy.GetDamage(player.meleeWeapon.dmg, player.meleeWeapon.stunDmg);
     }
 
     public void RangeAttack(EnemyController enemy)
     {
-        enemy.GetDamage(playerController.rangeWeapon.dmg, playerController.rangeWeapon.stunDmg);
+        enemy.GetDamage(player.rangeWeapon.dmg, player.rangeWeapon.stunDmg);
     }
 
     public void MeleeAttacktoBoss(BossGetDamage boss)
     {
-        boss.GetDamage(playerController.meleeWeapon.dmg);
+        boss.GetDamage(player.meleeWeapon.dmg);
     }
 
     public void RangeAttacktoBoss(BossGetDamage boss)
     {
-        boss.GetDamage(playerController.rangeWeapon.dmg);
+        boss.GetDamage(player.rangeWeapon.dmg);
+    }
+
+    public void SpecialAttack(EnemyController enemy)
+    {
+        if (enemy.isStun)
+        {
+            Execution(enemy);
+        }
+    }
+
+    public void Execution(EnemyController enemy)
+    {
+        player.gameObject.layer = LayerMask.NameToLayer("InvinciblePlayer");
+
+        float offset = enemy.col.size.x / 2;
+        offset *= enemy.transform.position.x - player.transform.position.x > 0 ? -1 : 1;
+
+        player.transform.position = new Vector3(enemy.transform.position.x + offset, transform.position.y);
+
+        executionTarget = enemy;
+        animator.SetTrigger("Execution");
+        weaponAnimator.SetTrigger("Execution");
+    }
+
+    public void OnExecutionEnd()
+    {
+        executionTarget.GetDamage(executionTarget.hpMax, 0);
+
+        player.gameObject.layer = LayerMask.NameToLayer("Player");
+
+        animator.SetBool(player.specialWeapon.animName, false);
+        player.isSpecialAttack = false;
     }
 
     public void OnRollBegin()
     {
-        playerController.gameObject.layer = LayerMask.NameToLayer("RollingPlayer");
+        player.gameObject.layer = LayerMask.NameToLayer("InvinciblePlayer");
     }
 
     public void OnRollEnd()
     {
-        playerController.gameObject.layer = LayerMask.NameToLayer("Player");
+        player.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     public void SoundPlay(AudioClip audio)

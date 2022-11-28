@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     public PlayerWeaponSprite weaponSprite;
 
     private Rigidbody2D rigid;
-    private CapsuleCollider2D col;
+    public CapsuleCollider2D col;
     private bool isRoll = false;
     [SerializeField]
     private bool canAirJump;

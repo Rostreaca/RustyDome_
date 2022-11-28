@@ -197,6 +197,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1029559398038586709}
   rangeEffectSpriteRenderer: {fileID: 5203793394305300074}
   weaponSprite: {fileID: 492853359567547487}
+  col: {fileID: 0}
   canAirJump: 0
 --- !u!1 &1489895272562888245
 GameObject:
@@ -355,6 +356,7 @@ MonoBehaviour:
   weaponAnimator: {fileID: 2744850405335258431}
   spriteRenderer: {fileID: 4557901201467675764}
   meleeAttackTrigger: {fileID: 1333546315795597786}
+  specialAttackTrigger: {fileID: 4875601326103585966}
 --- !u!1 &3224372812890901468
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,11 +735,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderDetected: {fileID: 0}
+  Actor: {fileID: 0}
   projectile: {fileID: 5362479334467672664, guid: 081a53d4f4d616f4293ec46a6f0bba7f,
     type: 3}
   projectileTransform: {fileID: 8109288749169631158}
   animator: {fileID: 1029559398038586708}
   weaponAnimator: {fileID: 2744850405335258431}
   rangeEffectAnimator: {fileID: 6907866116498629365}
+  executionTarget: {fileID: 0}
   chargeTime: 1
   comboReserve: 0

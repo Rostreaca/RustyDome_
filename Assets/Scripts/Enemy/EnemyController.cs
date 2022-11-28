@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
     public GameObject Projectile;
     public GameObject Actor;
 
-    private CapsuleCollider2D col;
+    public CapsuleCollider2D col;
     private SpriteRenderer sprite;
     private Animator animator;
 
