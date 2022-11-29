@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Ladder : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class Ladder : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            PlayerController playerController = collision.GetComponent<PlayerController>();
-            playerController.onLadder = true;
+            PlayerController player = collision.GetComponent<PlayerController>();
+            player.onLadder = true;
         }
     }
 
@@ -17,10 +18,10 @@ public class Ladder : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            PlayerController playerController = collision.GetComponent<PlayerController>();
-            playerController.onLadder = false;
-            playerController.isClimb = false;
-            playerController.animator.SetBool("Climb", false);
+            PlayerController player = collision.GetComponent<PlayerController>();
+            player.onLadder = false;
+            player.isClimb = false;
+            player.animator.SetBool("Climb", false);
         }
     }
 }

@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     public bool isHit = false;
+    public bool isInvincible = false;
     public bool isCharge = false;
 
     public Animator animator;
@@ -286,6 +287,8 @@ public class PlayerController : MonoBehaviour
             {
                 isClimb = true;
                 animator.SetBool("Climb", true);
+
+                transform.position = new Vector2(Mathf.Floor(transform.position.x) + 0.5f, transform.position.y);
             }
 
             else if (Input.GetKey(KeyCode.DownArrow))
@@ -355,14 +358,9 @@ public class PlayerController : MonoBehaviour
 
     public void Animation()
     {
-        //Lader check
-        if (!isClimb)
+        if (Input.GetAxis("Horizontal") != 0)
         {
-            if (Input.GetAxis("Horizontal") != 0)
-                animator.SetBool("Move", true);
-
-            else
-                animator.SetBool("Move", false);
+            animator.SetBool("Move", true);
         }
 
         else
@@ -370,12 +368,25 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Move", false);
         }
 
+        if (isClimb)
+        {
+            if (Input.GetAxis("Vertical") != 0)
+            {
+                animator.SetFloat("ClimbAnimationSpeed", 1);
+            }
+
+            else
+            {
+                animator.SetFloat("ClimbAnimationSpeed", 0);
+            }
+        }
+
         animator.SetBool("isGround", isGround);
     }
 
     public void GetDamage(int damage, Transform enemy)
     {
-        if (isHit == false)
+        if (isInvincible == false)
         {
             animator.SetTrigger("Hit");
             hpNow -= damage;
@@ -398,10 +409,12 @@ public class PlayerController : MonoBehaviour
     private IEnumerator IHit()
     {
         isHit = true;
+        isInvincible = true;
 
         yield return new WaitForSeconds(noHitTime);
 
         isHit = false;
+        isInvincible = false;
     }
 
     public void Death()

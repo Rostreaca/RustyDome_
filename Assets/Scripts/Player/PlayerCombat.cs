@@ -284,6 +284,7 @@ public class PlayerCombat : Combat
 
     public void Execution(EnemyController enemy)
     {
+        player.isInvincible = true;
         player.gameObject.layer = LayerMask.NameToLayer("InvinciblePlayer");
 
         float offset = enemy.col.size.x / 2;
@@ -300,6 +301,7 @@ public class PlayerCombat : Combat
     {
         executionTarget.GetDamage(executionTarget.hpMax, 0);
 
+        player.isInvincible = false;
         player.gameObject.layer = LayerMask.NameToLayer("Player");
 
         animator.SetBool(player.specialWeapon.animName, false);
@@ -308,11 +310,13 @@ public class PlayerCombat : Combat
 
     public void OnRollBegin()
     {
+        player.isInvincible = true;
         player.gameObject.layer = LayerMask.NameToLayer("InvinciblePlayer");
     }
 
     public void OnRollEnd()
     {
+        player.isInvincible = false;
         player.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
