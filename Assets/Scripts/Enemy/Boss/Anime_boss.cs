@@ -42,6 +42,8 @@ public class Anime_boss : MonoBehaviour
 
     public void EndMotion()
     {
+        GameObject Player = GameObject.FindWithTag("Player");
+        GameManager.Instance.checkPoint = Player.transform;
         GameManager.Instance.CutscenePlaying = false;
 
         Instantiate(Boss, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);

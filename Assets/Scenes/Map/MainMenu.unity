@@ -378,7 +378,7 @@ PrefabInstance:
     - target: {fileID: 1305975297006761095, guid: 49bed69f9ae623d48aa3c8180ebde576,
         type: 3}
       propertyPath: isBossDead
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1305975297006761095, guid: 49bed69f9ae623d48aa3c8180ebde576,
         type: 3}
@@ -2608,6 +2608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad8b7894ecb53d46a04a71885dbd15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loadSceneIndex: 0
   loadData:
     player_pos_x: 0
     player_pos_y: 0

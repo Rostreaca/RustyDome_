@@ -65,7 +65,9 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneIndex);
 
-        DataManager.instance.isGameLoaded = true;
+        DataManager data = GameObject.Find("DataManager").GetComponent<DataManager>();
+
+        data.isGameLoaded = true;
     }
 
 }

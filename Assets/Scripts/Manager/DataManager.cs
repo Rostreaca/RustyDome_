@@ -20,7 +20,7 @@ public class DataManager : MonoBehaviour
 	public bool isbossDead;
 	public bool HaveLever;
 	public bool HaveGatekey;
-	public bool isGateOpen;
+	public bool isGateOpen,isDoorOpen;
 	public bool isGameLoaded= false; 
 	public static DataManager instance;
 
@@ -73,11 +73,12 @@ public class DataManager : MonoBehaviour
 			HaveLever = GameManager.Instance.HaveLever;
 			HaveGatekey = GameManager.Instance.HaveGateKey;
 			isGateOpen = GameManager.Instance.isGateOpen;
+			isDoorOpen = GameManager.Instance.isDoorOpen;
 			if (GameManager.Instance.isSave == true)
 			{
 				GameManager.Instance.isSave = false;
 
-				SaveData character = new SaveData(player_pos_x,player_pos_y, hp, power, ammo, scrap, SaveSceneIndex,isQuestStart, questprogress,isquestClear,isbossDead,HaveLever,HaveGatekey,isGateOpen);
+				SaveData character = new SaveData(player_pos_x,player_pos_y, hp, power, ammo, scrap, SaveSceneIndex,isQuestStart, questprogress,isquestClear,isbossDead,HaveLever,HaveGatekey,isGateOpen,isDoorOpen);
 
 				SaveSystem.Save(character,"Main");
 
@@ -112,7 +113,6 @@ public class DataManager : MonoBehaviour
     }
     public void LoadData()
     {
-
 		if (player_stats!=null)
         {
 			player_stats.transform.position = new Vector2(loadData.player_pos_x,loadData.player_pos_y);
@@ -122,7 +122,8 @@ public class DataManager : MonoBehaviour
 			player_stats.scrap = loadData.scraps;
 		}
 		if(GameManager.Instance !=null)
-        {
+		{
+			GameManager.Instance.isDoorOpen = loadData.isDoorOpen;
 			GameManager.Instance.isBossDead = loadData.isbossDead;
 			GameManager.Instance.HaveLever = loadData.HaveLever;
 			GameManager.Instance.HaveGateKey = loadData.HaveGatekey;
@@ -137,7 +138,7 @@ public class DataManager : MonoBehaviour
 public class SaveData
 {
     public SaveData(float _player_pos_x,float _player_pos_y, float _hp, float _powers, int _bullets, int _scraps, int _sceneIndex,
-		bool _isQuestStart,int _questprogress,bool _isquestClear ,bool _isbossDead, bool _HaveLever, bool _HaveGatekey, bool _isGateOpen)
+		bool _isQuestStart,int _questprogress,bool _isquestClear ,bool _isbossDead, bool _HaveLever, bool _HaveGatekey, bool _isGateOpen, bool _isDoorOpen)
     {
 		player_pos_x = _player_pos_x;
 		player_pos_y = _player_pos_y;
@@ -153,7 +154,9 @@ public class SaveData
 		HaveLever = _HaveLever;
 		HaveGatekey = _HaveGatekey;
 		isGateOpen = _isGateOpen;
-    }
+		isDoorOpen = _isDoorOpen;
+
+	}
 	public float player_pos_x, player_pos_y;
     public float hp;
 	public float powers;
@@ -167,6 +170,7 @@ public class SaveData
 	public bool HaveLever;
 	public bool HaveGatekey;
 	public bool isGateOpen;
+	public bool isDoorOpen;
 
 }
 public static class SaveSystem
