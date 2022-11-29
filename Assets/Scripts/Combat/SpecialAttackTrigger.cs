@@ -6,9 +6,9 @@ public class SpecialAttackTrigger : MonoBehaviour
 {
     public PlayerCombat combat;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        combat.colliderDetected = collision;
+        combat.colliderDetected = collider;
         combat.SpecialHitDetected();
     }
 }

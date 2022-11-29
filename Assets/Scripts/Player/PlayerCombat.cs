@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerCombat : Combat
 {
@@ -15,12 +16,13 @@ public class PlayerCombat : Combat
 
     public EnemyController executionTarget;
 
+    public Tilemap breakableTilemap;
+
     public float chargeTime = 1f;
 
     private bool canCombo;
     public bool comboReserve;
     private bool isAiming;
-
 
     public override void Start()
     {
@@ -194,6 +196,11 @@ public class PlayerCombat : Combat
                 BossGetDamage boss = col.gameObject.GetComponent<BossGetDamage>();
                 RangeAttacktoBoss(boss);
             }
+
+            else if (col.gameObject.CompareTag("BreakableWall"))
+            {
+                col.GetComponent<BreakableWall>().Break();
+            }
         }
     }
 
@@ -242,6 +249,11 @@ public class PlayerCombat : Combat
         {
             BossGetDamage boss = colliderDetected.GetComponent<BossGetDamage>();
             MeleeAttacktoBoss(boss);
+        }
+
+        else if (colliderDetected.gameObject.CompareTag("BreakableWall"))
+        {
+            colliderDetected.GetComponent<BreakableWall>().Break();
         }
     }
 

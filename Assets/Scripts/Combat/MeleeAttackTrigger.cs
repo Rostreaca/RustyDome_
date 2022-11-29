@@ -6,9 +6,11 @@ public class MeleeAttackTrigger : MonoBehaviour
 {
     public Combat combat;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        combat.colliderDetected = collision;
+        combat.colliderDetected = collider;
         combat.MeleeHitDetected();
     }
+
 }
