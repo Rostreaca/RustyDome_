@@ -13,6 +13,10 @@ public class WorkBenchController : NPCManager
     {
         instance = this;
     }
+    private void Start()
+    {
+        playerPos = GameObject.Find("Player").transform;
+    }
     private void Awake()
     {
         anim = GetComponent<Animator>();

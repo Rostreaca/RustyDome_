@@ -26,13 +26,17 @@ public class ResolutionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if( res ==0)
+        if ( res ==0)
         {
             Screen.SetResolution(1920, 1080, isFull);
         }
         if(res == 1)
         {
             Screen.SetResolution(1280, 720, isFull);
+        }
+        if (res == 2)
+        {
+            Screen.SetResolution(960, 540, isFull);
         }
     }
 }

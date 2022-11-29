@@ -9,12 +9,12 @@ public class UIManager : MonoBehaviour
 
     public PlayerController player;
 
-    public enum ScreenState {Game, Pause, Inform, Map, Inventory, Customize, GameOver}
+    public enum ScreenState {Game, Pause, Inform, Map, Inventory, Customize, GameOver, Option}
     public Image hpBar, powerBar, ammoBar;
     public Text scrapText;
 
     [Header("Components")]
-    public CanvasGroup gameScreen, pauseScreen, mapScreen, inventoryScreen, customizeScreen, gameoverScreen;
+    public CanvasGroup gameScreen, pauseScreen, mapScreen, inventoryScreen, customizeScreen, gameoverScreen, optionScreen;
     [HideInInspector]
     public ScreenState screenState;
 
@@ -28,6 +28,10 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        if(GameObject.Find("OptionScreen"))
+        {
+            optionScreen = GameObject.Find("OptionScreen").GetComponent<CanvasGroup>();
+        }
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         hpBar = GameObject.Find("Healthbar_Health").GetComponent<Image>();
@@ -68,11 +72,16 @@ public class UIManager : MonoBehaviour
             else
                 ChangeScreen(ScreenState.Customize);
         }
-
         if (!GameManager.Instance.isPause)
             UpdateGameScreen();
     }
-
+    public void ActiveOption()
+    {
+        if (optionScreen.alpha > 0)
+            ChangeScreen(ScreenState.Pause);
+        else
+            ChangeScreen(ScreenState.Option);
+    }
     public void ChangeScreen(ScreenState screenState)
     {
         //일단 다끄고 해당되는걸 킨다.
@@ -81,7 +90,7 @@ public class UIManager : MonoBehaviour
         ScreenActive(mapScreen, false);
         ScreenActive(inventoryScreen, false);
         ScreenActive(customizeScreen, false);
-
+        ScreenActive(optionScreen, false);
         switch (screenState)
         {
             case ScreenState.Game: //if game
@@ -123,6 +132,12 @@ public class UIManager : MonoBehaviour
                 //GameManager.Instance.isPause = true;
                 //Time.timeScale = 0;
                 break;
+            case ScreenState.Option:
+                ScreenActive(optionScreen, true);
+                GameManager.Instance.isPause = true;
+                Time.timeScale = 0;
+                break;
+
         }
     }
 

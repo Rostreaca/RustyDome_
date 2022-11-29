@@ -26,5 +26,9 @@ public class ResolutionSettings : MonoBehaviour
         {
             ResolutionManager.instance.res = 1;
         }
+        if (drop.value == 2)
+        {
+            ResolutionManager.instance.res = 2;
+        }
     }
 }

@@ -47,6 +47,7 @@ public class QuestNPCText : UIText
         {
             npc_anim.SetBool("isTalking", true);
             npc_Text = "µµ¿ÍÁà¼­ °í¸¿³×..";
+            GameManager.Instance.isSave = true;
             Type_init();
             sayCount++;
         }

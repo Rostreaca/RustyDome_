@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine.SceneManagement;
 public class DataManager : MonoBehaviour
 {
-
+	public int _loadSceneIndex;
 	[Header("저장될 자료형")]
 	public SaveData loadData;
 	public float hp ;
@@ -21,7 +21,7 @@ public class DataManager : MonoBehaviour
 	public bool HaveLever;
 	public bool HaveGatekey;
 	public bool isGateOpen;
-	public bool isGameLoaded = false; 
+	public bool isGameLoaded= false; 
 	public static DataManager instance;
 
 	public GameObject player;
@@ -38,7 +38,9 @@ public class DataManager : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 	}
 	private void Awake()
-    {
+	{
+		//loadData = SaveSystem.Load("Main");
+		//_loadSceneIndex = loadData.sceneIndex;
 		Singleton_Init();
     }
     void Update()
@@ -82,7 +84,6 @@ public class DataManager : MonoBehaviour
 			}
 		}
 		loadData = SaveSystem.Load("Main");
-
 		if (MenuManager.Instance !=null)
         {
 			MenuManager.Instance.SceneIndex = loadData.sceneIndex;
@@ -94,11 +95,20 @@ public class DataManager : MonoBehaviour
 			Invoke("LoadData", 0.1f);
 		}
 
-
+		_loadSceneIndex = loadData.sceneIndex;
 	}
-    private void LateUpdate()
+	public void Restart()
     {
-        
+		if (_loadSceneIndex != 0)
+		{
+			SceneManager.LoadScene(_loadSceneIndex);
+		}
+		else if(_loadSceneIndex == 0)
+        {
+			Debug.Log("로드인덱스가 0입니다.");
+        }
+
+		isGameLoaded = true;
     }
     public void LoadData()
     {
