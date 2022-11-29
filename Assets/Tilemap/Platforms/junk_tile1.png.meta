@@ -107,12 +107,12 @@ TextureImporter:
       name: junk_tile1_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 160
-        width: 32
-        height: 32
+        x: 14
+        y: 159
+        width: 36
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -128,12 +128,12 @@ TextureImporter:
       name: junk_tile1_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 160
-        width: 32
-        height: 32
+        x: 63
+        y: 159
+        width: 34
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,12 +149,12 @@ TextureImporter:
       name: junk_tile1_2
       rect:
         serializedVersion: 2
-        x: 112
-        y: 160
-        width: 32
-        height: 32
+        x: 111
+        y: 159
+        width: 35
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,12 +170,12 @@ TextureImporter:
       name: junk_tile1_3
       rect:
         serializedVersion: 2
-        x: 160
-        y: 160
-        width: 32
-        height: 32
+        x: 159
+        y: 159
+        width: 34
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,12 +191,12 @@ TextureImporter:
       name: junk_tile1_4
       rect:
         serializedVersion: 2
-        x: 16
-        y: 112
-        width: 32
-        height: 32
+        x: 15
+        y: 111
+        width: 33
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,12 +212,12 @@ TextureImporter:
       name: junk_tile1_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 112
-        width: 32
-        height: 32
+        x: 62
+        y: 111
+        width: 34
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -234,11 +234,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 112
+        y: 110
         width: 32
-        height: 32
+        height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -255,11 +255,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 112
+        y: 111
         width: 32
-        height: 32
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -275,12 +275,12 @@ TextureImporter:
       name: junk_tile1_8
       rect:
         serializedVersion: 2
-        x: 16
+        x: 14
         y: 64
-        width: 32
-        height: 32
+        width: 36
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -296,12 +296,12 @@ TextureImporter:
       name: junk_tile1_9
       rect:
         serializedVersion: 2
-        x: 64
+        x: 62
         y: 64
-        width: 32
+        width: 36
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -319,10 +319,10 @@ TextureImporter:
         serializedVersion: 2
         x: 112
         y: 64
-        width: 32
-        height: 32
+        width: 34
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -340,10 +340,10 @@ TextureImporter:
         serializedVersion: 2
         x: 160
         y: 64
-        width: 32
+        width: 34
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -359,12 +359,12 @@ TextureImporter:
       name: junk_tile1_12
       rect:
         serializedVersion: 2
-        x: 16
+        x: 14
         y: 16
-        width: 32
-        height: 32
+        width: 34
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -380,12 +380,12 @@ TextureImporter:
       name: junk_tile1_13
       rect:
         serializedVersion: 2
-        x: 64
+        x: 62
         y: 16
-        width: 32
+        width: 34
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -404,9 +404,9 @@ TextureImporter:
         x: 112
         y: 16
         width: 32
-        height: 32
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -427,7 +427,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -450,22 +450,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      junk_tile1_8: 1464297723
-      junk_tile1_11: -1711115771
-      junk_tile1_5: -1111266258
-      junk_tile1_1: 519775627
-      junk_tile1_12: -757504208
-      junk_tile1_15: -737398764
-      junk_tile1_14: -538123058
-      junk_tile1_9: -1312583309
-      junk_tile1_6: -585114800
-      junk_tile1_7: -459632980
-      junk_tile1_4: 960195839
-      junk_tile1_3: -1801888512
-      junk_tile1_2: -734599756
-      junk_tile1_10: -780266939
-      junk_tile1_13: 1942987377
-      junk_tile1_0: 384064946
+      junk_tile1_8: 384064946
+      junk_tile1_11: 519775627
+      junk_tile1_5: -734599756
+      junk_tile1_1: -1801888512
+      junk_tile1_12: 960195839
+      junk_tile1_15: -1111266258
+      junk_tile1_14: -585114800
+      junk_tile1_9: -459632980
+      junk_tile1_6: 1464297723
+      junk_tile1_7: -1312583309
+      junk_tile1_4: -780266939
+      junk_tile1_3: -1711115771
+      junk_tile1_2: -757504208
+      junk_tile1_10: 1942987377
+      junk_tile1_13: -538123058
+      junk_tile1_0: -737398764
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
