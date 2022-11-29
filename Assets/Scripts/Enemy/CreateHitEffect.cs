@@ -19,14 +19,14 @@ public class CreateHitEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-       if(PlayerController.instance.isHit == true && aleadyhitting == false)
+        EnemyController enemy = gameObject.GetComponentInParent<EnemyController>();
+       if(enemy._create_effect == true && aleadyhitting == false)
         {
             CreateEffect();
-            aleadyhitting = true;
+            aleadyhitting = true; enemy._create_effect = false;
         }
 
-        if (PlayerController.instance.isHit == false )
+        if (enemy._create_effect == false )
         {
             aleadyhitting = false;
         }
@@ -34,7 +34,7 @@ public class CreateHitEffect : MonoBehaviour
 
     void CreateEffect()
     {
-        int random_range = Random.Range(0, EffectImage.Length-1);
+        int random_range = Random.Range(0, EffectImage.Length);
         randompos_x = Random.Range(-(boxcol.bounds.size.x/2), boxcol.bounds.size.x/2);
         randompos_y = Random.Range(-(boxcol.bounds.size.y/2), boxcol.bounds.size.y/2);
 

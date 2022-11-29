@@ -63,7 +63,7 @@ public class EnemyController : MonoBehaviour
     public bool isPatrolling;
     public bool isFollowing;
     public bool isReturning;
-
+    public bool _create_effect;
     public Collider2D checkcol;
     private string meleeAttackanim = "BrokenClockwoker_Melee_Right_Animation";
     private string RangeAttackanim = "BrokenClockwoker_Range_Right_Ani";
@@ -340,7 +340,7 @@ public class EnemyController : MonoBehaviour
         {
             hpNow -= damage;
             stunMeterNow -= stunDamage;
-
+            _create_effect = true;
             animator.SetTrigger("Hit");
             stunMeterRegenTimer = stunMeterRegenTime;
 

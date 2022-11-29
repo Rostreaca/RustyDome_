@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
-    public GameObject LettorBox;
     public bool CutscenePlaying;
     [Header("Parameters")]
     public bool isGame;

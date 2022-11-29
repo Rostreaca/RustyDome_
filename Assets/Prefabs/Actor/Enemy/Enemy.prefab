@@ -1,5 +1,86 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1048040009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1048040010}
+  - component: {fileID: 1048040012}
+  - component: {fileID: 1048040011}
+  m_Layer: 0
+  m_Name: HitEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1048040010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048040009}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.47851, y: 0.47851, z: 0.47851}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4977609546660823330}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1048040012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048040009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a15120845a19c46936c18e14b58f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aleadyhitting: 0
+  EffectImage:
+  - {fileID: 1541425176287205640, guid: f460c29f51cac254d8b899427511f44c, type: 3}
+  - {fileID: 3324367278072014112, guid: 007db9377e284444da0666a7f431090f, type: 3}
+  - {fileID: 2225087266620403214, guid: 17396b3f929c0a84fbb21b32968a0a4a, type: 3}
+  - {fileID: 2794970426501609085, guid: de1cd246c24897747a3999270d4092c2, type: 3}
+  random_position: {x: 0, y: 0}
+  spawn_position: {x: 0, y: 0}
+  randompos_x: 0
+  randompos_y: 0
+--- !u!61 &1048040011
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048040009}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &4980295649611365396
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +395,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4975263253734486242}
+  - {fileID: 1048040010}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -397,7 +479,8 @@ MonoBehaviour:
   Projectile: {fileID: 6150922933576637939, guid: a84a182922484bf4781aa261608308c3,
     type: 3}
   Actor: {fileID: 0}
-  monsterisquestzone: 0
+  col: {fileID: 0}
+  patrollTimer: 0.02
   isAttack: 0
   isRangeAttack: 0
   cooltimecheck: 0
@@ -408,6 +491,7 @@ MonoBehaviour:
   isPatrolling: 0
   isFollowing: 0
   isReturning: 0
+  _create_effect: 0
   checkcol: {fileID: 0}
 --- !u!1 &5562042767702957010
 GameObject:
