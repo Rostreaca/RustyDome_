@@ -192,6 +192,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetTrigger("Roll");
                 isRangeAttack = false;
+                isClimb = false;
                 isRoll = true;
 
                 rigid.gravityScale = 0;
@@ -281,7 +282,7 @@ public class PlayerController : MonoBehaviour
 
     private void Climb()
     {
-        if (onLadder && !isAttack)
+        if (onLadder && !isAttack && !isRoll && !isHit)
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
@@ -296,16 +297,29 @@ public class PlayerController : MonoBehaviour
                 LayerMask layerMask = 1 << LayerMask.NameToLayer("Ground");
                 RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f, layerMask);
 
-                if (hit.collider != null)
+                if (hit)
                 {
-                    isClimb = false;
-                    animator.SetBool("Climb", false);
+                    if (hit.collider.CompareTag("Ground"))
+                    {
+                        isClimb = false;
+                        animator.SetBool("Climb", false);
+                    }
+
+                    else
+                    {
+                        isClimb = true;
+                        animator.SetBool("Climb", true);
+
+                        transform.position = new Vector2(Mathf.Floor(transform.position.x) + 0.5f, transform.position.y);
+                    }
                 }
 
                 else
                 {
                     isClimb = true;
                     animator.SetBool("Climb", true);
+
+                    transform.position = new Vector2(Mathf.Floor(transform.position.x) + 0.5f, transform.position.y);
                 }
             }
         }
