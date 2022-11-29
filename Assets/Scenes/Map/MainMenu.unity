@@ -2624,6 +2624,7 @@ MonoBehaviour:
     HaveLever: 0
     HaveGatekey: 0
     isGateOpen: 0
+    isDoorOpen: 0
   hp: 0
   ammo: 0
   power: 0
@@ -2638,6 +2639,7 @@ MonoBehaviour:
   HaveLever: 0
   HaveGatekey: 0
   isGateOpen: 0
+  isDoorOpen: 0
   isGameLoaded: 0
   player: {fileID: 0}
   player_stats: {fileID: 0}
