@@ -32,6 +32,7 @@ public class UIText : MonoBehaviour
 
     void Awake()
     {
+        text = GetComponent<Text>();
         npc_anim = npc.GetComponent<Animator>();
         originPos = dialog.transform.position;
         init_Type = Typing();
