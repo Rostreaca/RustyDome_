@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
     public void FixedUpdate()
     {
         PlayerPos = transform;
-        if(GameManager.Instance.CutscenePlaying == false)
+        if(GameManager.Instance.CutscenePlaying == false && GameManager.Instance.NowLoading == false)
         {
             if (GameManager.Instance.isGame && !GameManager.Instance.isPause) //check Game status
             {
@@ -123,13 +123,15 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("Move",false);
+            animator.SetBool("isGround", true);
+            animator.SetBool("Climb", false) ;
         }
         
     }
 
     private void Update()
     {
-        if(GameManager.Instance.CutscenePlaying == false)
+        if(GameManager.Instance.CutscenePlaying == false && GameManager.Instance.NowLoading == false)
         {
             if (GameManager.Instance.isGame && !GameManager.Instance.isPause)
             {
@@ -141,7 +143,7 @@ public class PlayerController : MonoBehaviour
 
                 PowerRegen();
             }
-        }    
+        }
     }
 
     private void Move()

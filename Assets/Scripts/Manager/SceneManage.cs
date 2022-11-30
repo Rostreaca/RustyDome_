@@ -65,6 +65,10 @@ public class SceneManage : MonoBehaviour
         {
             farfromportal = -3f;
         }
+        else if (PrePortal == null && NextPortal != null)
+        {
+            farfromportal = 3f;
+        }
     }
     public void UpdownFadeIn(bool isUp)
     {
@@ -106,6 +110,11 @@ public class SceneManage : MonoBehaviour
         {
             DownFadeIn.GetComponent<Animator>().SetTrigger("FadeOut");
         }
+        Invoke("EndLoad", 0.8f);
+    }
+    public void EndLoad()
+    {
+        GameManager.Instance.NowLoading = false;
     }
     public void SaveSceneLoad()
     {
@@ -132,9 +141,10 @@ public class SceneManage : MonoBehaviour
     }
     public void NextSceneMover()
     {
+        GameManager.Instance.NowLoading = true;
         if (PrePortal != null)
         {
-            PlayerController.instance.transform.position = new Vector2(PrePortal.transform.position.x - farfromportal, PrePortal.transform.position.y);
+            PlayerController.instance.transform.position = new Vector2(PrePortal.transform.position.x + farfromportal, PrePortal.transform.position.y);
             
         }
 
@@ -147,6 +157,7 @@ public class SceneManage : MonoBehaviour
     }
     public void PreSceneMover()
     {
+        GameManager.Instance.NowLoading = true;
         if (NextPortal != null)
         {
             PlayerController.instance.transform.position = new Vector2(NextPortal.transform.position.x + farfromportal, NextPortal.transform.position.y);
