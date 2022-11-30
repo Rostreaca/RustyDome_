@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneManage : MonoBehaviour
 {
-    public GameObject RightFadeIn, LeftFadeIn;
+    public GameObject RightFadeIn, LeftFadeIn , UpFadeIn, DownFadeIn;
     public static SceneManage Instance;
     public Scene nowscene;
     public int NextScene, PreScene;
@@ -33,6 +33,8 @@ public class SceneManage : MonoBehaviour
     {
         RightFadeIn = gameObject.transform.GetChild(0).gameObject;
         LeftFadeIn = gameObject.transform.GetChild(1).gameObject;
+        UpFadeIn = gameObject.transform.GetChild(2).gameObject;
+        DownFadeIn = gameObject.transform.GetChild(3).gameObject;
         Singleton_Init();
     }
     private void Update()
@@ -64,7 +66,17 @@ public class SceneManage : MonoBehaviour
             farfromportal = -3f;
         }
     }
-
+    public void UpdownFadeIn(bool isUp)
+    {
+        if(isUp !=true)
+        {
+            DownFadeIn.SetActive(true);
+        }
+        if(isUp == true)
+        {
+            UpFadeIn.SetActive(true);
+        }
+    }
     public void FadeIn(bool isLeft)
     {
         if (isLeft !=true)
@@ -86,6 +98,25 @@ public class SceneManage : MonoBehaviour
         {
             LeftFadeIn.GetComponent<Animator>().SetTrigger("FadeOut");
         }
+        if (UpFadeIn.activeSelf == true)
+        {
+            UpFadeIn.GetComponent<Animator>().SetTrigger("FadeOut");
+        }
+        if (DownFadeIn.activeSelf == true)
+        {
+            DownFadeIn.GetComponent<Animator>().SetTrigger("FadeOut");
+        }
+    }
+    public void SaveSceneLoad()
+    {
+
+        SceneManager.LoadScene(MenuManager.Instance.SceneIndex);
+
+        DataManager data = GameObject.Find("DataManager").GetComponent<DataManager>();
+
+        data.isGameLoaded = true;
+
+        Invoke("NextSceneMover", 0.1f);
     }
     public void NextSceneLoad()
     {

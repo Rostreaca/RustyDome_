@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    Scene Menuscene;
     public static MenuManager Instance;
 
     public int SceneIndex;
@@ -24,6 +25,7 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Menuscene = SceneManager.GetActiveScene();
         Singleton_Init();
         StartButton.onClick.AddListener(GameStart);
         OptionButton.onClick.AddListener(Option);
@@ -35,17 +37,18 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public void GameStart()
     {
-        Scene Menuscene;
-        Menuscene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(Menuscene.buildIndex+1);
-        //SceneManager.LoadScene(8);
+        SceneManage.Instance.UpdownFadeIn(true);
+        Invoke("LoadStartScene", 0.3f);
     }
 
+    public void LoadStartScene()
+    {
+        SceneManage.Instance.NextSceneLoad();
+    }
     public void Option()
     {
         MainMenu.SetActive(false);
@@ -63,11 +66,13 @@ public class MenuManager : MonoBehaviour
     }
     public void Continue()
     {
-        SceneManager.LoadScene(SceneIndex);
+        SceneManage.Instance.UpdownFadeIn(true);
 
-        DataManager data = GameObject.Find("DataManager").GetComponent<DataManager>();
-
-        data.isGameLoaded = true;
+        Invoke("LoadContinueScene", 0.3f);
+    }
+    public void LoadContinueScene()
+    {
+        SceneManage.Instance.SaveSceneLoad();
     }
 
 }
