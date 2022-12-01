@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneManage : MonoBehaviour
 {
+    public bool CameLeft;
     public GameObject RightFadeIn, LeftFadeIn , UpFadeIn, DownFadeIn;
     public static SceneManage Instance;
     public Scene nowscene;
     public int NextScene, PreScene;
     public GameObject NextPortal;
     public GameObject PrePortal;
+    public GameObject InteractPortal;
 
     public float farfromportal = 3f;
     // Start is called before the first frame update
@@ -39,6 +41,10 @@ public class SceneManage : MonoBehaviour
     }
     private void Update()
     {
+        if(GameObject.Find("InteractScenePortal"))
+        {
+            InteractPortal = GameObject.Find("InteractScenePortal");
+        }
         if (GameObject.Find("NextScenePortal"))
         {
             NextPortal = GameObject.Find("NextScenePortal");
@@ -52,20 +58,25 @@ public class SceneManage : MonoBehaviour
         PreScene = nowscene.buildIndex - 1;
         if(PrePortal !=null&&NextPortal!=null)
         {
-            if (PrePortal.transform.position.x > NextPortal.transform.position.x)
+            if (PrePortal.transform.position.x > NextPortal.transform.position.x) // 이전맵으로 가는 포탈이 다음 맵으로 가는 포탈보다 오른쪽에 있는 경우
             {
                 farfromportal = 3f;
             }
-            else if (PrePortal.transform.position.x < NextPortal.transform.position.x)
+            else if (PrePortal.transform.position.x < NextPortal.transform.position.x)// 이전맵으로 가는 포탈이 다음 맵으로 가는 포탈보다 왼쪽에 있는 경우
             {
                 farfromportal = -3f;
             }
         }
-        else if(PrePortal !=null && NextPortal ==null)
+        else if(PrePortal !=null && NextPortal ==null) //Pre 포탈만 있는경우
         {
+            if (nowscene.buildIndex == 2) // Pre 포탈이 오른쪽에 있는 맵
+            {
+                farfromportal = 3f;
+            }
+            else
             farfromportal = -3f;
         }
-        else if (PrePortal == null && NextPortal != null)
+        else if (PrePortal == null && NextPortal != null) //Next 포탈만 있는경우
         {
             farfromportal = 3f;
         }
@@ -118,7 +129,7 @@ public class SceneManage : MonoBehaviour
     }
     public void SaveSceneLoad()
     {
-
+        PlayerController.instance.transform.position = new Vector2(0f,0f); //DontDestoryOnLoad로 플레이어 포지션이 포탈과 겹치는 경우 문제가 발생하는 것 발견. 플레이어 포지션을 멀찍이 이동시킨후 SceneMover함수에서 재이동시킴.
         SceneManager.LoadScene(MenuManager.Instance.SceneIndex);
 
         DataManager data = GameObject.Find("DataManager").GetComponent<DataManager>();
@@ -129,9 +140,10 @@ public class SceneManage : MonoBehaviour
     }
     public void NextSceneLoad()
     {
+        PlayerController.instance.transform.position = new Vector2(0f, 0f);
         if (nowscene.buildIndex == 4)
         {
-            SceneManager.LoadScene(NextScene + 1);
+            SceneManager.LoadScene(6);
         }
         else if (NextScene != 0)
         {
@@ -144,23 +156,71 @@ public class SceneManage : MonoBehaviour
         GameManager.Instance.NowLoading = true;
         if (PrePortal != null)
         {
-            PlayerController.instance.transform.position = new Vector2(PrePortal.transform.position.x + farfromportal, PrePortal.transform.position.y);
-            
+            PlayerController.instance.transform.position = new Vector2(PrePortal.transform.position.x - farfromportal, PrePortal.transform.position.y); 
         }
 
         Invoke("FadeOut",0.5f);
     }
     public void PreSceneLoad()
     {
-        SceneManager.LoadScene(PreScene);
+        PlayerController.instance.transform.position = new Vector2(0f, 0f);
+        if (nowscene.buildIndex == 6)
+        {
+            CameLeft = false;
+            SceneManager.LoadScene(4);
+        }
+        else if (nowscene.buildIndex == 5)
+        {
+            CameLeft = true;
+            SceneManager.LoadScene(4);
+        }
+        else if (nowscene.buildIndex == 4)
+        {
+            SceneManager.LoadScene(5);
+        }
+        else if(PreScene != 0)
+        {
+            SceneManager.LoadScene(PreScene);
+        }
         Invoke("PreSceneMover", 0.1f);
     }
     public void PreSceneMover()
     {
         GameManager.Instance.NowLoading = true;
-        if (NextPortal != null)
+
+        if (NextPortal != null && PrePortal != null && nowscene.buildIndex == 4)
+        {
+            if(CameLeft == true)
+            {
+                PlayerController.instance.transform.position = new Vector2(PrePortal.transform.position.x - farfromportal, PrePortal.transform.position.y);
+            }
+            else if(CameLeft == false)
+            {
+                PlayerController.instance.transform.position = new Vector2(NextPortal.transform.position.x + farfromportal, NextPortal.transform.position.y);
+            }
+        }
+        else if (NextPortal != null)
         {
             PlayerController.instance.transform.position = new Vector2(NextPortal.transform.position.x + farfromportal, NextPortal.transform.position.y);
+        }
+        else if(NextPortal == null && PrePortal != null)
+        {
+            PlayerController.instance.transform.position = new Vector2(PrePortal.transform.position.x + farfromportal, PrePortal.transform.position.y);//NextPortal이 없기 때문에 farfromportal 값은 -3
+        }
+        Invoke("FadeOut", 0.5f);
+    }
+
+    public void InteractSceneLoad(int mapnumber)
+    {
+        SceneManager.LoadScene(mapnumber);
+
+        Invoke("DoorSceneMover", 0.1f);
+    }
+    public void DoorSceneMover()
+    {
+        if(InteractPortal !=null)
+        {
+            PlayerController.instance.transform.position = new Vector2(InteractPortal.transform.position.x, InteractPortal.transform.position.y);
         }
 
         Invoke("FadeOut", 0.5f);

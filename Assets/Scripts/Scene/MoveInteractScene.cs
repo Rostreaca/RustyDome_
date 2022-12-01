@@ -6,6 +6,7 @@ public class MoveInteractScene : MonoBehaviour
 {
     [Header("이동할 씬 넘버")]
     public int PassSceneNumber;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +23,15 @@ public class MoveInteractScene : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.F))
             {
-                SceneManager.LoadScene(PassSceneNumber);
+                SceneManage.Instance.UpdownFadeIn(false);
+
+                Invoke("LoadScene", 0.3f);
             }
         }
+    }
+
+    public void LoadScene()
+    {
+        SceneManage.Instance.InteractSceneLoad(PassSceneNumber);
     }
 }

@@ -12092,7 +12092,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1305975297006761095, guid: 49bed69f9ae623d48aa3c8180ebde576,
         type: 3}
+      propertyPath: isBossDead
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305975297006761095, guid: 49bed69f9ae623d48aa3c8180ebde576,
+        type: 3}
       propertyPath: isQuestClear
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305975297006761095, guid: 49bed69f9ae623d48aa3c8180ebde576,
+        type: 3}
+      propertyPath: isQuestStart
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

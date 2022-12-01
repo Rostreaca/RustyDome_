@@ -12,6 +12,7 @@ public class LeverHandleDrop : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && iteminfo.isGrounded == true)
         {
+            GameManager.Instance.HaveLever = true;
             Inventory.instance.AddItem(item);
             Destroy(gameObject);
         }

@@ -66,9 +66,9 @@ public class QuestNPCText : UIText
         }
 
     }
+    public bool itemdropped;
     public void Quest()
     {
-
         if (sayCount == 0 && QuestingTalk == false)
         {
             npc_anim.SetBool("isTalking", true);
@@ -79,7 +79,7 @@ public class QuestNPCText : UIText
             npc_anim.SetBool("isTalking", true);
             npc_Text = QuestingText[QuestingText.Length-1].text;
         }
-        if (sayCount == 0 && QuestingTalk == true && isquestclear == true) //퀘스트 진행 중 반복대사
+        if (sayCount == 0 && QuestingTalk == true && isquestclear == true || sayCount == 0 && itemdropped == true) //퀘스트 진행 중 반복대사
         {
             npc_anim.SetBool("isTalking", true);
             npc_Text = QuestEndText[QuestEndText.Length - 1].text;
@@ -121,6 +121,7 @@ public class QuestNPCText : UIText
         }
         if (Input.GetKey("f") && sayCount == 3 && sayEnd == true && isquestclear == true && QuestingTalk == false)
         {
+            itemdropped = true;
             npc_Text = QuestEndText[sayCount].text;
             Debug.Log("아이템드랍"); 
             Instantiate(item, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);

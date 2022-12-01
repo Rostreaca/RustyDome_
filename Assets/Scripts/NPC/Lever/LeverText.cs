@@ -21,14 +21,14 @@ public class LeverText : UIText
     void Update()
     {
 
-        if(Inventory.instance.Search(item) != true)
-        {
-            GameManager.Instance.HaveLever = false;
-        }
-        else if(Inventory.instance.Search(item) == true)
-        {
-            GameManager.Instance.HaveLever = true;
-        }
+        //if(Inventory.instance.Search(item) != true)
+        //{
+        //    GameManager.Instance.HaveLever = false;
+        //}
+        //else if(Inventory.instance.Search(item) == true)
+        //{
+        //    GameManager.Instance.HaveLever = true;
+        //}
         CheckSayEnd();
         if(!isopen)
         {
