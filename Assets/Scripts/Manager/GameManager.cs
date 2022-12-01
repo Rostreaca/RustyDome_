@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     public bool NowLoading;
-    public bool CutscenePlaying;
+    public bool BossCutscenePlaying;
+    public bool RuinCutscenePlaying;
     [Header("Parameters")]
     public bool isGame;
     public bool isPause;

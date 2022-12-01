@@ -44,7 +44,7 @@ public class BossRoomEvent : MonoBehaviour
         {
             hpbar.SetActive(false);
         }
-        if(GameManager.Instance.CutscenePlaying == false&&GameObject.Find("LettorBoxController"))
+        if(GameManager.Instance.BossCutscenePlaying == false&&GameObject.Find("LettorBoxController"))
         {
             Animator lettanim = GameObject.Find("LettorBoxController").GetComponent<Animator>();
             lettanim.SetTrigger("OpenLettorBox");
@@ -67,19 +67,19 @@ public class BossRoomEvent : MonoBehaviour
             {
                 if(Checking_Cutscene <1)
                 {
-                    GameManager.Instance.CutscenePlaying = true;
+                    GameManager.Instance.BossCutscenePlaying = true;
                     Checking_Cutscene++;
                 }
 
                 Anime_boss.instance.playerentered = true;
 
                 GameManager.Instance.isDoorOpen = false;
-                if(GameManager.Instance.CutscenePlaying == false)
+                if(GameManager.Instance.BossCutscenePlaying == false)
                 {
                     PlayerUI.SetActive(true);
                     hpbar.SetActive(true);
                 }
-                if (GameManager.Instance.CutscenePlaying == true)
+                if (GameManager.Instance.BossCutscenePlaying == true)
                 {
                     PlayerUI.SetActive(false);
                     LettorBox.SetActive(true);

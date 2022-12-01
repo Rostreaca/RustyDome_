@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
     public void FixedUpdate()
     {
         PlayerPos = transform;
-        if(GameManager.Instance.CutscenePlaying == false && GameManager.Instance.NowLoading == false)
+        if(GameManager.Instance.BossCutscenePlaying == false && GameManager.Instance.RuinCutscenePlaying == false && GameManager.Instance.NowLoading == false)
         {
             if (GameManager.Instance.isGame && !GameManager.Instance.isPause) //check Game status
             {
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.Instance.CutscenePlaying == false && GameManager.Instance.NowLoading == false)
+        if(GameManager.Instance.BossCutscenePlaying == false && GameManager.Instance.RuinCutscenePlaying == false && GameManager.Instance.NowLoading == false )
         {
             if (GameManager.Instance.isGame && !GameManager.Instance.isPause)
             {

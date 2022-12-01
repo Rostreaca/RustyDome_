@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128970574}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -0.416, z: -0.042843062}
+  m_LocalPosition: {x: 0.047, y: -0.068, z: -0.042843062}
   m_LocalScale: {x: 0.47851, y: 0.47851, z: 0.47851}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,7 +43,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99e49320fe944747b1ef493d5fe0f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomrange: 0
   aleadyhitting: 0
   EffectImage:
   - {fileID: 6822912973951760968, guid: 35718bb7bbe50ec41baab1bd0cfc1e74, type: 3}

@@ -382,7 +382,7 @@ public class EnemyController : MonoBehaviour
 
     public void Death()
     {
-        if(GameManager.Instance.isQuestStart == true)
+        if(GameManager.Instance.isQuestStart == true&& SceneManage.Instance.nowscene.buildIndex == 5)
         {
             QuestManager.instance.Enemycount++;
         }

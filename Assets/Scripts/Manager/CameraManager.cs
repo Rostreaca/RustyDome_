@@ -7,7 +7,7 @@ public class CameraManager : MonoBehaviour
     public Canvas canvas;
     public static CameraManager instance; //static camera for use in other scripts
 
-    Transform player,boss; //Player position
+    Transform player,boss, NPC1; //Player position
 
     public Vector2 offset; //Camera offset by player position
     public float cameraXPosMin, cameraXPosMax;
@@ -49,7 +49,7 @@ public class CameraManager : MonoBehaviour
         halfWidth = halfHeight * Screen.width / Screen.height;
 
     }
-
+    public bool CameraLanding;
     public void FixedUpdate()
     {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
@@ -67,23 +67,32 @@ public class CameraManager : MonoBehaviour
         {
             boss = GameObject.Find("Anime_Boss").transform;
         }
-
-        if (GameManager.Instance.CutscenePlaying == false)
+        if(GameObject.Find("NPC"))
         {
-            Vector3 newPos = new Vector3(player.position.x + offset.x, player.position.y + offset.y + 1.5f, transform.position.z); //Local vector get player position
-            transform.position = Vector3.Lerp(transform.position, newPos, moveSpeed * Time.deltaTime); //Set camera position smooth
+            NPC1 = GameObject.Find("NPC").transform;
         }
-        if (GameManager.Instance.CutscenePlaying == true)
+        if (GameManager.Instance.BossCutscenePlaying == true)
         {
             Vector3 BossPos = new Vector3(boss.position.x + offset.x, boss.position.y + offset.y + 1.5f, transform.position.z); 
             transform.position = Vector3.Lerp(transform.position, BossPos, moveSpeed/2 * Time.deltaTime);
         }
+        else if(GameManager.Instance.RuinCutscenePlaying == true)
+        {
+            Vector3 NPCPos = new Vector3(NPC1.position.x + offset.x, NPC1.position.y + offset.y, transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, NPCPos, moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            Vector3 newPos = new Vector3(player.position.x + offset.x, player.position.y + offset.y + 1.5f, transform.position.z); //Local vector get player position
+            transform.position = Vector3.Lerp(transform.position, newPos, moveSpeed * Time.deltaTime ); //Set camera position smooth
+        }
+
+
         float clampedX = Mathf.Clamp(transform.position.x, minBound.x + halfWidth, maxBound.x - halfWidth);
         float clampedY = Mathf.Clamp(transform.position.y, minBound.y + halfHeight, maxBound.y - halfHeight);
 
         transform.position = new Vector3(clampedX, clampedY, transform.position.z); //make clamp
     }
-
     public void SetBound(BoxCollider2D newBound)
     {
         bound = newBound;

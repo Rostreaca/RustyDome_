@@ -286,7 +286,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -296,9 +296,12 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 1353124463, guid: 7270e2ed37aec1e4b86616dd624300d7,
+      type: 3}
+    m_PressedSprite: {fileID: 1353124463, guid: 7270e2ed37aec1e4b86616dd624300d7,
+      type: 3}
+    m_SelectedSprite: {fileID: 1353124463, guid: 7270e2ed37aec1e4b86616dd624300d7,
+      type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -564,7 +567,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -574,9 +577,11 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 604686655, guid: db9d824565cd9b34290773b17417349b,
+      type: 3}
+    m_PressedSprite: {fileID: 604686655, guid: db9d824565cd9b34290773b17417349b, type: 3}
+    m_SelectedSprite: {fileID: 604686655, guid: db9d824565cd9b34290773b17417349b,
+      type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -666,7 +671,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1deec0b8ea2d94e4ab95ffff62c01b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Index: 0
   rebutton: {fileID: 8543064002071447527}
   optionbutton: {fileID: 0}
   quitbutton: {fileID: 8543064001690514725}

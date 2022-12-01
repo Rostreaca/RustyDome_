@@ -60,11 +60,13 @@ public class DataManager : MonoBehaviour
 			power = player_stats.powerNow;
 			scrap = player_stats.scrap;
 			//GameManager에서 가져올 값들
-			if(GameManager.Instance.checkPoint!=null)
-            {
-				player_pos_x = GameManager.Instance.checkPoint.position.x;
-				player_pos_y = GameManager.Instance.checkPoint.position.y;
-			}
+			//if(GameManager.Instance.checkPoint!=null)
+   //         {
+			//	player_pos_x = GameManager.Instance.checkPoint.position.x;
+			//	player_pos_y = GameManager.Instance.checkPoint.position.y;
+			//}
+			player_pos_x = PlayerController.instance.transform.position.x;
+			player_pos_y = PlayerController.instance.transform.position.y;
 			isQuestStart = GameManager.Instance.isQuestStart;
 			isquestClear = GameManager.Instance.isQuestClear;
 			questprogress = QuestManager.instance.Enemycount;
@@ -123,11 +125,17 @@ public class DataManager : MonoBehaviour
 		}
 		if(GameManager.Instance !=null)
 		{
+			GameManager.Instance.isQuestStart = loadData.isQuestStart;
+			GameManager.Instance.isQuestClear = loadData.isquestClear;
 			GameManager.Instance.isDoorOpen = loadData.isDoorOpen;
 			GameManager.Instance.isBossDead = loadData.isbossDead;
 			GameManager.Instance.HaveLever = loadData.HaveLever;
 			GameManager.Instance.HaveGateKey = loadData.HaveGatekey;
 			GameManager.Instance.isGateOpen = loadData.isGateOpen;
+		}
+		if(QuestManager.instance !=null)
+        {
+			QuestManager.instance.Enemycount = questprogress;
 		}
 
 		isGameLoaded = false;
