@@ -45,7 +45,7 @@ public class EnemyController : MonoBehaviour
 
     public CapsuleCollider2D col;
     private SpriteRenderer sprite;
-    private Animator animator;
+    public Animator animator;
 
     private Vector2 starterPos;
     public float patrollTimer = 0.02f;
@@ -64,6 +64,7 @@ public class EnemyController : MonoBehaviour
     public bool isFollowing;
     public bool isReturning;
     public bool _create_effect;
+    public bool inSceneBound;
     public Collider2D checkcol;
     private string meleeAttackanim = "BrokenClockwoker_Melee_Right_Animation";
     private string RangeAttackanim = "BrokenClockwoker_Range_Right_Ani";
@@ -81,7 +82,7 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.Instance.isGame && !GameManager.Instance.RuinCutscenePlaying)
+        if (GameManager.Instance.isGame && !inSceneBound)
         {
             if (!isDead && !isStun)
             {
@@ -96,7 +97,7 @@ public class EnemyController : MonoBehaviour
     {
         if (!isDead)
         {
-            if (GameManager.Instance.isGame &&!GameManager.Instance.RuinCutscenePlaying)
+            if (GameManager.Instance.isGame &&!inSceneBound)
             {
                 if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim)
                     && !isStun)
@@ -388,6 +389,10 @@ public class EnemyController : MonoBehaviour
         {
             QuestManager.instance.Enemycount++;
         }
+        if (SceneManage.Instance.nowscene.buildIndex == 2)
+        {
+            QuestManager.instance.Scene2enemycount--;
+        }
         transform.position = transform.position;
         Rigidbody2D rigid;
         rigid = GetComponent<Rigidbody2D>();
@@ -526,7 +531,19 @@ public class EnemyController : MonoBehaviour
             yield return null;
         }
     }
+    public bool wascounted = false;
+    private void OnTriggerStay2D(Collider2D collision)
+    {
 
+        if (collision.gameObject.tag == "Quest" && !wascounted)
+        {
+            if (SceneManage.Instance.nowscene.buildIndex == 2)
+            {
+                QuestManager.instance.Scene2enemycount++;
+                wascounted = true;
+            }
+        }
+    }
     public void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, attackRadius);

@@ -89,7 +89,7 @@ public class CameraManager : MonoBehaviour
             Vector3 newPos = new Vector3(player.position.x + offset.x, player.position.y + offset.y + 1.5f, transform.position.z); //Local vector get player position
             transform.position = Vector3.Lerp(transform.position, newPos, moveSpeed * Time.deltaTime ); //Set camera position smooth
         }
-
+        
 
         float clampedX = Mathf.Clamp(transform.position.x, minBound.x + halfWidth, maxBound.x - halfWidth);
         float clampedY = Mathf.Clamp(transform.position.y, minBound.y + halfHeight, maxBound.y - halfHeight);

@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager instance;
     public int Enemycount;
+    public int Scene2enemycount;
     private void Awake()
     {
         if(instance == null)
@@ -34,7 +35,14 @@ public class QuestManager : MonoBehaviour
         {
             GameManager.Instance.isQuestClear = true;
         }
+
+        if(SceneManager.GetActiveScene().buildIndex == 2 && Scene2enemycount ==0)
+        {
+
+        }
     }
+
+    
 
 
 }

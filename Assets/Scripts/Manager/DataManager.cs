@@ -21,7 +21,8 @@ public class DataManager : MonoBehaviour
 	public bool HaveLever;
 	public bool HaveGatekey;
 	public bool isGateOpen,isDoorOpen;
-	public bool isGameLoaded= false; 
+	public bool isGameLoaded= false;
+	public bool Scene2MissonStart;
 	public static DataManager instance;
 
 	public GameObject player;
@@ -76,11 +77,12 @@ public class DataManager : MonoBehaviour
 			HaveGatekey = GameManager.Instance.HaveGateKey;
 			isGateOpen = GameManager.Instance.isGateOpen;
 			isDoorOpen = GameManager.Instance.isDoorOpen;
+			Scene2MissonStart = GameManager.Instance.Scene2MissonStart;
 			if (GameManager.Instance.isSave == true)
 			{
 				GameManager.Instance.isSave = false;
 
-				SaveData character = new SaveData(player_pos_x,player_pos_y, hp, power, ammo, scrap, SaveSceneIndex,isQuestStart, questprogress,isquestClear,isbossDead,HaveLever,HaveGatekey,isGateOpen,isDoorOpen);
+				SaveData character = new SaveData(player_pos_x,player_pos_y, hp, power, ammo, scrap, SaveSceneIndex,isQuestStart, questprogress,isquestClear,isbossDead,HaveLever,HaveGatekey,isGateOpen,isDoorOpen, Scene2MissonStart);
 
 				SaveSystem.Save(character,"Main");
 
@@ -132,6 +134,7 @@ public class DataManager : MonoBehaviour
 			GameManager.Instance.HaveLever = loadData.HaveLever;
 			GameManager.Instance.HaveGateKey = loadData.HaveGatekey;
 			GameManager.Instance.isGateOpen = loadData.isGateOpen;
+			GameManager.Instance.Scene2MissonStart = loadData.Scene2MissonStart;
 		}
 		if(QuestManager.instance !=null)
         {
@@ -146,7 +149,7 @@ public class DataManager : MonoBehaviour
 public class SaveData
 {
     public SaveData(float _player_pos_x,float _player_pos_y, float _hp, float _powers, int _bullets, int _scraps, int _sceneIndex,
-		bool _isQuestStart,int _questprogress,bool _isquestClear ,bool _isbossDead, bool _HaveLever, bool _HaveGatekey, bool _isGateOpen, bool _isDoorOpen)
+		bool _isQuestStart,int _questprogress,bool _isquestClear ,bool _isbossDead, bool _HaveLever, bool _HaveGatekey, bool _isGateOpen, bool _isDoorOpen, bool _Scene2MissonStart)
     {
 		player_pos_x = _player_pos_x;
 		player_pos_y = _player_pos_y;
@@ -163,7 +166,7 @@ public class SaveData
 		HaveGatekey = _HaveGatekey;
 		isGateOpen = _isGateOpen;
 		isDoorOpen = _isDoorOpen;
-
+		Scene2MissonStart = _Scene2MissonStart;
 	}
 	public float player_pos_x, player_pos_y;
     public float hp;
@@ -178,7 +181,8 @@ public class SaveData
 	public bool HaveLever;
 	public bool HaveGatekey;
 	public bool isGateOpen;
-	public bool isDoorOpen;
+	public bool isDoorOpen; 
+	public bool Scene2MissonStart;
 
 }
 public static class SaveSystem
