@@ -2262,7 +2262,7 @@ MonoBehaviour:
   StartButton: {fileID: 2141554430}
   OptionButton: {fileID: 1472006469}
   EndButton: {fileID: 447149657}
-  BackButton: {fileID: 0}
+  BackButton: {fileID: 1153615412}
   ContinueButton: {fileID: 124683582}
 --- !u!4 &1378687193
 Transform:
@@ -2542,6 +2542,7 @@ MonoBehaviour:
     HaveGatekey: 0
     isGateOpen: 0
     isDoorOpen: 0
+    Scene2MissonStart: 0
   hp: 0
   ammo: 0
   power: 0
@@ -2558,6 +2559,7 @@ MonoBehaviour:
   isGateOpen: 0
   isDoorOpen: 0
   isGameLoaded: 0
+  Scene2MissonStart: 0
   player: {fileID: 0}
   player_stats: {fileID: 0}
 --- !u!4 &1602419205
@@ -2611,7 +2613,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.2, y: -2}
+  m_AnchoredPosition: {x: -6.199997, y: -2}
   m_SizeDelta: {x: -71, y: -14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1644436864

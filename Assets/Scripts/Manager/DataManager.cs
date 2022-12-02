@@ -88,19 +88,24 @@ public class DataManager : MonoBehaviour
 
 			}
 		}
-		loadData = SaveSystem.Load("Main");
-		if (MenuManager.Instance !=null)
-        {
-			MenuManager.Instance.SceneIndex = loadData.sceneIndex;
-		}
-
-		if (isGameLoaded == true)
+		string SavePath = Application.persistentDataPath + "/saves/";
+		string filename = SavePath + "Main" + "savedata.json";
+		if (File.Exists(filename))
 		{
+			loadData = SaveSystem.Load("Main");
+			if (MenuManager.Instance != null)
+			{
+				MenuManager.Instance.SceneIndex = loadData.sceneIndex;
+			}
 
-			Invoke("LoadData", 0.1f);
+			if (isGameLoaded == true)
+			{
+
+				Invoke("LoadData", 0.1f);
+			}
+
+			_loadSceneIndex = loadData.sceneIndex;
 		}
-
-		_loadSceneIndex = loadData.sceneIndex;
 	}
 	public void Restart()
     {

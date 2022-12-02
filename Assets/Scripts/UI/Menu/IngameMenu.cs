@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class IngameMenu : MonoBehaviour
 {
     public static IngameMenu instance;
-    public Button rebutton,optionbutton,quitbutton;
+    public Button continuebutton,rebutton,optionbutton,quitbutton;
     // Start is called before the first frame update
     void constructor()
     {
@@ -18,12 +18,10 @@ public class IngameMenu : MonoBehaviour
     void Start()
     {
         constructor();
-        rebutton.onClick.AddListener(_Restart);
-        if(optionbutton !=null)
-        {
-            optionbutton.onClick.AddListener(_OptionMenu);
-        }
-        quitbutton.onClick.AddListener(_GameQuit);
+        if(continuebutton != null) { continuebutton.onClick.AddListener(_Continue); }
+        if (rebutton != null) { rebutton.onClick.AddListener(_Restart); };
+        if(optionbutton !=null){ optionbutton.onClick.AddListener(_OptionMenu); }
+        if (quitbutton != null) { quitbutton.onClick.AddListener(_GameQuit); };
     }
 
     // Update is called once per frame
@@ -31,6 +29,10 @@ public class IngameMenu : MonoBehaviour
     {
     }
 
+    public void _Continue()
+    {
+        UIManager.instance.ChangeScreen(UIManager.ScreenState.Game);
+    }
     public void _Restart()
     {
         GameObject player;

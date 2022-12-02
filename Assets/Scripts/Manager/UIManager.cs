@@ -96,7 +96,6 @@ public class UIManager : MonoBehaviour
             case ScreenState.Game: //if game
                                    //turn off other and turn on game
                 ScreenActive(gameScreen, true);
-
                 //Disable pause
                 GameManager.Instance.isPause = false;
                 //return normal time

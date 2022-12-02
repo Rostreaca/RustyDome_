@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1deec0b8ea2d94e4ab95ffff62c01b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  continuebutton: {fileID: 0}
   rebutton: {fileID: 5540687213678793612}
   optionbutton: {fileID: 5540687214758206525}
   quitbutton: {fileID: 1948389676}
@@ -659,15 +660,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6426a7bf76760b94fa21bdc6a6a8e653, type: 3}
-  m_Type: 2
+  m_Sprite: {fileID: 21300000, guid: 0c5ce1363e6bf5d4abff2feea86399a1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

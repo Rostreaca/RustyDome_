@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    string SavePath;
+    public string filename;
     Scene Menuscene;
     public static MenuManager Instance;
 
@@ -25,13 +28,26 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SavePath = Application.persistentDataPath + "/saves/";
+        filename = SavePath + "Main" + "savedata.json";
+        if (!Directory.Exists(SavePath))
+        {
+            Directory.CreateDirectory(SavePath);
+        }
         Menuscene = SceneManager.GetActiveScene();
         Singleton_Init();
         StartButton.onClick.AddListener(GameStart);
         OptionButton.onClick.AddListener(Option);
         EndButton.onClick.AddListener(GameEnd);
         BackButton.onClick.AddListener(OptionBack);
-        ContinueButton.onClick.AddListener(Continue);
+        if(File.Exists(filename))
+        {
+            ContinueButton.onClick.AddListener(Continue);
+        }
+        else if(!File.Exists(filename))
+        {
+            ContinueButton.interactable = false;
+        }
     }
 
     // Update is called once per frame

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneManage : MonoBehaviour
 {
+    public bool Continue = false;
     public bool CameLeft;
     public GameObject RightFadeIn, LeftFadeIn , UpFadeIn, DownFadeIn;
     public static SceneManage Instance;
@@ -129,7 +130,8 @@ public class SceneManage : MonoBehaviour
     }
     public void SaveSceneLoad()
     {
-        PlayerController.instance.transform.position = new Vector2(0f,0f); //DontDestoryOnLoad로 플레이어 포지션이 포탈과 겹치는 경우 문제가 발생하는 것 발견. 플레이어 포지션을 멀찍이 이동시킨후 SceneMover함수에서 재이동시킴.
+        Continue = true;
+        //PlayerController.instance.transform.position = new Vector2(0f,0f); //DontDestoryOnLoad로 플레이어 포지션이 포탈과 겹치는 경우 문제가 발생하는 것 발견. 플레이어 포지션을 멀찍이 이동시킨후 SceneMover함수에서 재이동시킴.
         SceneManager.LoadScene(MenuManager.Instance.SceneIndex);
 
         DataManager data = GameObject.Find("DataManager").GetComponent<DataManager>();
@@ -140,7 +142,11 @@ public class SceneManage : MonoBehaviour
     }
     public void NextSceneLoad()
     {
-        PlayerController.instance.transform.position = new Vector2(0f, 0f);
+        if (nowscene.buildIndex !=0)
+        {
+            PlayerController.instance.transform.position = new Vector2(0f, 0f);
+        }
+
         if (nowscene.buildIndex == 4)
         {
             SceneManager.LoadScene(6);
@@ -153,6 +159,10 @@ public class SceneManage : MonoBehaviour
     }
     public void NextSceneMover()
     {
+        if(nowscene.buildIndex == 1&& Continue == false)
+        {
+            GameManager.Instance.isSave = true;
+        }
         GameManager.Instance.NowLoading = true;
         if (PrePortal != null)
         {
