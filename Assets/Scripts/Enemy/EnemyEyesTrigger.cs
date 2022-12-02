@@ -15,7 +15,7 @@ public class EnemyEyesTrigger : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player") //if that object tap is equal to Player
         {
-            if (GameManager.Instance.isGame) //is game status is not equal to gameover
+            if (GameManager.Instance.isGame && !GameManager.Instance.RuinCutscenePlaying) //is game status is not equal to gameover
                 enemyController.Follow(collision.transform); //start follow object
         }
     }

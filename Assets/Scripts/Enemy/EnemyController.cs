@@ -81,20 +81,22 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.Instance.isGame)
+        if (GameManager.Instance.isGame && !GameManager.Instance.RuinCutscenePlaying)
         {
             if (!isDead && !isStun)
             {
                 Move();
             }
         }
+        else
+            animator.SetBool("Move", false);
     }
 
     private void Update()
     {
         if (!isDead)
         {
-            if (GameManager.Instance.isGame)
+            if (GameManager.Instance.isGame &&!GameManager.Instance.RuinCutscenePlaying)
             {
                 if (!animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim) && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim)
                     && !isStun)

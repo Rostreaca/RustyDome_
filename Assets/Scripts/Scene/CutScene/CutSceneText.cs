@@ -22,7 +22,7 @@ public class CutSceneText : UIText
     }
     private void OnDisable()
     {
-        GameManager.Instance.RuinCutscenePlaying = false;
+        //GameManager.Instance.RuinCutscenePlaying = false;
     }
     new public void Say()
     {
@@ -46,9 +46,11 @@ public class CutSceneText : UIText
         if (sayCount + 1 == t1ext.Length && sayEnd == true)
         {
             sayCount = 0;
+            RuinCutScene.instance.TalkEnd = true;
             GameManager.Instance.isQuestStart = true;
             npc_anim.SetBool("isTalking", false);
             dialog.SetActive(false);
+
         }
 
     }

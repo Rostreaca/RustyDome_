@@ -7,7 +7,7 @@ public class CameraManager : MonoBehaviour
     public Canvas canvas;
     public static CameraManager instance; //static camera for use in other scripts
 
-    Transform player,boss, NPC1; //Player position
+    Transform player,boss, NPC1 , LadderPos; //Player position
 
     public Vector2 offset; //Camera offset by player position
     public float cameraXPosMin, cameraXPosMax;
@@ -71,6 +71,10 @@ public class CameraManager : MonoBehaviour
         {
             NPC1 = GameObject.Find("NPC").transform;
         }
+        if(GameObject.Find("LadderCutScene"))
+        {
+            LadderPos = GameObject.Find("LadderCutScene").transform;
+        }
         if (GameManager.Instance.BossCutscenePlaying == true)
         {
             Vector3 BossPos = new Vector3(boss.position.x + offset.x, boss.position.y + offset.y + 1.5f, transform.position.z); 
@@ -78,8 +82,7 @@ public class CameraManager : MonoBehaviour
         }
         else if(GameManager.Instance.RuinCutscenePlaying == true)
         {
-            Vector3 NPCPos = new Vector3(NPC1.position.x + offset.x, NPC1.position.y + offset.y, transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, NPCPos, moveSpeed * Time.deltaTime);
+            FollowRuinCutscene();
         }
         else
         {
@@ -92,6 +95,19 @@ public class CameraManager : MonoBehaviour
         float clampedY = Mathf.Clamp(transform.position.y, minBound.y + halfHeight, maxBound.y - halfHeight);
 
         transform.position = new Vector3(clampedX, clampedY, transform.position.z); //make clamp
+    }
+    public void FollowRuinCutscene()
+    {
+        if (RuinCutScene.instance.TalkEnd == false)
+        {
+            Vector3 NPCPos = new Vector3(NPC1.position.x + offset.x, NPC1.position.y + offset.y, transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, NPCPos, moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            Vector3 Ladder = new Vector3(LadderPos.position.x + offset.x, LadderPos.position.y + offset.y, transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, Ladder, moveSpeed * Time.deltaTime);
+        }
     }
     public void SetBound(BoxCollider2D newBound)
     {
