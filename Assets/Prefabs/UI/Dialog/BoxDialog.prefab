@@ -219,7 +219,7 @@ MonoBehaviour:
   npc_anim: {fileID: 0}
   t1ext: []
   dialog: {fileID: 6765776726465216662}
-  npc: {fileID: 0}
+  npc: {fileID: 6765776728382453684}
   nextTextBtn: {fileID: 6765776728382453684}
   text: {fileID: 6765776726570452166}
   npc_Text: '''F'''
@@ -227,6 +227,7 @@ MonoBehaviour:
   textEnd: 0
   sayEnd: 0
   originPos: {x: -54.454285, y: 20.56989}
+  NPC_Name: Box
   Actor: {fileID: 0}
   Item: {fileID: 3570157381209698220, guid: 23ea70a8a03f44549a093a2cd3e646c1, type: 3}
   Box: {fileID: 0}

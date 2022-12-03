@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class NPCManager : MonoBehaviour
 {
-
+    [Header("찾을Dialog이름")]
+    public string Dialog_name;
     public GameObject dialog;
     public Transform playerPos;
 
@@ -42,6 +43,13 @@ public class NPCManager : MonoBehaviour
         }
     }
 
+    public void findDialog()
+    {
+        if (GameObject.Find("[UI]").transform.Find("Canvas").transform.Find(Dialog_name).gameObject && GameObject.Find("[UI]").transform.Find("Canvas").transform.Find(Dialog_name).gameObject.name !="Canvas")
+        {
+            dialog = GameObject.Find("[UI]").transform.Find("Canvas").transform.Find(Dialog_name).gameObject;
+        }
+    }
     public void CreateTextBox()
     {
         if(dialog !=null)

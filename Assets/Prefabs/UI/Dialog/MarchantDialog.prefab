@@ -113,7 +113,7 @@ MonoBehaviour:
   - {fileID: 6994175144101416114, guid: 8e9c313ad9877ee4cb87eafea4377512, type: 3}
   - {fileID: 935881442789059079, guid: be247103214e1f94ead45eb097ddea14, type: 3}
   dialog: {fileID: 4524436501135302413}
-  npc: {fileID: 0}
+  npc: {fileID: 4524436501706637226}
   nextTextBtn: {fileID: 4524436501706637226}
   text: {fileID: 4524436500159287698}
   npc_Text: '''F'''
@@ -121,10 +121,12 @@ MonoBehaviour:
   textEnd: 0
   sayEnd: 0
   originPos: {x: 0, y: 0}
+  NPC_Name: Merchant
   Cantrade: 0
   TradeFInish: 0
   module: {fileID: 11400000, guid: 2026a63f72a90bc4da51cf9b385f11c7, type: 2}
   item: {fileID: 11400000, guid: c6f2cc669b04d7e46ab55d201df13e5e, type: 2}
+  Bullets: {fileID: 6858372336167351654, guid: 5b7dccbfb158f1d429dd5deafede018d, type: 3}
 --- !u!1 &4524436500335316743
 GameObject:
   m_ObjectHideFlags: 0

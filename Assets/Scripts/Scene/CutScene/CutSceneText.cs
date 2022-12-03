@@ -16,6 +16,7 @@ public class CutSceneText : UIText
     // Update is called once per frame
     void Update()
     {
+        FindNPC();
         TextPosition(transform, dialog, npc, 1f);
         CheckSayEnd();
         Say();

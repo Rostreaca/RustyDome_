@@ -21,6 +21,7 @@ public class Scene2QuestText : UIText
 
     void Update()
     {
+        FindNPC();
         isquestclear = GameManager.Instance.isQuestClear;
         CheckSayEnd();
         TextPosition(transform, dialog, npc, 1.5f);

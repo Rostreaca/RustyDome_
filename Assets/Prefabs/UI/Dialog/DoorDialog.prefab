@@ -340,7 +340,7 @@ MonoBehaviour:
   npc_anim: {fileID: 0}
   t1ext: []
   dialog: {fileID: 1251851452860093998}
-  npc: {fileID: 0}
+  npc: {fileID: 1251851453459356817}
   nextTextBtn: {fileID: 1251851453459356817}
   text: {fileID: 1251851453805603277}
   npc_Text: '''F'''
@@ -348,6 +348,7 @@ MonoBehaviour:
   textEnd: 0
   sayEnd: 0
   originPos: {x: 0, y: 0}
+  NPC_Name: Door
 --- !u!1 &1251851454228915739
 GameObject:
   m_ObjectHideFlags: 0

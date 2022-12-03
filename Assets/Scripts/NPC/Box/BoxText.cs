@@ -30,6 +30,7 @@ public class BoxText : UIText
     // Update is called once per frame
     void Update()
     {
+        FindNPC();
         if (isBoxOpen == false)
         {
             CheckSayEnd();

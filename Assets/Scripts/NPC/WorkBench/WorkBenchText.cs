@@ -18,7 +18,6 @@ public class WorkBenchText : UIText
     }
     void Awake()
     {
-        npc = GameObject.Find("WorkBench");
         workBenchPos = npc.transform;
         singleton();
         originPos = dialog.transform.position;
@@ -34,6 +33,7 @@ public class WorkBenchText : UIText
     }
     void Update()
     {
+        FindNPC();
         CheckSayEnd();
         WorkBenchInteract();
     }

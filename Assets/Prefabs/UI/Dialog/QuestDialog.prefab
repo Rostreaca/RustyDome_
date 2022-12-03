@@ -126,12 +126,25 @@ MonoBehaviour:
   textEnd: 0
   sayEnd: 0
   originPos: {x: 0, y: 0}
+  NPC_Name: NPC
+  isquestclear: 0
+  RepeatTalk: 0
   QuestProgresstxt: {fileID: 0}
   questStart: 0
-  talkQuestClear: 0
   module: {fileID: 11400000, guid: 6a75922dd997a784481fc2665b7092f3, type: 2}
-  item: {fileID: 6858372336167351654, guid: d59940a620c94174bb16df3cf3a7d11e, type: 3}
+  item: {fileID: 6858372336167351654, guid: 5b76e3866e958254094189ce9fa3babe, type: 3}
   Actor: {fileID: 0}
+  QuestingText:
+  - {fileID: 2982144388109462022, guid: 795af34a615c8f94eac385e06a409be3, type: 3}
+  - {fileID: 2982144388109462022, guid: 98199f2693b07904baffb26d71d57a8a, type: 3}
+  - {fileID: 2982144388109462022, guid: 0e655a6372a60a141a7aa1c521d8e37d, type: 3}
+  QuestEndText:
+  - {fileID: 2982144388109462022, guid: 429138d980712ba4b8e8aad7ee124f7d, type: 3}
+  - {fileID: 2982144388109462022, guid: 870e1de4853bf03448c9c36e7329c193, type: 3}
+  - {fileID: 2982144388109462022, guid: 1bf5d0203f79cfd4bacebc6956ec7554, type: 3}
+  - {fileID: 2982144388109462022, guid: 5628b620705f0df46a3b0542f77a907d, type: 3}
+  - {fileID: 2982144388109462022, guid: ff6ffc34858076e4d828a791b2cef8b2, type: 3}
+  itemdropped: 0
 --- !u!1 &1993108228101879785
 GameObject:
   m_ObjectHideFlags: 0

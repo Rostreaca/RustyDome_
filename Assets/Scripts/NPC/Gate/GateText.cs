@@ -19,7 +19,7 @@ public class GateText : UIText
     // Update is called once per frame
     void Update()
     {
-
+        FindNPC();
         if (Inventory.instance.Search(item) != true)
         {
             GameManager.Instance.HaveGateKey = false;

@@ -32,6 +32,7 @@ public class QuestNPCText : UIText
     }
     void Update()
     {
+        FindNPC();
         questStart = GameManager.Instance.isQuestStart;
         isquestclear = GameManager.Instance.isQuestClear; 
         CheckSayEnd();
