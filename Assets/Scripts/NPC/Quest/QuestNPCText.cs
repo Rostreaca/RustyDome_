@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class QuestNPCText : UIText
 {
     public bool isquestclear;
-    public bool QuestingTalk;
+    public bool RepeatTalk;
     public GameObject QuestProgresstxt;
     public bool questStart;
     public Module module;
@@ -20,13 +20,24 @@ public class QuestNPCText : UIText
            QuestProgresstxt = GameObject.Find("[UI]").transform.Find("Canvas").transform.Find("GameScreen").transform.GetChild(3).gameObject;
         Actor = GameObject.Find("Actor");
     }
-
+    void OnDisable()
+    {
+        sayCount = 0;
+        npc_anim.SetBool("isTalking", false);
+        dialog.transform.position = originPos;
+        if(itemdropped)
+        {
+            GameManager.Instance.RepeatTalk = true;
+        }
+    }
     void Update()
     {
         questStart = GameManager.Instance.isQuestStart;
         isquestclear = GameManager.Instance.isQuestClear; 
         CheckSayEnd();
         TextPosition(transform, dialog, npc, 1.5f);
+
+            RepeatTalk = GameManager.Instance.RepeatTalk;
 
         if (questStart == false && GameManager.Instance.isQuestClear == false)
         {
@@ -69,33 +80,33 @@ public class QuestNPCText : UIText
     public bool itemdropped;
     public void Quest()
     {
-        if (sayCount == 0 && QuestingTalk == false)
+        if (sayCount == 0 && RepeatTalk == false)
         {
             npc_anim.SetBool("isTalking", true);
             npc_Text = "음? 벌써 처리했나?";
         }
-        if (sayCount == 0 && QuestingTalk == true && isquestclear != true) //퀘스트 진행 중 반복대사
+        if (sayCount == 0 && RepeatTalk == true && isquestclear != true) //퀘스트 진행 중 반복대사
         {
             npc_anim.SetBool("isTalking", true);
             npc_Text = QuestingText[QuestingText.Length-1].text;
         }
-        if (sayCount == 0 && QuestingTalk == true && isquestclear == true || sayCount == 0 && itemdropped == true) //퀘스트 진행 중 반복대사
+        if (sayCount == 0 && RepeatTalk == true && isquestclear == true || sayCount == 0 && itemdropped == true) //퀘스트 완료 시 반복대사
         {
             npc_anim.SetBool("isTalking", true);
             npc_Text = QuestEndText[QuestEndText.Length - 1].text;
         }
-        if (Input.GetKey("f")&& sayCount == 0 && QuestingTalk == true && isquestclear == true) //퀘스트 진행 중 반복대사
+        if (Input.GetKey("f")&& sayCount == 0 && RepeatTalk == true && isquestclear == true || Input.GetKey("f") && sayCount == 0 && itemdropped == true) //퀘스트 완료 시 반복대사
         {
             npc_anim.SetBool("isTalking", false);
             dialog.SetActive(false);
         }
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && QuestingTalk == true && isquestclear != true)
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && RepeatTalk == true && isquestclear != true)
         {
             npc_anim.SetBool("isTalking", false);
             dialog.SetActive(false);
         }
 
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && isquestclear == true && QuestingTalk == false) // 퀘스트 완료 시 대사
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && isquestclear == true && RepeatTalk == false && !itemdropped) // 퀘스트 완료 시 대사
         {
             npc_Text = QuestEndText[sayCount].text;
 
@@ -103,7 +114,7 @@ public class QuestNPCText : UIText
             sayCount++;
 
         }
-        if (Input.GetKey("f") && sayCount == 1 && sayEnd == true && isquestclear == true && QuestingTalk == false)
+        if (Input.GetKey("f") && sayCount == 1 && sayEnd == true && isquestclear == true && RepeatTalk == false && !itemdropped)
         {
             npc_Text = QuestEndText[sayCount].text;
 
@@ -111,7 +122,7 @@ public class QuestNPCText : UIText
             sayCount++;
 
         }
-        if (Input.GetKey("f") && sayCount == 2 && sayEnd == true && isquestclear == true && QuestingTalk == false)
+        if (Input.GetKey("f") && sayCount == 2 && sayEnd == true && isquestclear == true && RepeatTalk == false && !itemdropped)
         {
             npc_Text = QuestEndText[sayCount].text;
 
@@ -119,9 +130,10 @@ public class QuestNPCText : UIText
             sayCount++;
 
         }
-        if (Input.GetKey("f") && sayCount == 3 && sayEnd == true && isquestclear == true && QuestingTalk == false)
+        if (Input.GetKey("f") && sayCount == 3 && sayEnd == true && isquestclear == true && RepeatTalk == false && !itemdropped)
         {
-            itemdropped = true;
+            QuestManager.instance.completelyend = true; // 퀘스트 완료 텍스트 없애기
+               itemdropped = true;
             npc_Text = QuestEndText[sayCount].text;
             Debug.Log("아이템드랍"); 
             Instantiate(item, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
@@ -129,10 +141,11 @@ public class QuestNPCText : UIText
             sayCount++;
 
         }
-        if (Input.GetKey("f") && sayCount == 4 && sayEnd == true && isquestclear == true && QuestingTalk == false)
+        if (Input.GetKey("f") && sayCount == 4 && sayEnd == true && isquestclear == true && RepeatTalk == false)
         {
             GameManager.Instance.isSave = true;
-            QuestingTalk = true;
+            GameManager.Instance.RepeatTalk = true;
+            //RepeatTalk = true;
             npc_Text = QuestEndText[QuestEndText.Length -1].text;
             Type_init();
             sayCount++;
@@ -144,7 +157,7 @@ public class QuestNPCText : UIText
             dialog.SetActive(false);
         }
 
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && isquestclear != true && QuestingTalk == false) // 퀘스트 미완료시 대사
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && isquestclear != true && RepeatTalk == false) // 퀘스트 미완료시 대사
         {
             GameManager.Instance.isQuestStart = true;
             npc_Text = QuestingText[0].text;
@@ -153,7 +166,7 @@ public class QuestNPCText : UIText
             sayCount++;
 
         }
-        if (Input.GetKey("f") && sayCount == 1 && sayEnd == true && isquestclear != true && QuestingTalk == false)
+        if (Input.GetKey("f") && sayCount == 1 && sayEnd == true && isquestclear != true && RepeatTalk == false)
         {
             GameManager.Instance.isQuestStart = true;
             npc_anim.SetBool("isTalking", true);
@@ -161,9 +174,10 @@ public class QuestNPCText : UIText
             Type_init();
             sayCount++;
         }
-        if (Input.GetKey("f") && sayCount == 2 && sayEnd == true && isquestclear != true && QuestingTalk == false)
+        if (Input.GetKey("f") && sayCount == 2 && sayEnd == true && isquestclear != true && RepeatTalk == false)
         {
-            QuestingTalk = true;//반복대사 트리거 on
+            GameManager.Instance.RepeatTalk = true;
+            //RepeatTalk = true;//반복대사 트리거 on
             GameManager.Instance.isQuestStart = true;
             npc_anim.SetBool("isTalking", true);
             npc_Text = QuestingText[QuestingText.Length-1].text;

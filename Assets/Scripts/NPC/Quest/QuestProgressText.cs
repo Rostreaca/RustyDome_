@@ -8,7 +8,7 @@ public class QuestProgressText : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke("DisableCounter", 1.5f);
+        //Invoke("DisableCounter", 1.5f);
     }
     // Start is called before the first frame update
     void Start()
@@ -29,6 +29,7 @@ public class QuestProgressText : MonoBehaviour
             {
                 progressTxt.text = "Äù½ºÆ® ¿Ï·á!";
                 GameManager.Instance.isQuestStart = false;
+                GameManager.Instance.RepeatTalk = false;
             }
         }
     }

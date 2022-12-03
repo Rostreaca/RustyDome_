@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public bool Scene2MissonClear;
     public bool isQuestStart;
     public bool isQuestClear;
+    public bool RepeatTalk;
     public bool isDoorOpen;
     public bool isBossDead;
     public bool isGateOpen;
