@@ -20,7 +20,7 @@ public class LeverText : UIText
     // Update is called once per frame
     void Update()
     {
-
+        FindNPC();
         //if(Inventory.instance.Search(item) != true)
         //{
         //    GameManager.Instance.HaveLever = false;

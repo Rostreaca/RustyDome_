@@ -52,8 +52,11 @@ public class CameraManager : MonoBehaviour
     public bool CameraLanding;
     public void FixedUpdate()
     {
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        canvas.worldCamera = gameObject.GetComponent<Camera>();
+        if(GameObject.Find("Canvas")!=null)
+        {
+            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+            canvas.worldCamera = gameObject.GetComponent<Camera>();
+        }
         if (GameObject.Find("SceneManager"))
         {
             Canvas scenemanager = GameObject.Find("SceneManager").GetComponent<Canvas>();

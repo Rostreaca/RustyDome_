@@ -15,6 +15,7 @@ public class MerChestText : UIText
     // Update is called once per frame
     void Update()
     {
+        FindNPC();
         if (GameObject.Find("Chest"))
         {
             chest = GameObject.Find("Chest");

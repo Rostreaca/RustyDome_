@@ -11,6 +11,7 @@ public class BoxController : NPCManager
     }
     void Update()
     {
+        findDialog();
         Check();
         CreateTextBox();
     }

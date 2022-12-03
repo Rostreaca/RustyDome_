@@ -28,6 +28,8 @@ public class UIText : MonoBehaviour
 
     public Vector2 originPos;
 
+    [Header("찾을 NPC이름")]
+    public string NPC_Name;
     // Start is called before the first frame update
 
     void Awake()
@@ -51,11 +53,19 @@ public class UIText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        FindNPC();
         CheckSayEnd();
         TextPosition(transform,dialog,npc,1f);
         Say();
     }
 
+    public void FindNPC()
+    {
+        if(GameObject.Find(NPC_Name))
+        {
+            npc = GameObject.Find(NPC_Name);
+        }
+    }
     public void Say()
     {
         if (sayCount == 0)

@@ -15,6 +15,7 @@ public class WorkBenchController : NPCManager
     }
     private void Start()
     {
+        dialog = GameObject.Find("WorkBenchDialog");
         playerPos = GameObject.Find("Player").transform;
     }
     private void Awake()
@@ -27,6 +28,7 @@ public class WorkBenchController : NPCManager
     // Update is called once per frame
     void Update()
     {
+        findDialog();
         Check();
         CreateTextBox();
     }

@@ -14,6 +14,7 @@ public class MerchantText : UIText
     // Update is called once per frame
     void Update()
     {
+        FindNPC();
         TextPosition(transform, dialog, npc, 1f);
         CheckSayEnd();
         if(Cantrade ==false&&!TradeFInish)
@@ -29,6 +30,7 @@ public class MerchantText : UIText
         //    Thanks();
         //}
     }
+
     public override void talksound()
     {
         //if (sayCount != 0)

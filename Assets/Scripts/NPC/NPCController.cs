@@ -28,6 +28,7 @@ public class NPCController : NPCManager
     {
         Check();
         CreateTextBox();
+        findDialog();
     }
 
     public void OnDrawGizmos()

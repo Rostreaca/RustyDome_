@@ -22,6 +22,7 @@ public class DoorText : UIText
     }
     void Update()
     {
+        FindNPC();
         CheckSayEnd();
         DoorInteract();
     }
