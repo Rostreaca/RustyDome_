@@ -35,10 +35,9 @@ public class QuestManager : MonoBehaviour
         {
             GameManager.Instance.isQuestClear = true;
         }
-
-        if(SceneManager.GetActiveScene().buildIndex == 2 && Scene2enemycount ==0)
+        if(SceneManager.GetActiveScene().buildIndex == 2 && Scene2enemycount ==0 && GameManager.Instance.Scene2MissonStart)
         {
-
+            GameManager.Instance.Scene2MissonClear = true;
         }
     }
 

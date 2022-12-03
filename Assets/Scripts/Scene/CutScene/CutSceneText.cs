@@ -47,7 +47,6 @@ public class CutSceneText : UIText
         {
             sayCount = 0;
             RuinCutScene.instance.TalkEnd = true;
-            GameManager.Instance.isQuestStart = true;
             npc_anim.SetBool("isTalking", false);
             dialog.SetActive(false);
 

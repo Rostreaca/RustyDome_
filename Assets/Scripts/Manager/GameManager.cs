@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public bool isEnd;
     [Header("PlayingDatas")]
     public bool Scene2MissonStart;
+    public bool Scene2MissonClear;
     public bool isQuestStart;
     public bool isQuestClear;
     public bool isDoorOpen;
