@@ -6,6 +6,9 @@ public class BoxController : NPCManager
 {
     // Update is called once per frame
 
+    private void Awake()
+    {
+    }
     void Update()
     {
         Check();

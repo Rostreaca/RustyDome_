@@ -22,13 +22,24 @@ public class NPCManager : MonoBehaviour
     // Start is called before the first frame update
     public void Check()
     {
-
-        if (Vector2.Distance(transform.position, playerPos.position) < seeRange)
+        if(gameObject.name != "Chest")
         {
-            isSee = true;
+            if (Vector2.Distance(transform.position, playerPos.position) < seeRange)
+            {
+                isSee = true;
+            }
+            else
+                isSee = false;
         }
         else
-            isSee = false;
+        {
+            if (Vector2.Distance(new Vector2(transform.position.x,transform.position.y+1.0f), playerPos.position) < seeRange)
+            {
+                isSee = true;
+            }
+            else
+                isSee = false;
+        }
     }
 
     public void CreateTextBox()

@@ -45,7 +45,7 @@ public class UIText : MonoBehaviour
     void OnDisable()
     {
         sayCount = 0;
-        npc_anim.SetBool("isTalking", false);
+        //npc_anim.SetBool("isTalking", false);
         dialog.transform.position = originPos;
     }
     // Update is called once per frame
@@ -65,7 +65,7 @@ public class UIText : MonoBehaviour
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)  
         {
 
-            npc_anim.SetBool("isTalking", true);
+            //npc_anim.SetBool("isTalking", true);
             npc_Text = t1ext[0].text;
             Type_init();
             sayCount ++;
@@ -78,7 +78,7 @@ public class UIText : MonoBehaviour
             }
             if (Input.GetKey("f") && sayCount == t1ext.Length && sayEnd == true)
             {
-                npc_anim.SetBool("isTalking", false);
+                //npc_anim.SetBool("isTalking", false);
                 dialog.SetActive(false);
             }
        

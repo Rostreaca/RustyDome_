@@ -8,7 +8,7 @@ public class MerchantText : UIText
     public bool TradeFInish;
     public Module module;
     public Item item;
-
+    public GameObject Bullets;
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -24,10 +24,10 @@ public class MerchantText : UIText
         {
             Trade();
         }
-        else if(Cantrade == false &&TradeFInish)
-        {
-            Thanks();
-        }
+        //else if(Cantrade == false &&TradeFInish)
+        //{
+        //    Thanks();
+        //}
     }
     public override void talksound()
     {
@@ -61,7 +61,7 @@ public class MerchantText : UIText
     {
         if (sayCount == 0)
         {
-            npc_Text = "'F'";
+            npc_Text = "아... 자네인가...";
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
@@ -80,36 +80,41 @@ public class MerchantText : UIText
         {
             Cantrade = true;
             sayCount = 0;
+            Type_init();
             Trade();
         }
 
     }
     void Trade()
     {
-        if (sayCount == 0)
+        if (sayCount == 0 )
         {
-            npc_Text = "(구매)'F'";
+            npc_Text = "사겠나? ('F')";
         }
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && PlayerController.instance.scrap >= 100)
+
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && PlayerController.instance.scrap >= 50)
         {
             npc_anim.SetBool("isTalking", true);
-            npc_Text = "고맙네..";
+            npc_Text = "고맙네... 가져가게...";
             Type_init();
-            Customize.instance.AddModule(module);
-            
 
-            TradeFInish = true;
-            Cantrade = false;
-            PlayerController.instance.scrap -= 100;
+            //TradeFInish = true;
+            //Cantrade = false;
+            PlayerController.instance.scrap -= 50;
+            for (int i = 1; i <= 5; i++)
+            {
+                float dropPos = Random.Range(-0.5f, 0.5f);
+
+                Instantiate(Bullets, new Vector2(transform.position.x + dropPos, transform.position.y + 0.5f), Quaternion.identity);
+            }
 
             sayCount++;
 
         }
-
-        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && PlayerController.instance.scrap < 100)
+        if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && PlayerController.instance.scrap < 50)
         {
             npc_anim.SetBool("isTalking", true);
-            npc_Text = "자네.. 부품을 더 모아야겠구먼..";
+            npc_Text = "고철이 부족하네...";
             Type_init();
 
             sayCount++;
@@ -117,8 +122,8 @@ public class MerchantText : UIText
         }
         if (Input.GetKey("f") && sayCount == 1 && sayEnd == true)
         {
-            npc_anim.SetBool("isTalking", false);
-            dialog.SetActive(false);
+            sayCount = 0;
+            Type_init();
         }
     }
 }

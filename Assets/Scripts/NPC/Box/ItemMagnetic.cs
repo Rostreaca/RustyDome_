@@ -9,6 +9,7 @@ public class ItemMagnetic : MonoBehaviour
     public Transform itemPos;
     public Transform playerPos;
 
+    public bool CanFollow = true;
     public bool isGrounded = false;
     public float followRange = 1.5f;
 
@@ -29,7 +30,7 @@ public class ItemMagnetic : MonoBehaviour
     }
     void Update()
     {
-        if(isGrounded == true)
+        if(isGrounded == true && CanFollow)
         follow();
     }
     void follow()
