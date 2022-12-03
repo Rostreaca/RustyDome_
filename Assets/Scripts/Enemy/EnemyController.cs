@@ -66,8 +66,8 @@ public class EnemyController : MonoBehaviour
     public bool _create_effect;
     public bool inSceneBound;
     public Collider2D checkcol;
-    private string meleeAttackanim = "BrokenClockwoker_Melee_Right_Animation";
-    private string RangeAttackanim = "BrokenClockwoker_Range_Right_Ani";
+    private string meleeAttackanim = "MeleeAttack";
+    private string RangeAttackanim = "RangeAttack";
     
     private void Start()
     {
@@ -341,6 +341,7 @@ public class EnemyController : MonoBehaviour
         isMove = false;
         if (isDead != true)
         {
+            isFollowing = false;
             hpNow -= damage;
             stunMeterNow -= stunDamage;
             _create_effect = true;
