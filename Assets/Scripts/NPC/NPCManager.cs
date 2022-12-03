@@ -23,7 +23,7 @@ public class NPCManager : MonoBehaviour
     // Start is called before the first frame update
     public void Check()
     {
-        if(gameObject.name != "Chest")
+        if(gameObject.tag != "Chest" )
         {
             if (Vector2.Distance(transform.position, playerPos.position) < seeRange)
             {

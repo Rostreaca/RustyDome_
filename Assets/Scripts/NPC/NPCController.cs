@@ -8,6 +8,7 @@ public class NPCController : NPCManager
 
     public Animator anim;
 
+    public GameObject Item;
     private void Singleton_Init()
     {
          instance = this;

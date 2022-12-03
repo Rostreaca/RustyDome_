@@ -6,20 +6,27 @@ public class MerChestText : UIText
 {
     public bool Cantrade;
     public bool TradeFInish;
-    public Module module;
-    public Item item;
 
+    public GameObject Drop_Item;
+    public GameObject player;
     GameObject chest;
+
+    public float seta = 80f;
     // Start is called before the first frame update
 
     // Update is called once per frame
     void Update()
     {
         FindNPC();
+        if (npc.GetComponent<NPCController>().Item != null)
+        {
+            Drop_Item = npc.GetComponent<NPCController>().Item;
+        }
         if (GameObject.Find("Chest"))
         {
             chest = GameObject.Find("Chest");
         }
+        player = GameObject.FindWithTag("Player");
         TextPosition(transform, dialog, npc, 1f);
         CheckSayEnd();
         if (Cantrade == false && !TradeFInish)
@@ -72,7 +79,9 @@ public class MerChestText : UIText
             chest.GetComponent<Animator>().SetTrigger("Open");
             npc_Text = "고맙네... 가져가게...";
             Type_init();
-
+            if (chest.transform.position.x > player.transform.position.x && seta < 90) { seta += 20; }
+            else if (chest.transform.position.x < player.transform.position.x && seta > 90) { seta -= 20; }
+            Instantiate(Drop_Item, new Vector2(chest.transform.position.x, chest.transform.position.y + 0.7f), Quaternion.identity);
             TradeFInish = true;
             PlayerController.instance.scrap -= 200;
 

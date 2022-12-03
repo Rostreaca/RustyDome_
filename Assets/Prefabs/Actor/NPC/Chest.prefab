@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3609230759855746365}
   m_Layer: 11
   m_Name: Chest
-  m_TagString: NPC
+  m_TagString: Chest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef36ed8da173054ea2b148b9c546e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Dialog_name: BoxDialog
   dialog: {fileID: 0}
   playerPos: {fileID: 0}
   hasdialog: 0
@@ -127,6 +128,7 @@ MonoBehaviour:
   isSay: 0
   seeRange: 0.5
   anim: {fileID: 0}
+  Item: {fileID: 6858372336167351654, guid: 292f05c70a7ee2c48808c211092db358, type: 3}
 --- !u!50 &3609230759855746366
 Rigidbody2D:
   serializedVersion: 4

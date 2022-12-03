@@ -30,11 +30,18 @@ public class BoxText : UIText
     // Update is called once per frame
     void Update()
     {
+        player = GameObject.FindWithTag("Player");
+        Box = npc;
+        npc_anim = npc.GetComponent<Animator>();
         FindNPC();
+        if (npc.GetComponent<NPCController>().Item != null)
+        {
+            Item = npc.GetComponent<NPCController>().Item;
+        }
         if (isBoxOpen == false)
         {
             CheckSayEnd();
-            TextPosition(transform, dialog, npc,0.2f);
+            TextPosition(transform, dialog, npc,1.5f);
             BoxInteract();
         }
         else
@@ -49,10 +56,11 @@ public class BoxText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
+            npc_anim.SetTrigger("Open");
             Type_init();
             if (Box.transform.position.x > player.transform.position.x && seta < 90) { seta += 20; }
             else if (Box.transform.position.x < player.transform.position.x && seta > 90) { seta -= 20; }
-            Instantiate(Item, new Vector2(Box.transform.position.x, Box.transform.position.y+0.01f), Quaternion.identity, Actor.transform);
+            Instantiate(Item, new Vector2(Box.transform.position.x, Box.transform.position.y+0.7f), Quaternion.identity, Actor.transform);
             sayCount = 1;
             isBoxOpen = true;
             dialog.SetActive(false);

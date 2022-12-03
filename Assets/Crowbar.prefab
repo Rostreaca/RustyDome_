@@ -80,9 +80,9 @@ GameObject:
   - component: {fileID: 6858372336167351652}
   - component: {fileID: 6858372336167351658}
   - component: {fileID: 6858372336167351657}
-  - component: {fileID: 7062663914793429956}
+  - component: {fileID: -2632660493591936857}
   m_Layer: 0
-  m_Name: Power module
+  m_Name: Crowbar
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +145,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: d87fc839c2a0c394d957ef1692b960ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9d7e3e60d9e32da4c9a919a6dfa3e15c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theta: 80
---- !u!114 &7062663914793429956
+--- !u!114 &-2632660493591936857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,8 +215,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6858372336167351654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff422192b4b761447a63927296139c6a, type: 3}
+  m_Script: {fileID: 11500000, guid: a25d6998ee586b64c99dac526131a786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   iteminfo: {fileID: 7973177237843733996}
-  module: {fileID: 11400000, guid: dec7da1491090e647aba93c031176709, type: 2}
+  item: {fileID: 11400000, guid: 7cfce354c0b0aab48bc045fca3ea38e8, type: 2}
