@@ -399,7 +399,7 @@ public class EnemyController : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
 
         rigid.isKinematic = true;
-        col.isTrigger = true;
+        col.enabled = false;
 
         animator.SetTrigger("Death");
         isDead = true;

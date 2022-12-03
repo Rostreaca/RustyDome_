@@ -343,7 +343,7 @@ public class PlayerController : MonoBehaviour
         if (!isAttack && !isClimb && !isHit)
         {
             //좌클릭, Z버튼 근접공격
-            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Z))
+            if ((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Z)) && (meleeWeapon != null))
             {
                 if (powerNow >= meleeWeapon.powerCon)
                 {
@@ -363,11 +363,15 @@ public class PlayerController : MonoBehaviour
             }
 
             //휠클릭, C버튼 특수공격
-            if (Input.GetKeyDown(KeyCode.Mouse2) || Input.GetKeyDown(KeyCode.C))
+            if ((Input.GetKeyDown(KeyCode.Mouse2) || Input.GetKeyDown(KeyCode.C)) && (specialWeapon != null))
             {
-                isSpecialAttack = true;
+                if (powerNow >= specialWeapon.powerCon)
+                {
+                    isSpecialAttack = true;
 
-                animator.SetBool(specialWeapon.animName, true);
+                    powerNow -= specialWeapon.powerCon;
+                    animator.SetBool(specialWeapon.animName, true);
+                }
             }
         }
     }

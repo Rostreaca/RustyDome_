@@ -199,7 +199,7 @@ public class PlayerCombat : Combat
 
             else if (col.gameObject.CompareTag("BreakableWall"))
             {
-                col.GetComponent<BreakableWall>().Break();
+                col.GetComponent<BreakableWall>().Damage();
             }
         }
     }
@@ -253,7 +253,7 @@ public class PlayerCombat : Combat
 
         else if (colliderDetected.gameObject.CompareTag("BreakableWall"))
         {
-            colliderDetected.GetComponent<BreakableWall>().Break();
+            colliderDetected.GetComponent<BreakableWall>().Damage();
         }
     }
 

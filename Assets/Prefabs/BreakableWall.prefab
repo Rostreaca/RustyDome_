@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9097395368118532327}
   - component: {fileID: 9097395368118532320}
   - component: {fileID: 9097395368118532321}
+  - component: {fileID: 5468312960101589912}
   - component: {fileID: 9097395368118532326}
   m_Layer: 3
   m_Name: BreakableWall
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4c71cc7565279c3478b2c7977fff2a3e, type: 3}
+  m_Sprite: {fileID: 299025147, guid: 5d020e64f0047674198c85d06e28d5b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0666667, y: 1.0666667}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1.0666667, y: 1.0666667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -112,6 +113,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &5468312960101589912
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9097395368118532324}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fb499cfb706ea2545a3966f79740109e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &9097395368118532326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,8 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 4c71cc7565279c3478b2c7977fff2a3e, type: 3}
-  - {fileID: 21300000, guid: 58ad5982d6414b04b923272781e5e0af, type: 3}
-  - {fileID: 21300000, guid: 30b79834b6e7b5447bcf905fa6aacd59, type: 3}
-  - {fileID: 21300000, guid: e719fb05781caac4988de7b33b0997b0, type: 3}
+  - {fileID: 299025147, guid: 5d020e64f0047674198c85d06e28d5b6, type: 3}
+  - {fileID: -800722166, guid: 5d020e64f0047674198c85d06e28d5b6, type: 3}
+  - {fileID: -261968465, guid: 5d020e64f0047674198c85d06e28d5b6, type: 3}
+  - {fileID: -2125673818, guid: 5d020e64f0047674198c85d06e28d5b6, type: 3}
   hp: 4

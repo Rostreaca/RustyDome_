@@ -5,43 +5,32 @@ using UnityEngine.Tilemaps;
 
 public class BreakableWall : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
-    public Sprite[] sprites;
+    private Animator animator;
 
     public int hp;
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
-    public void Break()
+    public void Damage()
     {
         hp -= 1;
 
-        if (hp >= 4)
+        if (hp > 0)
         {
-            spriteRenderer.sprite = sprites[0];
-        }
-
-        else if (hp == 3)
-        {
-            spriteRenderer.sprite = sprites[1];
-        }
-
-        else if (hp == 2)
-        {
-            spriteRenderer.sprite = sprites[2];
-        }
-
-        else if (hp == 1)
-        {
-            spriteRenderer.sprite = sprites[3];
+            animator.SetTrigger("Damage");
         }
 
         else if (hp <= 0)
         {
-            Destroy(gameObject);
+            animator.SetTrigger("Break");
         }
+    }
+
+    public void OnBreakEnd()
+    {
+        Destroy(gameObject);
     }
 }

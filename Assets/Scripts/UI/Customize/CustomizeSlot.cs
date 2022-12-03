@@ -21,6 +21,12 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
             if (item != null && count > 0)
                 Customize.instance.DisplayInform(item.itemInfo);
         }
+
+        else if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            if (this.type == SlotType.ModuleEquipSlot)
+                UnEquip();
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -59,6 +65,16 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         this.item = item;
         count = 1;
+
+        UpdateSlot();
+        PlayerController.instance.StateUpdate();
+        Customize.instance.UpdateOccupancy();
+    }
+
+    public void UnEquip()
+    {
+        this.item = null;
+        count = 0;
 
         UpdateSlot();
         PlayerController.instance.StateUpdate();
