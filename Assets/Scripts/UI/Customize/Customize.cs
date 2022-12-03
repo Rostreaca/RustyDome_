@@ -16,10 +16,11 @@ public class Customize : MonoBehaviour
 
     [SerializeField]
     private List<CustomizeSlot> equipSlots = new List<CustomizeSlot>();
-    [SerializeField]
-    private List<CustomizeSlot> inventorySlots = new List<CustomizeSlot>();
+    public List<CustomizeSlot> inventorySlots = new List<CustomizeSlot>();
 
     public Item testItem;
+
+    public CustomizeSlot fromSlot;
 
     void SIngleton_Init()
     {
@@ -43,7 +44,7 @@ public class Customize : MonoBehaviour
         occupancyText = transform.GetChild(3).GetComponentInChildren<Text>();
         occupancyImg = transform.GetChild(3).GetChild(1).GetComponent<Image>();
 
-        UpdateOccupancy();
+        UpdateSlot();
     }
 
     public void AddModule(Module module)
@@ -62,8 +63,20 @@ public class Customize : MonoBehaviour
         informText.text = text;
     }
 
-    public void UpdateOccupancy()
+    public void UpdateSlot()
     {
+        foreach (CustomizeSlot slot in equipSlots)
+        {
+            slot.UpdateSlot();
+        }
+
+        foreach (CustomizeSlot slot in inventorySlots)
+        {
+            slot.UpdateSlot();
+        }
+
+
+        //UpdateOccupancy
         float occup = 0;
 
         foreach (CustomizeSlot slot in equipSlots)

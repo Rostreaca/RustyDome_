@@ -9,6 +9,6 @@ public class Item : ScriptableObject
     public int stackSize;
     public string itemName;
 
-    [TextArea]
+    [TextArea(4, 10)]
     public string itemInfo;
 }

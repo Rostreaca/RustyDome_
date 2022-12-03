@@ -13,28 +13,42 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
     }
 
     public SlotType type;
+    public bool isEquiped;
 
     public override void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             if (item != null && count > 0)
+            {
                 Customize.instance.DisplayInform(item.itemInfo);
+            }
         }
 
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            if (this.type == SlotType.ModuleEquipSlot)
+            if (type == SlotType.ModuleEquipSlot)
+            {
                 UnEquip();
+            }
         }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (this.item == null || count < 1)
+        if (item == null || count < 1
+            || isEquiped)
             return;
 
+        Customize.instance.fromSlot = this;
         icon.color = Color.gray;
+
+        if (type == SlotType.ModuleEquipSlot)
+        {
+            CustomizeSlot fromSlot = Customize.instance.inventorySlots.Find(x => x.item.itemName == item.itemName);
+            fromSlot.icon.color = Color.gray;
+        }
+
         HandManager.instance.TakeItem(item);
     }
 
@@ -45,7 +59,7 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        icon.color = Color.white;
+        Customize.instance.UpdateSlot();
         HandManager.instance.Drop();
     }
 
@@ -57,28 +71,60 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
 
         if (HandManager.instance.item != null)
         {
-            Equip(HandManager.instance.item);
+            CustomizeSlot fromSlot = Customize.instance.fromSlot;
+
+            //ÀåÂø½½·Ô->ÀåÂø½½·Ô
+            if (fromSlot.type == SlotType.ModuleEquipSlot)
+            {
+                Change(fromSlot, this);
+            }
+
+            //ÀÎº¥Åä¸®->ÀåÂø½½·Ô
+            else
+            {
+                if (fromSlot.isEquiped)
+                    return;
+
+                Equip(HandManager.instance.item);
+            }
         }
     }
 
-    public void Equip(Item item)
+    public void Change(CustomizeSlot fromSlot, CustomizeSlot curSlot)
     {
-        this.item = item;
+        Item tmpItem = fromSlot.item;
+        fromSlot.item = curSlot.item;
+        curSlot.item = tmpItem;
+
+        int tmpCount = fromSlot.count;
+        fromSlot.count = curSlot.count;
+        curSlot.count = tmpCount;
+
+        Customize.instance.UpdateSlot();
+    }
+
+    public void Equip(Item equipItem)
+    {
+        CustomizeSlot fromSlot = Customize.instance.inventorySlots.Find(x => x.item.itemName == equipItem.itemName);
+        fromSlot.isEquiped = true;
+
+        item = equipItem;
         count = 1;
 
-        UpdateSlot();
+        Customize.instance.UpdateSlot();
         PlayerController.instance.StateUpdate();
-        Customize.instance.UpdateOccupancy();
     }
 
     public void UnEquip()
     {
-        this.item = null;
+        CustomizeSlot fromSlot = Customize.instance.inventorySlots.Find(x => x.item.itemName == item.itemName);
+        fromSlot.isEquiped = false;
+
+        item = null;
         count = 0;
 
-        UpdateSlot();
+        Customize.instance.UpdateSlot();
         PlayerController.instance.StateUpdate();
-        Customize.instance.UpdateOccupancy();
     }
 
     public override void UpdateSlot()
@@ -86,7 +132,16 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
         if (count > 0)
         {
             icon.sprite = item.icon;
-            icon.color = Color.white;
+
+            if (isEquiped)
+            {
+                icon.color = Color.gray;
+            }
+
+            else
+            {
+                icon.color = Color.white;
+            }
         }
 
         else

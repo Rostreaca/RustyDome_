@@ -91,6 +91,7 @@ public class UIManager : MonoBehaviour
         ScreenActive(inventoryScreen, false);
         ScreenActive(customizeScreen, false);
         ScreenActive(optionScreen, false);
+
         switch (screenState)
         {
             case ScreenState.Game: //if game

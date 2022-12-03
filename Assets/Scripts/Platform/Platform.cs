@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-   
     public bool playerCheck;
-
-    void Start()
-    {
-    }
 
     void Update()
     {
@@ -30,7 +25,6 @@ public class Platform : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-
         if (collision.gameObject != null && collision.gameObject.CompareTag("Player"))
         {
             playerCheck = false;
