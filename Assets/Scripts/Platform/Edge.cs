@@ -16,7 +16,7 @@ public class Edge : MonoBehaviour
 
     void Update()
     {
-        if (playerCheck && Input.GetKey(KeyCode.S))
+        if (playerCheck && Input.GetKey(KeyCode.DownArrow))
         {
             StartCoroutine(RotationConvert());
         }

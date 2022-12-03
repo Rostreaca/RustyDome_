@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 82957137406046607}
   - component: {fileID: 82957137406046605}
   - component: {fileID: 82957137406046604}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BossHeadHitBox
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -2087,7 +2087,7 @@ MonoBehaviour:
   hpNow: 1000
   isdead: 0
   isItemdrop: 0
-  Item: {fileID: 6858372336167351654, guid: 82a82202a1913024290c818b2a47983d, type: 3}
+  Item: {fileID: 6858372336167351654, guid: c8157d83c767fb145a13ac25fe949100, type: 3}
   Actor: {fileID: 0}
   anim: {fileID: 0}
   Door: {fileID: 0}

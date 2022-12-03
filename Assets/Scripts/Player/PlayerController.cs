@@ -265,7 +265,7 @@ public class PlayerController : MonoBehaviour
 
     private void GroundCheck()
     {
-        LayerMask layerMask = 1 << LayerMask.NameToLayer("Ground");
+        LayerMask layerMask = (1 << LayerMask.NameToLayer("Platform")) + (1 << LayerMask.NameToLayer("Ground"));
         RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, new Vector2(col.bounds.size.x * 0.75f, col.bounds.size.y), CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f, layerMask);
         bool grounded = hit.collider != null;
 
