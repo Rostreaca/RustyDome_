@@ -1935,6 +1935,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 256635601}
     m_Modifications:
+    - target: {fileID: 5068792467102793630, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068792467102793630, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5068792468522066685, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
         type: 3}
       propertyPath: m_Alpha
@@ -44640,12 +44650,12 @@ PrefabInstance:
     - target: {fileID: 3860631001890491395, guid: 196432ce6ad90754693070c5fc2dedd2,
         type: 3}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3860631001890491395, guid: 196432ce6ad90754693070c5fc2dedd2,
         type: 3}
       propertyPath: m_BlocksRaycasts
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3860631001890491404, guid: 196432ce6ad90754693070c5fc2dedd2,
         type: 3}
@@ -44756,6 +44766,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomizeScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860631002553454464, guid: 196432ce6ad90754693070c5fc2dedd2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860631002553454464, guid: 196432ce6ad90754693070c5fc2dedd2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860631002553454471, guid: 196432ce6ad90754693070c5fc2dedd2,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b4d0405a1989f5646acf3b05f4749857,
+        type: 3}
+    - target: {fileID: 3860631002553454471, guid: 196432ce6ad90754693070c5fc2dedd2,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3941585377448865322, guid: 196432ce6ad90754693070c5fc2dedd2,
         type: 3}
