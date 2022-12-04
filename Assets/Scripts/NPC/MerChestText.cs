@@ -18,7 +18,7 @@ public class MerChestText : UIText
     void Update()
     {
         FindNPC();
-        if (npc.GetComponent<NPCController>().Item != null)
+        if (npc.GetComponent<NPCController>().Item != null )
         {
             Drop_Item = npc.GetComponent<NPCController>().Item;
         }

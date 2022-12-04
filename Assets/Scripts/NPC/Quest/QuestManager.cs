@@ -37,10 +37,10 @@ public class QuestManager : MonoBehaviour
     void Update()
     {
 
-        //if(GameObject.Find("GameScreen").transform.Find("QuestProgressText").gameObject !=null)
-        //{
-        //    ProgressTxt = GameObject.Find("GameScreen").transform.Find("QuestProgressText").gameObject;
-        //}
+        if(GameObject.Find("GameScreen").transform.Find("QuestProgressText").gameObject !=null)
+        {
+           ProgressTxt = GameObject.Find("GameScreen").transform.Find("QuestProgressText").gameObject;
+        }
         if(GameManager.Instance.isQuestStart )
         {
             ProgressTxt.SetActive(true);

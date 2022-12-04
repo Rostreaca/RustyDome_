@@ -64,6 +64,10 @@ public class UIText : MonoBehaviour
         if(GameObject.Find(NPC_Name))
         {
             npc = GameObject.Find(NPC_Name);
+            if(npc.GetComponent<Animator>() !=null)
+            {
+                npc_anim = npc.GetComponent<Animator>();
+            }
         }
     }
     public void Say()

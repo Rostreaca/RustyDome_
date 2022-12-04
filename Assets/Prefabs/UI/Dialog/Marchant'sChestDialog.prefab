@@ -120,8 +120,10 @@ MonoBehaviour:
   NPC_Name: Merchant
   Cantrade: 0
   TradeFInish: 0
-  module: {fileID: 0}
-  item: {fileID: 0}
+  Drop_Item: {fileID: 6858372336167351654, guid: 66d926ed4b5935d41b895223f3dee6cd,
+    type: 3}
+  player: {fileID: 0}
+  seta: 80
 --- !u!1 &1288837241993466846
 GameObject:
   m_ObjectHideFlags: 0
