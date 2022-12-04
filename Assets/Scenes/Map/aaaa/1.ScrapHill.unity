@@ -385,7 +385,7 @@ PrefabInstance:
     - target: {fileID: 2762408464262613258, guid: e3e108f0fd68c084e9d259e6ee482c88,
         type: 3}
       propertyPath: m_Name
-      value: WorkBench3
+      value: WorkBench
       objectReference: {fileID: 0}
     - target: {fileID: 2762408464262613259, guid: e3e108f0fd68c084e9d259e6ee482c88,
         type: 3}
@@ -451,6 +451,11 @@ PrefabInstance:
         type: 3}
       propertyPath: seeRange
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762408464262613263, guid: e3e108f0fd68c084e9d259e6ee482c88,
+        type: 3}
+      propertyPath: Dialog_name
+      value: WorkBenchDialog
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3e108f0fd68c084e9d259e6ee482c88, type: 3}
@@ -14914,12 +14919,12 @@ PrefabInstance:
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 326.81
+      value: 270.7
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 52.12
+      value: 54.2
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
@@ -27734,11 +27739,6 @@ PrefabInstance:
       objectReference: {fileID: 1921069335}
     - target: {fileID: 4911929352861092232, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
-      propertyPath: sfxclip
-      value: 
-      objectReference: {fileID: 8300000, guid: d3b3995421e96ec4b96839042653e768, type: 3}
-    - target: {fileID: 4911929352861092232, guid: 936c75f6ec9412e43b350befe5bb6533,
-        type: 3}
       propertyPath: npc_anim
       value: 
       objectReference: {fileID: 1921069337}
@@ -27747,21 +27747,6 @@ PrefabInstance:
       propertyPath: workBenchPos
       value: 
       objectReference: {fileID: 1921069336}
-    - target: {fileID: 4911929352861092232, guid: 936c75f6ec9412e43b350befe5bb6533,
-        type: 3}
-      propertyPath: sfxclip.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4911929352861092232, guid: 936c75f6ec9412e43b350befe5bb6533,
-        type: 3}
-      propertyPath: sfxclip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5a5654b6ce02bfa479809cb35b01b9bd, type: 3}
-    - target: {fileID: 4911929352861092232, guid: 936c75f6ec9412e43b350befe5bb6533,
-        type: 3}
-      propertyPath: sfxclip.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 698b7b655cc112e488d8dd12339abc96, type: 3}
     - target: {fileID: 4911929353546397290, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
       propertyPath: m_Name
@@ -27805,12 +27790,12 @@ PrefabInstance:
     - target: {fileID: 4911929353546397291, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 71.73594
+      value: 86.5625
       objectReference: {fileID: 0}
     - target: {fileID: 4911929353546397291, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 33.691933
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4911929353546397291, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
@@ -27850,7 +27835,7 @@ PrefabInstance:
     - target: {fileID: 4911929353546397291, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -86.953125
+      value: -127.400024
       objectReference: {fileID: 0}
     - target: {fileID: 4911929353546397291, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
