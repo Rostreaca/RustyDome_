@@ -18,6 +18,7 @@ public class PlayerCombat : Combat
 
     //public float chargeTime = 1f;
     public float aimingTime = 1f;
+    public float excutionOffset;
 
     private bool canCombo;
     private bool comboReserve;
@@ -299,7 +300,7 @@ public class PlayerCombat : Combat
         player.isInvincible = true;
         player.gameObject.layer = LayerMask.NameToLayer("InvinciblePlayer");
 
-        float offset = enemy.col.size.x / 2;
+        float offset = (enemy.col.size.x / 2) + excutionOffset;
         offset *= enemy.transform.position.x - player.transform.position.x > 0 ? -1 : 1;
 
         player.transform.position = new Vector3(enemy.transform.position.x + offset, transform.position.y);
