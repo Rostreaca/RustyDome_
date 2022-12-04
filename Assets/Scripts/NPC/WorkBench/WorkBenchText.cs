@@ -25,6 +25,7 @@ public class WorkBenchText : UIText
     }
     private void OnDisable()
     {
+        dialog.GetComponent<CanvasGroup>().alpha = 1;
         WorkBenchController.instance.canopenCustomize = false;
         WorkBenchController.instance.anim.SetBool("isOpen", false);
         sayCount = 0;
@@ -47,6 +48,7 @@ public class WorkBenchText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
+            dialog.GetComponent<CanvasGroup>().alpha = 0;
             sayCount = 1;
             WorkBenchController.instance.canopenCustomize = true;
             dialog.transform.position = originPos;

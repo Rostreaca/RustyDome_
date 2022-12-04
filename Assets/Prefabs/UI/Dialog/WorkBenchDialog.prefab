@@ -114,10 +114,10 @@ RectTransform:
   m_Father: {fileID: 4911929353546397291}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 58.28125, y: -22.5}
-  m_SizeDelta: {x: 26.5625, y: 25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4911929352861092238
 CanvasRenderer:
@@ -180,7 +180,7 @@ MonoBehaviour:
   npc_anim: {fileID: 0}
   t1ext: []
   dialog: {fileID: 4911929353546397290}
-  npc: {fileID: 0}
+  npc: {fileID: 4911929353072966869}
   nextTextBtn: {fileID: 4911929353072966869}
   text: {fileID: 4911929352861092233}
   npc_Text: '''F'''
@@ -325,13 +325,14 @@ GameObject:
   - component: {fileID: 4911929353546397294}
   - component: {fileID: 4911929353546397289}
   - component: {fileID: 4911929353546397288}
+  - component: {fileID: 1137743517}
   m_Layer: 5
   m_Name: WorkBenchDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4911929353546397291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -432,3 +433,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!225 &1137743517
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4911929353546397290}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
