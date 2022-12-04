@@ -279,16 +279,21 @@ public class EnemyController : MonoBehaviour
     {
         if (meleeSkillCoolTimeNow <= 0)
         {
+            RangeSkillCoolTimeNow = 2;
+            rangecoolcheck = false;
             cooltimecheck = false;
             isMove = false;
             isAttack = true;
             animator.SetTrigger("MeleeAttack");
         }
     }
+    
     private void RangeAttack()
     {
         if (RangeSkillCoolTimeNow <= 0)
         {
+            meleeSkillCoolTimeNow = 1.5f;
+            cooltimecheck = false;
             rangecoolcheck = false;
             isMove = false;
             isRangeAttack = true;
@@ -314,17 +319,17 @@ public class EnemyController : MonoBehaviour
             isMove = false;
         }
 
-        if (cooltimecheck == false)
+        if (cooltimecheck == false && !animator.GetCurrentAnimatorStateInfo(0).IsName(RangeAttackanim))
         {
             meleeSkillCoolTimeNow += Time.deltaTime;
         }
-        if (meleeSkillCoolTimeNow >= meleeSkillCoolTimeMax || isMove == true)
+        if (meleeSkillCoolTimeNow >= meleeSkillCoolTimeMax)
         {
             meleeSkillCoolTimeNow = 0f;
             cooltimecheck = true;
         }
 
-        if (rangecoolcheck == false)
+        if (rangecoolcheck == false && !animator.GetCurrentAnimatorStateInfo(0).IsName(meleeAttackanim))
         {
             RangeSkillCoolTimeNow += Time.deltaTime;
         }
