@@ -456,7 +456,7 @@ MonoBehaviour:
   stunMeterRegen: 10
   stunMeterRegenTime: 2
   stunMeterRegenTimer: 0
-  stunTime: 1.5
+  stunTime: 3
   stunTimer: 0
   meleeDmg: 70
   rangeDmg: 100
@@ -480,6 +480,7 @@ MonoBehaviour:
     type: 3}
   Actor: {fileID: 0}
   col: {fileID: 0}
+  animator: {fileID: 0}
   patrollTimer: 0.02
   isAttack: 0
   isRangeAttack: 0
@@ -492,7 +493,9 @@ MonoBehaviour:
   isFollowing: 0
   isReturning: 0
   _create_effect: 0
+  inSceneBound: 0
   checkcol: {fileID: 0}
+  wascounted: 0
 --- !u!1 &5562042767702957010
 GameObject:
   m_ObjectHideFlags: 0
