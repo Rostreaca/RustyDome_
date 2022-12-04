@@ -27793,6 +27793,36 @@ PrefabInstance:
       propertyPath: workBenchPos
       value: 
       objectReference: {fileID: 1921069336}
+    - target: {fileID: 4911929352861092235, guid: 936c75f6ec9412e43b350befe5bb6533,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911929352861092235, guid: 936c75f6ec9412e43b350befe5bb6533,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911929352861092235, guid: 936c75f6ec9412e43b350befe5bb6533,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 26.5625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911929352861092235, guid: 936c75f6ec9412e43b350befe5bb6533,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911929352861092235, guid: 936c75f6ec9412e43b350befe5bb6533,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 58.28125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911929352861092235, guid: 936c75f6ec9412e43b350befe5bb6533,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -22.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4911929353546397290, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
       propertyPath: m_Name
@@ -27881,7 +27911,7 @@ PrefabInstance:
     - target: {fileID: 4911929353546397291, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -127.400024
+      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 4911929353546397291, guid: 936c75f6ec9412e43b350befe5bb6533,
         type: 3}
