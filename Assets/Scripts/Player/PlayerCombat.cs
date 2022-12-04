@@ -16,13 +16,13 @@ public class PlayerCombat : Combat
 
     public EnemyController executionTarget;
 
-    public Tilemap breakableTilemap;
-
-    public float chargeTime = 1f;
+    //public float chargeTime = 1f;
+    public float aimingTime = 1f;
 
     private bool canCombo;
-    public bool comboReserve;
+    private bool comboReserve;
     private bool isAiming;
+
 
     public override void Start()
     {
@@ -152,7 +152,7 @@ public class PlayerCombat : Combat
     private IEnumerator IAim()
     {
         float t = 0;
-        while (t < 1)
+        while (t < aimingTime)
         {
             if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.X))
             {
@@ -163,7 +163,7 @@ public class PlayerCombat : Combat
             yield return null;
         }
 
-        if (t >= 1)
+        if (t >= aimingTime)
         {
             animator.SetTrigger("RangeAttack_End");
         }

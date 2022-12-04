@@ -409,6 +409,7 @@ public class PlayerController : MonoBehaviour
         if (isInvincible == false)
         {
             animator.SetTrigger("Hit");
+            weaponSprite.gameObject.GetComponent<Animator>().SetTrigger("Hit");
             hpNow -= damage;
 
             StopAllCoroutines();
