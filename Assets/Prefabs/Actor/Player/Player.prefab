@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99e49320fe944747b1ef493d5fe0f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_sprite: {fileID: 0}
   randomrange: 0
   aleadyhitting: 0
   EffectImage:
@@ -253,10 +254,10 @@ MonoBehaviour:
   rangeWeapon: {fileID: 11400000, guid: 47629b171b289eb4991490a1b527eb79, type: 2}
   specialWeapon: {fileID: 11400000, guid: 1484a808b8bf2784b887ad69a452e295, type: 2}
   moveSpeed: 3
-  rollCoolTime: 2
+  rollCoolTime: 1
   rollTimer: 0
-  rollTime: 0
-  rollSpeed: 3
+  rollTime: 0.75
+  rollSpeed: 5
   jumpPower: 12
   noHitTime: 0.5
   forcePower: 2
@@ -872,3 +873,4 @@ MonoBehaviour:
   rangeEffectAnimator: {fileID: 6907866116498629365}
   executionTarget: {fileID: 0}
   aimingTime: 1
+  excutionOffset: 0
