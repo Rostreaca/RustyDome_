@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour
     public bool isMeleeAttack = false;
     public bool isRangeAttack = false;
     public bool isSpecialAttack = false;
+    public bool istalking = false;
+
     public bool isAttack
     {
         get
@@ -274,8 +276,9 @@ public class PlayerController : MonoBehaviour
 
     private void GroundCheck()
     {
+        Vector2 start = col.bounds.center + (Vector3.down * (col.bounds.size.y / 2));
         LayerMask layerMask = (1 << LayerMask.NameToLayer("Platform")) + (1 << LayerMask.NameToLayer("Ground"));
-        RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, new Vector2(col.bounds.size.x * 0.75f, col.bounds.size.y), CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f, layerMask);
+        RaycastHit2D hit = Physics2D.BoxCast(start, new Vector2(col.bounds.size.x * 0.75f, 0.1f), 0, Vector2.down, 0.1f, layerMask);
         bool grounded = hit.collider != null;
 
         grounded = grounded || isClimb;
@@ -289,6 +292,30 @@ public class PlayerController : MonoBehaviour
             canAirJump = true;
 
         isGround = grounded;
+    }
+
+    public void OnDrawGizmos()
+    {
+        float maxDistance = 0.1f;
+        float boxHeight = 0.1f;
+
+        Vector2 start = col.bounds.center + (Vector3.down * (col.bounds.size.y / 2));
+
+        LayerMask layerMask = (1 << LayerMask.NameToLayer("Platform")) + (1 << LayerMask.NameToLayer("Ground"));
+        RaycastHit2D hit = Physics2D.BoxCast(start, new Vector2(col.bounds.size.x * 0.75f, boxHeight), 0, Vector2.down, 0.1f, layerMask);
+
+        Gizmos.color = Color.red;
+
+        if (hit)
+        {
+            Gizmos.DrawRay(start, Vector3.down * hit.distance);
+            Gizmos.DrawWireCube(start + (Vector2.down * hit.distance) - (Vector2.down * (boxHeight / 2)), new Vector2(col.bounds.size.x * 0.75f, boxHeight));
+        }
+
+        else
+        {
+            Gizmos.DrawRay(start, Vector3.down * maxDistance);
+        }
     }
 
     private void Climb()
