@@ -27,7 +27,7 @@ public class DoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.Instance.isDoorOpen == true)
+        if (GameManager.Instance.isDoorOpen == true)
         {
             DoorOpen();
         }

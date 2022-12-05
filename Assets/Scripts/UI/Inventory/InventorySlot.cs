@@ -34,12 +34,15 @@ public class InventorySlot : Slot, IPointerEnterHandler
 
     public override void OnPointerClick(PointerEventData eventData)
     {
+
+
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             if (item != null && count > 0)
+            {
                 Inventory.instance.DisplayInform(item.itemInfo);
+            }
         }
-
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
             if (hasItem && type == SlotType.InventorySlot)

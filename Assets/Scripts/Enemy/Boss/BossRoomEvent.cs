@@ -17,7 +17,7 @@ public class BossRoomEvent : MonoBehaviour
     {
         door = bossroomdoor.GetComponent<DoorController>();
         PlayerUI = GameObject.Find("GameScreen");
-        hpbar = GameObject.Find("[UI]").transform.Find("Canvas").transform.Find("GameScreen").transform.Find("Boss HP Bar").gameObject;
+        hpbar = GameObject.Find("Canvas").transform.Find("GameScreen").transform.Find("Boss HP Bar").gameObject;
     }
 
     // Update is called once per frame

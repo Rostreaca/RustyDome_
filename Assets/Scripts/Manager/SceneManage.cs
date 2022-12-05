@@ -155,7 +155,11 @@ public class SceneManage : MonoBehaviour
     }
     public void NextSceneMover()
     {
-        if(nowscene.buildIndex == 1&& Continue == false)
+        if (nowscene.buildIndex == 8)
+        {
+            GameManager.Instance.isDoorOpen = false;
+        }
+        if (nowscene.buildIndex == 1&& Continue == false)
         {
             GameManager.Instance.isSave = true;
         }

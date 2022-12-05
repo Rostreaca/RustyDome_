@@ -297,23 +297,24 @@ public class PlayerController : MonoBehaviour
         float maxDistance = 0.1f;
         float boxHeight = 0.1f;
 
-        Vector2 start = col.bounds.center + (Vector3.down * (col.bounds.size.y / 2));
 
-        LayerMask layerMask = (1 << LayerMask.NameToLayer("Platform")) + (1 << LayerMask.NameToLayer("Ground"));
-        RaycastHit2D hit = Physics2D.BoxCast(start, new Vector2(col.bounds.size.x * 0.75f, boxHeight), 0, Vector2.down, 0.1f, layerMask);
+            Vector2 start = col.bounds.center + (Vector3.down * (col.bounds.size.y / 2));
 
-        Gizmos.color = Color.red;
+            LayerMask layerMask = (1 << LayerMask.NameToLayer("Platform")) + (1 << LayerMask.NameToLayer("Ground"));
+            RaycastHit2D hit = Physics2D.BoxCast(start, new Vector2(col.bounds.size.x * 0.75f, boxHeight), 0, Vector2.down, 0.1f, layerMask);
 
-        if (hit)
-        {
-            Gizmos.DrawRay(start, Vector3.down * hit.distance);
-            Gizmos.DrawWireCube(start + (Vector2.down * hit.distance) - (Vector2.down * (boxHeight / 2)), new Vector2(col.bounds.size.x * 0.75f, boxHeight));
-        }
+            Gizmos.color = Color.red;
 
-        else
-        {
-            Gizmos.DrawRay(start, Vector3.down * maxDistance);
-        }
+            if (hit)
+            {
+                Gizmos.DrawRay(start, Vector3.down * hit.distance);
+                Gizmos.DrawWireCube(start + (Vector2.down * hit.distance) - (Vector2.down * (boxHeight / 2)), new Vector2(col.bounds.size.x * 0.75f, boxHeight));
+            }
+
+            else
+            {
+                Gizmos.DrawRay(start, Vector3.down * maxDistance);
+            }
     }
 
     private void Climb()

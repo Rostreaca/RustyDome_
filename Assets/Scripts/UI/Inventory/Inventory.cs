@@ -10,6 +10,9 @@ public class Inventory : MonoBehaviour
 
     public Text informText;
 
+    [TextArea(4, 10)]
+    public string Testinfo;
+
     [SerializeField]
     private List<InventorySlot> slots = new List<InventorySlot>();
 
@@ -25,7 +28,13 @@ public class Inventory : MonoBehaviour
     {
         SIngleton_Init();
     }
-
+    private void Update()
+    {
+        if(GameObject.Find("InformText"))
+        {
+            informText = GameObject.Find("InformText").GetComponent<Text>();
+        }
+    }
     private void Start()
     {
         slots = GetComponentsInChildren<InventorySlot>().ToList();
@@ -73,6 +82,7 @@ public class Inventory : MonoBehaviour
 
     public void DisplayInform(string text)
     {
-        informText.text = text;
+        Testinfo = text;
+        informText.text = Testinfo;
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class QuestManager : MonoBehaviour
 {
     public GameObject Merchant, Chest;
@@ -36,7 +37,7 @@ public class QuestManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Scene2enemycount >4)
+        if (Scene2enemycount >4)
         {
             Scene2enemycount = 4;
         }

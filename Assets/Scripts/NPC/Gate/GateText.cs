@@ -33,10 +33,6 @@ public class GateText : UIText
         {
             CheckHasKey();
         }
-        if(GameManager.Instance.isGateOpen)
-        {
-            EnterTheGate();
-        }
     }
     public void CheckHasKey()
     {
@@ -54,37 +50,10 @@ public class GateText : UIText
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.HaveGateKey == true)
         {
             GameManager.Instance.isGateOpen = true;
-            npc_anim.SetBool("GateOpen", true);
-            Type_init();
-            sayCount++;
-            EnterTheGate();
-        }
-        if (Input.GetKey("f") && sayCount == 1 && sayEnd == true)
-        {
             dialog.SetActive(false);
-        }
-    }
-    public void EnterTheGate()
-    {
-        TextPosition(transform, dialog, npc, 1f);
-        if (sayCount == 0)
-        {
-            npc_Text = "'F'";
+            npc_anim.SetBool("GateOpen", true);
         }
         if (Input.GetKey("f") && sayCount == 1 && sayEnd == true)
-        {
-            npc_Text = "정말로 들어가시겠습니까?";
-            Type_init();
-            sayCount++;
-        }
-
-        if (Input.GetKey("f") && sayCount == 2 && sayEnd == true)
-        {
-            npc_Text = "데모 버전 종료.";
-            Type_init();
-            sayCount++;
-        }
-        if (Input.GetKey("f") && sayCount == 3 && sayEnd == true)
         {
             dialog.SetActive(false);
         }

@@ -55,6 +55,7 @@ public class IngameMenu : MonoBehaviour
     }
     public void _GameQuit()
     {
+        Destroy(Managers);
         Destroy(player);
         Destroy(IngameCam);
         Destroy(Canvas);
