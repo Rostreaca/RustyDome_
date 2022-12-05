@@ -64,6 +64,7 @@ MonoBehaviour:
   itemPos: {fileID: 6858372336167351653}
   playerPos: {fileID: 5017879092320931488, guid: 19542202eb5128c408ac484f15fa4196,
     type: 3}
+  CanFollow: 1
   isGrounded: 0
   followRange: 1.5
 --- !u!1 &6858372336167351654
@@ -144,7 +145,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 74e4b117504094947ba45ebe1d9dc462, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c92db7712fbbb7e438c9022a2ad2d3d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
