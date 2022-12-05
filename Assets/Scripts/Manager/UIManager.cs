@@ -92,7 +92,11 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U))
         {
             if (customizeScreen.alpha > 0)
+            {
                 ChangeScreen(ScreenState.Game);
+                Customize.instance.canCustomize = false;
+            }
+
             else
                 ChangeScreen(ScreenState.Customize);
         }

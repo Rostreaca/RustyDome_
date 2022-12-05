@@ -36,7 +36,7 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (WorkBenchController.instance.canopenCustomize == false || (item == null || count < 1)
+        if (!Customize.instance.canCustomize || (item == null || count < 1)
             || isEquiped)
             return;
 

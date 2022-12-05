@@ -15,13 +15,15 @@ public class Customize : MonoBehaviour
     public int maxOccupancyPoint;
     public int curOccupancyPoint;
 
+    public bool canCustomize;
+
     [SerializeField]
     private List<CustomizeSlot> equipSlots = new List<CustomizeSlot>();
     public List<CustomizeSlot> inventorySlots = new List<CustomizeSlot>();
 
-    public Item testItem;
-
     public CustomizeSlot fromSlot;
+
+    public Item testItem;
 
     void SIngleton_Init()
     {

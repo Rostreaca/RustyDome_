@@ -26,7 +26,6 @@ public class WorkBenchText : UIText
     private void OnDisable()
     {
         dialog.GetComponent<CanvasGroup>().alpha = 1;
-        WorkBenchController.instance.canopenCustomize = false;
         WorkBenchController.instance.anim.SetBool("isOpen", false);
         sayCount = 0;
         if (isopen) { SoundManager.instance.SFXPlay("Door_Lock3", sfxclip[1]); }
@@ -49,9 +48,10 @@ public class WorkBenchText : UIText
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
             UIManager.instance.ChangeScreen(UIManager.ScreenState.Customize);
+            Customize.instance.canCustomize = true;
+
             dialog.GetComponent<CanvasGroup>().alpha = 0;
             sayCount = 1;
-            WorkBenchController.instance.canopenCustomize = true;
             dialog.transform.position = originPos;
             WorkBenchController.instance.anim.SetBool("isOpen", true);
             player.hpNow = player.hpMax; //체력 회복
