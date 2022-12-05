@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class IngameMenu : MonoBehaviour
 {
+    GameObject IngameCam;
+    GameObject player;
     public static IngameMenu instance;
     public Button continuebutton,rebutton,optionbutton,quitbutton;
     // Start is called before the first frame update
@@ -17,6 +19,8 @@ public class IngameMenu : MonoBehaviour
     }
     void Start()
     {
+        IngameCam = GameObject.Find("Main Camera");
+           player = GameObject.FindWithTag("Player");
         constructor();
         if(continuebutton != null) { continuebutton.onClick.AddListener(_Continue); }
         if (rebutton != null) { rebutton.onClick.AddListener(_Restart); };
@@ -35,8 +39,6 @@ public class IngameMenu : MonoBehaviour
     }
     public void _Restart()
     {
-        GameObject player;
-        player = GameObject.FindWithTag("Player");
         GameManager.Instance.isPause = false;
         GameManager.Instance.isGame = true;
         Time.timeScale = 1;
@@ -48,8 +50,13 @@ public class IngameMenu : MonoBehaviour
     }
     public void _GameQuit()
     {
+        GameManager.Instance.isPause = false;
+        GameManager.Instance.isGame = true;
+        Destroy(IngameCam);
+        Destroy(player);
+        SceneManager.LoadScene(0);
         Debug.Log("게임 종료");
-        Application.Quit();
+        //Application.Quit();
     }
 
     public void _OptionMenu()

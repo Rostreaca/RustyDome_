@@ -96,7 +96,7 @@ public class QuestNPCText : UIText
             npc_anim.SetBool("isTalking", true);
             npc_Text = QuestEndText[QuestEndText.Length - 1].text;
         }
-        if (Input.GetKey("f")&& sayCount == 0 && RepeatTalk == true && isquestclear == true || Input.GetKey("f") && sayCount == 0 && itemdropped == true) //퀘스트 완료 시 반복대사
+        if (Input.GetKey("f")&& sayCount == 0 && RepeatTalk == true && isquestclear == true && sayEnd == true || Input.GetKey("f") && sayCount == 0 && itemdropped == true && isquestclear == true && RepeatTalk == true &&sayEnd == true) //퀘스트 완료 시 반복대사
         {
             npc_anim.SetBool("isTalking", false);
             dialog.SetActive(false);
@@ -138,7 +138,7 @@ public class QuestNPCText : UIText
             npc_Text = QuestEndText[sayCount].text;
             Debug.Log("아이템드랍"); 
             Instantiate(item, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
-            Instantiate(_weapon, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
+            //Instantiate(_weapon, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
             Type_init();
             sayCount++;
 

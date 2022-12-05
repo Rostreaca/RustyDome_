@@ -10525,12 +10525,12 @@ PrefabInstance:
     - target: {fileID: 1305975297006761095, guid: 49bed69f9ae623d48aa3c8180ebde576,
         type: 3}
       propertyPath: isQuestClear
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1305975297006761095, guid: 49bed69f9ae623d48aa3c8180ebde576,
         type: 3}
       propertyPath: isQuestStart
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49bed69f9ae623d48aa3c8180ebde576, type: 3}
