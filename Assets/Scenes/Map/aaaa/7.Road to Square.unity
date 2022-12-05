@@ -8022,38 +8022,6 @@ Transform:
   m_Father: {fileID: 964805595}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &738642762
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 738642763}
-  m_Layer: 0
-  m_Name: '[UI]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &738642763
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738642762}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.417129, y: -1.185451, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1717822690}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &824594528
 GameObject:
   m_ObjectHideFlags: 0
@@ -14687,7 +14655,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 738642763}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 227950856471359367, guid: 7d030c7e57e51094da28558c01434996,
         type: 3}
@@ -16652,7 +16620,7 @@ PrefabInstance:
     - target: {fileID: 7404999145423930151, guid: 7d030c7e57e51094da28558c01434996,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7404999145423930151, guid: 7d030c7e57e51094da28558c01434996,
         type: 3}
@@ -16856,12 +16824,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d030c7e57e51094da28558c01434996, type: 3}
---- !u!224 &1717822690 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7404999145423930151, guid: 7d030c7e57e51094da28558c01434996,
-    type: 3}
-  m_PrefabInstance: {fileID: 1717822689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1740735833
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class IngameMenu : MonoBehaviour
 {
-    GameObject IngameCam;
+    public GameObject IngameCam, Managers, Canvas;
     GameObject player;
     public static IngameMenu instance;
     public Button continuebutton,rebutton,optionbutton,quitbutton;
@@ -19,7 +19,12 @@ public class IngameMenu : MonoBehaviour
     }
     void Start()
     {
-        IngameCam = GameObject.Find("Main Camera");
+        if(SceneManage.Instance.nowscene.buildIndex !=0 && GameObject.Find("Canvas"))
+        {
+            Canvas = GameObject.Find("Canvas");
+        }
+        Managers = GameObject.Find("Managers");
+           IngameCam = GameObject.Find("Main Camera");
            player = GameObject.FindWithTag("Player");
         constructor();
         if(continuebutton != null) { continuebutton.onClick.AddListener(_Continue); }
@@ -50,15 +55,21 @@ public class IngameMenu : MonoBehaviour
     }
     public void _GameQuit()
     {
-        GameManager.Instance.isPause = false;
-        GameManager.Instance.isGame = true;
-        Destroy(IngameCam);
         Destroy(player);
+        Destroy(IngameCam);
+        Destroy(Canvas);
+        UIManager.instance.ChangeScreen(UIManager.ScreenState.Game);
+        GameManager.Instance.isPause = false;
+
+        //SceneManage.Instance.UpdownFadeIn(false);
         SceneManager.LoadScene(0);
-        Debug.Log("게임 종료");
+        //Debug.Log("게임 종료");
         //Application.Quit();
     }
 
+    public void Menu()
+    {
+    }
     public void _OptionMenu()
     {
         UIManager.instance.ActiveOption();

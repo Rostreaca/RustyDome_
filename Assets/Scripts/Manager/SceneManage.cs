@@ -27,7 +27,7 @@ public class SceneManage : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(gameObject);
     }    
     void Start()
     {
@@ -123,10 +123,6 @@ public class SceneManage : MonoBehaviour
             DownFadeIn.GetComponent<Animator>().SetTrigger("FadeOut");
         }
         Invoke("EndLoad", 0.8f);
-    }
-    public void EndLoad()
-    {
-        GameManager.Instance.NowLoading = false;
     }
     public void SaveSceneLoad()
     {
@@ -234,5 +230,9 @@ public class SceneManage : MonoBehaviour
         }
 
         Invoke("FadeOut", 0.5f);
+    }
+    public void EndLoad()
+    {
+        GameManager.Instance.NowLoading = false;
     }
 }

@@ -15,7 +15,6 @@ public class ResolutionManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
         instance = this;
     }    
     void Start()

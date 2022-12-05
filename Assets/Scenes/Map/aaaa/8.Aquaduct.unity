@@ -7438,44 +7438,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 731682119}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &738642762
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 738642763}
-  m_Layer: 0
-  m_Name: '[UI]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &738642763
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738642762}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.417129, y: -1.185451, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 814338925}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &814338924
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 738642763}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 227950856471359367, guid: 7d030c7e57e51094da28558c01434996,
         type: 3}
@@ -9440,7 +9408,7 @@ PrefabInstance:
     - target: {fileID: 7404999145423930151, guid: 7d030c7e57e51094da28558c01434996,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7404999145423930151, guid: 7d030c7e57e51094da28558c01434996,
         type: 3}
@@ -9644,12 +9612,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d030c7e57e51094da28558c01434996, type: 3}
---- !u!224 &814338925 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7404999145423930151, guid: 7d030c7e57e51094da28558c01434996,
-    type: 3}
-  m_PrefabInstance: {fileID: 814338924}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &852298305
 GameObject:
   m_ObjectHideFlags: 0
@@ -19252,7 +19214,7 @@ Tilemap:
       - {fileID: -1252400712, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: -178068863, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: -968280983, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 39, y: 26, z: 0}
@@ -19262,7 +19224,7 @@ Tilemap:
       - {fileID: -1252400712, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: -178068863, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: -968280983, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 53, y: 26, z: 0}
@@ -19292,7 +19254,7 @@ Tilemap:
       - {fileID: -1252400712, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: -178068863, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: -968280983, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 53, y: 27, z: 0}
@@ -19362,7 +19324,7 @@ Tilemap:
       - {fileID: -1252400712, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: -178068863, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: -968280983, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 67, y: 29, z: 0}
@@ -19402,7 +19364,7 @@ Tilemap:
       - {fileID: -278583607, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: 1356711564, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: 142748211, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
-      m_AnimationSpeed: 7
+      m_AnimationSpeed: 7.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:

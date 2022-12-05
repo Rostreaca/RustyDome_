@@ -57,6 +57,7 @@ public class MenuManager : MonoBehaviour
 
     public void GameStart()
     {
+        Debug.Log("게임시작");
         SceneManage.Instance.UpdownFadeIn(true);
         Invoke("LoadStartScene", 0.3f);
     }
