@@ -11,6 +11,6 @@ public class Module : Item
     public int power;
     public int powerRegen;
     public float meleeDmg;
-    public float meleeSpeed;
+    public float attackSpeed;
     public float moveSpeed;
 }

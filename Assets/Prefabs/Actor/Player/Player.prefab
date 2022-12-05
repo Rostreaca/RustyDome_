@@ -237,24 +237,29 @@ MonoBehaviour:
   PlayerPos: {fileID: 0}
   hpMax: 500
   hpNow: 500
+  playerHp: 500
+  moduleHp: 0
   powerMax: 100
   powerNow: 100
+  playerPower: 100
+  modulePower: 0
   powerRegen: 10
+  playerPowerRegen: 25
+  modulePowerRegen: 0
   ammoMax: 10
   ammoNow: 10
   scrap: 10000
-  playerHp: 500
-  playerPower: 100
-  playerPowerRegen: 25
-  moduleHp: 0
-  modulePower: 0
-  modulePowerRegen: 0
+  moveSpeed: 3
+  playerMoveSpeed: 3
+  moduleMoveSpeed: 0
+  attackSpeed: 1
+  playerAttackSpeed: 1
+  moduleAttackSpeed: 0
   moduleEquipSlots: []
   combat: {fileID: 0}
   meleeWeapon: {fileID: 0}
   rangeWeapon: {fileID: 11400000, guid: 47629b171b289eb4991490a1b527eb79, type: 2}
   specialWeapon: {fileID: 0}
-  moveSpeed: 3
   rollCoolTime: 1
   rollTimer: 0
   rollTime: 0.75

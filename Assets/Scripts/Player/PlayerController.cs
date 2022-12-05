@@ -10,21 +10,29 @@ public class PlayerController : MonoBehaviour
 
     public float hpMax;
     public float hpNow;
+    public float playerHp;
+    public float moduleHp;
+
     public float powerMax;
     public float powerNow;
+    public float playerPower;
+    public float modulePower;
+
     public int powerRegen;
+    public int playerPowerRegen;
+    public int modulePowerRegen;
 
     public int ammoMax;
     public int ammoNow;
     public int scrap;
 
-    public float playerHp;
-    public float playerPower;
-    public int playerPowerRegen;
+    public float moveSpeed;
+    public float playerMoveSpeed;
+    public float moduleMoveSpeed;
 
-    public float moduleHp;
-    public float modulePower;
-    public int modulePowerRegen;
+    public float attackSpeed;
+    public float playerAttackSpeed;
+    public float moduleAttackSpeed;
 
     public List<CustomizeSlot> moduleEquipSlots = new List<CustomizeSlot>();
 
@@ -33,7 +41,6 @@ public class PlayerController : MonoBehaviour
     public RangeWeapon rangeWeapon;
     public SpecialWeapon specialWeapon;
 
-    public float moveSpeed;
     public float rollCoolTime = 0.5f;
     public float rollTimer;
     public float rollTime = 0.5f;
@@ -465,6 +472,8 @@ public class PlayerController : MonoBehaviour
         hpMax = playerHp + moduleHp;
         powerMax = playerPower + modulePower;
         powerRegen = playerPowerRegen + modulePowerRegen;
+        moveSpeed = playerMoveSpeed * (1 + moduleMoveSpeed);
+        attackSpeed = playerAttackSpeed * (1 + moduleAttackSpeed);
 
         if (hpNow > hpMax)
             hpNow = hpMax;
@@ -478,6 +487,8 @@ public class PlayerController : MonoBehaviour
         moduleHp = 0;
         modulePower = 0;
         modulePowerRegen = 0;
+        moduleMoveSpeed = 0;
+        moduleAttackSpeed = 0;
 
         foreach (CustomizeSlot slot in moduleEquipSlots)
         {
@@ -488,6 +499,8 @@ public class PlayerController : MonoBehaviour
                 moduleHp += module.hp;
                 modulePower += module.power;
                 modulePowerRegen += module.powerRegen;
+                moduleMoveSpeed += module.moveSpeed;
+                moduleAttackSpeed += module.attackSpeed;
             }
         }
     }
