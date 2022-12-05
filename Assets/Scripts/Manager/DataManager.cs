@@ -7,7 +7,8 @@ public class DataManager : MonoBehaviour
 {
 	public int _loadSceneIndex;
 	[Header("저장될 자료형")]
-	public SaveData loadData;
+	public SaveData loadData; 
+	public BoxData boxloadData;
 	public float hp ;
 	public int ammo ;
 	public float power;
@@ -48,6 +49,8 @@ public class DataManager : MonoBehaviour
     }
     void Update()
 	{
+		BoxData boxdata = new BoxData();
+			boxdata.boxopened = GameManager.Instance.boxopened;
 		if (player ==null && GameObject.FindWithTag("Player") )
         {
 			player = GameObject.FindWithTag("Player");
@@ -88,6 +91,7 @@ public class DataManager : MonoBehaviour
 				SaveData character = new SaveData(player_pos_x,player_pos_y, hp, power, ammo, scrap, SaveSceneIndex,isQuestStart, questprogress,isquestClear,questComplete,isbossDead,HaveLever,HaveGatekey,isGateOpen,isDoorOpen, Scene2MissonStart);
 
 				SaveSystem.Save(character,"Main");
+				SaveSystem.ArraySave(boxdata, "Sub");
 
 			}
 		}
@@ -96,6 +100,7 @@ public class DataManager : MonoBehaviour
 		if (File.Exists(filename))
 		{
 			loadData = SaveSystem.Load("Main");
+			boxloadData = SaveSystem.ArrayLoad("Sub");
 			if (MenuManager.Instance != null)
 			{
 				MenuManager.Instance.SceneIndex = loadData.sceneIndex;
@@ -143,6 +148,7 @@ public class DataManager : MonoBehaviour
 			GameManager.Instance.HaveGateKey = loadData.HaveGatekey;
 			GameManager.Instance.isGateOpen = loadData.isGateOpen;
 			GameManager.Instance.Scene2MissonStart = loadData.Scene2MissonStart;
+			GameManager.Instance.boxopened = boxloadData.boxopened;
 		}
 		if(QuestManager.instance !=null)
 		{
@@ -157,10 +163,11 @@ public class DataManager : MonoBehaviour
 [System.Serializable]
 public class SaveData
 {
-    public SaveData(float _player_pos_x,float _player_pos_y, float _hp, float _powers, int _bullets, int _scraps, int _sceneIndex,
+	public SaveData(float _player_pos_x,float _player_pos_y, float _hp, float _powers, int _bullets, int _scraps, int _sceneIndex,
 		bool _isQuestStart,int _questprogress,bool _isquestClear, bool _questComplete, bool _isbossDead, bool _HaveLever, bool _HaveGatekey, bool _isGateOpen, bool _isDoorOpen, bool _Scene2MissonStart)
-    {
-		player_pos_x = _player_pos_x;
+	{
+
+	player_pos_x = _player_pos_x;
 		player_pos_y = _player_pos_y;
         hp = _hp;
 		powers = _powers;
@@ -196,6 +203,11 @@ public class SaveData
 	public bool Scene2MissonStart;
 
 }
+[System.Serializable]
+public class BoxData
+{
+	public bool[] boxopened;
+}
 public static class SaveSystem
 {
 	private static string SavePath = Application.persistentDataPath + "/saves/";
@@ -213,6 +225,21 @@ public static class SaveSystem
 		File.WriteAllText(saveFilePath, saveJson);
 		Debug.Log("저장 성공: " + saveFilePath);
 	}
+	public static void ArraySave(BoxData boxData, string filename)
+	{
+		if (!Directory.Exists(SavePath))
+		{
+			Directory.CreateDirectory(SavePath);
+		}
+
+		string saveJson = JsonUtility.ToJson(boxData);
+
+		BoxData fromJson = JsonUtility.FromJson<BoxData>(saveJson);
+
+		string saveFilePath = SavePath + filename + "savedata.json";
+		File.WriteAllText(saveFilePath, saveJson);
+		Debug.Log("배열 저장 성공: " + saveFilePath);
+	}
 
 	public static SaveData Load(string filename)
 	{
@@ -225,6 +252,19 @@ public static class SaveSystem
 		}
 		string saveFile = File.ReadAllText(saveFilePath);
 		SaveData saveData = JsonUtility.FromJson<SaveData>(saveFile);
+		return saveData;
+	}
+	public static BoxData ArrayLoad(string filename)
+	{
+		string saveFilePath = SavePath + filename + "savedata.json";
+
+		if (!File.Exists(saveFilePath))
+		{
+			Debug.LogError("저장된 파일이 없습니다.");
+			return null;
+		}
+		string saveFile = File.ReadAllText(saveFilePath);
+		BoxData saveData = JsonUtility.FromJson<BoxData>(saveFile);
 		return saveData;
 	}
 }

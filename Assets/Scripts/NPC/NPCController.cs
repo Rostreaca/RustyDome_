@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class NPCController : NPCManager
 {
     public static NPCController instance;
@@ -20,10 +20,6 @@ public class NPCController : NPCManager
     }
     public void Start()
     {
-        if(tag == "Chest")
-        {
-            //GameManager.Instance.boxopened[SceneManage.Instance.nowscene.buildIndex] = true;
-        }
         playerPos = GameObject.Find("Player").transform;
     }
     // Start is called before the first frame update
@@ -31,10 +27,21 @@ public class NPCController : NPCManager
     // Update is called once per frame
     void Update()
     {
-        
-        Check();
-        CreateTextBox();
-        findDialog();
+        int a = SceneManager.GetActiveScene().buildIndex;
+        if (tag == "Chest" && anim.GetCurrentAnimatorStateInfo(0).IsName("Box1_Open"))
+        {
+            GameManager.Instance.boxopened[a] = true;
+        }
+        if(GameManager.Instance.boxopened[a] == true)
+        {
+            anim.SetTrigger("Open");
+        }
+        else if (GameManager.Instance.boxopened[a] != true)
+        {
+            Check();
+            CreateTextBox();
+            findDialog();
+        }
     }
 
     public void OnDrawGizmos()
