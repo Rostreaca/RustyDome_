@@ -28,7 +28,6 @@ public class WorkBenchText : UIText
         dialog.GetComponent<CanvasGroup>().alpha = 1;
         WorkBenchController.instance.anim.SetBool("isOpen", false);
         sayCount = 0;
-        if (isopen) { SoundManager.instance.SFXPlay("Door_Lock3", sfxclip[1]); }
         isopen = false;
     }
     void Update()

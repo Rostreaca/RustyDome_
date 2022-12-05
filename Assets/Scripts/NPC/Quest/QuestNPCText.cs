@@ -201,12 +201,4 @@ public class QuestNPCText : UIText
         }
     }
 
-    public override void talksound()
-    {
-        //if (sayCount != 0)
-        {
-            int talk = Random.Range(0, 11);
-            SoundManager.instance.SFXPlay("Talk", talkclip[talk]);
-        }
-    }
 }
