@@ -33,6 +33,8 @@ public class RuinCutScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameObject.Find("Canvas").transform.Find("CutSceneDialog"))
+        Dialog = GameObject.Find("Canvas").transform.Find("CutSceneDialog").gameObject;
         if(TalkEnd == false && (int)Camera.transform.position.y == (int)NPC.transform.position.y)
         {
             ActiveDialog();

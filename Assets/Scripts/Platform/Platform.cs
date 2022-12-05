@@ -36,7 +36,7 @@ public class Platform : MonoBehaviour
         CapsuleCollider2D playercol = PlayerController.instance.GetComponent<CapsuleCollider2D>();
         CompositeCollider2D platformcol = GetComponent<CompositeCollider2D>(); 
         Physics2D.IgnoreCollision(playercol, platformcol);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         Physics2D.IgnoreCollision(playercol, platformcol,false);
     }
 }

@@ -26,12 +26,34 @@ public class UIManager : MonoBehaviour
             instance = this;
     }
 
+    private void FindCanvasGroup()
+    {
+        if (GameObject.Find("GameScreen"))
+        {
+            gameScreen = GameObject.Find("GameScreen").GetComponent<CanvasGroup>();
+
+            hpBar = GameObject.Find("Healthbar_Health").GetComponent<Image>();
+            powerBar = GameObject.Find("Powerbar_Power").GetComponent<Image>();
+            ammoBar = GameObject.Find("Ammobar_Ammo").GetComponent<Image>();
+
+            scrapText = GameObject.Find("ScrapText").GetComponent<Text>();
+        }
+        if (GameObject.Find("PauseScreen"))
+            pauseScreen = GameObject.Find("PauseScreen").GetComponent<CanvasGroup>();
+        if (GameObject.Find("MapScreen"))
+            mapScreen = GameObject.Find("MapScreen").GetComponent<CanvasGroup>(); 
+        if (GameObject.Find("InventoryScreen"))
+            inventoryScreen = GameObject.Find("InventoryScreen").GetComponent<CanvasGroup>(); 
+        if (GameObject.Find("CustomizeScreen"))
+            customizeScreen = GameObject.Find("CustomizeScreen").GetComponent<CanvasGroup>();
+        if(GameObject.Find("GameOverScreen"))
+        gameoverScreen = GameObject.Find("GameOverScreen").GetComponent<CanvasGroup>();
+        if (GameObject.Find("OptionScreen"))
+            optionScreen = GameObject.Find("OptionScreen").GetComponent<CanvasGroup>();
+    }
     private void Start()
     {
-        if(GameObject.Find("OptionScreen"))
-        {
-            optionScreen = GameObject.Find("OptionScreen").GetComponent<CanvasGroup>();
-        }
+        FindCanvasGroup();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         hpBar = GameObject.Find("Healthbar_Health").GetComponent<Image>();
@@ -49,13 +71,13 @@ public class UIManager : MonoBehaviour
                 ChangeScreen(ScreenState.Pause);
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            if (mapScreen.alpha > 0)
-                ChangeScreen(ScreenState.Game);
-            else
-                ChangeScreen(ScreenState.Map);
-        }
+        //if (Input.GetKeyDown(KeyCode.M))
+        //{
+        //    if (mapScreen.alpha > 0)
+        //        ChangeScreen(ScreenState.Game);
+        //    else
+        //        ChangeScreen(ScreenState.Map);
+        //}
 
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -65,7 +87,7 @@ public class UIManager : MonoBehaviour
                 ChangeScreen(ScreenState.Inventory);
         }
 
-        if (Input.GetKeyDown(KeyCode.U) && WorkBenchController.instance.canopenCustomize == true)
+        if (Input.GetKeyDown(KeyCode.U))//&& WorkBenchController.instance.canopenCustomize == true
         {
             if (customizeScreen.alpha > 0)
                 ChangeScreen(ScreenState.Game);
