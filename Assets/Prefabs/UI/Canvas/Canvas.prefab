@@ -2168,10 +2168,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7404999145423930151}
     m_Modifications:
+    - target: {fileID: 3611527504956250236, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
+        type: 3}
+      propertyPath: count
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611527505359252490, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
+        type: 3}
+      propertyPath: count
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5068792467102793629, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
         type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 5068792468522066685, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5068792468522066686, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
         type: 3}
@@ -4109,6 +4124,11 @@ PrefabInstance:
     - target: {fileID: 3785809639241506266, guid: 196432ce6ad90754693070c5fc2dedd2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860631001890491395, guid: 196432ce6ad90754693070c5fc2dedd2,
+        type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3860631001890491404, guid: 196432ce6ad90754693070c5fc2dedd2,
