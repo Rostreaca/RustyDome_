@@ -24,7 +24,6 @@ public class PlayerCombat : Combat
     private bool comboReserve;
     private bool isAiming;
 
-
     public override void Start()
     {
         base.Start();
