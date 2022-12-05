@@ -22,7 +22,6 @@ public class PlayerCombat : Combat
 
     private bool canCombo;
     private bool comboReserve;
-    private bool isAiming;
 
     public override void Start()
     {
@@ -117,7 +116,7 @@ public class PlayerCombat : Combat
 
     public void OnRangeAttackAim()
     {
-        if (animator.GetBool("RangeAttack"))
+        if (animator.GetBool(player.rangeWeapon.animName))
         {
             //사격가능
             if (player.powerNow >= player.rangeWeapon.powerCon &&
@@ -126,6 +125,8 @@ public class PlayerCombat : Combat
                 player.powerNow -= player.rangeWeapon.powerCon;
                 player.ammoNow -= player.rangeWeapon.ammoCon;
 
+                player.isAiming = false;
+                player.isRangeAttack = true;
                 animator.SetTrigger("RangeAttack_Shoot");
                 rangeEffectAnimator.SetTrigger("RangeAttack_Effect" + Random.Range(0, 3).ToString());
             }
@@ -133,20 +134,25 @@ public class PlayerCombat : Combat
             //사격불가
             else
             {
+                player.isRangeAttack = true;
                 animator.SetTrigger("RangeAttack_OutOfAmmo");
             }
 
-            animator.SetBool("RangeAttack", false);
+            animator.SetBool(player.rangeWeapon.animName, false);
         }
+    }
 
-        else
-        {
-            if (!isAiming)
-            {
-                isAiming = true;
-                StartCoroutine(IAim());
-            }
-        }
+    public void OnRangeAttackEnd()
+    {
+        player.isRangeAttack = false;
+
+        player.isAiming = true;
+        StartCoroutine(IAim());
+    }
+
+    public void OnAimingEnd()
+    {
+        player.isAiming = false;
     }
 
     private IEnumerator IAim()
@@ -168,7 +174,6 @@ public class PlayerCombat : Combat
             animator.SetTrigger("RangeAttack_End");
         }
 
-        isAiming = false;
         yield return null;
     }
 
@@ -224,11 +229,6 @@ public class PlayerCombat : Combat
         {
             Gizmos.DrawRay(startPos, dir * maxDistance);
         }
-    }
-
-    public void OnRangeAttackEnd()
-    {
-        player.isRangeAttack = false;
     }
 
     public void OnSpecialAttackEnd()

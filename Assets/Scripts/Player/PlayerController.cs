@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     public bool onLadder = false;
     public bool isClimb = false;
     public bool isMeleeAttack = false;
+    public bool isAiming = false;
     public bool isRangeAttack = false;
     public bool isSpecialAttack = false;
     public bool istalking = false;
@@ -63,14 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            return isMeleeAttack || isRangeAttack || isSpecialAttack;
-        }
-
-        set
-        {
-            isMeleeAttack = value;
-            isRangeAttack = value;
-            isSpecialAttack = value;
+            return isMeleeAttack || isRangeAttack || isSpecialAttack || isAiming;
         }
     }
     public bool isHit = false;
@@ -121,7 +115,7 @@ public class PlayerController : MonoBehaviour
     public void FixedUpdate()
     {
         PlayerPos = transform;
-        if(GameManager.Instance.BossCutscenePlaying == false && GameManager.Instance.RuinCutscenePlaying == false && GameManager.Instance.NowLoading == false)
+        if (GameManager.Instance.BossCutscenePlaying == false && GameManager.Instance.RuinCutscenePlaying == false && GameManager.Instance.NowLoading == false && !istalking)
         {
             if (GameManager.Instance.isGame && !GameManager.Instance.isPause) //check Game status
             {
@@ -142,7 +136,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.Instance.BossCutscenePlaying == false && GameManager.Instance.RuinCutscenePlaying == false && GameManager.Instance.NowLoading == false )
+        if(GameManager.Instance.BossCutscenePlaying == false && GameManager.Instance.RuinCutscenePlaying == false && GameManager.Instance.NowLoading == false && !istalking)
         {
             if (GameManager.Instance.isGame && !GameManager.Instance.isPause)
             {
@@ -198,13 +192,17 @@ public class PlayerController : MonoBehaviour
     private void Roll()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && isGround && powerNow > 30 &&
-            !isAttack && !isHit)
+            !isMeleeAttack && !isRangeAttack && !isSpecialAttack && !isHit)
         {
             int dir = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
             if (rollTimer == 0 && dir != 0)
             {
+                //원거리공격취소
+                isAiming = false;
+                animator.SetBool(rangeWeapon.animName, false);
+
                 animator.SetTrigger("Roll");
-                isRangeAttack = false;
+
                 isClimb = false;
                 isRoll = true;
 
@@ -393,8 +391,7 @@ public class PlayerController : MonoBehaviour
             //우클릭, X버튼 원거리공격
             if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.X))
             {
-                isRangeAttack = true;
-
+                isAiming = true;
                 animator.SetBool(rangeWeapon.animName, true);
             }
 
@@ -448,7 +445,10 @@ public class PlayerController : MonoBehaviour
             weaponSprite.Hit();
             hpNow -= damage;
 
-            isAttack = false;
+            isMeleeAttack = false;
+            isRangeAttack = false;
+            isSpecialAttack = false;
+
             combat.Hit();
 
             Vector2 dir = enemy.position.x < transform.position.x ? Vector2.right : Vector2.left;
