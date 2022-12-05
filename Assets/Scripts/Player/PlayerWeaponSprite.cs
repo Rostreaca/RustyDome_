@@ -43,4 +43,9 @@ public class PlayerWeaponSprite : MonoBehaviour
             specialAttackTrigger.offset = new Vector2(TriggerOffset, -0.45f);
         }
     }
+
+    public void Hit()
+    {
+        weaponAnimator.SetTrigger("Hit");
+    }
 }

@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     public List<CustomizeSlot> moduleEquipSlots = new List<CustomizeSlot>();
 
+    public PlayerCombat combat;
     public MeleeWeapon meleeWeapon;
     public RangeWeapon rangeWeapon;
     public SpecialWeapon specialWeapon;
@@ -98,6 +99,7 @@ public class PlayerController : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
+        combat = GetComponentInChildren<PlayerCombat>();
 
         for (int i=0; i<5; i++)
         {
@@ -270,7 +272,7 @@ public class PlayerController : MonoBehaviour
         bool grounded = hit.collider != null;
 
         grounded = grounded || isClimb;
-        if(hit.collider!=null && hit.collider.CompareTag("NPC"))
+        if(hit.collider != null && hit.collider.CompareTag("NPC"))
         {
             isGround = true;
             return;
@@ -409,11 +411,11 @@ public class PlayerController : MonoBehaviour
         if (isInvincible == false)
         {
             animator.SetTrigger("Hit");
-            weaponSprite.gameObject.GetComponent<Animator>().SetTrigger("Hit");
+            weaponSprite.Hit();
             hpNow -= damage;
 
-            StopAllCoroutines();
             isAttack = false;
+            combat.Hit();
 
             Vector2 dir = enemy.position.x < transform.position.x ? Vector2.right : Vector2.left;
             rigid.AddForce(dir * forcePower + Vector2.up * upperForcePower);

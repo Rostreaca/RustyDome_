@@ -65,7 +65,7 @@ public class UIManager : MonoBehaviour
                 ChangeScreen(ScreenState.Inventory);
         }
 
-        if (Input.GetKeyDown(KeyCode.U) && WorkBenchController.instance.canopenCustomize == true)
+        if (Input.GetKeyDown(KeyCode.U))
         {
             if (customizeScreen.alpha > 0)
                 ChangeScreen(ScreenState.Game);
@@ -132,6 +132,7 @@ public class UIManager : MonoBehaviour
                 //GameManager.Instance.isPause = true;
                 //Time.timeScale = 0;
                 break;
+
             case ScreenState.Option:
                 ScreenActive(optionScreen, true);
                 GameManager.Instance.isPause = true;
@@ -173,7 +174,7 @@ public class UIManager : MonoBehaviour
 
     public bool IsScreenOn(CanvasGroup canvasGroup)
     {
-        return canvasGroup.blocksRaycasts;
+        return canvasGroup.alpha == 1;
     }
 
     public void UpdateGameScreen()

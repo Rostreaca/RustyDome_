@@ -321,6 +321,11 @@ public class PlayerCombat : Combat
         player.isSpecialAttack = false;
     }
 
+    public void Hit()
+    {
+        StopAllCoroutines();
+    }
+
     public void OnRollBegin()
     {
         player.isInvincible = true;

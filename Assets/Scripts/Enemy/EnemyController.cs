@@ -187,15 +187,24 @@ public class EnemyController : MonoBehaviour
 
     public void GroundCheck()
     {
-        int layermask = 1 << LayerMask.NameToLayer("Ground");
+        int layermask = (1 << LayerMask.NameToLayer("Platform")) + (1 << LayerMask.NameToLayer("Ground"));
         RaycastHit2D hit = Physics2D.CapsuleCast(col.bounds.center, col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, 0.1f, layermask);
 
-        if (hit.collider != null && hit.collider.tag == ("NPC") || hit.collider != null && hit.collider.tag == ("Projectile"))
+        bool grounded = false;
+
+        if (hit.collider != null)
         {
-            return;
+            if (hit.collider.tag == ("NPC") || hit.collider.tag == ("Projectile"))
+            {
+                return;
+            }
+
+            if (hit.collider.tag == ("Ground") || hit.collider.CompareTag("Platform") || hit.collider.CompareTag("Quest"))
+            {
+                grounded = true;
+            }
         }
 
-        bool grounded = (hit.collider != null && hit.collider.CompareTag("Ground")) || (hit.collider != null && hit.collider.CompareTag("Platform")) || (hit.collider != null && hit.collider.tag == ("Quest"));
         isGround = grounded;
 
         if (!isGround)

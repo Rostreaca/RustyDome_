@@ -8,10 +8,10 @@ public class Scroll : MonoBehaviour
     public Transform content;
     public float scrollSpeed;
 
-    private bool isScrolling;
-    private float scrollDist;
-    private int scrollLimit;
-    private int scrollTrigger;
+    public bool isScrolling;
+    public float scrollDist;
+    public int scrollLimit;
+    public int scrollTrigger;
 
     private void Start()
     {
@@ -49,9 +49,10 @@ public class Scroll : MonoBehaviour
     {
         while (Mathf.Abs(target.y - content.localPosition.y) > 0.01f)
         {
-            content.localPosition = Vector3.Lerp(content.localPosition, target, 0.05f);
+            content.localPosition = Vector3.Lerp(content.localPosition, target, 0.1f);
             yield return null;
         }
+        content.localPosition = target;
 
         isScrolling = false;
         yield return null;
