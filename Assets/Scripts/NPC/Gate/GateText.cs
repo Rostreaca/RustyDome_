@@ -54,7 +54,7 @@ public class GateText : UIText
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.HaveGateKey == true)
         {
             GameManager.Instance.isGateOpen = true;
-            npc_anim.SetBool("GateOpen", true);// 레버가 바뀌는 애니메이션 실행.
+            npc_anim.SetBool("GateOpen", true);
             Type_init();
             sayCount++;
             EnterTheGate();
