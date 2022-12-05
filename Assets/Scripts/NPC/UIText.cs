@@ -80,7 +80,7 @@ public class UIText : MonoBehaviour
         } 
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)  
         {
-
+            PlayerController.instance.istalking = true;
             //npc_anim.SetBool("isTalking", true);
             npc_Text = t1ext[0].text;
             Type_init();
