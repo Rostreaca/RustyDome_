@@ -318,7 +318,7 @@ PrefabInstance:
     - target: {fileID: 1305975295441154743, guid: 49bed69f9ae623d48aa3c8180ebde576,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1305975295441154743, guid: 49bed69f9ae623d48aa3c8180ebde576,
         type: 3}
@@ -1101,52 +1101,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501333310}
   m_CullTransparentMesh: 1
---- !u!1 &530943885
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 530943887}
-  - component: {fileID: 530943886}
-  m_Layer: 0
-  m_Name: ResolutionManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &530943886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 530943885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91296b2ab0e534140add4e7ca378ed2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFull: 1
-  res: 0
---- !u!4 &530943887
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 530943885}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 936.03674, y: 603.6581, z: 4.598098}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &600982138
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,6 +2210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5791ccd8057115d47a9f08fa1ebb0f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  filename: 
   SceneIndex: 0
   MainMenu: {fileID: 941148608}
   OptionMenu: {fileID: 802740906}
@@ -2537,6 +2492,7 @@ MonoBehaviour:
     questprogress: 0
     isQuestStart: 0
     isquestClear: 0
+    questComplete: 0
     isbossDead: 0
     HaveLever: 0
     HaveGatekey: 0
@@ -2551,6 +2507,7 @@ MonoBehaviour:
   player_pos_y: 0
   isquestClear: 0
   isQuestStart: 0
+  questComplete: 0
   questprogress: 0
   SaveSceneIndex: 0
   isbossDead: 0
@@ -2575,7 +2532,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1644436862
 GameObject:

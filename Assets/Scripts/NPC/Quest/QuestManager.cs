@@ -36,8 +36,11 @@ public class QuestManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(GameObject.Find("GameScreen").transform.Find("QuestProgressText").gameObject !=null)
+        if(Scene2enemycount >4)
+        {
+            Scene2enemycount = 4;
+        }
+        if(SceneManage.Instance.nowscene.buildIndex !=0 &&GameObject.Find("GameScreen") !=null)
         {
            ProgressTxt = GameObject.Find("GameScreen").transform.Find("QuestProgressText").gameObject;
         }
