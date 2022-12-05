@@ -38,14 +38,7 @@ public class MerChestText : UIText
             Trade();
         }
     }
-    public override void talksound()
-    {
-        //if (sayCount != 0)
-        {
-            int talk = Random.Range(0, 11);
-            SoundManager.instance.SFXPlay("Talk", talkclip[talk]);
-        }
-    }
+
 
     new public void Say()
     {

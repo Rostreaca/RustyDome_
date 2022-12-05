@@ -129,7 +129,6 @@ public class UIText : MonoBehaviour
     {
         for (int i = 0; i <= npc_Text.Length; i++)
         {
-            talksound();
             text.text = npc_Text.Substring(0, i);
             yield return new WaitForSeconds(talkspeed);
             textEnd ++;
@@ -143,6 +142,5 @@ public class UIText : MonoBehaviour
             sayEnd = true;
         }
     }
-    public virtual void talksound() { }
     
 }
