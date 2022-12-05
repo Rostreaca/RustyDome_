@@ -16,12 +16,13 @@ MonoBehaviour:
   stackSize: 1
   itemName: HP Module
   itemInfo: "HP\uC6A9\uB7C9 \uBAA8\uB4C8\n\n\uB3D9\uB825\uD575 \uC810\uC720\uC728
-    25%\n\uC7A5\uCC29\uC2DC HP 50 \uC99D\uAC00\n\n\uAE30\uCCB4\uAC00 \uBC1B\uB294
-    \uCDA9\uACA9\uC744 \uBD84\uC0B0\uC2DC\uCF1C \uB354 \uB9CE\uC740 \uD53C\uD574\uB97C
-    \uACAC\uB51C \uC218 \uC788\uAC8C \uD569\uB2C8\uB2E4."
+    25%\nHP 50 \uC99D\uAC00\n\n\uAE30\uCCB4\uAC00 \uBC1B\uB294 \uCDA9\uACA9\uC744
+    \uBD84\uC0B0\uC2DC\uCF1C \uB354 \uB9CE\uC740 \uD53C\uD574\uB97C \uACAC\uB51C
+    \uC218 \uC788\uAC8C \uD569\uB2C8\uB2E4."
   occupancyPoint: 25
   hp: 50
   power: 0
   powerRegen: 0
-  MeleeDmg: 0
-  Speed: 0
+  meleeDmg: 0
+  meleeSpeed: 0
+  moveSpeed: 0

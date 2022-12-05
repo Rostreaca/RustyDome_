@@ -16,7 +16,7 @@ MonoBehaviour:
   stackSize: 1
   itemName: Speed Module
   itemInfo: "\uB3D9\uB825\uC6A9\uB7C9 \uBAA8\uB4C8\r\n\r\n\uB3D9\uB825\uD575 \uC810\uC720\uC728
-    25%\r\n\uC7A5\uCC29\uC2DC \uB3D9\uB825\uC6A9\uB7C9 50 \uC99D\uAC00\r\n\r\n\uB3D9\uB825\uD575\uC774
+    25%\r\n\uB3D9\uB825\uC6A9\uB7C9 50 \uC99D\uAC00\r\n\r\n\uB3D9\uB825\uD575\uC774
     \uAE30\uCCB4\uC5D0 \uB3D9\uB825\uC744 \uC804\uB2EC\uD558\uB294 \uCCB4\uACC4\uB97C
     \uAC1C\uC120\uD574 \uB354 \uB9CE\uC740 \uD589\uB3D9\uC744 \uD560 \uC218 \uC788\uAC8C
     \uD569\uB2C8\uB2E4."
@@ -24,5 +24,6 @@ MonoBehaviour:
   hp: 0
   power: 0
   powerRegen: 0
-  MeleeDmg: 0
-  Speed: 0.6
+  meleeDmg: 0
+  meleeSpeed: 0
+  moveSpeed: 0
