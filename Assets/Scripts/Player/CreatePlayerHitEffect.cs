@@ -34,6 +34,7 @@ public class CreatePlayerHitEffect : MonoBehaviour
     {
         randomrange = Random.Range(0, 2);
         spawn_position = new Vector2(transform.position.x, transform.position.y);
-        Instantiate(EffectImage[randomrange], spawn_position, Quaternion.identity,player_sprite);
+        GameObject effect = Instantiate(EffectImage[randomrange], spawn_position, Quaternion.identity,player_sprite);
+        effect.transform.parent = GameObject.Find("Player").transform;
     }
 }
