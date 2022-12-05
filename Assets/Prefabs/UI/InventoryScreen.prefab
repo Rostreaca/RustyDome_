@@ -656,6 +656,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3381324532368207124}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5068792467209343889 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7546651284329119365, guid: 73d969e3139768449a1687256d4a9d88,
+    type: 3}
+  m_PrefabInstance: {fileID: 3381324532368207124}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c48b10dd28e57240a6362b72ae3a5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5068792467209343890 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7546651284329119366, guid: 73d969e3139768449a1687256d4a9d88,
@@ -1651,6 +1663,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5068792466642685598}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3381324533209722907 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7546651284329119365, guid: 73d969e3139768449a1687256d4a9d88,
+    type: 3}
+  m_PrefabInstance: {fileID: 5068792466642685598}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c48b10dd28e57240a6362b72ae3a5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5068792466684304676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1932,6 +1956,16 @@ PrefabInstance:
         type: 3}
       propertyPath: count
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 5068792467209343889}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: isScroll
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
@@ -3041,6 +3075,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeWeaponSlot2
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 3381324532196462715}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: isScroll
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792467295396550
@@ -3997,6 +4041,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangeWeaponSlot2
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 3381324532143417201}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: isScroll
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792467689416761
@@ -4130,6 +4184,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeicalWeaponSlot2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 3381324533209722907}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: isScroll
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
@@ -4299,6 +4363,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5068792467706146558}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3381324532196462715 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7546651284329119365, guid: 73d969e3139768449a1687256d4a9d88,
+    type: 3}
+  m_PrefabInstance: {fileID: 5068792467706146558}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c48b10dd28e57240a6362b72ae3a5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5068792467719346676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4449,6 +4525,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5068792467719346676}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3381324532143417201 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7546651284329119365, guid: 73d969e3139768449a1687256d4a9d88,
+    type: 3}
+  m_PrefabInstance: {fileID: 5068792467719346676}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c48b10dd28e57240a6362b72ae3a5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3381324532143417202 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7546651284329119366, guid: 73d969e3139768449a1687256d4a9d88,
@@ -4876,6 +4964,16 @@ PrefabInstance:
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
       propertyPath: count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 3381324532196462715}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: isScroll
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5470,6 +5568,16 @@ PrefabInstance:
       propertyPath: count
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 5068792467209343889}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: isScroll
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792468064493587
@@ -5603,6 +5711,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RangeWeaponSlot1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 3381324532143417201}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: isScroll
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
@@ -6315,6 +6433,16 @@ PrefabInstance:
       propertyPath: count
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 3381324532143417201}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: isScroll
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792468235712417
@@ -6729,6 +6857,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeicalWeaponSlot1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 3381324533209722907}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: isScroll
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792468336200090
@@ -7009,6 +7147,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 94434d90ead29164d98a5e54bc178c36,
         type: 2}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 3381324532196462715}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: isScroll
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792468384620708
@@ -7422,6 +7570,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeicalWeaponSlot0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 3381324533209722907}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: isScroll
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}

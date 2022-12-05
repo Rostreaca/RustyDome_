@@ -4,10 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : Slot
+public class InventorySlot : Slot, IPointerEnterHandler
 {
     public InventorySlot equipSlot;
     public Text countText;
+
+    public Scroll scroll;
+
+    public bool isScroll;
 
     public override void Start()
     {
@@ -35,6 +39,14 @@ public class InventorySlot : Slot
                 if (equipSlot.gameObject.name == "MeleeWeaponEquipSlot")
                     PlayerController.instance.meleeWeapon = equipSlot.item as MeleeWeapon;
             }
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (isScroll)
+        {
+            scroll.isPointerOver = true;
         }
     }
 

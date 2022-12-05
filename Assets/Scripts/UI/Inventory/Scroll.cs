@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Scroll : MonoBehaviour
+public class Scroll : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public bool isPointerOver;
+
     public Transform content;
     public float scrollSpeed;
 
@@ -21,28 +23,41 @@ public class Scroll : MonoBehaviour
         scrollTrigger = 0;
     }
 
-    public void OnMouseOver()
+    public void Update()
     {
-        if (!isScrolling && UIManager.instance.IsScreenOn(UIManager.instance.inventoryScreen))
+        if (isPointerOver)
         {
-            //ÈÙ ´Ù¿î
-            if (Input.GetAxis("Mouse ScrollWheel") < 0 && scrollTrigger < scrollLimit)
+            if (!isScrolling && UIManager.instance.IsScreenOn(UIManager.instance.inventoryScreen))
             {
-                //À§·Î°¡¾ß´ï
-                StartCoroutine(SmoothScroll(new Vector3(content.localPosition.x, content.localPosition.y + scrollDist)));
-                scrollTrigger++;
-                isScrolling = true;
-            }
+                //ÈÙ ´Ù¿î
+                if (Input.GetAxis("Mouse ScrollWheel") < 0 && scrollTrigger < scrollLimit)
+                {
+                    //À§·Î°¡¾ß´ï
+                    StartCoroutine(SmoothScroll(new Vector3(content.localPosition.x, content.localPosition.y + scrollDist)));
+                    scrollTrigger++;
+                    isScrolling = true;
+                }
 
-            //ÈÙ ¾÷
-            else if (Input.GetAxis("Mouse ScrollWheel") > 0 && scrollTrigger > 0)
-            {
-                //¾Æ·¡·Î°¡¾ß´ï
-                StartCoroutine(SmoothScroll(new Vector3(content.localPosition.x, content.localPosition.y - scrollDist)));
-                scrollTrigger--;
-                isScrolling = true;
+                //ÈÙ ¾÷
+                else if (Input.GetAxis("Mouse ScrollWheel") > 0 && scrollTrigger > 0)
+                {
+                    //¾Æ·¡·Î°¡¾ß´ï
+                    StartCoroutine(SmoothScroll(new Vector3(content.localPosition.x, content.localPosition.y - scrollDist)));
+                    scrollTrigger--;
+                    isScrolling = true;
+                }
             }
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        isPointerOver = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        isPointerOver = false;
     }
 
     IEnumerator SmoothScroll(Vector3 target)
