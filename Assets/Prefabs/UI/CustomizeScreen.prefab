@@ -416,14 +416,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   informText: {fileID: 0}
+  basicText: sample Text
   occupancyText: {fileID: 0}
   occupancyImg: {fileID: 0}
   maxOccupancyPoint: 100
   curOccupancyPoint: 0
+  canCustomize: 0
   equipSlots: []
   inventorySlots: []
-  testItem: {fileID: 0}
   fromSlot: {fileID: 0}
+  testItem: {fileID: 0}
 --- !u!1 &3860631002891789544
 GameObject:
   m_ObjectHideFlags: 0

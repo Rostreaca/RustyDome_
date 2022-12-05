@@ -19,7 +19,7 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (item != null && count > 0)
+            if (hasItem)
             {
                 Customize.instance.DisplayInform(item.itemInfo);
             }
@@ -27,7 +27,7 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
 
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            if (type == SlotType.ModuleEquipSlot)
+            if (type == SlotType.ModuleEquipSlot && hasItem)
             {
                 UnEquip();
             }
@@ -36,11 +36,12 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (!Customize.instance.canCustomize || (item == null || count < 1)
-            || isEquiped)
+        if (!Customize.instance.canCustomize || !hasItem || isEquiped)
             return;
 
         Customize.instance.fromSlot = this;
+        Customize.instance.DisplayInform(item.itemInfo);
+
         icon.color = Color.gray;
 
         if (type == SlotType.ModuleEquipSlot)

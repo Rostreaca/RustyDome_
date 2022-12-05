@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Customize : MonoBehaviour
+public class Customize : MonoBehaviour, IPointerClickHandler
 {
     public static Customize instance;
 
     public Text informText;
+    public string basicText;
     public Text occupancyText;
     public Image occupancyImg;
 
@@ -50,6 +52,14 @@ public class Customize : MonoBehaviour
         UpdateSlot();
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            DisplayInform(basicText);
+        }
+    }
+
     public void AddModule(Module module)
     {
         foreach (CustomizeSlot slot in inventorySlots)
@@ -83,6 +93,8 @@ public class Customize : MonoBehaviour
 
     public void UpdateOccupancy()
     {
+        curOccupancyPoint = 0;
+
         foreach (CustomizeSlot slot in equipSlots)
         {
             if (slot.item != null)
