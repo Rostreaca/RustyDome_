@@ -17,7 +17,7 @@ public class QuestNPCText : UIText
     // Update is called once per frame
     private void Awake()
     {
-           QuestProgresstxt = GameObject.Find("[UI]").transform.Find("Canvas").transform.Find("GameScreen").transform.GetChild(3).gameObject;
+           QuestProgresstxt = GameObject.Find("Canvas").transform.Find("GameScreen").transform.GetChild(3).gameObject;
         Actor = GameObject.Find("Actor");
     }
     void OnDisable()
