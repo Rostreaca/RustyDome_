@@ -64,6 +64,7 @@ MonoBehaviour:
   itemPos: {fileID: 6858372336167351653}
   playerPos: {fileID: 5017879092320931488, guid: 19542202eb5128c408ac484f15fa4196,
     type: 3}
+  CanFollow: 1
   isGrounded: 0
   followRange: 1.5
 --- !u!1 &6858372336167351654
@@ -96,7 +97,7 @@ Transform:
   m_GameObject: {fileID: 6858372336167351654}
   m_LocalRotation: {x: 0, y: 0, z: 0.60876137, w: 0.7933534}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4101923127424345594}

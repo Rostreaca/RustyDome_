@@ -41,6 +41,7 @@ public class Scene2QuestText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.Scene2MissonClear != true)
         {
+            PlayerController.instance.istalking = true;
             npc_Text = t1ext[sayCount + 1].text;
             Type_init();
             sayCount++;
@@ -53,6 +54,7 @@ public class Scene2QuestText : UIText
         }
         if (Input.GetKey("f") && sayCount + 1 == t1ext.Length && sayEnd == true && GameManager.Instance.Scene2MissonClear != true)
         {
+            PlayerController.instance.istalking = false;
             sayCount = 0;
             npc_anim.SetBool("isTalking", false);
             dialog.SetActive(false);
@@ -65,6 +67,7 @@ public class Scene2QuestText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && GameManager.Instance.Scene2MissonClear == true)
         {
+            PlayerController.instance.istalking = true;
             npc_Text = QuestEndText[sayCount + 1].text;
             Type_init();
             sayCount++;
@@ -77,6 +80,7 @@ public class Scene2QuestText : UIText
         }
         if (Input.GetKey("f") && sayCount + 1 == t1ext.Length && sayEnd == true && GameManager.Instance.Scene2MissonClear == true)
         {
+            PlayerController.instance.istalking = false;
             sayCount = 0;
             npc_anim.SetBool("isTalking", false);
             SceneManage.Instance.UpdownFadeIn(false);
