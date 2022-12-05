@@ -125,7 +125,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
 --- !u!114 &3570157381209698211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.111912176
+  m_Radius: 0.05
 --- !u!114 &826750758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,5 +217,6 @@ MonoBehaviour:
   itemPos: {fileID: 3570157381209698223}
   playerPos: {fileID: 5017879092320931488, guid: 19542202eb5128c408ac484f15fa4196,
     type: 3}
+  CanFollow: 1
   isGrounded: 0
   followRange: 1.5
