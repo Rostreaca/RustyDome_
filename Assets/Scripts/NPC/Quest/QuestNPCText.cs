@@ -59,6 +59,7 @@ public class QuestNPCText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
+            PlayerController.instance.istalking = true;
             npc_Text = t1ext[sayCount+1].text;
             Type_init();
             sayCount++;
@@ -71,6 +72,7 @@ public class QuestNPCText : UIText
         }
         if (Input.GetKey("f") && sayCount+1 == t1ext.Length && sayEnd == true)
         {
+            PlayerController.instance.istalking = false;
             sayCount = 0;
             GameManager.Instance.isQuestStart = true;
             npc_anim.SetBool("isTalking", false);
@@ -98,17 +100,20 @@ public class QuestNPCText : UIText
         }
         if (Input.GetKey("f")&& sayCount == 0 && RepeatTalk == true && isquestclear == true && sayEnd == true || Input.GetKey("f") && sayCount == 0 && itemdropped == true && isquestclear == true && RepeatTalk == true &&sayEnd == true) //퀘스트 완료 시 반복대사
         {
+            PlayerController.instance.istalking = false;
             npc_anim.SetBool("isTalking", false);
             dialog.SetActive(false);
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && RepeatTalk == true && isquestclear != true)
         {
+            PlayerController.instance.istalking = false;
             npc_anim.SetBool("isTalking", false);
             dialog.SetActive(false);
         }
 
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && isquestclear == true && RepeatTalk == false && !itemdropped) // 퀘스트 완료 시 대사
         {
+            PlayerController.instance.istalking = true;
             npc_Text = QuestEndText[sayCount].text;
 
             Type_init();
@@ -155,12 +160,14 @@ public class QuestNPCText : UIText
         }
         if (Input.GetKey("f") && sayCount == 5 && sayEnd == true && isquestclear == true)
         {
+            PlayerController.instance.istalking = false;
             npc_anim.SetBool("isTalking", false);
             dialog.SetActive(false);
         }
 
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true && isquestclear != true && RepeatTalk == false) // 퀘스트 미완료시 대사
         {
+            PlayerController.instance.istalking = true;
             GameManager.Instance.isQuestStart = true;
             npc_Text = QuestingText[0].text;
             Type_init();
@@ -188,6 +195,7 @@ public class QuestNPCText : UIText
         }
         if (Input.GetKey("f") && sayCount == 3 && sayEnd == true && isquestclear != true)
         {
+            PlayerController.instance.istalking = false;
             npc_anim.SetBool("isTalking", false);
             dialog.SetActive(false);
         }

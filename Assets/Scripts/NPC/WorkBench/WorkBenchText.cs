@@ -48,6 +48,7 @@ public class WorkBenchText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
+            UIManager.instance.ChangeScreen(UIManager.ScreenState.Customize);
             dialog.GetComponent<CanvasGroup>().alpha = 0;
             sayCount = 1;
             WorkBenchController.instance.canopenCustomize = true;
