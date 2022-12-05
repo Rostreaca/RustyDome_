@@ -250,9 +250,10 @@ MonoBehaviour:
   modulePower: 0
   modulePowerRegen: 0
   moduleEquipSlots: []
-  meleeWeapon: {fileID: 11400000, guid: 7cfce354c0b0aab48bc045fca3ea38e8, type: 2}
+  combat: {fileID: 0}
+  meleeWeapon: {fileID: 0}
   rangeWeapon: {fileID: 11400000, guid: 47629b171b289eb4991490a1b527eb79, type: 2}
-  specialWeapon: {fileID: 11400000, guid: 1484a808b8bf2784b887ad69a452e295, type: 2}
+  specialWeapon: {fileID: 0}
   moveSpeed: 3
   rollCoolTime: 1
   rollTimer: 0

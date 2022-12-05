@@ -35,6 +35,7 @@ Transform:
   - {fileID: 4470778193702824785}
   - {fileID: 1580139575759415599}
   - {fileID: 1305975296068227680}
+  - {fileID: 7419383452892814726}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50,6 +51,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 005bada4595f06d47bfb80fc423dcfc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4848296041103743261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7419383452892814726}
+  - component: {fileID: 6738847016600156212}
+  m_Layer: 2
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7419383452892814726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4848296041103743261}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -97.47947, y: -52.067844, z: -0.37955797}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1305975295441154743}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6738847016600156212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4848296041103743261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6cd1d7e5570ada458373385ba0cf725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  hpBar: {fileID: 0}
+  powerBar: {fileID: 0}
+  ammoBar: {fileID: 0}
+  scrapText: {fileID: 0}
+  gameScreen: {fileID: 0}
+  pauseScreen: {fileID: 0}
+  mapScreen: {fileID: 0}
+  inventoryScreen: {fileID: 0}
+  customizeScreen: {fileID: 0}
+  gameoverScreen: {fileID: 0}
+  optionScreen: {fileID: 0}
+  endScreen: {fileID: 0}
+  screenState: 0
 --- !u!1001 &915606704627921360
 PrefabInstance:
   m_ObjectHideFlags: 0

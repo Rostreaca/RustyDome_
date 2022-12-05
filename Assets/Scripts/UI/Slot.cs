@@ -9,6 +9,13 @@ public abstract class Slot : MonoBehaviour, IPointerClickHandler
     public Item item;
     public string slotItemName;
     public int count;
+    public bool hasItem
+    {
+        get
+        {
+            return item != null && count >= 1;
+        }
+    }
 
     public Image icon;
 

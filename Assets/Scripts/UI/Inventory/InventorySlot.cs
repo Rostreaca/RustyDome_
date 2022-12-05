@@ -13,6 +13,18 @@ public class InventorySlot : Slot, IPointerEnterHandler
 
     public bool isScroll;
 
+    public enum SlotType
+    {
+        CoreEquipSlot,
+        MeleeWeaponEquipSlot,
+        RangeWeaponEquipSlot,
+        SpecialWeaponEquipSlot,
+        MobileWeaponEquipSlot,
+        InventorySlot
+    }
+
+    public SlotType type;
+
     public override void Start()
     {
         base.Start();
@@ -30,14 +42,37 @@ public class InventorySlot : Slot, IPointerEnterHandler
 
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            if (equipSlot != null)
+            if (hasItem && type == SlotType.InventorySlot)
             {
                 equipSlot.item = item;
                 equipSlot.count = 1;
                 equipSlot.UpdateSlot();
 
-                if (equipSlot.gameObject.name == "MeleeWeaponEquipSlot")
-                    PlayerController.instance.meleeWeapon = equipSlot.item as MeleeWeapon;
+                PlayerController player = PlayerController.instance;
+
+                switch (equipSlot.type)
+                {
+                    case SlotType.CoreEquipSlot:
+                        break;
+
+                    case SlotType.MeleeWeaponEquipSlot:
+                        player.meleeWeapon = equipSlot.item as MeleeWeapon;
+                        break;
+
+                    case SlotType.RangeWeaponEquipSlot:
+                        player.rangeWeapon = equipSlot.item as RangeWeapon;
+                        break;
+
+                    case SlotType.SpecialWeaponEquipSlot:
+                        player.specialWeapon = equipSlot.item as SpecialWeapon;
+                        break;
+
+                    case SlotType.MobileWeaponEquipSlot:
+                        break;
+
+                    case SlotType.InventorySlot:
+                        break;
+                }
             }
         }
     }

@@ -806,6 +806,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MobileSlot2
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527506166442145}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792466540175770
@@ -1085,8 +1095,25 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
+--- !u!114 &3611527506166442145 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+    type: 3}
+  m_PrefabInstance: {fileID: 5068792466568980788}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df60dba1266d90a48a5c01a3ca11bc01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5262425853710167300 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1103403393092469808, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
@@ -1365,6 +1392,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MobileSlot0
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527506166442145}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792466641414249
@@ -1954,6 +1991,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
       propertyPath: count
       value: 0
       objectReference: {fileID: 0}
@@ -1967,6 +2009,11 @@ PrefabInstance:
       propertyPath: isScroll
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527504956810258}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792466914165315
@@ -2521,6 +2568,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MobileSlot1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527506166442145}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792467132595178
@@ -2655,8 +2712,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeicalWeaponEquipSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: type
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
+--- !u!114 &3611527506676578943 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+    type: 3}
+  m_PrefabInstance: {fileID: 5068792467132595178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df60dba1266d90a48a5c01a3ca11bc01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5262425853163339738 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1103403393092469808, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
@@ -3077,6 +3151,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
       propertyPath: scroll
       value: 
       objectReference: {fileID: 3381324532196462715}
@@ -3085,6 +3164,11 @@ PrefabInstance:
       propertyPath: isScroll
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527506429460091}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792467295396550
@@ -3519,15 +3603,31 @@ PrefabInstance:
         type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: 0e02c0a8bb5aba844901683f720ce246,
-        type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
       propertyPath: count
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
+--- !u!114 &3611527506429460091 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+    type: 3}
+  m_PrefabInstance: {fileID: 5068792467388170222}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df60dba1266d90a48a5c01a3ca11bc01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5262425852916022238 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1103403393092469808, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
@@ -4043,6 +4143,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
       propertyPath: scroll
       value: 
       objectReference: {fileID: 3381324532143417201}
@@ -4051,6 +4156,11 @@ PrefabInstance:
       propertyPath: isScroll
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527504811574362}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792467689416761
@@ -4187,6 +4297,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
       propertyPath: scroll
       value: 
       objectReference: {fileID: 3381324533209722907}
@@ -4195,6 +4310,11 @@ PrefabInstance:
       propertyPath: isScroll
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527506676578943}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792467706146558
@@ -4817,6 +4937,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
+--- !u!114 &3611527504956810258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+    type: 3}
+  m_PrefabInstance: {fileID: 5068792467778676103}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df60dba1266d90a48a5c01a3ca11bc01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5262425854648213943 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1103403393092469808, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
@@ -4959,8 +5091,13 @@ PrefabInstance:
         type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: 0e02c0a8bb5aba844901683f720ce246,
+      objectReference: {fileID: 11400000, guid: 7cfce354c0b0aab48bc045fca3ea38e8,
         type: 2}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
       propertyPath: count
@@ -4976,6 +5113,11 @@ PrefabInstance:
       propertyPath: isScroll
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527506429460091}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792467859155319
@@ -5414,11 +5556,28 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
       propertyPath: count
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
+--- !u!114 &3611527504811574362 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+    type: 3}
+  m_PrefabInstance: {fileID: 5068792467932284367}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df60dba1266d90a48a5c01a3ca11bc01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5262425854502978047 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1103403393092469808, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
@@ -5565,6 +5724,11 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
       propertyPath: count
       value: 1
       objectReference: {fileID: 0}
@@ -5578,6 +5742,11 @@ PrefabInstance:
       propertyPath: isScroll
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527504956810258}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792468064493587
@@ -5714,6 +5883,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
       propertyPath: scroll
       value: 
       objectReference: {fileID: 3381324532143417201}
@@ -5722,6 +5896,11 @@ PrefabInstance:
       propertyPath: isScroll
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527504811574362}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792468105703751
@@ -6430,6 +6609,11 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
       propertyPath: count
       value: 1
       objectReference: {fileID: 0}
@@ -6443,6 +6627,11 @@ PrefabInstance:
       propertyPath: isScroll
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527504811574362}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792468235712417
@@ -6859,6 +7048,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
       propertyPath: scroll
       value: 
       objectReference: {fileID: 3381324533209722907}
@@ -6867,6 +7061,11 @@ PrefabInstance:
       propertyPath: isScroll
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527506676578943}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792468336200090
@@ -7145,8 +7344,12 @@ PrefabInstance:
         type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: 94434d90ead29164d98a5e54bc178c36,
-        type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
       propertyPath: scroll
@@ -7157,6 +7360,11 @@ PrefabInstance:
       propertyPath: isScroll
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527506429460091}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792468384620708
@@ -7573,6 +7781,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 1484a808b8bf2784b887ad69a452e295,
+        type: 2}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
       propertyPath: scroll
       value: 
       objectReference: {fileID: 3381324533209722907}
@@ -7581,6 +7805,11 @@ PrefabInstance:
       propertyPath: isScroll
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: equipSlot
+      value: 
+      objectReference: {fileID: 3611527506676578943}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82, type: 3}
 --- !u!1001 &5068792468478259830
