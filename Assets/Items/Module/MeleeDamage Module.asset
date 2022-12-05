@@ -16,14 +16,14 @@ MonoBehaviour:
   stackSize: 1
   itemName: MeleeDamage Module
   itemInfo: "\uADFC\uC811\uACF5\uACA9 \uBAA8\uB4C8\r\n\r\n\uB3D9\uB825\uD575 \uC810\uC720\uC728
-    25%\r\n\uADFC\uC811\uACF5\uACA9\uB825 50% \uC99D\uAC00\r\n\r\n\uB3D9\uB825\uD575\uC5D0\uC11C
+    20%\r\n\uADFC\uC811\uACF5\uACA9\uB825 50% \uC99D\uAC00\r\n\r\n\uB3D9\uB825\uD575\uC5D0\uC11C
     \uAE30\uCCB4\uC758 \uC0C1\uBD80\uC5D0 \uC804\uB2EC\uB418\uB294 \uC5D0\uB108\uC9C0\uB7C9\uC744
     \uC99D\uAC00\uC2DC\uCF1C \uAC00\uD558\uB294 \uADFC\uC811 \uD53C\uD574\uB7C9\uC774
     \uC99D\uAC00\uD569\uB2C8\uB2E4."
-  occupancyPoint: 25
+  occupancyPoint: 20
   hp: 0
   power: 0
   powerRegen: 0
-  meleeDmg: 0
+  meleeDmg: 50
   meleeSpeed: 0
   moveSpeed: 0
