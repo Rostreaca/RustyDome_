@@ -101,7 +101,7 @@ public class Customize : MonoBehaviour, IPointerClickHandler
             }
         }
 
-        occupancyImg.fillAmount = curOccupancyPoint / maxOccupancyPoint;
+        occupancyImg.fillAmount = (float)curOccupancyPoint / (float)maxOccupancyPoint;
         occupancyText.text = curOccupancyPoint.ToString() + " / " + maxOccupancyPoint.ToString();
     }
 }
