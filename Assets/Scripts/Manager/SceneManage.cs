@@ -224,7 +224,8 @@ public class SceneManage : MonoBehaviour
     }
     public void DoorSceneMover()
     {
-        if(InteractPortal !=null)
+        GameManager.Instance.NowLoading = true;
+        if (InteractPortal !=null)
         {
             PlayerController.instance.transform.position = new Vector2(InteractPortal.transform.position.x, InteractPortal.transform.position.y);
         }
