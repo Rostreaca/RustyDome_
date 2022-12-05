@@ -43,11 +43,8 @@ public class Customize : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-        equipSlots = transform.GetChild(0).GetComponentsInChildren<CustomizeSlot>().ToList();
-        inventorySlots = transform.GetChild(1).GetComponentsInChildren<CustomizeSlot>().ToList();
-        informText = transform.GetChild(2).GetComponentInChildren<Text>();
-        occupancyText = transform.GetChild(3).GetComponentInChildren<Text>();
-        occupancyImg = transform.GetChild(3).GetChild(1).GetComponent<Image>();
+        equipSlots = transform.GetChild(1).GetComponentsInChildren<CustomizeSlot>().ToList();
+        inventorySlots = transform.GetChild(2).GetComponentsInChildren<CustomizeSlot>().ToList();
 
         UpdateSlot();
     }
