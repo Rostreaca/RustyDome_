@@ -12,6 +12,7 @@ public class DataManager : MonoBehaviour
 	public int ammo ;
 	public float power;
 	public int scrap;
+	public bool[] boxopened;
 	public float player_pos_x, player_pos_y;
 	public bool isquestClear;
 	public bool isQuestStart;

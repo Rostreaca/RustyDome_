@@ -20,6 +20,10 @@ public class NPCController : NPCManager
     }
     public void Start()
     {
+        if(tag == "Chest")
+        {
+            //GameManager.Instance.boxopened[SceneManage.Instance.nowscene.buildIndex] = true;
+        }
         playerPos = GameObject.Find("Player").transform;
     }
     // Start is called before the first frame update
@@ -27,6 +31,7 @@ public class NPCController : NPCManager
     // Update is called once per frame
     void Update()
     {
+        
         Check();
         CreateTextBox();
         findDialog();

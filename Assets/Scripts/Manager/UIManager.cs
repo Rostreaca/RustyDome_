@@ -9,15 +9,16 @@ public class UIManager : MonoBehaviour
 
     public PlayerController player;
 
-    public enum ScreenState {Game, Pause, Inform, Map, Inventory, Customize, GameOver, Option}
+    public enum ScreenState {Game, Pause, Inform, Map, Inventory, Customize, GameOver, Option, End}
     public Image hpBar, powerBar, ammoBar;
     public Text scrapText;
 
     [Header("Components")]
-    public CanvasGroup gameScreen, pauseScreen, mapScreen, inventoryScreen, customizeScreen, gameoverScreen, optionScreen;
+    public CanvasGroup gameScreen, pauseScreen, mapScreen, inventoryScreen, customizeScreen, gameoverScreen, optionScreen ,endScreen;
     [HideInInspector]
     public ScreenState screenState;
 
+    bool finished;
     private void Awake()
     {
         if (instance != null)
@@ -25,13 +26,36 @@ public class UIManager : MonoBehaviour
         else
             instance = this;
     }
+    private void FindCanvasGroup()
+    {
+            if (GameObject.Find("GameScreen"))
+            {
+                gameScreen = GameObject.Find("GameScreen").GetComponent<CanvasGroup>();
 
+                hpBar = GameObject.Find("Healthbar_Health").GetComponent<Image>();
+                powerBar = GameObject.Find("Powerbar_Power").GetComponent<Image>();
+                ammoBar = GameObject.Find("Ammobar_Ammo").GetComponent<Image>();
+
+                scrapText = GameObject.Find("ScrapText").GetComponent<Text>();
+            }
+        if (GameObject.Find("PauseScreen"))
+            pauseScreen = GameObject.Find("PauseScreen").GetComponent<CanvasGroup>();
+        if (GameObject.Find("MapScreen"))
+            mapScreen = GameObject.Find("MapScreen").GetComponent<CanvasGroup>();
+        if (GameObject.Find("InventoryScreen"))
+            inventoryScreen = GameObject.Find("InventoryScreen").GetComponent<CanvasGroup>();
+        if (GameObject.Find("CustomizeScreen"))
+            customizeScreen = GameObject.Find("CustomizeScreen").GetComponent<CanvasGroup>();
+        if (GameObject.Find("GameOverScreen"))
+            gameoverScreen = GameObject.Find("GameOverScreen").GetComponent<CanvasGroup>();
+        if (GameObject.Find("OptionScreen"))
+            optionScreen = GameObject.Find("OptionScreen").GetComponent<CanvasGroup>();
+        if(GameObject.Find("FinishScreen"))
+            endScreen = GameObject.Find("FinishScreen").GetComponent<CanvasGroup>();
+    }
     private void Start()
     {
-        if(GameObject.Find("OptionScreen"))
-        {
-            optionScreen = GameObject.Find("OptionScreen").GetComponent<CanvasGroup>();
-        }
+        FindCanvasGroup();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         hpBar = GameObject.Find("Healthbar_Health").GetComponent<Image>();
@@ -41,9 +65,9 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !finished)
         {
-            if (GameManager.Instance.isPause)
+            if (GameManager.Instance.isPause )
                 ChangeScreen(ScreenState.Game);
             else
                 ChangeScreen(ScreenState.Pause);
@@ -91,6 +115,7 @@ public class UIManager : MonoBehaviour
         ScreenActive(inventoryScreen, false);
         ScreenActive(customizeScreen, false);
         ScreenActive(optionScreen, false);
+        ScreenActive(endScreen, false);
 
         switch (screenState)
         {
@@ -135,6 +160,12 @@ public class UIManager : MonoBehaviour
 
             case ScreenState.Option:
                 ScreenActive(optionScreen, true);
+                GameManager.Instance.isPause = true;
+                Time.timeScale = 0;
+                break;
+            case ScreenState.End:
+                ScreenActive(endScreen, true);
+                finished = true;
                 GameManager.Instance.isPause = true;
                 Time.timeScale = 0;
                 break;

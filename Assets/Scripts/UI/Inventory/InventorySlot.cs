@@ -47,9 +47,12 @@ public class InventorySlot : Slot
                 countText.text = count.ToString();
                 countText.color = Color.black;
             }
-            
-            icon.sprite = item.icon;
-            icon.color = Color.white;
+
+            if (icon != null)
+            {
+                icon.sprite = item.icon;
+                icon.color = Color.white;
+            }
         }
 
         else

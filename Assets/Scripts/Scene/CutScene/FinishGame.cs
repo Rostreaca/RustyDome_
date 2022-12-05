@@ -15,4 +15,9 @@ public class FinishGame : MonoBehaviour
     {
         
     }
+
+    public void FinishScreen()
+    {
+        UIManager.instance.ChangeScreen(UIManager.ScreenState.End);
+    }
 }
