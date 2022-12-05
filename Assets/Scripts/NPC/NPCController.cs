@@ -28,20 +28,27 @@ public class NPCController : NPCManager
     void Update()
     {
         int a = SceneManager.GetActiveScene().buildIndex;
-        if (tag == "Chest" && anim.GetCurrentAnimatorStateInfo(0).IsName("Box1_Open"))
+        if(tag == "Chest")
         {
-            GameManager.Instance.boxopened[a] = true;
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Box1_Open"))
+            {
+                GameManager.Instance.boxopened[a] = true;
+            }
+            if (GameManager.Instance.boxopened[a] == true)
+            {
+                anim.SetTrigger("Open");
+            }
+            else
+            {
+                Check();
+                CreateTextBox();
+                findDialog();
+            }
         }
-        if(GameManager.Instance.boxopened[a] == true)
-        {
-            anim.SetTrigger("Open");
-        }
-        else if (GameManager.Instance.boxopened[a] != true)
-        {
+        
             Check();
             CreateTextBox();
             findDialog();
-        }
     }
 
     public void OnDrawGizmos()

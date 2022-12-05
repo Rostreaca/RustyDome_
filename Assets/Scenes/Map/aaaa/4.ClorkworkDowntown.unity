@@ -3950,6 +3950,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 1580139575759415633, guid: 49bed69f9ae623d48aa3c8180ebde576,
+        type: 3}
+      propertyPath: completelyend
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49bed69f9ae623d48aa3c8180ebde576, type: 3}
 --- !u!1 &1227070816
@@ -10420,6 +10425,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7970075255424742963, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970075255424742963, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970075255424742963, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970075255424742963, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8561834512226691219, guid: 7d030c7e57e51094da28558c01434996,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -11067,6 +11092,7 @@ MonoBehaviour:
   customizeScreen: {fileID: 0}
   gameoverScreen: {fileID: 0}
   optionScreen: {fileID: 0}
+  endScreen: {fileID: 0}
   screenState: 0
 --- !u!1001 &3433463779056067054
 PrefabInstance:

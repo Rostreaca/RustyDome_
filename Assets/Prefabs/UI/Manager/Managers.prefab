@@ -181,6 +181,11 @@ PrefabInstance:
       propertyPath: isBossDead
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2209898450451285335, guid: 7a40d26fee9578846bf19bc522607a84,
+        type: 3}
+      propertyPath: boxopened.Array.size
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a40d26fee9578846bf19bc522607a84, type: 3}
 --- !u!4 &1305975297006761112 stripped
