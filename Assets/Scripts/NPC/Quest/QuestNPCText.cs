@@ -10,7 +10,7 @@ public class QuestNPCText : UIText
     public GameObject QuestProgresstxt;
     public bool questStart;
     public Module module;
-    public GameObject item;
+    public GameObject item , _weapon;
     public GameObject Actor;
     public Text[] QuestingText, QuestEndText;
     // Start is called before the first frame update
@@ -138,6 +138,7 @@ public class QuestNPCText : UIText
             npc_Text = QuestEndText[sayCount].text;
             Debug.Log("아이템드랍"); 
             Instantiate(item, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
+            Instantiate(_weapon, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
             Type_init();
             sayCount++;
 
