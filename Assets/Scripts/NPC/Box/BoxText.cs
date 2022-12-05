@@ -56,7 +56,7 @@ public class BoxText : UIText
             Type_init();
             if (Box.transform.position.x > player.transform.position.x && seta < 90) { seta += 20; }
             else if (Box.transform.position.x < player.transform.position.x && seta > 90) { seta -= 20; }
-            Instantiate(Item, new Vector2(Box.transform.position.x, Box.transform.position.y+0.7f), Quaternion.identity, Actor.transform);
+            Instantiate(Item, new Vector2(Box.transform.position.x, Box.transform.position.y+0.7f), Quaternion.identity);
             sayCount = 1;
             isBoxOpen = true;
             dialog.SetActive(false);

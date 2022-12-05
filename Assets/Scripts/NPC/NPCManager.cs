@@ -45,9 +45,9 @@ public class NPCManager : MonoBehaviour
 
     public void findDialog()
     {
-        if (GameObject.Find("[UI]").transform.Find("Canvas").transform.Find(Dialog_name).gameObject && GameObject.Find("[UI]").transform.Find("Canvas").transform.Find(Dialog_name).gameObject.name !="Canvas")
+        if (GameObject.Find("Canvas").transform.Find(Dialog_name).gameObject && GameObject.Find("Canvas").transform.Find(Dialog_name).gameObject.name !="Canvas")
         {
-            dialog = GameObject.Find("[UI]").transform.Find("Canvas").transform.Find(Dialog_name).gameObject;
+            dialog = GameObject.Find("Canvas").transform.Find(Dialog_name).gameObject;
         }
     }
     public void CreateTextBox()

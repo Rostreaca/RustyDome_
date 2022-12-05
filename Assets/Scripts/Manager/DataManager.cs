@@ -37,7 +37,7 @@ public class DataManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 		instance = this;
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(gameObject);
 	}
 	private void Awake()
 	{

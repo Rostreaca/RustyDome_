@@ -318,7 +318,7 @@ PrefabInstance:
     - target: {fileID: 1305975295441154743, guid: 49bed69f9ae623d48aa3c8180ebde576,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1305975295441154743, guid: 49bed69f9ae623d48aa3c8180ebde576,
         type: 3}
@@ -376,6 +376,11 @@ PrefabInstance:
       value: Managers
       objectReference: {fileID: 0}
     - target: {fileID: 5698958283733764744, guid: 49bed69f9ae623d48aa3c8180ebde576,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586618604318950806, guid: 49bed69f9ae623d48aa3c8180ebde576,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2451,89 +2456,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472006467}
   m_CullTransparentMesh: 1
---- !u!1 &1602419203
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1602419205}
-  - component: {fileID: 1602419204}
-  m_Layer: 2
-  m_Name: DataManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1602419204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1602419203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ad8b7894ecb53d46a04a71885dbd15d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _loadSceneIndex: 0
-  loadData:
-    player_pos_x: 0
-    player_pos_y: 0
-    hp: 0
-    powers: 0
-    bullets: 0
-    scraps: 0
-    sceneIndex: 0
-    questprogress: 0
-    isQuestStart: 0
-    isquestClear: 0
-    questComplete: 0
-    isbossDead: 0
-    HaveLever: 0
-    HaveGatekey: 0
-    isGateOpen: 0
-    isDoorOpen: 0
-    Scene2MissonStart: 0
-  hp: 0
-  ammo: 0
-  power: 0
-  scrap: 0
-  player_pos_x: 0
-  player_pos_y: 0
-  isquestClear: 0
-  isQuestStart: 0
-  questComplete: 0
-  questprogress: 0
-  SaveSceneIndex: 0
-  isbossDead: 0
-  HaveLever: 0
-  HaveGatekey: 0
-  isGateOpen: 0
-  isDoorOpen: 0
-  isGameLoaded: 0
-  Scene2MissonStart: 0
-  player: {fileID: 0}
-  player_stats: {fileID: 0}
---- !u!4 &1602419205
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1602419203}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.022, y: -2.055, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1644436862
 GameObject:
   m_ObjectHideFlags: 0
@@ -3140,7 +3062,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921515018}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1921515020
 Camera:
   m_ObjectHideFlags: 0

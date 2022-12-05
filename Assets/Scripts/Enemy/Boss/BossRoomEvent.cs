@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BossRoomEvent : MonoBehaviour
 {
-    public GameObject LettorBox;
     public GameObject PlayerUI;
     public GameObject hpbar;
     public GameObject bossroomdoor;
@@ -24,10 +23,6 @@ public class BossRoomEvent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameObject.Find("Managers").transform.Find("SceneManager").transform.Find("LettorBoxController"))
-        {
-            LettorBox = GameObject.Find("Managers").transform.Find("SceneManager").transform.Find("LettorBoxController").gameObject;
-        }
         if(GameManager.Instance.isBossDead == true)
         {
             Destroy(gameObject);
@@ -43,11 +38,6 @@ public class BossRoomEvent : MonoBehaviour
         if(BossController.instance !=null && BossController.instance.isdead == true)
         {
             hpbar.SetActive(false);
-        }
-        if(GameManager.Instance.BossCutscenePlaying == false&&GameObject.Find("LettorBoxController"))
-        {
-            Animator lettanim = GameObject.Find("LettorBoxController").GetComponent<Animator>();
-            lettanim.SetTrigger("OpenLettorBox");
         }
     }
 
@@ -82,7 +72,7 @@ public class BossRoomEvent : MonoBehaviour
                 if (GameManager.Instance.BossCutscenePlaying == true)
                 {
                     PlayerUI.SetActive(false);
-                    LettorBox.SetActive(true);
+                    
                 }
             }
             

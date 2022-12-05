@@ -25,7 +25,7 @@ public class QuestManager : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     // Start is called before the first frame update
     void Start()

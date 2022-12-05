@@ -17,6 +17,14 @@ public class MainMenuCamera : MonoBehaviour
 
     private void Start()
     {
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        canvas.worldCamera = gameObject.GetComponent<Camera>();
+        if (GameObject.Find("SceneManager"))
+        {
+            Canvas scenemanager = GameObject.Find("SceneManager").GetComponent<Canvas>();
+
+            scenemanager.worldCamera = gameObject.GetComponent<Camera>();
+        }
         theCamera = GetComponent<Camera>();
 
         halfHeight = theCamera.orthographicSize;
@@ -29,12 +37,12 @@ public class MainMenuCamera : MonoBehaviour
     {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         canvas.worldCamera = gameObject.GetComponent<Camera>();
-        if (GameObject.Find("SceneManager"))
-        {
-            Canvas scenemanager = GameObject.Find("SceneManager").GetComponent<Canvas>();
+        //if (GameObject.Find("SceneManager"))
+        //{
+        //    Canvas scenemanager = GameObject.Find("SceneManager").GetComponent<Canvas>();
 
-            scenemanager.worldCamera = gameObject.GetComponent<Camera>();
-        }
+        //    scenemanager.worldCamera = gameObject.GetComponent<Camera>();
+        //}
 
         float clampedX = Mathf.Clamp(transform.position.x, halfWidth,  halfWidth);
         float clampedY = Mathf.Clamp(transform.position.y, halfHeight, halfHeight);
