@@ -15,11 +15,12 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 76525302cd933b94dabfcd9314a6182e, type: 3}
   stackSize: 1
   itemName: ScrapGun
-  itemInfo: 
+  itemInfo: "\uACE0\uCCA0\uCD1D\n\n3\uC138\uB300 \uC591\uC0B0\uD615 \uAE30\uACC4\uC5D0
+    \uAE30\uBCF8 \uC7A5\uCC29\uB418\uC5B4\uC788\uB294 \uBB34\uAE30"
   animName: RangeAttack
-  dmg: 1
+  dmg: 35
   powerCon: 25
-  stunDmg: 75
+  stunDmg: 35
   ammoCon: 1
   skillDmg: 0
   skillPowerCon: 0
