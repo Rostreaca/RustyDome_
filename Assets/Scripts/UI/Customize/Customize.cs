@@ -12,7 +12,8 @@ public class Customize : MonoBehaviour
     public Text occupancyText;
     public Image occupancyImg;
 
-    public int occupancyPoint;
+    public int maxOccupancyPoint;
+    public int curOccupancyPoint;
 
     [SerializeField]
     private List<CustomizeSlot> equipSlots = new List<CustomizeSlot>();
@@ -80,18 +81,16 @@ public class Customize : MonoBehaviour
 
     public void UpdateOccupancy()
     {
-        float occup = 0;
-
         foreach (CustomizeSlot slot in equipSlots)
         {
             if (slot.item != null)
             {
                 Module module = slot.item as Module;
-                occup += module.occupancyPoint;
+                curOccupancyPoint += module.occupancyPoint;
             }
         }
 
-        occupancyImg.fillAmount = occup / occupancyPoint;
-        occupancyText.text = occup.ToString() + " / " + occupancyPoint.ToString();
+        occupancyImg.fillAmount = curOccupancyPoint / maxOccupancyPoint;
+        occupancyText.text = curOccupancyPoint.ToString() + " / " + maxOccupancyPoint.ToString();
     }
 }

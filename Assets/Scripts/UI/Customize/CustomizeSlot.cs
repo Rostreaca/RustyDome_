@@ -105,7 +105,7 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void Equip(Module module)
     {
-        if (Customize.instance.occupancyPoint + module.occupancyPoint > 100)
+        if (Customize.instance.curOccupancyPoint + module.occupancyPoint > 100)
             return;
 
         CustomizeSlot fromSlot = Customize.instance.inventorySlots.Find(x => x.item.itemName == module.itemName);

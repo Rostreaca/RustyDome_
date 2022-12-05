@@ -196,7 +196,7 @@ public class PlayerController : MonoBehaviour
     private void Roll()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && isGround && powerNow > 30 &&
-            !isMeleeAttack && !isHit)
+            !isAttack && !isHit)
         {
             int dir = Mathf.CeilToInt(Input.GetAxis("Horizontal"));
             if (rollTimer == 0 && dir != 0)

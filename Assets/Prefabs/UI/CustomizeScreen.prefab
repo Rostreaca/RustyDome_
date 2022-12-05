@@ -418,7 +418,8 @@ MonoBehaviour:
   informText: {fileID: 0}
   occupancyText: {fileID: 0}
   occupancyImg: {fileID: 0}
-  occupancyPoint: 100
+  maxOccupancyPoint: 100
+  curOccupancyPoint: 0
   equipSlots: []
   inventorySlots: []
   testItem: {fileID: 0}
