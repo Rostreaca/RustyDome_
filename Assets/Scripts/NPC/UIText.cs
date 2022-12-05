@@ -21,6 +21,8 @@ public class UIText : MonoBehaviour
 
     public string npc_Text="'F'";
 
+    public float talkspeed = 0.1f;
+    public float talkdelay = 0.5f;
 
     public int sayCount = 0;
     public int textEnd=0;
@@ -129,11 +131,15 @@ public class UIText : MonoBehaviour
         {
             talksound();
             text.text = npc_Text.Substring(0, i);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(talkspeed);
             textEnd ++;
         }
         if(textEnd == npc_Text.Length+1)
         {
+            if(gameObject.name == "CutSceneText")
+            {
+                yield return new WaitForSeconds(talkdelay);
+            }
             sayEnd = true;
         }
     }
