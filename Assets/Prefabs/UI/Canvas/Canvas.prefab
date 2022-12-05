@@ -1999,6 +1999,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7404999145423930151}
     m_Modifications:
+    - target: {fileID: 5068792467102793629, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 5068792468522066686, guid: f192eeedf26c3ea49bcd19a20ec9d65a,
         type: 3}
       propertyPath: m_Pivot.x
