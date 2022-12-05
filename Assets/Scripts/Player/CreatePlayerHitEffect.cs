@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CreatePlayerHitEffect : MonoBehaviour
 {
+    public Transform player_sprite;
     public int randomrange;
     BoxCollider2D boxcol;
     public bool aleadyhitting;
@@ -33,6 +34,6 @@ public class CreatePlayerHitEffect : MonoBehaviour
     {
         randomrange = Random.Range(0, 2);
         spawn_position = new Vector2(transform.position.x, transform.position.y);
-        Instantiate(EffectImage[randomrange], spawn_position, Quaternion.identity);
+        Instantiate(EffectImage[randomrange], spawn_position, Quaternion.identity,player_sprite);
     }
 }

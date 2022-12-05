@@ -17,14 +17,10 @@ public class BoxText : UIText
     void Awake()
     {
         originPos = dialog.transform.position;
-        Singleton_Init();
+        Constructor();
     }
-    void Singleton_Init()
+    void Constructor()
     {
-        if(instance !=null)
-        {
-            Destroy(gameObject);
-        }
         instance = this;
     }
     // Update is called once per frame
