@@ -401,12 +401,12 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetAxis("Vertical") != 0)
             {
-                animator.SetFloat("ClimbAnimationSpeed", 1);
+                animator.SetFloat("ClimbSpeed", 1);
             }
 
             else
             {
-                animator.SetFloat("ClimbAnimationSpeed", 0);
+                animator.SetFloat("ClimbSpeed", 0);
             }
         }
 
@@ -474,6 +474,9 @@ public class PlayerController : MonoBehaviour
         powerRegen = playerPowerRegen + modulePowerRegen;
         moveSpeed = playerMoveSpeed * (1 + moduleMoveSpeed);
         attackSpeed = playerAttackSpeed * (1 + moduleAttackSpeed);
+
+        animator.SetFloat("MoveSpeed", 1 + moduleMoveSpeed);
+        animator.SetFloat("AttackSpeed", 1 + moduleAttackSpeed);
 
         if (hpNow > hpMax)
             hpNow = hpMax;

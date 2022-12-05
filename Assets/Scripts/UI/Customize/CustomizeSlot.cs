@@ -85,7 +85,7 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
                 if (fromSlot.isEquiped)
                     return;
 
-                Equip(HandManager.instance.item);
+                Equip(HandManager.instance.item as Module);
             }
         }
     }
@@ -103,12 +103,15 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
         Customize.instance.UpdateSlot();
     }
 
-    public void Equip(Item equipItem)
+    public void Equip(Module module)
     {
-        CustomizeSlot fromSlot = Customize.instance.inventorySlots.Find(x => x.item.itemName == equipItem.itemName);
+        if (Customize.instance.occupancyPoint + module.occupancyPoint > 100)
+            return;
+
+        CustomizeSlot fromSlot = Customize.instance.inventorySlots.Find(x => x.item.itemName == module.itemName);
         fromSlot.isEquiped = true;
 
-        item = equipItem;
+        item = module;
         count = 1;
 
         Customize.instance.UpdateSlot();

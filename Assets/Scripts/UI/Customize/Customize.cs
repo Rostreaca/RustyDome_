@@ -75,8 +75,11 @@ public class Customize : MonoBehaviour
             slot.UpdateSlot();
         }
 
+        UpdateOccupancy();
+    }
 
-        //UpdateOccupancy
+    public void UpdateOccupancy()
+    {
         float occup = 0;
 
         foreach (CustomizeSlot slot in equipSlots)
