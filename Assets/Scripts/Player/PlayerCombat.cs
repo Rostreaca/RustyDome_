@@ -342,4 +342,15 @@ public class PlayerCombat : Combat
 
         SoundManager.instance.SFXPlay("aa", audio);
     }
+    public void OpenItem()
+    {
+        if (BoxText.instance != null)
+        {
+            BoxText.instance.createItem();
+        }
+    }
+    public void OpenCondition()
+    {
+        player.isOpeningBox = false;
+    }
 }

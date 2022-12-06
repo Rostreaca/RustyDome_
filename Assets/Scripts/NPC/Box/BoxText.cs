@@ -29,6 +29,8 @@ public class BoxText : UIText
         player = GameObject.FindWithTag("Player");
         Box = npc;
         npc_anim = npc.GetComponent<Animator>();
+        if (Box.transform.position.x > player.transform.position.x && seta < 90) { seta += 20; }
+        else if (Box.transform.position.x < player.transform.position.x && seta > 90) { seta -= 20; }
         FindNPC();
         if (npc.GetComponent<NPCController>().Item != null)
         {
@@ -43,7 +45,10 @@ public class BoxText : UIText
         else
             dialog.SetActive(false);
     }
-
+    public void createItem()
+    {
+        Instantiate(Item, new Vector2(Box.transform.position.x, Box.transform.position.y + 0.7f), Quaternion.identity);
+    }
     void BoxInteract()
     {
         if (sayCount == 0)
@@ -53,10 +58,9 @@ public class BoxText : UIText
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
             npc_anim.SetTrigger("Open");
+            player.GetComponent<PlayerController>().isOpeningBox = true;
+            player.GetComponent<PlayerController>().animator.SetTrigger("OpenBox");
             Type_init();
-            if (Box.transform.position.x > player.transform.position.x && seta < 90) { seta += 20; }
-            else if (Box.transform.position.x < player.transform.position.x && seta > 90) { seta -= 20; }
-            Instantiate(Item, new Vector2(Box.transform.position.x, Box.transform.position.y+0.7f), Quaternion.identity);
             sayCount = 1;
             isBoxOpen = true;
             dialog.SetActive(false);

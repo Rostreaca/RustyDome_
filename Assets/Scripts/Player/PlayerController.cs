@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     public bool isRangeAttack = false;
     public bool isSpecialAttack = false;
     public bool istalking = false;
+    public bool isOpeningBox;
 
     public bool isAttack
     {
@@ -116,7 +117,7 @@ public class PlayerController : MonoBehaviour
     {
         //!animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_start")&&!animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_end")
         PlayerPos = transform;
-        if (GameManager.Instance.BossCutscenePlaying == false && GameManager.Instance.RuinCutscenePlaying == false && GameManager.Instance.NowLoading == false && !istalking)
+        if (GameManager.Instance.BossCutscenePlaying == false && GameManager.Instance.RuinCutscenePlaying == false && GameManager.Instance.NowLoading == false && !istalking&&!isOpeningBox)
         {
             if (GameManager.Instance.isGame && !GameManager.Instance.isPause&& !animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_start") && !animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_end")) //check Game status
             {
@@ -137,7 +138,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.Instance.BossCutscenePlaying == false && GameManager.Instance.RuinCutscenePlaying == false && GameManager.Instance.NowLoading == false && !istalking)
+        if(GameManager.Instance.BossCutscenePlaying == false && GameManager.Instance.RuinCutscenePlaying == false && GameManager.Instance.NowLoading == false && !istalking&&!isOpeningBox)
         {
             if (GameManager.Instance.isGame && !GameManager.Instance.isPause&& !animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_start") && !animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_end"))
             {
@@ -464,7 +465,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
     private IEnumerator IHit()
     {
         isHit = true;
