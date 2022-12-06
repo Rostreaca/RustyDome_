@@ -494,6 +494,7 @@ public class PlayerController : MonoBehaviour
         ModuleUpdate();
 
         hpMax = playerHp + moduleHp;
+        hpNow = hpMax;
         powerMax = playerPower + modulePower;
         powerRegen = playerPowerRegen + modulePowerRegen;
         moveSpeed = playerMoveSpeed * (1 + moduleMoveSpeed);
