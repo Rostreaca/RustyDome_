@@ -45,7 +45,7 @@ public class RuinCutScene : MonoBehaviour
             Active1time = true;
         }
 
-        if(enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("MeleeAttack")&& enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.99f)
+        if(enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("MeleeAttack")&& enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
             GameManager.Instance.Scene2MissonStart = true;
             GameManager.Instance.RuinCutscenePlaying = false;
