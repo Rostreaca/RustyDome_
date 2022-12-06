@@ -506,6 +506,7 @@ public class PlayerController : MonoBehaviour
 
         animator.SetFloat("MoveSpeed", 1 + moduleMoveSpeed);
         animator.SetFloat("AttackSpeed", 1 + moduleAttackSpeed);
+        weaponSprite.gameObject.GetComponent<Animator>().SetFloat("AttackSpeed", 1 + moduleAttackSpeed);
 
         if (hpNow > hpMax)
             hpNow = hpMax;

@@ -27,6 +27,9 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
 
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
+            if (!Customize.instance.canCustomize)
+                return;
+
             if (type == SlotType.ModuleEquipSlot && hasItem)
             {
                 UnEquip();
