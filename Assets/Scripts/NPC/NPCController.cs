@@ -45,7 +45,7 @@ public class NPCController : NPCManager
                 findDialog();
             }
         }
-        
+        else
             Check();
             CreateTextBox();
             findDialog();
