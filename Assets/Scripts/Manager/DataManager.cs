@@ -51,6 +51,7 @@ public class DataManager : MonoBehaviour
 	{
 		BoxData boxdata = new BoxData();
 			boxdata.boxopened = GameManager.Instance.boxopened;
+
 		SlotData slotdata = new SlotData();
 		
 		if (player ==null && GameObject.FindWithTag("Player") )

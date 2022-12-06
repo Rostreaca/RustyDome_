@@ -424,8 +424,11 @@ public class PlayerController : MonoBehaviour
             hpNow -= damage;
 
             isMeleeAttack = false;
+            animator.SetBool(meleeWeapon.animName, false);
             isRangeAttack = false;
+            animator.SetBool(rangeWeapon.animName, false);
             isSpecialAttack = false;
+            animator.SetBool(specialWeapon.animName, false);
 
             combat.Hit();
 
@@ -454,7 +457,6 @@ public class PlayerController : MonoBehaviour
     public void Death()
     {
         animator.SetTrigger("Death");
-        GameManager.Instance.GameOver(); //set game state to game over
     }
 
     public void PowerRegen()

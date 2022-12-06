@@ -354,4 +354,9 @@ public class PlayerCombat : Combat
         player.isOpeningBox = false;
         player.istalking = false;
     }
+
+    public void OnDeath()
+    {
+        GameManager.Instance.GameOver(); //set game state to game over
+    }
 }

@@ -13,18 +13,15 @@ public class HandManager : MonoBehaviour
     [SerializeField]
     private Vector3 offset;
 
-    void SIngleton_Init()
-    {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        instance = this;
-    }
-
     void Awake()
     {
-        SIngleton_Init();
+        if (instance == null)
+            instance = this;
+
+        else if (instance != this)
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
