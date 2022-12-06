@@ -11,38 +11,24 @@ public class Inventory : MonoBehaviour
     public Text informText;
 
     public List<InventorySlot> slots = new List<InventorySlot>();
-    public GameObject[] slotbox;
-
     public Item testItem;
 
-    void SIngleton_Init()
+    void Awake()
     {
-        instance = this;
+        if (instance == null)
+            instance = this;
+
+        else if (instance != this)
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
     }
 
-    private void Update()
-    {
-        if(GameObject.Find("InformText"))
-        {
-            informText = GameObject.Find("InformText").GetComponent<Text>();
-        }
-        slotbox[1] = gameObject.GetComponent<GameObject>();
-       slots = GetComponentsInChildren<InventorySlot>().ToList();
-    }
     private void Start()
     {
-        SIngleton_Init();
-
-        Slot_Init();
+        UpdateSlot();
     }
 
-    public void Slot_Init()
-    {
-        foreach (InventorySlot slot in slots)
-        {
-            slot.UpdateSlot();
-        }
-    }
     public void AddItem(Item item)
     {
         foreach (Slot slot in slots)
@@ -80,5 +66,15 @@ public class Inventory : MonoBehaviour
     public void DisplayInform(string text)
     {
         informText.text = text;
+
+        Debug.Log(informText + "이게 고장났나?");
+    }
+
+    public void UpdateSlot()
+    {
+        foreach (InventorySlot slot in slots)
+        {
+            slot.UpdateSlot();
+        }
     }
 }

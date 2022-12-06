@@ -19,8 +19,7 @@ public class Customize : MonoBehaviour, IPointerClickHandler
 
     public bool canCustomize;
 
-    [SerializeField]
-    private List<CustomizeSlot> equipSlots = new List<CustomizeSlot>();
+    public List<CustomizeSlot> equipSlots = new List<CustomizeSlot>();
     public List<CustomizeSlot> inventorySlots = new List<CustomizeSlot>();
 
     public CustomizeSlot fromSlot;
@@ -43,9 +42,6 @@ public class Customize : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-        equipSlots = transform.GetChild(1).GetComponentsInChildren<CustomizeSlot>().ToList();
-        inventorySlots = transform.GetChild(2).GetComponentsInChildren<CustomizeSlot>().ToList();
-
         UpdateSlot();
     }
 
