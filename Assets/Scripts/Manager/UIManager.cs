@@ -9,12 +9,12 @@ public class UIManager : MonoBehaviour
 
     public PlayerController player;
 
-    public enum ScreenState {Game, Pause, Inform, Map, Inventory, Customize, GameOver, Option, End}
+    public enum ScreenState {Game, Pause, Inform, Inventory, Customize, GameOver, Option, End}
     public Image hpBar, powerBar, ammoBar;
     public Text scrapText;
 
     [Header("Components")]
-    public CanvasGroup gameScreen, pauseScreen, mapScreen, inventoryScreen, customizeScreen, gameoverScreen, optionScreen ,endScreen;
+    public CanvasGroup gameScreen, pauseScreen, inventoryScreen, customizeScreen, gameoverScreen, optionScreen ,endScreen;
     [HideInInspector]
     public ScreenState screenState;
 
@@ -40,8 +40,6 @@ public class UIManager : MonoBehaviour
             }
         if (GameObject.Find("PauseScreen"))
             pauseScreen = GameObject.Find("PauseScreen").GetComponent<CanvasGroup>();
-        if (GameObject.Find("MapScreen"))
-            mapScreen = GameObject.Find("MapScreen").GetComponent<CanvasGroup>();
         if (GameObject.Find("InventoryScreen"))
             inventoryScreen = GameObject.Find("InventoryScreen").GetComponent<CanvasGroup>();
         if (GameObject.Find("CustomizeScreen"))
@@ -77,13 +75,6 @@ public class UIManager : MonoBehaviour
                 ChangeScreen(ScreenState.Pause);
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            if (mapScreen.alpha > 0)
-                ChangeScreen(ScreenState.Game);
-            else
-                ChangeScreen(ScreenState.Map);
-        }
 
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -119,7 +110,6 @@ public class UIManager : MonoBehaviour
         //일단 다끄고 해당되는걸 킨다.
         ScreenActive(gameScreen, false);
         ScreenActive(pauseScreen, false);
-        ScreenActive(mapScreen, false);
         ScreenActive(inventoryScreen, false);
         ScreenActive(customizeScreen, false);
         ScreenActive(optionScreen, false);
@@ -138,12 +128,6 @@ public class UIManager : MonoBehaviour
 
             case ScreenState.Pause:
                 ScreenActive(pauseScreen, true);
-                GameManager.Instance.isPause = true;
-                Time.timeScale = 0;
-                break;
-
-            case ScreenState.Map:
-                ScreenActive(mapScreen, true);
                 GameManager.Instance.isPause = true;
                 Time.timeScale = 0;
                 break;
