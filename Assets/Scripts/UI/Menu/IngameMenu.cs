@@ -50,7 +50,7 @@ public class IngameMenu : MonoBehaviour
         UIManager.instance.gameoverScreen.blocksRaycasts = false;
         Time.timeScale = 1;
         Destroy(player);
-
+        Destroy(Canvas);
         DataManager data = GameObject.Find("DataManager").GetComponent<DataManager>();
         data.Restart();
 
