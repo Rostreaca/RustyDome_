@@ -48,6 +48,7 @@ public class UIText : MonoBehaviour
     }
     void OnDisable()
     {
+        npc = dialog.transform.Find("TextEnd").gameObject;
         sayCount = 0;
         //npc_anim.SetBool("isTalking", false);
         dialog.transform.position = originPos;

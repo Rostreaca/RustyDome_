@@ -9,13 +9,9 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
 
     public Text informText;
-    [TextArea(4, 10)]
-    public string Testinfo;
-    public Item testItems;
 
-    public InventorySlot[] slotstest; //= new List<InventorySlot>().ToArray();
-    //public List<InventorySlot> slots = new List<InventorySlot>();
-
+    public List<InventorySlot> slots = new List<InventorySlot>();
+    public GameObject[] slotbox;
 
     public Item testItem;
 
@@ -24,36 +20,32 @@ public class Inventory : MonoBehaviour
         instance = this;
     }
 
-    void Awake()
-    {
-    }
     private void Update()
     {
         if(GameObject.Find("InformText"))
         {
             informText = GameObject.Find("InformText").GetComponent<Text>();
         }
-        //slots = GetComponentsInChildren<InventorySlot>().ToList();
-        slotstest = GetComponentsInChildren<InventorySlot>();
-    }
-    public void testcheckItemexist(Item item)
-    {
-        testItems = item;
+        slotbox[1] = gameObject.GetComponent<GameObject>();
+       slots = GetComponentsInChildren<InventorySlot>().ToList();
     }
     private void Start()
     {
         SIngleton_Init();
-            
 
-        foreach(InventorySlot slot in slotstest)
+        Slot_Init();
+    }
+
+    public void Slot_Init()
+    {
+        foreach (InventorySlot slot in slots)
         {
             slot.UpdateSlot();
         }
     }
-
     public void AddItem(Item item)
     {
-        foreach (Slot slot in slotstest)
+        foreach (Slot slot in slots)
         {
             if (slot.Add(item))
             {
@@ -64,7 +56,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(Item item)
     {
-        foreach (Slot slot in slotstest)
+        foreach (Slot slot in slots)
         {
             if (slot.Minus(item))
             {
@@ -75,7 +67,7 @@ public class Inventory : MonoBehaviour
 
     public bool Search(Item item)
     {
-        foreach (Slot slot in slotstest)
+        foreach (Slot slot in slots)
         {
             if (slot.Ishave(item))
             {
@@ -87,7 +79,6 @@ public class Inventory : MonoBehaviour
 
     public void DisplayInform(string text)
     {
-        Testinfo = text;
-        informText.text = Testinfo;
+        informText.text = text;
     }
 }

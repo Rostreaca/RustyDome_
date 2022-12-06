@@ -131,8 +131,11 @@ public class DataManager : MonoBehaviour
 
 		isGameLoaded = true;
     }
+	//public InventorySlot inventest;
     public void LoadData()
     {
+		//inven = GameObject.Find("SpecialSlot0").GetComponent<InventorySlot>();
+		//inven.count = 1;
 		if (player_stats!=null)
         {
 			player_stats.transform.position = new Vector2(loadData.player_pos_x,loadData.player_pos_y);

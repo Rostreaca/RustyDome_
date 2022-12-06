@@ -38,6 +38,8 @@ public class InventorySlot : Slot, IPointerEnterHandler
 
     private void Update()
     {
+        if(equipSlot !=null)
+        equipSlot.UpdateSlot();
     }
     public override void OnPointerClick(PointerEventData eventData)
     {

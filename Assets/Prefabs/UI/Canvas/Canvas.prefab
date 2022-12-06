@@ -1193,7 +1193,7 @@ PrefabInstance:
         type: 3}
       propertyPath: npc
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2604156408185863223}
     - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
         type: 3}
       propertyPath: item
@@ -1206,6 +1206,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6a75922dd997a784481fc2665b7092f3,
         type: 2}
+    - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
+        type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 6858372336167351654, guid: 517dee1789882cd4293bbc3698dac4ca,
+        type: 3}
     - target: {fileID: 1993108227942361470, guid: 312245850244d6845899291dcc593c17,
         type: 3}
       propertyPath: npc_anim
@@ -1383,6 +1389,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 312245850244d6845899291dcc593c17, type: 3}
+--- !u!1 &2604156408185863223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1993108228802545476, guid: 312245850244d6845899291dcc593c17,
+    type: 3}
+  m_PrefabInstance: {fileID: 4578792115786922867}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2604156408807709841 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1993108228377733090, guid: 312245850244d6845899291dcc593c17,
