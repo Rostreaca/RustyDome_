@@ -46,11 +46,11 @@ public class UIText : MonoBehaviour
     {
         Type_init();
     }
-    void OnDisable()
+    public void OnDisable()
     {
         npc = dialog.transform.Find("TextEnd").gameObject;
         sayCount = 0;
-        //npc_anim.SetBool("isTalking", false);
+        npc_anim.SetBool("isTalking", false);
         dialog.transform.position = originPos;
     }
     // Update is called once per frame

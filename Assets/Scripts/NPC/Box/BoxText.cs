@@ -14,6 +14,17 @@ public class BoxText : UIText
 
     public float seta = 80f;
     public bool isBoxOpen = false;
+
+    private void OnDisable()
+    {
+        base.OnDisable();
+        if(isBoxOpen == true)
+        {
+            isBoxOpen = false;
+        }
+
+
+    }
     void Awake()
     {
         originPos = dialog.transform.position;
