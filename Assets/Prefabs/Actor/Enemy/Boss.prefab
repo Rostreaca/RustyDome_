@@ -2012,8 +2012,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  p2audio: {fileID: 0}
-  p2clip: {fileID: 0}
   isSounding: 0
   HandPos: {fileID: 8406268035165580839}
   TargetPos: {fileID: 0}
@@ -3048,7 +3046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderDetected: {fileID: 0}
-  pattern1dmg: 20
+  pattern1dmg: 30
 --- !u!1 &8406268034382618698
 GameObject:
   m_ObjectHideFlags: 0

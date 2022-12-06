@@ -235,9 +235,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPos: {fileID: 0}
-  hpMax: 500
-  hpNow: 500
-  playerHp: 500
+  hpMax: 100
+  hpNow: 100
+  playerHp: 100
   moduleHp: 0
   powerMax: 100
   powerNow: 100
@@ -278,6 +278,7 @@ MonoBehaviour:
   isSpecialAttack: 0
   istalking: 0
   isOpeningBox: 0
+  isDeath: 0
   isHit: 0
   isInvincible: 0
   isCharge: 0

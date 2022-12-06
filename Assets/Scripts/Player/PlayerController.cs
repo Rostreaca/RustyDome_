@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
                 isRoll = true;
 
                 rigid.gravityScale = 0;
-                powerNow -= 40;
+                powerNow -= 50;
                 StartCoroutine(IRoll(dir));
             }
         }
