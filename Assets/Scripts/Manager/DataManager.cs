@@ -41,12 +41,14 @@ public class DataManager : MonoBehaviour
 		instance = this;
 		//DontDestroyOnLoad(gameObject);
 	}
+
 	private void Awake()
 	{
 		//loadData = SaveSystem.Load("Main");
 		//_loadSceneIndex = loadData.sceneIndex;
 		Singleton_Init();
     }
+
     void Update()
 	{
 		BoxData boxdata = new BoxData();
