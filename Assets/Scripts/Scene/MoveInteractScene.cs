@@ -19,7 +19,7 @@ public class MoveInteractScene : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject !=null && collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject !=null && collision.gameObject.CompareTag("Player") && GameObject.Find("SceneManager").transform.Find("DownFadeIn").gameObject.activeSelf == false)
         {
             if(Input.GetKey(KeyCode.F))
             {

@@ -352,5 +352,6 @@ public class PlayerCombat : Combat
     public void OpenCondition()
     {
         player.isOpeningBox = false;
+        player.istalking = false;
     }
 }
