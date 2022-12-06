@@ -46,6 +46,8 @@ public class IngameMenu : MonoBehaviour
     {
         GameManager.Instance.isPause = false;
         GameManager.Instance.isGame = true;
+        UIManager.instance.gameoverScreen.alpha = 0;
+        UIManager.instance.gameoverScreen.blocksRaycasts = false;
         Time.timeScale = 1;
         Destroy(player);
 

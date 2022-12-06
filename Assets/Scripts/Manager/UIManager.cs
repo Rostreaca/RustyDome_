@@ -218,7 +218,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateGameScreen()
     {
-        if(player !=null)
+        if(player !=null &&gameScreen != null)
         {
             UpdateHealthBar();
             UpdatePowerBar();
