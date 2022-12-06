@@ -26,18 +26,15 @@ public class Customize : MonoBehaviour, IPointerClickHandler
 
     public Item testItem;
 
-    void SIngleton_Init()
-    {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        instance = this;
-    }
-
     void Awake()
     {
-        SIngleton_Init();
+        if (instance == null)
+            instance = this;
+
+        else if (instance != this)
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
