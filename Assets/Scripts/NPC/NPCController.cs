@@ -30,19 +30,39 @@ public class NPCController : NPCManager
         int a = SceneManager.GetActiveScene().buildIndex;
         if(tag == "Chest")
         {
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Box1_Open"))
+            if(name == "Chest_2")
             {
-                GameManager.Instance.boxopened[a] = true;
-            }
-            if (GameManager.Instance.boxopened[a] == true)
-            {
-                anim.SetTrigger("Open");
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Box1_Open"))
+                {
+                    GameManager.Instance.boxopened[a+1] = true;
+                }
+                if (GameManager.Instance.boxopened[a+1] == true)
+                {
+                    anim.SetTrigger("Open");
+                }
+                else
+                {
+                    Check();
+                    CreateTextBox();
+                    findDialog();
+                }
             }
             else
             {
-                Check();
-                CreateTextBox();
-                findDialog();
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Box1_Open"))
+                {
+                    GameManager.Instance.boxopened[a] = true;
+                }
+                if (GameManager.Instance.boxopened[a] == true)
+                {
+                    anim.SetTrigger("Open");
+                }
+                else
+                {
+                    Check();
+                    CreateTextBox();
+                    findDialog();
+                }
             }
         }
         else

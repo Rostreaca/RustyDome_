@@ -7006,12 +7006,12 @@ PrefabInstance:
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 106.4
+      value: 79.92
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.21
+      value: 66.22
       objectReference: {fileID: 0}
     - target: {fileID: 1033877053335472382, guid: bc8156ecf1bdefa4aa63ee7f89940721,
         type: 3}
@@ -13137,6 +13137,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7404999146206565685, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970075255424742963, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970075255424742963, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970075255424742963, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970075255424742963, guid: 7d030c7e57e51094da28558c01434996,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -42686,4 +42706,5 @@ MonoBehaviour:
   customizeScreen: {fileID: 0}
   gameoverScreen: {fileID: 0}
   optionScreen: {fileID: 0}
+  endScreen: {fileID: 0}
   screenState: 0
