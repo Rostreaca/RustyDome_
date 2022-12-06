@@ -536,7 +536,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5068792468522066687}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -1679,6 +1679,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -140
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546651284329119363, guid: 73d969e3139768449a1687256d4a9d88,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546651284329119363, guid: 73d969e3139768449a1687256d4a9d88,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546651284329119363, guid: 73d969e3139768449a1687256d4a9d88,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7546651284329119366, guid: 73d969e3139768449a1687256d4a9d88,
         type: 3}
@@ -3349,6 +3364,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeWeaponSlot2
       objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5188679
+      objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
       propertyPath: type
@@ -4402,6 +4447,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangeWeaponSlot2
       objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5188679
+      objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
       propertyPath: type
@@ -4568,6 +4643,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeicalWeaponSlot2
       objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5188679
+      objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
       propertyPath: type
@@ -4643,6 +4748,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Padding.m_Bottom
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546651284329119363, guid: 73d969e3139768449a1687256d4a9d88,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546651284329119363, guid: 73d969e3139768449a1687256d4a9d88,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546651284329119363, guid: 73d969e3139768449a1687256d4a9d88,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7546651284329119366, guid: 73d969e3139768449a1687256d4a9d88,
         type: 3}
@@ -4811,6 +4931,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -140
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546651284329119363, guid: 73d969e3139768449a1687256d4a9d88,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546651284329119363, guid: 73d969e3139768449a1687256d4a9d88,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546651284329119363, guid: 73d969e3139768449a1687256d4a9d88,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7546651284329119366, guid: 73d969e3139768449a1687256d4a9d88,
         type: 3}
@@ -5384,6 +5519,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeWeaponSlot0
       objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5188679
+      objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
       propertyPath: item
@@ -5722,6 +5887,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mobiles
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546651284329119367, guid: 73d969e3139768449a1687256d4a9d88,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73d969e3139768449a1687256d4a9d88, type: 3}
@@ -6213,6 +6383,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RangeWeaponSlot1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5188679
       objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
@@ -6994,6 +7194,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangeWeaponSlot0
       objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5188679
+      objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
       propertyPath: item
@@ -7475,6 +7705,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeicalWeaponSlot1
       objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5188679
+      objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
       propertyPath: type
@@ -7792,6 +8052,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MeleeWeaponSlot1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5188679
       objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
@@ -8267,6 +8557,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeicalWeaponSlot0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393092469810, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103403393135181731, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5188679
       objectReference: {fileID: 0}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
