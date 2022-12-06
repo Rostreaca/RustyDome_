@@ -47,7 +47,7 @@ public class WorkBenchText : UIText
     }
     void OpenScreen()
     {
-        if (WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench1_Open_Ani") || WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench2_Open_Ani") || WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench3_Open_Ani") || WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench4_Open_Ani"))
+        if (WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench1_Open_Ani") || WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench2_Open_Ani") || WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench3_Open_Ani") || WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench4_open"))
         {
             if (WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {

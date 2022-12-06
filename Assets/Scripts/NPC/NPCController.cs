@@ -27,10 +27,15 @@ public class NPCController : NPCManager
     // Update is called once per frame
     void Update()
     {
+        //if (SceneManage.Instance.nowscene.buildIndex == 4 && anim.GetCurrentAnimatorStateInfo(0).IsName("Box1_Open"))
+        //{
+        //    Check();
+        //    findDialog();
+        //}
         int a = SceneManager.GetActiveScene().buildIndex;
-        if(tag == "Chest")
+        if(tag == "Chest" )
         {
-            if(name == "Chest_2")
+            if (name == "Chest_2")
             {
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Box1_Open"))
                 {
@@ -51,6 +56,12 @@ public class NPCController : NPCManager
             {
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Box1_Open"))
                 {
+                    if (SceneManage.Instance.nowscene.buildIndex == 4)
+                    {
+                        CreateTextBox();
+                        findDialog();
+                        Check();
+                    }
                     GameManager.Instance.boxopened[a] = true;
                 }
                 if (GameManager.Instance.boxopened[a] == true)
@@ -63,6 +74,7 @@ public class NPCController : NPCManager
                     CreateTextBox();
                     findDialog();
                 }
+                
             }
         }
         else

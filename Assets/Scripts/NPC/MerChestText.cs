@@ -11,12 +11,24 @@ public class MerChestText : UIText
     public GameObject player;
     GameObject chest;
 
+    public bool CantInteract = false;
     public float seta = 80f;
     // Start is called before the first frame update
 
+    new private void OnDisable()
+    {
+        base.OnDisable(); 
+        if(TradeFInish)
+        {
+            CantInteract = true;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
+        if(!CantInteract)
+        {
+
         FindNPC();
         if (npc.GetComponent<NPCController>().Item != null )
         {
@@ -27,15 +39,16 @@ public class MerChestText : UIText
             chest = GameObject.Find("Chest");
         }
         player = GameObject.FindWithTag("Player");
-        TextPosition(transform, dialog, npc, 1f);
-        CheckSayEnd();
-        if (Cantrade == false && !TradeFInish)
-        {
-            Say();
-        }
-        else if (Cantrade == true)
-        {
-            Trade();
+            TextPosition(transform, dialog, npc, 1f);
+            CheckSayEnd();
+            if (Cantrade == false && !TradeFInish)
+            {
+                Say();
+            }
+            else if (Cantrade == true)
+            {
+                Trade();
+            }
         }
     }
 
@@ -58,10 +71,6 @@ public class MerChestText : UIText
     }
     void Trade()
     {
-        if(TradeFInish)
-        {
-            chest.GetComponent<NPCController>().enabled = false;
-        }
         if (sayCount == 0&& !TradeFInish)
         {
             //npc_anim.SetBool("isTalking", true);
