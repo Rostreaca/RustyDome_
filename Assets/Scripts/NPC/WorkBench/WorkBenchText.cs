@@ -28,13 +28,34 @@ public class WorkBenchText : UIText
         dialog.GetComponent<CanvasGroup>().alpha = 1;
         WorkBenchController.instance.anim.SetBool("isOpen", false);
         sayCount = 0;
-        isopen = false;
+        isopen = false; isopening = false;
     }
+    bool isopening;
     void Update()
     {
         FindNPC();
         CheckSayEnd();
         WorkBenchInteract();
+        if(!isopening)
+        {
+            OpenScreen();
+        }
+        if (UIManager.instance.customizeScreen.alpha == 0 && isopening)
+        {
+            PlayerController.instance.istalking = false;
+        }
+    }
+    void OpenScreen()
+    {
+        if( WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench1_Open_Ani") && WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).normalizedTime >=1.0f)
+        {
+            if (PlayerController.instance.animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_start")&& PlayerController.instance.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >=1.0f)
+            {
+                UIManager.instance.ChangeScreen(UIManager.ScreenState.Customize);
+                Customize.instance.canCustomize = true;
+                isopening = true;
+            }
+        }
     }
 
     void WorkBenchInteract()//f키를 눌러서 상호작용
@@ -46,13 +67,14 @@ public class WorkBenchText : UIText
         }
         if (Input.GetKey("f") && sayCount == 0 && sayEnd == true)
         {
-            UIManager.instance.ChangeScreen(UIManager.ScreenState.Customize);
-            Customize.instance.canCustomize = true;
+            PlayerController.instance.istalking = true;
+            WorkBenchController.instance.anim.SetBool("isOpen", true);
+            //UIManager.instance.ChangeScreen(UIManager.ScreenState.Customize);
+            //Customize.instance.canCustomize = true;
 
             dialog.GetComponent<CanvasGroup>().alpha = 0;
             sayCount = 1;
             dialog.transform.position = originPos;
-            WorkBenchController.instance.anim.SetBool("isOpen", true);
             player.hpNow = player.hpMax; //체력 회복
             GameManager.Instance.checkPoint = workBenchPos.transform; //체크포인트 저장
             isopen = true;
