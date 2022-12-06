@@ -51,7 +51,7 @@ public class WorkBenchText : UIText
         {
             if (WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
-                if (PlayerController.instance.animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_start") && PlayerController.instance.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+                if (PlayerController.instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Char_analyzing01"))
                 {
                     UIManager.instance.ChangeScreen(UIManager.ScreenState.Customize);
                     Customize.instance.canCustomize = true;
