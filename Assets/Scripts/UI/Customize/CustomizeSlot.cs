@@ -146,7 +146,7 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if (type == SlotType.ModuleEquipSlot)
             {
-                if (moduleName != null)
+                if (moduleName != null && item == null)
                 {
                     item = Customize.instance.inventorySlots.Find(x => x.item.itemName == moduleName).item;
                 }
