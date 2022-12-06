@@ -122,6 +122,8 @@ MonoBehaviour:
   nextTextBtn: {fileID: 1993108228802545476}
   text: {fileID: 1993108227942361468}
   npc_Text: '''F'''
+  talkspeed: 0.1
+  talkdelay: 0.5
   sayCount: 0
   textEnd: 0
   sayEnd: 0
@@ -133,6 +135,7 @@ MonoBehaviour:
   questStart: 0
   module: {fileID: 11400000, guid: 6a75922dd997a784481fc2665b7092f3, type: 2}
   item: {fileID: 6858372336167351654, guid: 5b76e3866e958254094189ce9fa3babe, type: 3}
+  _weapon: {fileID: 0}
   Actor: {fileID: 0}
   QuestingText:
   - {fileID: 2982144388109462022, guid: 795af34a615c8f94eac385e06a409be3, type: 3}
