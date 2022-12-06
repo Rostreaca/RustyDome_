@@ -25,6 +25,10 @@ public class InventorySlot : Slot, IPointerEnterHandler
 
     public SlotType type;
 
+    private void OnDestroy()
+    {
+        Debug.Log("인벤토리 자체가 파괴되었나");
+    }
     public override void Start()
     {
         base.Start();

@@ -60,6 +60,10 @@ public class PlayerController : MonoBehaviour
     public bool isSpecialAttack = false;
     public bool istalking = false;
 
+    private void OnDestroy()
+    {
+        Debug.Log("Àá±ñ ÆÄ±«µÇ³ª?");
+    }
     public bool isAttack
     {
         get

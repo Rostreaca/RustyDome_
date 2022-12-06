@@ -13,8 +13,8 @@ public class Inventory : MonoBehaviour
     [TextArea(4, 10)]
     public string Testinfo;
 
-    [SerializeField]
-    private List<InventorySlot> slots = new List<InventorySlot>();
+    
+    public List<InventorySlot> slots = new List<InventorySlot>();
 
 
     public Item testItem;
@@ -26,7 +26,6 @@ public class Inventory : MonoBehaviour
 
     void Awake()
     {
-        SIngleton_Init();
     }
     private void Update()
     {
@@ -34,10 +33,11 @@ public class Inventory : MonoBehaviour
         {
             informText = GameObject.Find("InformText").GetComponent<Text>();
         }
+        slots = GetComponentsInChildren<InventorySlot>().ToList();
     }
     private void Start()
     {
-        slots = GetComponentsInChildren<InventorySlot>().ToList();
+        SIngleton_Init();
             
 
         foreach(InventorySlot slot in slots)

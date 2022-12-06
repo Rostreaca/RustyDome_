@@ -51,6 +51,8 @@ public class DataManager : MonoBehaviour
 	{
 		BoxData boxdata = new BoxData();
 			boxdata.boxopened = GameManager.Instance.boxopened;
+		SlotData slotdata = new SlotData();
+		
 		if (player ==null && GameObject.FindWithTag("Player") )
         {
 			player = GameObject.FindWithTag("Player");
@@ -92,6 +94,7 @@ public class DataManager : MonoBehaviour
 
 				SaveSystem.Save(character,"Main");
 				SaveSystem.ArraySave(boxdata, "Sub");
+				SaveSystem.ListSave(slotdata, "slots");
 
 			}
 		}
@@ -208,6 +211,14 @@ public class BoxData
 {
 	public bool[] boxopened;
 }
+
+[System.Serializable]
+public class SlotData
+{
+	public InventorySlot[] equipSlot;
+
+
+}
 public static class SaveSystem
 {
 	private static string SavePath = Application.persistentDataPath + "/saves/";
@@ -239,6 +250,22 @@ public static class SaveSystem
 		string saveFilePath = SavePath + filename + "savedata.json";
 		File.WriteAllText(saveFilePath, saveJson);
 		Debug.Log("배열 저장 성공: " + saveFilePath);
+	}
+
+	public static void ListSave(SlotData slotdata, string filename)
+	{
+		if (!Directory.Exists(SavePath))
+		{
+			Directory.CreateDirectory(SavePath);
+		}
+
+		string saveJson = JsonUtility.ToJson(slotdata);
+
+		SlotData fromJson = JsonUtility.FromJson<SlotData>(saveJson);
+
+		string saveFilePath = SavePath + filename + "savedata.json";
+		File.WriteAllText(saveFilePath, saveJson);
+		Debug.Log("슬롯 저장 성공: " + saveFilePath);
 	}
 
 	public static SaveData Load(string filename)

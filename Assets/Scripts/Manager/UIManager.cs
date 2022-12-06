@@ -56,15 +56,19 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         FindCanvasGroup();
+        if(GameObject.FindGameObjectWithTag("Player"))
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-
+        if(GameObject.Find("Healthbar_Health"))
         hpBar = GameObject.Find("Healthbar_Health").GetComponent<Image>();
+        if(GameObject.Find("Powerbar_Power"))
         powerBar = GameObject.Find("Powerbar_Power").GetComponent<Image>();
+        if(GameObject.Find("Ammobar_Ammo"))
         ammoBar = GameObject.Find("Ammobar_Ammo").GetComponent<Image>();
     }
 
     private void Update()
     {
+        FindCanvasGroup();
         if (Input.GetKeyDown(KeyCode.Escape) && !finished)
         {
             if (GameManager.Instance.isPause )
@@ -214,11 +218,14 @@ public class UIManager : MonoBehaviour
 
     public void UpdateGameScreen()
     {
-        UpdateHealthBar();
-        UpdatePowerBar();
-        UpdateAmmoBar();
+        if(player !=null)
+        {
+            UpdateHealthBar();
+            UpdatePowerBar();
+            UpdateAmmoBar();
 
-        UpdateScrap();
+            UpdateScrap();
+        }
     }
 
     public void UpdateHealthBar()
