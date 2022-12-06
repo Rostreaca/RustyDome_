@@ -52,18 +52,18 @@ public class UIManager : MonoBehaviour
             optionScreen = GameObject.Find("OptionScreen").GetComponent<CanvasGroup>();
         if(GameObject.Find("FinishScreen"))
             endScreen = GameObject.Find("FinishScreen").GetComponent<CanvasGroup>();
+        if (GameObject.FindGameObjectWithTag("Player"))
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        if (GameObject.Find("Healthbar_Health"))
+            hpBar = GameObject.Find("Healthbar_Health").GetComponent<Image>();
+        if (GameObject.Find("Powerbar_Power"))
+            powerBar = GameObject.Find("Powerbar_Power").GetComponent<Image>();
+        if (GameObject.Find("Ammobar_Ammo"))
+            ammoBar = GameObject.Find("Ammobar_Ammo").GetComponent<Image>();
     }
     private void Start()
     {
         FindCanvasGroup();
-        if(GameObject.FindGameObjectWithTag("Player"))
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        if(GameObject.Find("Healthbar_Health"))
-        hpBar = GameObject.Find("Healthbar_Health").GetComponent<Image>();
-        if(GameObject.Find("Powerbar_Power"))
-        powerBar = GameObject.Find("Powerbar_Power").GetComponent<Image>();
-        if(GameObject.Find("Ammobar_Ammo"))
-        ammoBar = GameObject.Find("Ammobar_Ammo").GetComponent<Image>();
     }
 
     private void Update()
