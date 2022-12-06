@@ -47,13 +47,17 @@ public class WorkBenchText : UIText
     }
     void OpenScreen()
     {
-        if( WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench1_Open_Ani") && WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).normalizedTime >=1.0f)
+        if (WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench1_Open_Ani") || WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench2_Open_Ani") || WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench3_Open_Ani") || WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).IsName("WorkBench4_Open_Ani"))
         {
-            if (PlayerController.instance.animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_start")&& PlayerController.instance.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >=1.0f)
+
+            if (WorkBenchController.instance.anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
-                UIManager.instance.ChangeScreen(UIManager.ScreenState.Customize);
-                Customize.instance.canCustomize = true;
-                isopening = true;
+                if (PlayerController.instance.animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_start") && PlayerController.instance.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+                {
+                    UIManager.instance.ChangeScreen(UIManager.ScreenState.Customize);
+                    Customize.instance.canCustomize = true;
+                    isopening = true;
+                }
             }
         }
     }
