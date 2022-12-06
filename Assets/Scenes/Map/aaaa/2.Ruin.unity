@@ -21206,6 +21206,7 @@ MonoBehaviour:
   customizeScreen: {fileID: 0}
   gameoverScreen: {fileID: 0}
   optionScreen: {fileID: 0}
+  endScreen: {fileID: 0}
   screenState: 0
 --- !u!1001 &2145787927
 PrefabInstance:
@@ -23712,6 +23713,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7404999146206565685, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970075255424742963, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970075255424742963, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970075255424742963, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970075255424742963, guid: 7d030c7e57e51094da28558c01434996,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
