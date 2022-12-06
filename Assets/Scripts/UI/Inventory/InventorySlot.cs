@@ -36,15 +36,20 @@ public class InventorySlot : Slot, IPointerEnterHandler
         countText = GetComponentInChildren<Text>();
     }
 
+    private void Update()
+    {
+    }
     public override void OnPointerClick(PointerEventData eventData)
     {
-
-
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             if (item != null && count > 0)
             {
                 Inventory.instance.DisplayInform(item.itemInfo);
+            }
+            if(item == null || item.itemInfo == null)
+            {
+                Debug.Log("아이템 정보가 사라짐");
             }
         }
         else if (eventData.button == PointerEventData.InputButton.Right)

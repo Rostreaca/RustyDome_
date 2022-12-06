@@ -60,10 +60,6 @@ public class PlayerController : MonoBehaviour
     public bool isSpecialAttack = false;
     public bool istalking = false;
 
-    private void OnDestroy()
-    {
-        Debug.Log("Àá±ñ ÆÄ±«µÇ³ª?");
-    }
     public bool isAttack
     {
         get
@@ -118,10 +114,11 @@ public class PlayerController : MonoBehaviour
 
     public void FixedUpdate()
     {
+        //!animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_start")&&!animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_end")
         PlayerPos = transform;
         if (GameManager.Instance.BossCutscenePlaying == false && GameManager.Instance.RuinCutscenePlaying == false && GameManager.Instance.NowLoading == false && !istalking)
         {
-            if (GameManager.Instance.isGame && !GameManager.Instance.isPause) //check Game status
+            if (GameManager.Instance.isGame && !GameManager.Instance.isPause&& !animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_start") && !animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_end")) //check Game status
             {
                 Move();
                 Climb();
@@ -135,14 +132,14 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isGround", true);
             animator.SetBool("Climb", false) ;
         }
-        
+            animator.SetBool("isTalking", istalking);
     }
 
     private void Update()
     {
         if(GameManager.Instance.BossCutscenePlaying == false && GameManager.Instance.RuinCutscenePlaying == false && GameManager.Instance.NowLoading == false && !istalking)
         {
-            if (GameManager.Instance.isGame && !GameManager.Instance.isPause)
+            if (GameManager.Instance.isGame && !GameManager.Instance.isPause&& !animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_start") && !animator.GetCurrentAnimatorStateInfo(0).IsName("char_analyze_end"))
             {
                 Rotate();
                 Roll();

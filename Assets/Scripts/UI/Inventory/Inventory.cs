@@ -9,12 +9,12 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
 
     public Text informText;
-
     [TextArea(4, 10)]
     public string Testinfo;
+    public Item testItems;
 
-    
-    public List<InventorySlot> slots = new List<InventorySlot>();
+    public InventorySlot[] slotstest; //= new List<InventorySlot>().ToArray();
+    //public List<InventorySlot> slots = new List<InventorySlot>();
 
 
     public Item testItem;
@@ -33,14 +33,19 @@ public class Inventory : MonoBehaviour
         {
             informText = GameObject.Find("InformText").GetComponent<Text>();
         }
-        slots = GetComponentsInChildren<InventorySlot>().ToList();
+        //slots = GetComponentsInChildren<InventorySlot>().ToList();
+        slotstest = GetComponentsInChildren<InventorySlot>();
+    }
+    public void testcheckItemexist(Item item)
+    {
+        testItems = item;
     }
     private void Start()
     {
         SIngleton_Init();
             
 
-        foreach(InventorySlot slot in slots)
+        foreach(InventorySlot slot in slotstest)
         {
             slot.UpdateSlot();
         }
@@ -48,7 +53,7 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        foreach (Slot slot in slots)
+        foreach (Slot slot in slotstest)
         {
             if (slot.Add(item))
             {
@@ -59,7 +64,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(Item item)
     {
-        foreach (Slot slot in slots)
+        foreach (Slot slot in slotstest)
         {
             if (slot.Minus(item))
             {
@@ -70,7 +75,7 @@ public class Inventory : MonoBehaviour
 
     public bool Search(Item item)
     {
-        foreach (Slot slot in slots)
+        foreach (Slot slot in slotstest)
         {
             if (slot.Ishave(item))
             {
