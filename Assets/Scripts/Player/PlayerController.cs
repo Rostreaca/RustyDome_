@@ -61,6 +61,8 @@ public class PlayerController : MonoBehaviour
     public bool istalking = false;
     public bool isOpeningBox;
 
+    public bool isDeath = false;
+
     public bool isAttack
     {
         get
@@ -423,12 +425,24 @@ public class PlayerController : MonoBehaviour
             weaponSprite.Hit();
             hpNow -= damage;
 
-            isMeleeAttack = false;
-            animator.SetBool(meleeWeapon.animName, false);
-            isRangeAttack = false;
-            animator.SetBool(rangeWeapon.animName, false);
-            isSpecialAttack = false;
-            animator.SetBool(specialWeapon.animName, false);
+            if (meleeWeapon != null)
+            {
+                isMeleeAttack = false;
+                animator.SetBool(meleeWeapon.animName, false);
+            }
+
+            if (rangeWeapon != null)
+            {
+                isRangeAttack = false;
+                animator.SetBool(rangeWeapon.animName, false);
+            }
+
+            if (specialWeapon != null)
+            {
+                isSpecialAttack = false;
+                animator.SetBool(specialWeapon.animName, false);
+            }
+
 
             combat.Hit();
 
@@ -450,12 +464,16 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(noHitTime);
 
-        isHit = false;
-        isInvincible = false;
+        if (!isDeath)
+        {
+            isHit = false;
+            isInvincible = false;
+        }
     }
 
     public void Death()
     {
+        isDeath = true;
         animator.SetTrigger("Death");
     }
 
