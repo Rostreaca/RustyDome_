@@ -142,8 +142,8 @@ public class QuestNPCText : UIText
                itemdropped = true;
             npc_Text = QuestEndText[sayCount].text;
             Debug.Log("아이템드랍"); 
-            Instantiate(item, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
-            Instantiate(_weapon, new Vector2(transform.position.x, transform.position.y), Quaternion.identity, Actor.transform);
+            Instantiate(item, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+            Instantiate(_weapon, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
             Type_init();
             sayCount++;
 
