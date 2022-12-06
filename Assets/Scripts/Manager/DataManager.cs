@@ -53,8 +53,8 @@ public class DataManager : MonoBehaviour
 	{
 		BoxData boxdata = new BoxData();
 			boxdata.boxopened = GameManager.Instance.boxopened;
-
-		SlotData slotdata = new SlotData();
+		if(Inventory.instance!=null)
+		boxdata.Save();
 		
 		if (player ==null && GameObject.FindWithTag("Player") )
         {
@@ -97,7 +97,6 @@ public class DataManager : MonoBehaviour
 
 				SaveSystem.Save(character,"Main");
 				SaveSystem.ArraySave(boxdata, "Sub");
-				SaveSystem.ListSave(slotdata, "slots");
 
 			}
 		}
@@ -164,6 +163,25 @@ public class DataManager : MonoBehaviour
 			QuestManager.instance.completelyend = loadData.questComplete;
 			QuestManager.instance.Enemycount = questprogress;
 		}
+		if (Inventory.instance != null)
+		{
+			for (int i = 0; i < Inventory.instance.slots.Count; i++)
+			{
+				Inventory.instance.slots[i].count = boxloadData._saveInvendata[i];
+				Inventory.instance.UpdateSlot();
+			}
+			for (int i = 0; i < Customize.instance.equipSlots.Count; i++)
+			{
+				Customize.instance.equipSlots[i].count = boxloadData._saveEquipdata[i];
+				Customize.instance.equipSlots[i].moduleName = boxloadData._saveEquipModulename[i];
+				Customize.instance.UpdateSlot();
+			}
+			for (int i = 0; i < Customize.instance.inventorySlots.Count; i++)
+			{
+				Customize.instance.inventorySlots[i].count = boxloadData._savecustominvendata[i];
+				Customize.instance.UpdateSlot();
+			}
+		}
 
 		isGameLoaded = false;
 	}
@@ -215,7 +233,38 @@ public class SaveData
 [System.Serializable]
 public class BoxData
 {
-	public bool[] boxopened;
+	public bool[] boxopened; 
+	public int[] _saveInvendata;
+	public int[] _saveEquipdata;
+	public string[] _saveEquipModulename;
+	public int[] _savecustominvendata;
+	List<int> Invendatas = new List<int>();
+	List<int> EquipCustomizedatas = new List<int>();
+	List<string> EquipCustomizenames = new List<string>();
+	List<int> InvenCustomizedatas = new List<int>();
+	public void Save()
+	{
+		foreach (InventorySlot slot in Inventory.instance.slots)
+		{
+			Invendatas.Add(slot.count);
+		}
+
+		foreach (CustomizeSlot slot in Customize.instance.equipSlots)
+		{
+			EquipCustomizedatas.Add(slot.count);
+			EquipCustomizenames.Add(slot.moduleName);
+		}
+
+		foreach (CustomizeSlot slot in Customize.instance.inventorySlots)
+		{
+			InvenCustomizedatas.Add(slot.count);
+		}
+		_saveInvendata = Invendatas.ToArray();
+		_saveEquipdata = EquipCustomizedatas.ToArray();
+		_savecustominvendata = InvenCustomizedatas.ToArray();
+		_saveEquipModulename = EquipCustomizenames.ToArray();
+	}
+
 }
 
 [System.Serializable]
