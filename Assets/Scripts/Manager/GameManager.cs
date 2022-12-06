@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
     public bool NowLoading;
     public bool BossCutscenePlaying;
