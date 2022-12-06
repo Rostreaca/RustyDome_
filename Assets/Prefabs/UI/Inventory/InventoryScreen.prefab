@@ -290,7 +290,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   informText: {fileID: 5068792467102793629}
-  slots: []
+  Testinfo: 
+  testItems: {fileID: 0}
+  slotstest: []
   testItem: {fileID: 11400000, guid: c6f2cc669b04d7e46ab55d201df13e5e, type: 2}
 --- !u!1 &5068792468036847680
 GameObject:
@@ -3603,7 +3605,8 @@ PrefabInstance:
         type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 7cfce354c0b0aab48bc045fca3ea38e8,
+        type: 2}
     - target: {fileID: 8379315191319314837, guid: 53b678f9abe5e5b4bbea4e9cdf31fd82,
         type: 3}
       propertyPath: type

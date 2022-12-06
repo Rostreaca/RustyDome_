@@ -257,7 +257,7 @@ MonoBehaviour:
   moduleAttackSpeed: 0
   moduleEquipSlots: []
   combat: {fileID: 0}
-  meleeWeapon: {fileID: 0}
+  meleeWeapon: {fileID: 11400000, guid: 7cfce354c0b0aab48bc045fca3ea38e8, type: 2}
   rangeWeapon: {fileID: 11400000, guid: 47629b171b289eb4991490a1b527eb79, type: 2}
   specialWeapon: {fileID: 0}
   rollCoolTime: 1
@@ -273,8 +273,11 @@ MonoBehaviour:
   onLadder: 0
   isClimb: 0
   isMeleeAttack: 0
+  isAiming: 0
   isRangeAttack: 0
   isSpecialAttack: 0
+  istalking: 0
+  isOpeningBox: 0
   isHit: 0
   isInvincible: 0
   isCharge: 0
