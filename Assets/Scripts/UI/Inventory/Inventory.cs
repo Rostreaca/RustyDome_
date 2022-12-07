@@ -10,7 +10,8 @@ public class Inventory : MonoBehaviour
 
     public Text informText;
 
-    public List<InventorySlot> slots = new List<InventorySlot>();
+    public List<InventorySlot> equipSlots = new List<InventorySlot>();
+    public List<InventorySlot> inventorySlots = new List<InventorySlot>();
     public Item testItem;
 
     void Awake()
@@ -31,7 +32,7 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        foreach (Slot slot in slots)
+        foreach (Slot slot in inventorySlots)
         {
             if (slot.Add(item))
             {
@@ -42,7 +43,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(Item item)
     {
-        foreach (Slot slot in slots)
+        foreach (Slot slot in inventorySlots)
         {
             if (slot.Minus(item))
             {
@@ -53,7 +54,7 @@ public class Inventory : MonoBehaviour
 
     public bool Search(Item item)
     {
-        foreach (Slot slot in slots)
+        foreach (Slot slot in inventorySlots)
         {
             if (slot.Ishave(item))
             {
@@ -66,13 +67,16 @@ public class Inventory : MonoBehaviour
     public void DisplayInform(string text)
     {
         informText.text = text;
-
-        Debug.Log(informText + "이게 고장났나?");
     }
 
     public void UpdateSlot()
     {
-        foreach (InventorySlot slot in slots)
+        foreach (InventorySlot slot in equipSlots)
+        {
+            slot.UpdateSlot();
+        }
+
+        foreach (InventorySlot slot in inventorySlots)
         {
             slot.UpdateSlot();
         }

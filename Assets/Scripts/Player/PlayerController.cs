@@ -465,6 +465,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
     private IEnumerator IHit()
     {
         isHit = true;

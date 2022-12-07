@@ -165,9 +165,9 @@ public class DataManager : MonoBehaviour
 		}
 		if (Inventory.instance != null)
 		{
-			for (int i = 0; i < Inventory.instance.slots.Count; i++)
+			for (int i = 0; i < Inventory.instance.inventorySlots.Count; i++)
 			{
-				Inventory.instance.slots[i].count = boxloadData._saveInvendata[i];
+				Inventory.instance.inventorySlots[i].count = boxloadData._saveInvendata[i];
 				Inventory.instance.UpdateSlot();
 			}
 			for (int i = 0; i < Customize.instance.equipSlots.Count; i++)
@@ -244,7 +244,7 @@ public class BoxData
 	List<int> InvenCustomizedatas = new List<int>();
 	public void Save()
 	{
-		foreach (InventorySlot slot in Inventory.instance.slots)
+		foreach (InventorySlot slot in Inventory.instance.equipSlots)
 		{
 			Invendatas.Add(slot.count);
 		}

@@ -22,13 +22,10 @@ public class InventorySlot : Slot, IPointerEnterHandler
         MobileWeaponEquipSlot,
         InventorySlot
     }
-
     public SlotType type;
 
-    private void OnDestroy()
-    {
-        Debug.Log("인벤토리 자체가 파괴되었나");
-    }
+    public string itemName;
+
     public override void Start()
     {
         base.Start();
@@ -36,11 +33,6 @@ public class InventorySlot : Slot, IPointerEnterHandler
         countText = GetComponentInChildren<Text>();
     }
 
-    private void Update()
-    {
-        if(equipSlot !=null)
-        equipSlot.UpdateSlot();
-    }
     public override void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
@@ -100,6 +92,14 @@ public class InventorySlot : Slot, IPointerEnterHandler
     {
         if (count > 0)
         {
+            if (type != SlotType.InventorySlot)
+            {
+                if (itemName != null && item == null)
+                {
+                    item = Inventory.instance.inventorySlots.Find(x => x.item.itemName == itemName).item;
+                }
+            }
+
             if (count > 1)
             {
                 countText.text = count.ToString();

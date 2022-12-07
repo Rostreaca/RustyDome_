@@ -236,7 +236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5068792467894665863}
-  - component: {fileID: 5068792467894665862}
+  - component: {fileID: 1912280725153467352}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -277,7 +277,7 @@ RectTransform:
   m_AnchoredPosition: {x: -252.931, y: -13.646}
   m_SizeDelta: {x: 1121.553, y: 851.64}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5068792467894665862
+--- !u!114 &1912280725153467352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,23 +290,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   informText: {fileID: 5068792467102793629}
-  slots:
+  equipSlots:
   - {fileID: 3611527504956810258}
+  - {fileID: 3611527506429460091}
+  - {fileID: 3611527504811574362}
+  - {fileID: 3611527506676578943}
+  - {fileID: 3611527506166442145}
+  inventorySlots:
   - {fileID: 3611527505902418014}
   - {fileID: 3611527505786451613}
-  - {fileID: 3611527506429460091}
   - {fileID: 3611527504956250236}
   - {fileID: 3611527505445577181}
   - {fileID: 3611527506561133223}
-  - {fileID: 3611527504811574362}
   - {fileID: 3611527505583434543}
   - {fileID: 3611527505748926854}
   - {fileID: 3611527505063002073}
-  - {fileID: 3611527506676578943}
   - {fileID: 3611527505359252490}
   - {fileID: 3611527505517280111}
   - {fileID: 3611527505054460332}
-  - {fileID: 3611527506166442145}
   - {fileID: 3611527506119882367}
   - {fileID: 3611527506744601893}
   - {fileID: 3611527506218255281}
@@ -335,7 +336,7 @@ MonoBehaviour:
   - {fileID: 3611527506830888717}
   - {fileID: 3611527506063760561}
   - {fileID: 3611527505677325576}
-  testItem: {fileID: 11400000, guid: c6f2cc669b04d7e46ab55d201df13e5e, type: 2}
+  testItem: {fileID: 0}
 --- !u!1 &5068792468036847680
 GameObject:
   m_ObjectHideFlags: 0
