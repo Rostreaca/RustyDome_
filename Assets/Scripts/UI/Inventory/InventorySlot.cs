@@ -50,32 +50,6 @@ public class InventorySlot : Slot, IPointerEnterHandler
                 equipSlot.slotItemName = item.itemName;
                 equipSlot.count = 1;
                 equipSlot.UpdateSlot();
-
-                PlayerController player = PlayerController.instance;
-
-                switch (equipSlot.type)
-                {
-                    case SlotType.CoreEquipSlot:
-                        break;
-
-                    case SlotType.MeleeWeaponEquipSlot:
-                        player.meleeWeapon = equipSlot.item as MeleeWeapon;
-                        break;
-
-                    case SlotType.RangeWeaponEquipSlot:
-                        player.rangeWeapon = equipSlot.item as RangeWeapon;
-                        break;
-
-                    case SlotType.SpecialWeaponEquipSlot:
-                        player.specialWeapon = equipSlot.item as SpecialWeapon;
-                        break;
-
-                    case SlotType.MobileWeaponEquipSlot:
-                        break;
-
-                    case SlotType.InventorySlot:
-                        break;
-                }
             }
         }
     }
@@ -97,6 +71,29 @@ public class InventorySlot : Slot, IPointerEnterHandler
                 if (slotItemName != null && item == null)
                 {
                     item = Inventory.instance.inventorySlots.Find(x => x.HasItem(slotItemName)).item;
+                }
+
+                PlayerController player = PlayerController.instance;
+
+                switch (type)
+                {
+                    case SlotType.CoreEquipSlot:
+                        break;
+
+                    case SlotType.MeleeWeaponEquipSlot:
+                        player.meleeWeapon = item as MeleeWeapon;
+                        break;
+
+                    case SlotType.RangeWeaponEquipSlot:
+                        player.rangeWeapon = item as RangeWeapon;
+                        break;
+
+                    case SlotType.SpecialWeaponEquipSlot:
+                        player.specialWeapon = item as SpecialWeapon;
+                        break;
+
+                    case SlotType.MobileWeaponEquipSlot:
+                        break;
                 }
             }
 

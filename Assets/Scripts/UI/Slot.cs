@@ -19,11 +19,6 @@ public abstract class Slot : MonoBehaviour, IPointerClickHandler
 
     public Image icon;
 
-    
-    private void OnDestroy()
-    {
-        Debug.Log("파괴가 되었니?");
-    }
     public virtual void Start()
     {
         icon = transform.GetChild(0).GetComponent<Image>();
