@@ -15,8 +15,6 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
     public SlotType type;
     public bool isEquiped;
 
-    public string moduleName;
-
     public override void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
@@ -120,7 +118,7 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
         item = module;
         count = 1;
 
-        moduleName = item.itemName;
+        slotItemName = item.itemName;
 
         Customize.instance.UpdateSlot();
         PlayerController.instance.StateUpdate();
@@ -134,7 +132,7 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
         item = null;
         count = 0;
 
-        moduleName = null;
+        slotItemName = null;
 
         Customize.instance.UpdateSlot();
         PlayerController.instance.StateUpdate();
@@ -146,9 +144,9 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if (type == SlotType.ModuleEquipSlot)
             {
-                if (moduleName != null && item == null)
+                if (slotItemName != null && item == null)
                 {
-                    item = Customize.instance.inventorySlots.Find(x => x.HasModule(moduleName)).item;
+                    item = Customize.instance.inventorySlots.Find(x => x.HasModule(slotItemName)).item;
                 }
             }
 

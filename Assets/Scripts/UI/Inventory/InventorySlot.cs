@@ -25,8 +25,6 @@ public class InventorySlot : Slot, IPointerEnterHandler
     }
     public SlotType type;
 
-    public string itemName;
-
     public override void Start()
     {
         base.Start();
@@ -49,7 +47,7 @@ public class InventorySlot : Slot, IPointerEnterHandler
             if (hasItem && type == SlotType.InventorySlot)
             {
                 equipSlot.item = item;
-                equipSlot.itemName = item.itemName;
+                equipSlot.slotItemName = item.itemName;
                 equipSlot.count = 1;
                 equipSlot.UpdateSlot();
 
@@ -96,9 +94,9 @@ public class InventorySlot : Slot, IPointerEnterHandler
         {
             if (type != SlotType.InventorySlot)
             {
-                if (itemName != null && item == null)
+                if (slotItemName != null && item == null)
                 {
-                    item = Inventory.instance.inventorySlots.Find(x => x.HasItem(itemName)).item;
+                    item = Inventory.instance.inventorySlots.Find(x => x.HasItem(slotItemName)).item;
                 }
             }
 
