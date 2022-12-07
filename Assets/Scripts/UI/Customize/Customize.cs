@@ -10,6 +10,7 @@ public class Customize : MonoBehaviour, IPointerClickHandler
     public static Customize instance;
 
     public Text informText;
+    [TextArea]
     public string basicText;
     public Text occupancyText;
     public Image occupancyImg;

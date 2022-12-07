@@ -139,6 +139,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7404999145423930151}
     m_Modifications:
+    - target: {fileID: 7848386256633249922, guid: de459e08940ea1d499e1aeb761ae17d4,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7848386256633249922, guid: de459e08940ea1d499e1aeb761ae17d4,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7848386256633249922, guid: de459e08940ea1d499e1aeb761ae17d4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7848386256633249922, guid: de459e08940ea1d499e1aeb761ae17d4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7848386257233932957, guid: de459e08940ea1d499e1aeb761ae17d4,
         type: 3}
       propertyPath: m_Name
@@ -4193,12 +4213,16 @@ PrefabInstance:
     - target: {fileID: 3860631002553454471, guid: 196432ce6ad90754693070c5fc2dedd2,
         type: 3}
       propertyPath: m_Text
-      value: 
+      value: "\uC88C\uD074\uB9AD: \uC120\uD0DD \uBAA8\uB4C8 \uC124\uBA85\n\uB4DC\uB798\uADF8:
+        \uC120\uD0DD \uBAA8\uB4C8 \uC7A5\uCC29\n\uC6B0\uD074\uB9AD: \uC7A5\uCC29
+        \uBAA8\uB4C8 \uC0AD\uC81C"
       objectReference: {fileID: 0}
     - target: {fileID: 3860631002788990285, guid: 196432ce6ad90754693070c5fc2dedd2,
         type: 3}
       propertyPath: basicText
-      value: 
+      value: "\uC88C\uD074\uB9AD: \uC120\uD0DD \uBAA8\uB4C8 \uC124\uBA85\n\uB4DC\uB798\uADF8:
+        \uC120\uD0DD \uBAA8\uB4C8 \uC7A5\uCC29\n\uC6B0\uD074\uB9AD: \uC7A5\uCC29
+        \uBAA8\uB4C8 \uC0AD\uC81C"
       objectReference: {fileID: 0}
     - target: {fileID: 3941585377448865322, guid: 196432ce6ad90754693070c5fc2dedd2,
         type: 3}
