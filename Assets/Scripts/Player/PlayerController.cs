@@ -369,8 +369,6 @@ public class PlayerController : MonoBehaviour
                 if (powerNow >= meleeWeapon.powerCon)
                 {
                     isMeleeAttack = true;
-
-                    powerNow -= meleeWeapon.powerCon;
                     animator.SetBool(meleeWeapon.animName, true);
                 }
             }

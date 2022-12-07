@@ -35,8 +35,12 @@ public class PlayerCombat : Combat
 
     public void OnMeleeAttackBegin()
     {
-        StartCoroutine(ICombo()); //Start combo system 
-        //StartCoroutine(ICharge());
+        player.powerNow -= player.meleeWeapon.powerCon;
+    }
+
+    public void OnMeleeCanCombo()
+    {
+        StartCoroutine(ICombo());
     }
 
     public void OnMeleeAttackEnd()
@@ -69,15 +73,18 @@ public class PlayerCombat : Combat
 
     IEnumerator ICombo()
     {
-        yield return new WaitForSeconds(0.05f);
         canCombo = true;
 
         while (canCombo)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
-                canCombo = false;
-                comboReserve = true;
+                if (player.powerNow >= player.meleeWeapon.powerCon)
+                {
+                    canCombo = false;
+                    comboReserve = true;
+                }
+
             }
             yield return null;
         }
@@ -160,7 +167,7 @@ public class PlayerCombat : Combat
         float t = 0;
         while (t < aimingTime)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(KeyCode.X))
             {
                 animator.SetBool("RangeAttack", true);
                 break;
