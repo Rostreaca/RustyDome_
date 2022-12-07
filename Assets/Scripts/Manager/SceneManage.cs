@@ -42,7 +42,18 @@ public class SceneManage : MonoBehaviour
     }
     private void Update()
     {
-        if(GameObject.Find("InteractScenePortal"))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Destroy(PlayerController.instance.gameObject);
+            SceneManager.LoadScene(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Destroy(PlayerController.instance.gameObject);
+            SceneManager.LoadScene(7);
+            GameManager.Instance.HaveLever = true;
+        }
+        if (GameObject.Find("InteractScenePortal"))
         {
             InteractPortal = GameObject.Find("InteractScenePortal");
         }
