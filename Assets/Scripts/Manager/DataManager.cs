@@ -165,20 +165,29 @@ public class DataManager : MonoBehaviour
 		}
 		if (Inventory.instance != null)
 		{
+
+			for (int i = 0; i < Inventory.instance.equipSlots.Count; i++)
+			{
+				Inventory.instance.equipSlots[i].count = boxloadData._savecEquipInvendata[i];
+				Inventory.instance.equipSlots[i].itemName = boxloadData._saveEquipInvenename[i];
+				Inventory.instance.UpdateSlot();
+			}
 			for (int i = 0; i < Inventory.instance.inventorySlots.Count; i++)
 			{
 				Inventory.instance.inventorySlots[i].count = boxloadData._saveInvendata[i];
 				Inventory.instance.UpdateSlot();
 			}
+
 			for (int i = 0; i < Customize.instance.equipSlots.Count; i++)
 			{
-				Customize.instance.equipSlots[i].count = boxloadData._saveEquipdata[i];
+				Customize.instance.equipSlots[i].count = boxloadData._saveEquipCustomdata[i];
 				Customize.instance.equipSlots[i].moduleName = boxloadData._saveEquipModulename[i];
 				Customize.instance.UpdateSlot();
 			}
 			for (int i = 0; i < Customize.instance.inventorySlots.Count; i++)
 			{
 				Customize.instance.inventorySlots[i].count = boxloadData._savecustominvendata[i];
+				Customize.instance.inventorySlots[i].isEquiped = boxloadData._custom_isequiped[i];
 				Customize.instance.UpdateSlot();
 			}
 		}
@@ -233,20 +242,37 @@ public class SaveData
 [System.Serializable]
 public class BoxData
 {
-	public bool[] boxopened; 
+	public bool[] boxopened;
+
+	public bool[] _custom_isequiped;
 	public int[] _saveInvendata;
-	public int[] _saveEquipdata;
+	public string[] _saveEquipInvenename;
+	public int[] _savecEquipInvendata;
+
+	public int[] _saveEquipCustomdata;
 	public string[] _saveEquipModulename;
 	public int[] _savecustominvendata;
-	List<int> Invendatas = new List<int>();
+	List<int> Invendatas = new List<int>(); 
+	List<string> EquipInvenNames = new List<string>(); 
+	List<int> EquiptInvenDatas = new List<int>();
+
+
+
 	List<int> EquipCustomizedatas = new List<int>();
 	List<string> EquipCustomizenames = new List<string>();
 	List<int> InvenCustomizedatas = new List<int>();
+
+	List<bool> CustomisEquiped = new List<bool>();
 	public void Save()
 	{
-		foreach (InventorySlot slot in Inventory.instance.equipSlots)
+		foreach (InventorySlot slot in Inventory.instance.inventorySlots)
 		{
 			Invendatas.Add(slot.count);
+		}
+		foreach (InventorySlot slot in Inventory.instance.equipSlots)
+		{
+			EquiptInvenDatas.Add(slot.count);
+			EquipInvenNames.Add(slot.itemName);
 		}
 
 		foreach (CustomizeSlot slot in Customize.instance.equipSlots)
@@ -258,11 +284,17 @@ public class BoxData
 		foreach (CustomizeSlot slot in Customize.instance.inventorySlots)
 		{
 			InvenCustomizedatas.Add(slot.count);
+			CustomisEquiped.Add(slot.isEquiped);
 		}
-		_saveInvendata = Invendatas.ToArray();
-		_saveEquipdata = EquipCustomizedatas.ToArray();
+		_saveInvendata = Invendatas.ToArray(); // 인벤토리&&커스터마이즈창 인벤토리창 데이터
 		_savecustominvendata = InvenCustomizedatas.ToArray();
+		_custom_isequiped = CustomisEquiped.ToArray();
+
+		_saveEquipCustomdata = EquipCustomizedatas.ToArray(); //커스터마이즈창 장착슬롯 데이터
 		_saveEquipModulename = EquipCustomizenames.ToArray();
+
+		_savecEquipInvendata = EquiptInvenDatas.ToArray(); //인벤토리 장착슬롯데이터
+		_saveEquipInvenename =EquipInvenNames.ToArray();
 	}
 
 }

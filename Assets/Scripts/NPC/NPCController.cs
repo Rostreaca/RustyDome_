@@ -33,6 +33,11 @@ public class NPCController : NPCManager
         //    findDialog();
         //}
         int a = SceneManager.GetActiveScene().buildIndex;
+        if(name == "lever_nohandle" && GameManager.Instance.isDoorOpen)
+        {
+            anim.SetBool("HandleWork",true);
+            return;
+        }
         if(tag == "Chest" )
         {
             if (name == "Chest_2")

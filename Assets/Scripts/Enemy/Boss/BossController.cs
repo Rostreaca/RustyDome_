@@ -31,6 +31,11 @@ public class BossController : MonoBehaviour
     }
     private void Awake()
     {
+
+        if(GameManager.Instance.isBossDead ==true)
+        {
+            Destroy(gameObject);
+        }
         Actor = GameObject.Find("Actor");
         anim = GetComponent<Animator>();
     }

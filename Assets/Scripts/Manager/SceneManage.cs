@@ -157,7 +157,7 @@ public class SceneManage : MonoBehaviour
     {
         if (nowscene.buildIndex == 8)
         {
-            GameManager.Instance.isDoorOpen = false;
+            //GameManager.Instance.isDoorOpen = false;
         }
         if (nowscene.buildIndex == 1&& Continue == false)
         {
