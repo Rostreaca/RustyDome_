@@ -1311,12 +1311,6 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 654031943}
   m_PrefabAsset: {fileID: 0}
---- !u!225 &210586374 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 227950857884982650, guid: 7d030c7e57e51094da28558c01434996,
-    type: 3}
-  m_PrefabInstance: {fileID: 7404999145378509302}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &218476000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1798,7 +1792,7 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
@@ -7895,9 +7889,41 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 392468891}
+    m_ColliderPaths:
+    - - X: 9409999872
+        Y: 7209999872
+      - X: 9400000512
+        Y: 7209999872
+      - X: 9400000512
+        Y: 7200000000
+      - X: 9409999872
+        Y: 7200000000
+    - - X: 840000000
+        Y: 250000000
+      - X: -10000000
+        Y: 250000000
+      - X: -10000000
+        Y: 600000000
+      - X: -50000000
+        Y: 600000000
+      - X: -50000000
+        Y: 200000000
+      - X: 840000000
+        Y: 200000000
   m_CompositePaths:
-    m_Paths: []
+    m_Paths:
+    - - {x: 941, y: 720}
+      - {x: 941, y: 721}
+      - {x: 940.00006, y: 720.99994}
+      - {x: 940.00006, y: 720}
+    - - {x: 83.99997, y: 20}
+      - {x: 83.99997, y: 25}
+      - {x: -1, y: 25.000029}
+      - {x: -1.0000293, y: 60}
+      - {x: -5, y: 59.99997}
+      - {x: -4.999971, y: 20}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &392468895
@@ -24611,7 +24637,7 @@ Tilemap:
       - {fileID: -278583607, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: 1356711564, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: 142748211, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
-      m_AnimationSpeed: 7
+      m_AnimationSpeed: 7.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 15, y: 26, z: 0}
@@ -34407,7 +34433,6 @@ MonoBehaviour:
   scrapText: {fileID: 1633407276}
   gameScreen: {fileID: 670349913}
   pauseScreen: {fileID: 851430360}
-  mapScreen: {fileID: 210586374}
   inventoryScreen: {fileID: 987757079}
   customizeScreen: {fileID: 1070940543}
   gameoverScreen: {fileID: 166128992}
