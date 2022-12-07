@@ -48,6 +48,7 @@ public class InventorySlot : Slot, IPointerEnterHandler
             if (hasItem && type == SlotType.InventorySlot)
             {
                 equipSlot.item = item;
+                equipSlot.itemName = item.itemName;
                 equipSlot.count = 1;
                 equipSlot.UpdateSlot();
 
