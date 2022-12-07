@@ -223,14 +223,16 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator IRoll(int dir)
     {
+        Vector3 targetVec = transform.position + Vector3.right * dir * rollSpeed * rollTime;
+
         while (rollTimer < rollCoolTime)
         {
             if (isRoll)
             {
                 if (rollTimer < rollTime) //dashing
                 {
-                    Vector3 targetVec = transform.position + Vector3.right * dir;
-                    transform.position = Vector3.MoveTowards(transform.position, targetVec, rollSpeed);
+                    
+                    transform.position = Vector3.MoveTowards(transform.position, targetVec, rollSpeed * Time.deltaTime);
                 }
 
                 else
