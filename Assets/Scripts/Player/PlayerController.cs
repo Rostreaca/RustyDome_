@@ -231,7 +231,6 @@ public class PlayerController : MonoBehaviour
                 {
                     Vector3 targetVec = transform.position + Vector3.right * dir;
                     transform.position = Vector3.MoveTowards(transform.position, targetVec, rollSpeed);
-
                 }
 
                 else
@@ -526,6 +525,7 @@ public class PlayerController : MonoBehaviour
         modulePowerRegen = 0;
         moduleMoveSpeed = 0;
         moduleAttackSpeed = 0;
+        moduleDmg = 0;
 
         foreach (CustomizeSlot slot in moduleEquipSlots)
         {

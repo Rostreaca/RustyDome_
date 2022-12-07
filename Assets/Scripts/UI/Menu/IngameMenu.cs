@@ -55,6 +55,7 @@ public class IngameMenu : MonoBehaviour
         data.Restart();
 
     }
+
     public void _GameQuit()
     {
         Destroy(Managers);
