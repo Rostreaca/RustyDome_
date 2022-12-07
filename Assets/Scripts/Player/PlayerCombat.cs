@@ -69,7 +69,7 @@ public class PlayerCombat : Combat
 
     IEnumerator ICombo()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.05f);
         canCombo = true;
 
         while (canCombo)
