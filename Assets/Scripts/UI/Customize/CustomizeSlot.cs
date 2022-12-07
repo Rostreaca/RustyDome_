@@ -148,7 +148,7 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 if (moduleName != null && item == null)
                 {
-                    item = Customize.instance.inventorySlots.Find(x => x.item.itemName == moduleName).item;
+                    item = Customize.instance.inventorySlots.Find(x => x.HasModule(moduleName)).item;
                 }
             }
 
@@ -169,6 +169,21 @@ public class CustomizeSlot : Slot, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if (icon != null)
                 icon.color = new Color(0, 0, 0, 0);
+        }
+    }
+
+    public bool HasModule(string moduleName)
+    {
+        if (!hasItem)
+            return false;
+
+        else
+        {
+            if (item.itemName == moduleName)
+                return true;
+
+            else
+                return false;
         }
     }
 }

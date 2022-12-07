@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class InventorySlot : Slot, IPointerEnterHandler
 {
@@ -97,7 +98,7 @@ public class InventorySlot : Slot, IPointerEnterHandler
             {
                 if (itemName != null && item == null)
                 {
-                    item = Inventory.instance.inventorySlots.Find(x => x.item.itemName == itemName).item;
+                    item = Inventory.instance.inventorySlots.Find(x => x.HasItem(itemName)).item;
                 }
             }
 
@@ -121,6 +122,21 @@ public class InventorySlot : Slot, IPointerEnterHandler
             
             if(icon !=null)
             icon.color = new Color(0, 0, 0, 0);
+        }
+    }
+
+    public bool HasItem(string itemName)
+    {
+        if (!hasItem)
+            return false;
+
+        else
+        {
+            if (item.itemName == itemName)
+                return true;
+
+            else
+                return false;
         }
     }
 }
