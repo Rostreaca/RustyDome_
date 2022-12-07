@@ -440,6 +440,7 @@ public class PlayerController : MonoBehaviour
 
             if (rangeWeapon != null)
             {
+                isAiming = false;
                 isRangeAttack = false;
                 animator.SetBool(rangeWeapon.animName, false);
             }
