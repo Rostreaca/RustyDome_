@@ -268,7 +268,7 @@ public class PlayerCombat : Combat
 
     public void MeleeAttack(EnemyController enemy)
     {
-        enemy.GetDamage(player.meleeWeapon.dmg, player.meleeWeapon.stunDmg);
+        enemy.GetDamage(player.meleeDmg, player.meleeWeapon.stunDmg);
     }
 
     public void RangeAttack(EnemyController enemy)
@@ -278,7 +278,7 @@ public class PlayerCombat : Combat
 
     public void MeleeAttacktoBoss(BossGetDamage boss)
     {
-        boss.GetDamage(player.meleeWeapon.dmg);
+        boss.GetDamage(player.meleeDmg);
     }
 
     public void RangeAttacktoBoss(BossGetDamage boss)

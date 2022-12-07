@@ -260,10 +260,12 @@ MonoBehaviour:
   meleeWeapon: {fileID: 11400000, guid: 7cfce354c0b0aab48bc045fca3ea38e8, type: 2}
   rangeWeapon: {fileID: 11400000, guid: 47629b171b289eb4991490a1b527eb79, type: 2}
   specialWeapon: {fileID: 0}
+  meleeDmg: 0
+  moduleDmg: 0
   rollCoolTime: 1
   rollTimer: 0
   rollTime: 0.75
-  rollSpeed: 5
+  rollSpeed: 0.05
   jumpPower: 12
   noHitTime: 0.5
   forcePower: 2
@@ -272,6 +274,7 @@ MonoBehaviour:
   isGround: 0
   onLadder: 0
   isClimb: 0
+  isRoll: 0
   isMeleeAttack: 0
   isAiming: 0
   isRangeAttack: 0

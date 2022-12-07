@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class ResolutionManager : MonoBehaviour
 {
     public bool isFull = true;
-    public int res;
     public static ResolutionManager instance;
     // Start is called before the first frame update
 
@@ -22,14 +21,13 @@ public class ResolutionManager : MonoBehaviour
         Singletone_Init();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetResolution(int res)
     {
-        if ( res ==0)
+        if (res == 0)
         {
             Screen.SetResolution(1920, 1080, isFull);
         }
-        if(res == 1)
+        if (res == 1)
         {
             Screen.SetResolution(1280, 720, isFull);
         }

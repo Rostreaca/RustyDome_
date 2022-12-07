@@ -7664,6 +7664,41 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2124745889727704182, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124745889727704182, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124745889727704182, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 984421468}
+    - target: {fileID: 2124745889727704182, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124745889727704182, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnResolutionChange
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124745889727704182, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ResolutionSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2124745889727704182, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2124745890001698626, guid: 7d030c7e57e51094da28558c01434996,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -9988,6 +10023,18 @@ Transform:
   m_Father: {fileID: 1021203597}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &984421468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2124745889727704183, guid: 7d030c7e57e51094da28558c01434996,
+    type: 3}
+  m_PrefabInstance: {fileID: 814338924}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d7c4ae772406c49a4759f5abc48224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &986773925
 GameObject:
   m_ObjectHideFlags: 0
@@ -19365,7 +19412,7 @@ Tilemap:
       - {fileID: -1252400712, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: -178068863, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: -968280983, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 67, y: 28, z: 0}
@@ -19415,7 +19462,7 @@ Tilemap:
       - {fileID: -278583607, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: 1356711564, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
       - {fileID: 142748211, guid: f10a83a1af61d0744965ee5786c66a0e, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 53, y: 30, z: 0}

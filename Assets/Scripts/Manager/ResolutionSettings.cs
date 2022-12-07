@@ -10,25 +10,25 @@ public class ResolutionSettings : MonoBehaviour
     void Start()
     {
         drop = GetComponent<Dropdown>();
-    }   
-    
+    }
 
-    // Update is called once per frame
-    void Update()
+    public void OnResolutionChange()
     {
         ResolutionManager.instance.isFull = fullScr.isOn;
-        if(drop.value == 0)
+
+        if (drop.value == 0)
         {
-            ResolutionManager.instance.res = 0;
+            ResolutionManager.instance.SetResolution(0);
         }
 
         if (drop.value == 1)
         {
-            ResolutionManager.instance.res = 1;
+            ResolutionManager.instance.SetResolution(1);
         }
+
         if (drop.value == 2)
         {
-            ResolutionManager.instance.res = 2;
+            ResolutionManager.instance.SetResolution(2);
         }
     }
 }

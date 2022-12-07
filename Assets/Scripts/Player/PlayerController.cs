@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
     public RangeWeapon rangeWeapon;
     public SpecialWeapon specialWeapon;
 
+    public int meleeDmg;
+    public float moduleDmg;
+
     public float rollCoolTime = 0.5f;
     public float rollTimer;
     public float rollTime = 0.5f;
@@ -54,6 +57,7 @@ public class PlayerController : MonoBehaviour
     public bool isGround = false;
     public bool onLadder = false;
     public bool isClimb = false;
+    public bool isRoll = false;
     public bool isMeleeAttack = false;
     public bool isAiming = false;
     public bool isRangeAttack = false;
@@ -80,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rigid;
     public CapsuleCollider2D col;
-    private bool isRoll = false;
+    
     [SerializeField]
     private bool canAirJump;
 
@@ -225,7 +229,9 @@ public class PlayerController : MonoBehaviour
             {
                 if (rollTimer < rollTime) //dashing
                 {
-                    rigid.velocity = new Vector2(dir * rollSpeed, 0);
+                    Vector3 targetVec = transform.position + Vector3.right * dir;
+                    transform.position = Vector3.MoveTowards(transform.position, targetVec, rollSpeed);
+
                 }
 
                 else
@@ -247,7 +253,7 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && powerNow >= 20 &&
-            !isHit && !isAttack)
+            !isHit && !isAttack && !isRoll)
         {
             if (isGround)
             {
@@ -500,6 +506,8 @@ public class PlayerController : MonoBehaviour
         moveSpeed = playerMoveSpeed * (1 + moduleMoveSpeed);
         attackSpeed = playerAttackSpeed * (1 + moduleAttackSpeed);
 
+        meleeDmg = (int)Mathf.Round(meleeWeapon.dmg * (1 + moduleDmg));
+
         animator.SetFloat("MoveSpeed", 1 + moduleMoveSpeed);
         animator.SetFloat("AttackSpeed", 1 + moduleAttackSpeed);
         weaponSprite.gameObject.GetComponent<Animator>().SetFloat("AttackSpeed", 1 + moduleAttackSpeed);
@@ -530,6 +538,7 @@ public class PlayerController : MonoBehaviour
                 modulePowerRegen += module.powerRegen;
                 moduleMoveSpeed += module.moveSpeed;
                 moduleAttackSpeed += module.attackSpeed;
+                moduleDmg += module.meleeDmg;
             }
         }
     }
