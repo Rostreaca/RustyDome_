@@ -26,7 +26,7 @@ public class QuestManager : MonoBehaviour
             return;
         }
 
-        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
     
     // Update is called once per frame

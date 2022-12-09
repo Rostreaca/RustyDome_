@@ -8088,6 +8088,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2604156409180262925, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: talkspeed
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2604156409180262925, guid: 7d030c7e57e51094da28558c01434996,
+        type: 3}
+      propertyPath: t1ext.Array.size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3037588712324245018, guid: 7d030c7e57e51094da28558c01434996,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -10570,6 +10580,11 @@ PrefabInstance:
     - target: {fileID: 1305975297006761095, guid: 49bed69f9ae623d48aa3c8180ebde576,
         type: 3}
       propertyPath: isQuestStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305975297006761095, guid: 49bed69f9ae623d48aa3c8180ebde576,
+        type: 3}
+      propertyPath: Scene2MissonClear
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1305975297006761095, guid: 49bed69f9ae623d48aa3c8180ebde576,

@@ -19,7 +19,7 @@ public class QuestProgressText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.Instance.isQuestStart == true)
+        if (GameManager.Instance.isQuestStart == true)
         {
             if (GameManager.Instance.isQuestClear == false)
             {
@@ -32,6 +32,8 @@ public class QuestProgressText : MonoBehaviour
                 GameManager.Instance.RepeatTalk = false;
             }
         }
+        else
+            gameObject.SetActive(false);
     }
 
     public void DisableCounter()

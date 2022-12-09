@@ -51,10 +51,9 @@ public class IngameMenu : MonoBehaviour
         Time.timeScale = 1;
         Destroy(player);
         Destroy(Canvas);
-        Destroy(Managers);
+        //Destroy(Managers);
         DataManager data = GameObject.Find("DataManager").GetComponent<DataManager>();
         data.Restart();
-
     }
 
     public void _GameQuit()

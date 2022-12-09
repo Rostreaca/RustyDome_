@@ -122,7 +122,8 @@ public class DataManager : MonoBehaviour
 	}
 	public void Restart()
     {
-		if (_loadSceneIndex != 0)
+       // Destroy(IngameMenu.instance.Managers);
+        if (_loadSceneIndex != 0)
 		{
 			SceneManager.LoadScene(_loadSceneIndex);
 		}
@@ -130,7 +131,6 @@ public class DataManager : MonoBehaviour
         {
 			Debug.Log("로드인덱스가 0입니다.");
         }
-
 		isGameLoaded = true;
     }
 	//public InventorySlot inventest;
@@ -161,7 +161,7 @@ public class DataManager : MonoBehaviour
 		if(QuestManager.instance !=null)
 		{
 			QuestManager.instance.completelyend = loadData.questComplete;
-			QuestManager.instance.Enemycount = questprogress;
+			QuestManager.instance.Enemycount = loadData.questprogress;
 		}
 		if (Inventory.instance != null)
 		{
